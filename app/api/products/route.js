@@ -1,9 +1,12 @@
+export const dynamic = 'force-dynamic' // defaults to auto
+
+
 import { connectToDatabase } from "@/util/mongodb";
 
 export async function GET(request) {
   try{
     const { db } = await connectToDatabase();
-    let products = await db.collection("gadget-storebd").find({}).toArray();
+    let products = await db.collection("products").find({}).toArray();
     products = JSON.parse(JSON.stringify(products));
     return Response.json(products);
   }catch (err) {
