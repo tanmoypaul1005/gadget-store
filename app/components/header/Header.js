@@ -10,7 +10,7 @@ const Header = () => {
                         <h1 className="text-4xl font-semibold text-gray-600">Anon</h1>
                         <form className="relative w-full sm:w-3/5">
                             <input
-                                className="w-full h-full p-2 border rounded-xl"
+                                className="w-full h-full p-2 outline-none rounded-lg ring-2 ring-[#2257AA]"
                                 placeholder="Enter Your Product Name..."
                                 id="search"
                                 type="text"
@@ -20,27 +20,36 @@ const Header = () => {
                             </label>
                         </form>
                         <div className="hidden gap-8 mr-2 text-3xl text-gray-600 icons md:flex">
-                            <div className="relative">
-                                <ion-icon name="person-outline"></ion-icon>
+                            <div className="relative cursor-pointer">
+                                <Image
+                                    style={{ maxWidth: "30px", minWidth: "30px", maxHeight: "30px", minHeight: "30px" }}
+                                    src={"/images/icons/avatar.png"}
+                                    alt="pic"
+                                    width={20}
+                                    height={20}
+                                />
                             </div>
-                            <div className="relative">
+                            {/* <div className="relative">
                                 <span
                                     className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2"
                                 >0</span
                                 >
                                 <ion-icon name="heart-outline"></ion-icon>
-                            </div>
-                            <div className="relative">
-                                <span
-                                    className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2"
-                                >0</span
-                                >
-                                <ion-icon name="bag-handle-outline"></ion-icon>
+                            </div> */}
+                            <div className="relative cursor-pointer">
+                                <span className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2" >0</span>
+                                <Image
+                                    style={{ maxWidth: "30px", minWidth: "30px", maxHeight: "30px", minHeight: "30px" }}
+                                    src="/images/icons/trolley.png"
+                                    alt="pic"
+                                    width={20}
+                                    height={20}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
-      
+
                 <div className="desktopNavbar">
                     <nav className="justify-center hidden my-4 lg:flex">
                         <ul className="flex items-center justify-center gap-12 font-bold text-gray-600 desktopNavbarUl font-sm">
@@ -139,7 +148,7 @@ const Header = () => {
                                             <li>
                                                 <a href="#"> Bags </a>
                                             </li>
-                                            <li><Image width={500}height={500} src="/images/mens-banner.jpg" alt="pic" /></li>
+                                            <li><Image width={500} height={500} src="/images/mens-banner.jpg" alt="pic" /></li>
                                         </ul>
                                     </li>
                                     <li>

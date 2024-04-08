@@ -60,14 +60,7 @@ export default function Home() {
 
         <main>
           {/* <!-- !banner --> */}
-          <div className="flex items-center justify-center mx-auto mt-10 lg:w-3/4 banner lg:-mt-4">
-            <Image
-              src={"/images/banner-1.jpg"}
-              width={600}
-              height={600}
-              alt=""
-            />
-          </div>
+        <Banner/>
 
           {/* <!--? Products and categories  --> */}
           <section className="flex w-full gap-8 px-8 mx-auto mt-16 min-h-auto lg:px-0 lg:w-5/6">
