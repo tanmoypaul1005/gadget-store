@@ -139,7 +139,7 @@ const Header = () => {
                                             <li>
                                                 <a href="#"> Bags </a>
                                             </li>
-                                            <li><img src="./assets/images/mens-banner.jpg" alt="pic" /></li>
+                                            <li><Image width={500}height={500} src="/images/mens-banner.jpg" alt="pic" /></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -165,7 +165,7 @@ const Header = () => {
                                                 <a href="#"> Microphone </a>
                                             </li>
                                             <li>
-                                                <img src="./assets/images/womens-banner.jpg" alt="pic" />
+                                                <Image width={500} height={500} src="/images/womens-banner.jpg" alt="pic" />
                                             </li>
                                         </ul>
                                     </li>
@@ -668,7 +668,7 @@ const Header = () => {
                                     />
                                 </div>
                                 <div className="text-gray-700">
-                                    <h4 className="text-gray-900">Men's Hoodies T-Shirt</h4>
+                                    <h4 className="text-gray-900">Men Hoodies T-Shirt</h4>
                                     <div className="text-yellow-500 stars">
                                         <ion-icon name="star"></ion-icon>
                                         <ion-icon name="star"></ion-icon>
@@ -683,10 +683,12 @@ const Header = () => {
                             </div>
                             <div className="flex items-center justify-start gap-2">
                                 <div className="w-20 h-20 p-2 border rounded-md shadow-lg bg-gray-300/20">
-                                    <img
+                                    <Image
                                         className="w-full h-full"
-                                        src="./assets/images/products/3.jpg"
+                                        src="/images/products/3.jpg"
                                         alt=""
+                                        width={80}
+                                        height={80}
                                     />
                                 </div>
                                 <div className="text-gray-700">
@@ -705,10 +707,12 @@ const Header = () => {
                             </div>
                             <div className="flex items-center justify-start gap-2">
                                 <div className="w-20 h-20 p-2 border rounded-md shadow-lg bg-gray-300/20">
-                                    <img
+                                    <Image
                                         className="w-full h-full"
-                                        src="./assets/images/products/4.jpg"
+                                        src="/assets/images/products/4.jpg"
                                         alt=""
+                                        width={80}
+                                        height={80}
                                     />
                                 </div>
                                 <div className="text-gray-700">

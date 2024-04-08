@@ -360,7 +360,9 @@ const Products = () => {
                     <div
                         id="newProducts"
                         className="grid grid-cols-2 gap-6 newProducts md:grid-cols-3 lg:grid-cols-4"
-                    ></div>
+                    >
+                        
+                    </div>
                 </div>
             </div>
 
