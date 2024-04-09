@@ -1,13 +1,18 @@
-import { connectToDatabase } from "@/util/mongodb";
+export const dynamic = 'force-dynamic' // defaults to auto
+import Product from '@/models/Product';
+import connectMongo from '@/util/db';
 
-export async function GET(request) {
-  try{
-    const { db } = await connectToDatabase();
-    let products = await db.collection("gadget-storebd").find({}).toArray();
+export async function GET() {
+  try {
+    await connectMongo();
+    let products = await Product.find({});
     products = JSON.parse(JSON.stringify(products));
-    return Response.json(products);
-  }catch (err) {
+    Response.json(products);
+  } catch (err) {
     console.error(err);
     return Response.json({ message: "Internal Server Error" });
   }
 }
+
+
+

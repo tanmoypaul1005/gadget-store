@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/image";
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -7,7 +8,7 @@ const Header = () => {
             <header className="w-full header">
                 <div className="flex flex-col items-center justify-between w-screen border-b top-header">
                     <div className="flex flex-col items-center justify-between w-full gap-4 p-6 sm:flex-row md:px-24">
-                        <h1 className="text-4xl font-semibold text-gray-600">Anon</h1>
+                        <h1 className="text-4xl font-semibold">Anon</h1>
                         <form className="relative w-full sm:w-3/5">
                             <input
                                 className="w-full h-full p-2 outline-none rounded-lg ring-2 ring-[#2257AA]"
@@ -52,9 +53,9 @@ const Header = () => {
 
                 <div className="desktopNavbar">
                     <nav className="justify-center hidden my-4 lg:flex">
-                        <ul className="flex items-center justify-center gap-12 font-bold text-gray-600 desktopNavbarUl font-sm">
+                        <ul className="flex items-center justify-center gap-12 font-bold  desktopNavbarUl font-sm">
                             <li className="relative nav_items">
-                                <a href="#Home">HOME</a>
+                                <Link href="/">HOME</Link>
                                 <span
                                     className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
                                 ></span>
@@ -188,7 +189,7 @@ const Header = () => {
                                 ></span>
                                 {/* <!--? hoverItems --> */}
                                 <ul
-                                    className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
+                                    className="absolute text-gray-600 flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
                                 >
                                     <li>
                                         <a href="#">Shirt</a>
@@ -212,7 +213,7 @@ const Header = () => {
                                 ></span>
                                 {/* <!--? hoverItems --> */}
                                 <ul
-                                    className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
+                                    className="absolute flex-col text-gray-600 items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
                                 >
                                     <li>
                                         <a href="#">Dress & Frock</a>
@@ -236,7 +237,7 @@ const Header = () => {
                                 ></span>
                                 {/* <!--? hoverItems --> */}
                                 <ul
-                                    className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
+                                    className="absolute text-gray-600 flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
                                 >
                                     <li>
                                         <a href="#">Earrings</a>
@@ -256,11 +257,11 @@ const Header = () => {
                             <li className="relative nav_items perfume_nav_item">
                                 <a href="#Perfume">PERFUME</a>
                                 <span
-                                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
+                                    className="absolute bottom-0 text-gray-600 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
                                 ></span>
                                 {/* <!--? hoverItems --> */}
                                 <ul
-                                    className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
+                                    className="absolute text-gray-600 flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded-xl"
                                 >
                                     <li>
                                         <a href="#">Clothes Perfume</a>
@@ -286,7 +287,7 @@ const Header = () => {
                             <li className="relative nav_items">
                                 <a href="#HotOffers">HOT OFFERS</a>
                                 <span
-                                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
+                                    className="absolute text-gray-600 bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
                                 ></span>
                             </li>
                         </ul>
@@ -306,7 +307,7 @@ const Header = () => {
                             <span
                                 className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2"
                             >
-                                0
+                                0hh
                             </span>
                             <ion-icon name="bag-handle-outline"></ion-icon>
                         </button>
@@ -493,11 +494,11 @@ const Header = () => {
                                     <summary>
                                         <div className="flex items-center gap-2">
                                             Footwear
-                                            <img
+                                            {/* <img
                                                 className="w-4 h-4"
                                                 src="./assets/images/icons/shoes.svg"
                                                 alt="productPicture"
-                                            />
+                                            /> */}
                                         </div>
                                     </summary>
                                 </details>

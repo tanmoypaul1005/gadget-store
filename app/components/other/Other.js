@@ -16,7 +16,7 @@ const Other = () => {
                         height={80}
 
                     />
-                    <h2 className="text-lg font-bold text-gray-600">ALAN DOE</h2>
+                    <h2 className="text-lg font-bold">ALAN DOE</h2>
                     <h5 className="text-md">CEO & Founder Invision</h5>
                     <Image
                         className="w-6 h-6 my-4"
@@ -33,21 +33,21 @@ const Other = () => {
             </div>
 
             <div
-                className="flex items-center justify-center w-full rounded-lg lg:w-3/6"
+                className="flex items-center justify-center w-full rounded-lg lg:w-3/6 text-black"
                 // style="background-image: url('./assets/images/cta-banner.jpg')"
                 style={{ backgroundImage: "url('./images/cta-banner.jpg')" }}
             >
                 <div
                     className="flex flex-col items-center justify-center w-3/4 gap-4 p-8 rounded-lg bg-gray-100/70"
                 >
-                    <button className="p-2 text-white bg-gray-900 rounded-lg">
+                    <button className="p-2 rounded-lg">
                         25% DISCOUNT
                     </button>
-                    <h1 className="w-56 text-4xl font-bold text-center text-gray-800">
+                    <h1 className="w-56 text-4xl font-bold text-center">
                         Summer Collection
                     </h1>
-                    <h5 className="text-lg font-semibold text-gray-500">Starting @ $10</h5>
-                    <button className="text-lg font-semibold text-gray-500">SHOP NOW</button>
+                    <h5 className="text-lg font-semibold">Starting @ $10</h5>
+                    <button className="text-lg font-semibold">SHOP NOW</button>
                 </div>
             </div>
 
@@ -60,10 +60,10 @@ const Other = () => {
                     <div
                         className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
                     >
-                        <ion-icon className="text-4xl text-red-500" name="boat-outline"></ion-icon>
+                        <ion-icon className="text-4xl" name="boat-outline"></ion-icon>
                         <div>
-                            <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs text-gray-600">For Order Over $100</p>
+                            <h3 className="font-semibold">Worldwide Delivery</h3>
+                            <p className="text-xs">For Order Over $100</p>
                         </div>
                     </div>
 
@@ -75,18 +75,18 @@ const Other = () => {
                             name="rocket-outline"
                         ></ion-icon>
                         <div>
-                            <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs text-gray-600">For Order Over $100</p>
+                            <h3 className="font-semibold">Worldwide Delivery</h3>
+                            <p className="text-xs">For Order Over $100</p>
                         </div>
                     </div>
 
                     <div
                         className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
                     >
-                        <ion-icon className="text-4xl text-red-500" name="call-outline"></ion-icon>
+                        <ion-icon className="text-4xl" name="call-outline"></ion-icon>
                         <div>
-                            <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs text-gray-600">For Order Over $100</p>
+                            <h3 className="font-semibold">Worldwide Delivery</h3>
+                            <p className="text-xs">For Order Over $100</p>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@ const Other = () => {
                         ></ion-icon>
                         <div>
                             <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs text-gray-600">For Order Over $100</p>
+                            <p className="text-xs">For Order Over $100</p>
                         </div>
                     </div>
 
@@ -111,8 +111,8 @@ const Other = () => {
                             name="ticket-outline"
                         ></ion-icon>
                         <div>
-                            <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs text-gray-600">For Order Over $100</p>
+                            <h3 className="font-semibold">Worldwide Delivery</h3>
+                            <p className="text-xs">For Order Over $100</p>
                         </div>
                     </div>
                 </div>
