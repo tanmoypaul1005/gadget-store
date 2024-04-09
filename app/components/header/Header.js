@@ -306,7 +306,7 @@ const Header = () => {
                             <span
                                 className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2"
                             >
-                                0
+                                0hh
                             </span>
                             <ion-icon name="bag-handle-outline"></ion-icon>
                         </button>
