@@ -157,10 +157,8 @@ const Footer = () => {
                     </div>
                 </div>
                 <hr />
-                <div
-                    className="flex flex-col items-center justify-center gap-4 py-10 pb-20 mx-auto lg:pb-10"
-                >
-                    <img className="w-80" src="./assets/images/payment.png" alt="payment" />
+                <div className="flex flex-col items-center justify-center gap-4 py-10 pb-20 mx-auto lg:pb-10">
+                    {/* <img className="w-80" src="./assets/images/payment.png" alt="payment" /> */}
                     <h4 className="font-semibold text-gray-500 text-md lg:text-lg">
                         Copyright © Anon All Rights Reserved.
                     </h4>

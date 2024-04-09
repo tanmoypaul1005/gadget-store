@@ -494,11 +494,11 @@ const Header = () => {
                                     <summary>
                                         <div className="flex items-center gap-2">
                                             Footwear
-                                            <img
+                                            {/* <img
                                                 className="w-4 h-4"
                                                 src="./assets/images/icons/shoes.svg"
                                                 alt="productPicture"
-                                            />
+                                            /> */}
                                         </div>
                                     </summary>
                                 </details>
