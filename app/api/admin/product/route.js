@@ -1,4 +1,4 @@
-import Product from "@/models/Product";
+import Product from "../../../../models/Product";
 import connectMongo from "@/util/db";
 
 export async function POST(request) {
