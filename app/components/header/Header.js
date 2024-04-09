@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/image";
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -54,7 +55,7 @@ const Header = () => {
                     <nav className="justify-center hidden my-4 lg:flex">
                         <ul className="flex items-center justify-center gap-12 font-bold  desktopNavbarUl font-sm">
                             <li className="relative nav_items">
-                                <a href="#Home">HOME</a>
+                                <Link href="/">HOME</Link>
                                 <span
                                     className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"
                                 ></span>
