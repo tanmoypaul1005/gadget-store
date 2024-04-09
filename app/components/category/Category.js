@@ -7,7 +7,7 @@ const Category = () => {
         <aside className="sticky top-0 flex-col hidden max-h-screen lg:flex lg:w-1/4">
             <div className="overflow-y-auto aside_section">
                 <div className="w-full p-4 bg-white border shadow-lg categories rounded-xl">
-                    <h1 className="mb-4 text-xl font-semibold">CATEGORY</h1>
+                    <h1 className="mb-4 text-xl font-semibold text-black">CATEGORY</h1>
                     <div className="pb-3 text-lg text-gray-600 border-b">
                         <details>
                             <div className="flex items-baseline justify-between text-sm">
@@ -234,8 +234,8 @@ const Category = () => {
                                 width={20}
                             />
                         </div>
-                        <div className="text-gray-700">
-                            <h4 className="text-gray-900">Baby Fabric Shoes</h4>
+                        <div className="">
+                            <h4 className="">Baby Fabric Shoes</h4>
                             <div className="text-yellow-500 stars">
                                 <ion-icon name="star"></ion-icon>
                                 <ion-icon name="star"></ion-icon>
@@ -244,7 +244,7 @@ const Category = () => {
                                 <ion-icon name="star-half-outline"></ion-icon>
                             </div>
                             <div className="flex items-center justify-start gap-4">
-                                <s className="text-gray-500">$14.00</s> <strong>$7.00</strong>
+                                <s className="">$14.00</s> <strong>$7.00</strong>
                             </div>
                         </div>
                     </div>
@@ -260,8 +260,8 @@ const Category = () => {
                                 width={20}
                             />
                         </div>
-                        <div className="text-gray-700">
-                            <h4 className="text-gray-900">Men Hoodies T-Shirt</h4>
+                        <div className="">
+                            <h4 className="">Men Hoodies T-Shirt</h4>
                             <div className="text-yellow-500 stars">
                                 <ion-icon name="star"></ion-icon>
                                 <ion-icon name="star"></ion-icon>
@@ -270,7 +270,7 @@ const Category = () => {
                                 <ion-icon name="star-outline"></ion-icon>
                             </div>
                             <div className="flex items-center justify-start gap-4">
-                                <s className="text-gray-500">$5.00</s> <strong>$2.00</strong>
+                                <s className="">$5.00</s> <strong>$2.00</strong>
                             </div>
                         </div>
                     </div>
@@ -286,8 +286,8 @@ const Category = () => {
                                 width={20}
                             />
                         </div>
-                        <div className="text-gray-700">
-                            <h4 className="text-gray-900">Girls T-Shirt</h4>
+                        <div className="">
+                            <h4 className="">Girls T-Shirt</h4>
                             <div className="text-yellow-500 stars">
                                 <ion-icon name="star"></ion-icon>
                                 <ion-icon name="star"></ion-icon>
@@ -296,7 +296,7 @@ const Category = () => {
                                 <ion-icon name="star-outline"></ion-icon>
                             </div>
                             <div className="flex items-center justify-start gap-4">
-                                <s className="text-gray-500">$10.00</s> <strong>$5.00</strong>
+                                <s className="">$10.00</s> <strong>$5.00</strong>
                             </div>
                         </div>
                     </div>
@@ -310,8 +310,8 @@ const Category = () => {
                                 width={20}
                             />
                         </div>
-                        <div className="text-gray-700">
-                            <h4 className="text-gray-900">Woolen Hat For Men</h4>
+                        <div className="">
+                            <h4 className="">Woolen Hat For Men</h4>
                             <div className="text-yellow-500 stars">
                                 <ion-icon name="star"></ion-icon>
                                 <ion-icon name="star"></ion-icon>
@@ -320,7 +320,7 @@ const Category = () => {
                                 <ion-icon name="star-half-outline"></ion-icon>
                             </div>
                             <div className="flex items-center justify-start gap-4">
-                                <s className="text-gray-500">$24.00</s> <strong>$17.00</strong>
+                                <s className="">$24.00</s> <strong>$17.00</strong>
                             </div>
                         </div>
                     </div>
