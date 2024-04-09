@@ -1,7 +1,5 @@
 import Product from "@/models/Product";
 import connectMongo from "@/util/db";
-import { connectToDatabase } from "@/util/mongodb";
-
 
 export async function POST(request) {
     try {
