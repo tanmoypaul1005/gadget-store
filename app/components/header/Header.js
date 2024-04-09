@@ -7,7 +7,7 @@ const Header = () => {
             <header className="w-full header">
                 <div className="flex flex-col items-center justify-between w-screen border-b top-header">
                     <div className="flex flex-col items-center justify-between w-full gap-4 p-6 sm:flex-row md:px-24">
-                        <h1 className="text-4xl font-semibold text-gray-600">Anon</h1>
+                        <h1 className="text-4xl font-semibold">Anon</h1>
                         <form className="relative w-full sm:w-3/5">
                             <input
                                 className="w-full h-full p-2 outline-none rounded-lg ring-2 ring-[#2257AA]"
@@ -52,7 +52,7 @@ const Header = () => {
 
                 <div className="desktopNavbar">
                     <nav className="justify-center hidden my-4 lg:flex">
-                        <ul className="flex items-center justify-center gap-12 font-bold text-gray-600 desktopNavbarUl font-sm">
+                        <ul className="flex items-center justify-center gap-12 font-bold  desktopNavbarUl font-sm">
                             <li className="relative nav_items">
                                 <a href="#Home">HOME</a>
                                 <span
