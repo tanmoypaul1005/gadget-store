@@ -6,8 +6,7 @@ export async function GET() {
   try {
     await connectMongo();
     let products = await Product.find({});
-    products = JSON.parse(JSON.stringify(products));
-    Response.json(products);
+    return Response.json({ status: 200, data: products, message: "Product is Found" });
   } catch (err) {
     console.error(err);
     return Response.json({ message: "Internal Server Error" });
