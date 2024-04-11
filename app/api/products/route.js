@@ -1,5 +1,5 @@
 export const dynamic = 'force-dynamic' // defaults to auto
-import Product from '@/models/Product';
+import Product from '@/models/Products';
 import connectMongo from '@/util/db';
 
 export async function GET() {
