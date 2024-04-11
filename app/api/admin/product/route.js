@@ -1,21 +1,22 @@
-// import Product from "../../../../models/Product";
-// import connectMongo from "@/util/db";
 
-// export async function POST(request) {
-//     try {
-//         const new_product = await request.json();
+import Products from "@/models/Products";
+import connectMongo from "@/util/db";
 
-//        await connectMongo();
-//         const product = new Product({
-//             ...new_product,
-//             price: parseInt(new_product.price)
-//         });
+export async function POST(request) {
+    try {
+        const new_product = await request.json();
 
-//         await product.save();
-//         return Response.json({ message: "Product added successfully" });
+       await connectMongo();
+        const product = new Products({
+            ...new_product,
+            price: parseInt(new_product.price)
+        });
 
-//     } catch (err) {
-//         console.error(err);
-//         return Response.json({ message: "Internal Server Error" });
-//     }
-// };
+        await product.save();
+        return Response.json({ message: "Product added successfully" });
+
+    } catch (err) {
+        console.error(err);
+        return Response.json({ message: "Internal Server Error" });
+    }
+};
