@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Banner from "./components/home/Banner";
 import Header from "./components/header/Header";
-import Footer from "./components/Footer";
 import Products from "./components/products/Products";
 import Category from "./components/category/Category";
 import Other from "./components/other/Other";
@@ -66,7 +65,6 @@ export default function Home() {
         </section>
         <Other />
       </main>
-      <Footer />
     </>
   );
 }
