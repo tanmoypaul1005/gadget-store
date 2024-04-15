@@ -13,6 +13,6 @@ const categorySchema = new mongoose.Schema({
     image: {
         type: String
     }
-});
+},{timestamps:true});
 
 export default mongoose.models.Category || mongoose.model('Category', categorySchema);
