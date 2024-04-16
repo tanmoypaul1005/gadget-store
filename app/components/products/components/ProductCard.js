@@ -1,15 +1,17 @@
+import { commonView } from '@/util/utilityFunction'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 function ProductCard({ product }) {
+
     return (
         <Link href={`/products/${product?._id}`}>
             <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                <a href="#">
-                    <Image alt='' width={500} height={700} src={product?.image} className="h-80 w-72 object-cover rounded-t-xl" />
+                <>
+                    <Image style={{maxHeight:"300px" ,minHeight:"300px"}}  alt='' width={500} height={700} src={product?.image} className="object-contain object-center rounded-t-xl" />
                     <div className="px-4 py-3 w-72">
-                        <span className="text-gray-400 mr-3 uppercase text-xs">Brand</span>
+                        <span className="text-gray-400 mr-3 uppercase text-xs">{commonView(product?.brand)}</span>
                         <p className="text-lg font-bold text-black truncate block capitalize">{product?.name}</p>
                         <div className="flex items-center">
                             <p className="text-lg font-semibold text-black cursor-auto my-3">${product?.price}</p>
@@ -24,7 +26,7 @@ function ProductCard({ product }) {
                             </div>
                         </div>
                     </div>
-                </a>
+                </>
             </div>
         </Link>
     )

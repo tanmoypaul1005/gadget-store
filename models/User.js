@@ -6,23 +6,24 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    username: {
-        type: String,
-    },
+
     email: {
         type: String,
         required: true,
     },
+    
     password: {
         type: String,
         required: true,
     },
+
     role: {
         type: String,
-        required: true
+        required: true,
+        default: 'user',
     },
 
-    img: { type: String } ,
+    image: { type: String } ,
     
     address:{
         type: String,
@@ -30,18 +31,17 @@ const userSchema = new mongoose.Schema({
     gender:{
         type: String,
     },
-    contactNumber:{
+    phone:{
         type: String,
-        required: true,
     }
 
 },{timestamps:true});
 
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) {
-        next();
-    }
-    this.password = await bcrypt.hash(this.password, 10);
-});
+// userSchema.pre("save", async function (next) {
+//     if (!this.isModified("password")) {
+//         next();
+//     }
+//     this.password = await bcrypt.hash(this.password, 10);
+// });
 
 export default mongoose.models.User || mongoose.model('User', userSchema);
