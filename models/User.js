@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    
+
     name: {
         type: String,
         required: true,
@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    
+
     password: {
         type: String,
         required: true,
@@ -23,25 +23,25 @@ const userSchema = new mongoose.Schema({
         default: 'user',
     },
 
-    image: { type: String } ,
-    
-    address:{
+    image: { type: String },
+
+    address: {
         type: String,
     },
-    gender:{
+    gender: {
         type: String,
     },
-    phone:{
+    phone: {
         type: String,
     }
 
-},{timestamps:true});
+}, { timestamps: true });
 
-// userSchema.pre("save", async function (next) {
-//     if (!this.isModified("password")) {
-//         next();
-//     }
-//     this.password = await bcrypt.hash(this.password, 10);
-// });
+userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) {
+        next();
+    }
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
 export default mongoose.models.User || mongoose.model('User', userSchema);
