@@ -54,7 +54,7 @@ const Register = () => {
                             </button>
                         </div>
 
-                        <div className="my-12 border-b text-center">
+                        <div className="my-12 text-center">
                             <div
                                 className="leading-none px-2 inline-block text-sm  tracking-wide font-medium  transform translate-y-1/2">
                                 Or sign up with e-mail

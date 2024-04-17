@@ -16,8 +16,6 @@ const RegisterForm = () => {
         reset
     } = useForm();
 
-    console.log("errors", isSubmitting,)
-
     const submitForm = async (formData) => {
         console.log("formData", formData)
         console.log("process.env.BASE_URL", base_url)
@@ -28,7 +26,6 @@ const RegisterForm = () => {
             },
             body: JSON.stringify(formData),
         });
-        console.log("res", res)
         reset();
     }
 
@@ -46,6 +43,7 @@ const RegisterForm = () => {
                         id={"name"}
                         name={"name"}
                         placeholder={"Name"}
+                        error_message={errors.name?.message}
                     />
 
                     <CommonInput
@@ -58,6 +56,7 @@ const RegisterForm = () => {
                         id={"email"}
                         name={"email"}
                         placeholder={"Email"}
+                        error_message={errors.email?.message}
                     />
 
                     <CommonInput
@@ -66,6 +65,12 @@ const RegisterForm = () => {
                             minLength: {
                                 value: 6,
                                 message: "Password must be at least 6 characters"
+                            },
+                            validate: {
+                                hasNumber: value => /\d/.test(value) || "Password must contain at least 1 number",
+                                hasLowercase: value => /[a-z]/.test(value) || "Password must contain at least 1 lowercase letter",
+                                hasUppercase: value => /[A-Z]/.test(value) || "Password must contain at least 1 uppercase letter",
+                                hasSpecial: value => /[^a-zA-Z0-9]/.test(value) || "Password must contain at least 1 special character",
                             }
                         }}
                         register={register}
@@ -74,6 +79,7 @@ const RegisterForm = () => {
                         id={"password"}
                         name={"password"}
                         placeholder={"Password"}
+                        error_message={errors.password?.message}
 
                     />
 
