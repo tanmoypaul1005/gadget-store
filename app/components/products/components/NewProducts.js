@@ -1,3 +1,5 @@
+
+export const revalidate = 2 // revalidate at most every hour
 import React from 'react'
 import ProductCard from './ProductCard'
 import { base_url } from '@/util/const'
@@ -15,7 +17,7 @@ const NewProducts = async () => {
             <section class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
                 {
                     products?.data?.map((product, index) => (
-                        <ProductCard key={index} product={product} img={""} />
+                        <ProductCard key={index} product={product}  />
                     ))
                 }
             </section>

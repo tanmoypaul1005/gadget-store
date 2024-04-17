@@ -18,10 +18,16 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    category: {
+    type: {
         type: String,
-        required: true
+        required: true,
+        enum: ['new_arrivals', 'trending', 'top_rated', 'regular', 'popular'],
+        default: 'regular'
     },
+    category: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Category"
+     },
     stock: {
         type: Number,
         required: true
@@ -29,6 +35,6 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String
     }
-});
+},{timestamps:true});
 
 export default mongoose.models.Product || mongoose.model('Product', productSchema);
