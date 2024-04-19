@@ -6,7 +6,7 @@ export async function GET() {
   try {
     await connectMongo();
     let products = await Category.find({});
-    return Response.json({ status: 200, data: products, message: "Product is Found" });
+    return Response.json({ status: 200, data: products, message: "Category is Found" });
   } catch (err) {
     console.error(err);
     return Response.json({ message: "Internal Server Error" });

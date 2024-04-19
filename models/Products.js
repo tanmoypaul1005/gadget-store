@@ -1,3 +1,5 @@
+import { products_type } from '@/app/api/utils/const';
+
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
@@ -14,20 +16,20 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    brand:{
+    brand: {
         type: String,
         required: true
     },
     type: {
         type: String,
         required: true,
-        enum: ['new_arrivals', 'trending', 'top_rated', 'regular', 'popular'],
+        enum: products_type,
         default: 'regular'
     },
-    category: { 
-        type: mongoose.Schema.Types.ObjectId, 
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Category"
-     },
+    },
     stock: {
         type: Number,
         required: true
@@ -35,6 +37,6 @@ const productSchema = new mongoose.Schema({
     image: {
         type: String
     }
-},{timestamps:true});
+}, { timestamps: true });
 
 export default mongoose.models.Product || mongoose.model('Product', productSchema);
