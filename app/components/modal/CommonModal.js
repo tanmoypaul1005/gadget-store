@@ -1,5 +1,4 @@
 "use client"
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Image from "next/image";
@@ -32,7 +31,7 @@ export default function CommonModal({ open, setOpen, content = <></>,padding="p-
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div className={`relative ${padding} bg-slate-800 text-white`}>
+                    <div className={`relative ${padding} bg-slate-800 text-white border-2 border-white`}>
                         <Image
                             onClick={handleClose}
                             style={{ maxWidth: "20px", minWidth: "20px", naxHeight: "20px", minHeight: "20px", cursor: "pointer"}}
