@@ -3,7 +3,7 @@ import Header from "./components/header/Header";
 import Products from "./components/products/Products";
 import Category from "./components/category/Category";
 import Other from "./components/other/Other";
-import Advertisement from "./components/advertisement/advertisement";
+import Advertisement from "./components/advertisement/Advertisement";
 
 export default function Home() {
   return (
