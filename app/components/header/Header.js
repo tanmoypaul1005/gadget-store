@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import Link from 'next/link';
+import HeaderUserInfo from './HeaderUserInfo';
 
 const Header = () => {
     return (
@@ -20,34 +21,7 @@ const Header = () => {
                                 <i className="cursor-pointer fa-solid fa-magnifying-glass"></i>
                             </label>
                         </form>
-                        <div className="hidden gap-8 mr-2 text-3xl text-gray-600 icons md:flex">
-                            <div className="relative cursor-pointer">
-                                <Image
-                                    style={{ maxWidth: "30px", minWidth: "30px", maxHeight: "30px", minHeight: "30px" }}
-                                    src={"/images/icons/avatar.png"}
-                                    alt="pic"
-                                    width={20}
-                                    height={20}
-                                />
-                            </div>
-                            {/* <div className="relative">
-                                <span
-                                    className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2"
-                                >0</span
-                                >
-                                <ion-icon name="heart-outline"></ion-icon>
-                            </div> */}
-                            <div className="relative cursor-pointer">
-                                <span className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2" >0</span>
-                                <Image
-                                    style={{ maxWidth: "30px", minWidth: "30px", maxHeight: "30px", minHeight: "30px" }}
-                                    src="/images/icons/trolley.png"
-                                    alt="pic"
-                                    width={20}
-                                    height={20}
-                                />
-                            </div>
-                        </div>
+                       <HeaderUserInfo/>
                     </div>
                 </div>
 

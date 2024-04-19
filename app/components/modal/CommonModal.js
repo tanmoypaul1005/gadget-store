@@ -16,9 +16,10 @@ const style = {
     border: '0.5px solid #fff',
     boxShadow: 24,
     p: 0,
+    outLine:"none"
 };
 
-export default function CommonModal({ open, setOpen, content = <></> }) {
+export default function CommonModal({ open, setOpen, content = <></>,padding="p-5" }) {
 
     const handleClose = () => setOpen(false);
 
@@ -31,7 +32,7 @@ export default function CommonModal({ open, setOpen, content = <></> }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <div className='relative'>
+                    <div className={`relative ${padding} bg-slate-800 text-white`}>
                         <Image
                             onClick={handleClose}
                             style={{ maxWidth: "20px", minWidth: "20px", naxHeight: "20px", minHeight: "20px", cursor: "pointer"}}

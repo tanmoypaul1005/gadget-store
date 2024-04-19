@@ -1,5 +1,6 @@
 import React from 'react'
 import RegisterForm from './component/RegisterForm';
+import Link from 'next/link';
 
 const Register = () => {
 
@@ -64,14 +65,8 @@ const Register = () => {
                         <div className="mx-auto max-w-xs">
                             <RegisterForm />
                             <p className=" text-xs text-center mt-6">
-                                I agree to abide by templatanas
-                                <a href="#" className="border-b border-gray-500 border-dotted">
-                                    Terms of Service
-                                </a>
-                                and its
-                                <a href="#" className="border-b border-gray-500 border-dotted">
-                                    Privacy Policy
-                                </a>
+                            Already have an account? 
+                            <Link className="hover:text-[#3b82f6]" href="/register"> Login</Link>
                             </p>
                         </div>
                     </div>

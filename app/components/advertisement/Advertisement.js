@@ -20,6 +20,7 @@ const Advertisement = () => {
             <CommonModal
                 open={showPopup}
                 setOpen={setShowPopup}
+                padding="p-0"
                 content={
                     <div className="flex items-center">
                         <div className="hidden h-full md:flex md:w-1/2">

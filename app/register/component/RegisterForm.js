@@ -1,8 +1,8 @@
 "use client"
-import CommonInput from '@/app/components/input/CommonInput'
-import { base_url } from '@/util/const';
+import CommonInput from '@/app/components/input/CommonInput';
+import { base_url, base_url_src } from '@/util/const';
 import { kuRegister } from '@/util/url';
-import React from 'react'
+import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
 import { ImSpinner2 } from "react-icons/im";
 
@@ -16,17 +16,21 @@ const RegisterForm = () => {
         reset
     } = useForm();
 
+    const router = useRouter();
+
     const submitForm = async (formData) => {
-        console.log("formData", formData)
-        console.log("process.env.BASE_URL", base_url)
-        const res = await fetch("http://localhost:3000/api" + kuRegister, {
+        const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
         });
-        reset();
+
+        if(res?.ok){
+            reset();
+            router.push("login")
+        }
     }
 
     return (
