@@ -6,14 +6,14 @@ import React from 'react';
 
 const ProductDetails = async ({ params }) => {
 
-    // const product = await fetch(base_url + kuProductList + `/${params?.product_id}`,{ cache: 'force-cache' })
-    //     .then(res => res.json());
+    const product = await fetch(base_url + kuProductList + `/${params?.product_id}`,{ cache: 'force-cache' })
+        .then(res => res.json());
 
-    // const productDetails = product?.data;
+    const productDetails = product?.data;
 
     return (
-        <section className="overflow-hidden  body-font">
-            {/* <div className="container px-5 py-24 mx-auto">
+        <section className="overflow-hidden body-font">
+            <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap mx-auto lg:w-4/5">
                     <Image style={{maxHeight:"500px"}} src={productDetails?.image} className='object-contain object-center w-full border border-gray-200 rounded lg:w-1/2' width={500} height={500} alt="" />
                     <div className="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
@@ -56,7 +56,7 @@ const ProductDetails = async ({ params }) => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
         </section>
     );
 };
