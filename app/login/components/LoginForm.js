@@ -2,9 +2,12 @@
 import { ImSpinner2 } from "react-icons/im";
 import CommonInput from "@/app/components/input/CommonInput";
 import { useForm } from "react-hook-form";
-import { useRouter } from 'next/navigation';
-import { kuRegister } from "@/util/url";
+import { useRouter } from "next/navigation";
+import { kuLogin } from "@/util/url";
 import { Toastr } from "@/util/utilityFunction";
+import { base_url } from "@/util/const";
+import { useState } from "react";
+import CommonPassword from "@/app/components/input/CommonPassword";
 
 const LoginForm = () => {
   const {
@@ -17,21 +20,25 @@ const LoginForm = () => {
 
   const router = useRouter();
 
+  
+
   const submitForm = async (formData) => {
-    // const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // });
-    // if(res?.ok){
-    //     reset();
-    //     Toastr({message:"Login successful",type:"success"})
-    //     localStorage.setItem("gadget-store-token",res.token);
-    //     router.push("/")
-    // }
+    const res = await fetch("api" + kuLogin, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    console.log("res", res);
+    if (res?.ok) {
+      reset();
+      Toastr({ message: "Login successful", type: "success" });
+      localStorage.setItem("gadget-store-token", res.token);
+      router.push("/");
+    }
   };
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <div className="max-w-xs mx-auto space-y-5">
@@ -47,8 +54,7 @@ const LoginForm = () => {
           placeholder={"Email"}
           error_message={errors.email?.message}
         />
-
-        <CommonInput
+        <CommonPassword
           rules={{
             required: "Password is required",
             minLength: {
@@ -64,7 +70,6 @@ const LoginForm = () => {
           placeholder={"Password"}
           error_message={errors.password?.message}
         />
-
         <button
           type="submit"
           disabled={isSubmitting}

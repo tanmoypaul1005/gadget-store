@@ -7,16 +7,16 @@ function ProductCard({ product }) {
 
     return (
         <Link href={`/products/${product?._id}`}>
-            <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+            <div className="w-60 duration-500 bg-gray-200 shadow-md rounded-xl hover:scale-105 hover:shadow-xl pt-5">
                 <>
-                    <Image style={{maxHeight:"300px" ,minHeight:"300px"}}  alt='' width={500} height={700} src={product?.image} className="object-contain object-center rounded-t-xl" />
-                    <div className="px-4 py-3 w-72">
-                        <span className="text-gray-400 mr-3 uppercase text-xs">{commonView(product?.brand)}</span>
-                        <p className="text-lg font-bold text-black truncate block capitalize">{product?.name}</p>
+                    <Image style={{maxHeight:"20px",minHeight:"200px"}}  alt='' width={400} height={500} src={product?.image} className="object-contain object-center rounded-t-xl" />
+                    <div className="w-60 px-4 py-3">
+                        <span className="mr-3 text-xs text-gray-400 uppercase">{commonView(product?.brand)}</span>
+                        <p className="block text-lg font-bold text-black capitalize truncate line-clamp-1">{product?.name}</p>
                         <div className="flex items-center">
-                            <p className="text-lg font-semibold text-black cursor-auto my-3">${product?.price}</p>
+                            <p className="my-3 text-lg font-semibold text-black cursor-auto">${product?.price}</p>
                             <del>
-                                <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
+                                <p className="ml-2 text-sm text-gray-600 cursor-auto">$199</p>
                             </del>
                             <div className="ml-auto">
                                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bag-plus" viewBox="0 0 16 16">

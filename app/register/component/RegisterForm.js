@@ -1,5 +1,6 @@
 "use client"
 import CommonInput from '@/app/components/input/CommonInput';
+import CommonPassword from '@/app/components/input/CommonPassword';
 import { base_url, base_url_src } from '@/util/const';
 import { kuRegister } from '@/util/url';
 import { useRouter } from 'next/navigation';
@@ -19,18 +20,23 @@ const RegisterForm = () => {
     const router = useRouter();
 
     const submitForm = async (formData) => {
-        // const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(formData),
-        // });
+        const res = await fetch("http://localhost:3000/api" + kuRegister, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
 
-        // if(res?.ok){
-        //     reset();
-        //     router.push("login")
-        // }
+        if(res?.ok){
+            reset();
+            router.push("login")
+        }else{
+            setError("root.random", {
+                type: "random",
+                message: `Something went wrong: ${error.message}`,
+            });
+        }
     }
 
     return (
@@ -63,7 +69,7 @@ const RegisterForm = () => {
                         error_message={errors.email?.message}
                     />
 
-                    <CommonInput
+                    <CommonPassword
                         rules={{
                             required: "Password is required",
                             minLength: {
