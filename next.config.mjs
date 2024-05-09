@@ -3,6 +3,9 @@ const nextConfig = {
   images: {
       domains: ['m.media-amazon.com', 'images.unsplash.com'],
     },
+    serverActions: {
+      bodySizeLimit: '2mb' // Set desired value here
+  }
 };
 
 export default nextConfig;
