@@ -6,6 +6,7 @@ import React from "react";
 import Action from "./action/Action";
 
 const ProductDetails = async ({ params }) => {
+    
   const product = await fetch(
     base_url + kuProductList + `/${params?.product_id}`,
     { cache: "force-cache" }
@@ -70,7 +71,7 @@ const ProductDetails = async ({ params }) => {
             </div>
             <div className="flex">
               <span className="text-2xl font-medium title-font flex justify-center items-center">$58.00</span>
-              <Action/>
+              <Action product_id={params?.product_id}/>
               {/* <button className="inline-flex items-center justify-center w-10 h-10 p-0 ml-4 text-gray-500 bg-gray-200 border-0 rounded-full">
                 <svg
                   fill="currentColor"

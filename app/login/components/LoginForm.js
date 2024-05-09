@@ -33,7 +33,7 @@ const LoginForm = () => {
       reset();
       Toastr({ message: data?.message, type: "success" });
       localStorage.setItem("gadget-store-token", data?.data?.token);
-      localStorage.setItem("gadget-store-user", data?.data?.user);
+      localStorage.setItem("gadget-store-user", JSON.stringify(data?.data?.user)  );
       router.push("/");
     } else {
       setError("root.random", {

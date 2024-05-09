@@ -6,12 +6,12 @@ export async function POST(request, response) {
   try {
     const res = await request.json();
     await connectMongo();
-    const _cart =await Cart.findOne({ user: res.user });
+    const _cart =await Cart.findOne({ user: res.user_id });
 
     if (!_cart) {
       const new_cart={
-        user:res.user,
-        cartItems:[{product:res.product,quantity:res.quantity}]
+        user:res.user_id,
+        cartItems:[{product:res.product_id,quantity:res.quantity}]
       };
       const cart = new Cart(new_cart);
       await cart.save();
@@ -23,8 +23,8 @@ export async function POST(request, response) {
       });
     } else {
       const cart = await Cart.findOneAndUpdate(
-        { user: res.user },
-        { $push: { cartItems: {product:res.product,quantity:res.quantity} } }
+        { user: res.user_id },
+        { $push: { cartItems: {product:res.product_id,quantity:res.quantity} } }
       );
       return Response.json({
         success: true,
