@@ -1,17 +1,18 @@
 "use client";
 import { ImSpinner2 } from "react-icons/im";
-import CommonInput from "@/app/components/input/CommonInput";
+import CommonInput from "@/components/input/CommonInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { kuLogin } from "@/util/url";
 import { Toastr } from "@/util/utilityFunction";
-import CommonPassword from "@/app/components/input/CommonPassword";
+import CommonPassword from "@/components/input/CommonPassword";
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    
     setError,
     reset,
   } = useForm();
@@ -30,13 +31,14 @@ const LoginForm = () => {
     console.log("res", data);
     if (data?.success) {
       reset();
-      Toastr({ message: "Login successful", type: "success" });
-      localStorage.setItem("gadget-store-token", res.token);
+      Toastr({ message: data?.message, type: "success" });
+      localStorage.setItem("gadget-store-token", data?.data?.token);
+      localStorage.setItem("gadget-store-user", data?.data?.user);
       router.push("/");
     } else {
       setError("root.random", {
         type: "random",
-        message: `Something went wrong: ${error.message}`,
+        message: data?.message ?? `Something went wrong`,
       });
     }
   };
