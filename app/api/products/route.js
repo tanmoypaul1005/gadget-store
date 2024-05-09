@@ -1,4 +1,4 @@
-// export const dynamic = 'force-dynamic' 
+export const dynamic = 'force-dynamic' 
 
 import Product from '@/models/Products';
 import connectMongo from '@/util/db';
