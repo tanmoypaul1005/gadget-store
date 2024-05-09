@@ -11,9 +11,9 @@ export async function GET(request) {
         if (id[3]) {
             let products = await Products.findOne({ _id: id[3] });
             let comment =await Comment.find({ product: id[3] });
-            return Response.json({ status: 200, data: {...products?._doc,comment}, message: `${products?.name} is Found` });
+            return Response.json({success:true, status: 200, data: {...products?._doc,comment}, message: `${products?.name} is Found` });
         } else {
-            return Response.json({ status: 404, error: 'No product found', message: "No movie found with the provided id" });
+            return Response.json({ success:false,status: 404, error: 'No product found', message: "No movie found with the provided id" });
         }
     } catch (err) {
         console.error(err);

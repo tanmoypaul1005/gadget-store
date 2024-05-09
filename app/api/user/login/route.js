@@ -14,18 +14,18 @@ export async function POST(request) {
         await connectMongo();
 
         const user = await User.findOne({ email: req_body.email }).exec();
-        if (!user) return Response.json({ status: 400, message: "Email is not found" });
+        if (!user) return Response.json({success:false, status: 400, message: "Email is not found" });
 
         const validPass = await bcrypt.compare(req_body?.password, user.password);
-        if (!validPass) return Response.json({ status: 500, message: "Invalid password" });
+        if (!validPass) return Response.json({success:false, status: 500, message: "Invalid password" });
 
         const token = jwt.sign({ id: user?.id }, 'your_secret_key', { expiresIn: '1h' });
 
         const userResponse = { user, password: undefined,token };
 
-        return Response.json({status: 200, message:'Login Successfully', data: userResponse});
+        return Response.json({status: 200, success:true, message:'Login Successfully', data: userResponse});
     } catch (err) {
         console.error(err);
-        return Response.json({ message: "Internal Server Error",status:500 });
+        return Response.json({ success:false,message: "Internal Server Error",status:500 });
     }
 }

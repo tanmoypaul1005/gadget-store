@@ -1,7 +1,6 @@
 "use client"
 import CommonInput from '@/app/components/input/CommonInput';
 import CommonPassword from '@/app/components/input/CommonPassword';
-import { base_url, base_url_src } from '@/util/const';
 import { kuRegister } from '@/util/url';
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";
@@ -20,7 +19,7 @@ const RegisterForm = () => {
     const router = useRouter();
 
     const submitForm = async (formData) => {
-        const res = await fetch("http://localhost:3000/api" + kuRegister, {
+        const res = await fetch("api" + kuRegister, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

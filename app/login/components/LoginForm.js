@@ -5,8 +5,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { kuLogin } from "@/util/url";
 import { Toastr } from "@/util/utilityFunction";
-import { base_url } from "@/util/const";
-import { useState } from "react";
 import CommonPassword from "@/app/components/input/CommonPassword";
 
 const LoginForm = () => {
@@ -20,8 +18,6 @@ const LoginForm = () => {
 
   const router = useRouter();
 
-  
-
   const submitForm = async (formData) => {
     const res = await fetch("api" + kuLogin, {
       method: "POST",
@@ -30,15 +26,21 @@ const LoginForm = () => {
       },
       body: JSON.stringify(formData),
     });
-    console.log("res", res);
-    if (res?.ok) {
+    const data = await res.json();
+    console.log("res", data);
+    if (data?.success) {
       reset();
       Toastr({ message: "Login successful", type: "success" });
       localStorage.setItem("gadget-store-token", res.token);
       router.push("/");
+    } else {
+      setError("root.random", {
+        type: "random",
+        message: `Something went wrong: ${error.message}`,
+      });
     }
   };
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
+
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <div className="max-w-xs mx-auto space-y-5">
@@ -70,6 +72,9 @@ const LoginForm = () => {
           placeholder={"Password"}
           error_message={errors.password?.message}
         />
+
+        <p className="mb-4 text-red-500">{errors?.root?.random?.message}</p>
+
         <button
           type="submit"
           disabled={isSubmitting}
