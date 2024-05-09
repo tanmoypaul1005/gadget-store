@@ -18,19 +18,19 @@ const LoginForm = () => {
   const router = useRouter();
 
   const submitForm = async (formData) => {
-    const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    if(res?.ok){
-        reset();
-        Toastr({message:"Login successful",type:"success"})
-        localStorage.setItem("gadget-store-token",res.token);
-        router.push("/")
-    }
+    // const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // });
+    // if(res?.ok){
+    //     reset();
+    //     Toastr({message:"Login successful",type:"success"})
+    //     localStorage.setItem("gadget-store-token",res.token);
+    //     router.push("/")
+    // }
   };
   return (
     <form onSubmit={handleSubmit(submitForm)}>

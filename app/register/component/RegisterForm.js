@@ -19,24 +19,24 @@ const RegisterForm = () => {
     const router = useRouter();
 
     const submitForm = async (formData) => {
-        const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+        // const res = await fetch("https://gadget-storebd.vercel.app/api" + kuRegister, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(formData),
+        // });
 
-        if(res?.ok){
-            reset();
-            router.push("login")
-        }
+        // if(res?.ok){
+        //     reset();
+        //     router.push("login")
+        // }
     }
 
     return (
         <>
             <form onSubmit={handleSubmit(submitForm)}>
-                <div className='mx-auto max-w-xs space-y-5'>
+                <div className='max-w-xs mx-auto space-y-5'>
                     <CommonInput
                         register={register}
                         rules={{
@@ -90,7 +90,7 @@ const RegisterForm = () => {
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="tracking-wide font-semibold text-gray-100 w-full py-4 rounded-lg bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                        className="flex items-center justify-center w-full py-4 font-semibold tracking-wide text-gray-100 transition-all duration-300 ease-in-out bg-indigo-700 rounded-lg focus:shadow-outline focus:outline-none">
 
                         <span className="mr-3">
                             Sign Up

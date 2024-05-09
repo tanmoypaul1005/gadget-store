@@ -7,19 +7,19 @@ import { kuProductList } from '@/util/url'
 
 const NewProducts = async () => {
 
-    const products = await fetch(base_url + kuProductList,{ next: { revalidate: 1 } })
-        .then(res => res.json())
+    // const products = await fetch(base_url + kuProductList,{ next: { revalidate: 1 } })
+    //     .then(res => res.json())
 
     return (
 
         <div className="newProductsContainer">
 
-            <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-                {
+            <section className="grid justify-center grid-cols-1 mx-auto mt-10 mb-5 w-fit lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-20 gap-x-14">
+                {/* {
                     products?.data?.map((product, index) => (
                         <ProductCard key={index} product={product}  />
                     ))
-                }
+                } */}
             </section>
         </div>
 
