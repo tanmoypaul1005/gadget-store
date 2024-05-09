@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic' // defaults to auto
+// export const dynamic = 'force-dynamic' 
 import Comment from "@/models/Comment";
 import Products from "@/models/Products";
 import connectMongo from "@/util/db";
