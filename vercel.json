@@ -1,8 +1,0 @@
-{
-    "name": "Your Check Name",
-    "blocking": true,
-    "rerequestable": true,
-    "path": "/your/path",
-    "conclusion": "failed"
-  }
-  
