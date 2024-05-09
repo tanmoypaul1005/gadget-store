@@ -6,23 +6,23 @@ import { products_type_value } from "@/app/api/utils/const";
 import ProductBox from "./components/ProductBox";
 
 const Products = async () => {
-  const products = await fetch(base_url + kuProductList, {
-    next: { revalidate: 1 },
-  }).then((res) => res.json());
+  // const products = await fetch(base_url + kuProductList, {
+  //   next: { revalidate: 1 },
+  // }).then((res) => res.json());
 
-  const newArrivals = products?.data?.filter(
-    (product, index) => product.type === products_type_value.new_arrivals
-  );
-  const trending = products?.data?.filter(
-    (product, index) => product.type === products_type_value.trending
-  );
-  const topRated = products?.data?.filter(
-    (product, index) => product.type === products_type_value.top_rated
-  );
+  // const newArrivals = products?.data?.filter(
+  //   (product, index) => product.type === products_type_value.new_arrivals
+  // );
+  // const trending = products?.data?.filter(
+  //   (product, index) => product.type === products_type_value.trending
+  // );
+  // const topRated = products?.data?.filter(
+  //   (product, index) => product.type === products_type_value.top_rated
+  // );
 
   return (
     <div className="flex flex-col w-full lg:w-3/4">
-      <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen min-w-screen md:grid-cols-2 lg:grid-cols-3">
+      {/* <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen min-w-screen md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-col gap-4 NewArrivals">
           <h1 className="pb-4 text-xl font-semibold border-b">New Arrivals</h1>
 
@@ -108,7 +108,7 @@ const Products = async () => {
         </div>
       </div>
 
-      <NewProducts />
+      <NewProducts /> */}
     </div>
   );
 };
