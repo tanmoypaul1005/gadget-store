@@ -2,13 +2,29 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import LogoutModal from "./LogoutModal";
+import { signIn } from "next-auth/react";
+
 
 const HeaderUserInfo = () => {
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
     <div className="hidden gap-x-4 text-3xl text-gray-600 icons md:flex">
-      <div className="relative cursor-pointer">
+      <div 
+          onClick={async () => {
+            console.log("clicked")
+            await signIn("google", {
+              callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+            });
+          }}
+      className="text-xl flex justify-center cursor-pointer font-bold text-white">
+        Login
+      </div>
+
+      <div
+    
+        className="relative cursor-pointer"
+      >
         <Image
           style={{
             maxWidth: "30px",

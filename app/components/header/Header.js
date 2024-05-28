@@ -5,8 +5,8 @@ import HeaderUserInfo from './HeaderUserInfo';
 
 const Header = () => {
     return (
-        <div>
-            <header className="w-full header">
+        <div className="w-full header">
+
                 <div className="flex flex-col items-center justify-between w-screen border-b top-header">
                     <div className="flex flex-col items-center justify-between w-full gap-4 p-6 sm:flex-row md:px-24">
                         <h1 className="text-4xl font-semibold">Anon</h1>
@@ -716,7 +716,6 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-            </header>
         </div>
     )
 }
