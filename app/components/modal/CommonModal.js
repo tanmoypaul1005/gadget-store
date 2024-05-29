@@ -12,11 +12,11 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 900,
     bgcolor: 'background.paper',
-    border: '0.5px solid #fff',
+    border: '2px solid grey' ,  
     boxShadow: 24,
     p: 0,
     outLine:"none"
-};
+  };
 
 export default function CommonModal({ open, setOpen, content = <></>,padding="p-5" }) {
 
@@ -30,7 +30,7 @@ export default function CommonModal({ open, setOpen, content = <></>,padding="p-
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box  sx={style}>
                     <div className={`relative ${padding} bg-slate-800 text-white border-2 border-white`}>
                         <Image
                             onClick={handleClose}
