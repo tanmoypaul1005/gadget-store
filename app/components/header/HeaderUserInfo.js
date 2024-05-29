@@ -10,29 +10,29 @@ const HeaderUserInfo = ({ session }) => {
   return (
     <div className="hidden gap-x-4 text-3xl text-gray-600 icons md:flex">
       {session ? (
-        <div className="flex space-x-2">
-          <div className="relative cursor-pointer">
+        <div className="flex space-x-3">
+         
             <Image
               style={{
-                maxWidth: "30px",
-                minWidth: "30px",
-                maxHeight: "30px",
-                minHeight: "30px",
+                maxWidth: "40px",
+                minWidth: "40px",
+                maxHeight: "40px",
+                minHeight: "40px",
               }}
-              src={"/images/icons/avatar.png"}
+              className="rounded-full"
+              src={session?.user?.image}
               alt="pic"
               width={20}
               height={20}
             />
-          </div>
-          <div className="text-xl flex justify-center cursor-pointer font-bold text-white">
+          <div className="text-xl cursor-pointer flex justify-center items-center font-bold text-white">
             {session.user.name}
           </div>
           <div
             onClick={() => {
               setShowLogoutModal(true);
             }}
-            className="relative cursor-pointer"
+            className="relative cursor-pointer flex justify-center items-center"
           >
             <Image
               style={{
@@ -62,7 +62,7 @@ const HeaderUserInfo = ({ session }) => {
         </div>
       )}
 
-      <div className="relative cursor-pointer">
+      <div className="relative cursor-pointer flex justify-center items-center">
         <span className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2">
           0
         </span>
