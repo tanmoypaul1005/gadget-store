@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import CommonModal from "../modal/CommonModal";
+import { signOut } from "next-auth/react";
 
 const LogoutModal = ({ open, setOpen }) => {
   return (
@@ -22,7 +24,12 @@ const LogoutModal = ({ open, setOpen }) => {
                 Cancel
               </button>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  signOut({
+                    callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+                  });
+                  setOpen(false);
+                }}
                 className="px-4 py-2 text-white bg-green-400 rounded-lg"
               >
                 Logout
