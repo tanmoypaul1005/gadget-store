@@ -4,8 +4,8 @@ import Image from "next/image";
 import LogoutModal from "./LogoutModal";
 import { signIn } from "next-auth/react";
 
-
 const HeaderUserInfo = () => {
+
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
