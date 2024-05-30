@@ -7,8 +7,8 @@ import { base_url } from "@/util/const";
 import { Toastr } from "@/util/utilityFunction";
 
 const Action = ({ product_id }) => {
+
   const user = JSON.parse(localStorage.getItem("gadget-store-user"));
-  
 
   const formData = {
     product_id: product_id,
@@ -17,7 +17,7 @@ const Action = ({ product_id }) => {
   };
 
   return (
-    <>
+    <div className="flex justify-start space-x-5">
       <CommonButton
         onClick={async () => {
           const res = await axios.post(process.env.NEXT_PUBLIC_BASE_URL+ "api"+ kuCart, formData, {
@@ -42,7 +42,7 @@ const Action = ({ product_id }) => {
         colorType="danger"
       />
       <CommonButton btnLabel="Buy" colorType="danger" />
-    </>
+    </div>
   );
 };
 
