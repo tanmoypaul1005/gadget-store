@@ -9,7 +9,6 @@ export default function Home() {
   return (
     <>
       <Advertisement />
-
       <main>
         <Banner />
         <section className="flex w-full gap-8 px-8 mx-auto mt-16 min-h-auto lg:px-0 lg:w-5/6">
