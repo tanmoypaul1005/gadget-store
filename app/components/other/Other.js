@@ -33,7 +33,7 @@ const Other = () => {
             </div>
 
             <div
-                className="flex items-center justify-center w-full rounded-lg lg:w-3/6 text-black"
+                className="flex items-center justify-center w-full text-black rounded-lg lg:w-3/6"
                 // style="background-image: url('./assets/images/cta-banner.jpg')"
                 style={{ backgroundImage: "url('./images/cta-banner.jpg')" }}
             >
