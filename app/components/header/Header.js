@@ -6,9 +6,8 @@ import { auth } from "@/auth";
 import Categories from "../Categories";
 
 const Header = async () => {
+  
   const session = await auth();
-
-  console.log(session);
 
   return (
     <div className="w-full header">

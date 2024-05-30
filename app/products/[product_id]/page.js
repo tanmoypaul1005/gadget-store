@@ -4,6 +4,7 @@ import { commonView } from "@/util/utilityFunction";
 import Image from "next/image";
 import React from "react";
 import Action from "./action/Action";
+import { auth } from "@/auth";
 
 const ProductDetails = async ({ params }) => {
   const product = await fetch(
@@ -12,6 +13,8 @@ const ProductDetails = async ({ params }) => {
   ).then((res) => res.json());
 
   const productDetails = product?.data;
+
+  const session = await auth();
 
   return (
     <section className="overflow-hidden body-font">
@@ -82,10 +85,9 @@ const ProductDetails = async ({ params }) => {
                   <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                 </svg>
               </button> */}
-<div className="flex justify-start items-start mt-4">
-
-            <Action product_id={params?.product_id} />
-</div>
+            <div className="flex justify-start items-start mt-4">
+              <Action session={session} product_id={params?.product_id} />
+            </div>
           </div>
         </div>
       </div>
