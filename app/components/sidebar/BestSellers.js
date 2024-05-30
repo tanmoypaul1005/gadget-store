@@ -4,6 +4,7 @@ import { products_type_value } from "@/app/api/utils/const";
 import { base_url } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const BestSellers = async () => {
@@ -25,7 +26,7 @@ const BestSellers = async () => {
       <h2 className="text-lg font-semibold">BEST SELLERS</h2>
 
       {newArrivals?.map((product, index) => (
-        <div key={index} className="flex items-center justify-start gap-2">
+        <Link href={"/product/"+product?._id}  key={index} className="flex items-center justify-start gap-2">
           <div className="w-20 h-20 p-2 border rounded-md flex justify-center items-center shadow-lg bg-gray-300/20">
             <Image
               style={{
@@ -54,7 +55,7 @@ const BestSellers = async () => {
               <s className="">$14.00</s> <strong>$7.00</strong>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
