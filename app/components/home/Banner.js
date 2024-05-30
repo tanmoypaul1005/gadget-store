@@ -5,7 +5,7 @@ function Banner() {
   return (
     <div className="relative flex items-center justify-center mx-auto mt-10 rounded lg:w-3/4 banner lg:-mt-4">
       <Image
-        style={{ maxHeight: "500px" }}
+        style={{ maxHeight: "550px" }}
         className="rounded-lg"
         src={"/images/banner-1.png"}
         width={500}

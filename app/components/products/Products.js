@@ -1,4 +1,5 @@
-import Image from "next/image";
+export const revalidate = 10;
+
 import NewProducts from "./components/NewProducts";
 import { base_url } from "@/util/const";
 import { kuProductList } from "@/util/url";
@@ -7,9 +8,8 @@ import ProductBox from "./components/ProductBox";
 import DailyOffer from "../other/DailyOffer";
 
 const Products = async () => {
-  const products = await fetch(base_url + kuProductList, {
-    next: { revalidate: 1 },
-  }).then((res) => res.json());
+
+  const products = await fetch(base_url + kuProductList).then((res) => res.json());
 
   const newArrivals = products?.data?.filter(
     (product, index) => product.type === products_type_value.new_arrivals

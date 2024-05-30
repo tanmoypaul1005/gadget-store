@@ -1,7 +1,7 @@
 import Banner from "./components/home/Banner";
 import Header from "./components/header/Header";
 import Products from "./components/products/Products";
-import Category from "./components/category/Category";
+import Category from "./components/sidebar/Category";
 import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 
