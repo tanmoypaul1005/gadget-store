@@ -7,16 +7,16 @@ function ProductCard({ product }) {
 
     return (
         <Link href={`/products/${product?._id}`}>
-            <div className="w-60 duration-500 bg-gray-200 shadow-md rounded-xl hover:scale-105 hover:shadow-xl pt-5">
+            <div className="pt-5 duration-500 bg-gray-200 shadow-md w-60 rounded-xl hover:scale-105 hover:shadow-xl">
                 <>
                     <Image style={{maxHeight:"20px",minHeight:"200px"}}  alt='' width={400} height={500} src={product?.image} className="object-contain object-center rounded-t-xl" />
-                    <div className="w-60 px-4 py-3">
+                    <div className="px-4 py-3 w-60">
                         <span className="mr-3 text-xs text-gray-400 uppercase">{commonView(product?.brand)}</span>
                         <p className="block text-lg font-bold text-black capitalize truncate line-clamp-1">{product?.name}</p>
                         <div className="flex items-center">
                             <p className="my-3 text-lg font-semibold text-black cursor-auto">${product?.price}</p>
                             <del>
-                                <p className="ml-2 text-sm text-gray-600 cursor-auto">$199</p>
+                                {/* <p className="ml-2 text-sm text-gray-600 cursor-auto">$199</p> */}
                             </del>
                             <div className="ml-auto">
                                 {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-bag-plus" viewBox="0 0 16 16">
