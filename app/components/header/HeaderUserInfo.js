@@ -5,20 +5,9 @@ import Image from "next/image";
 import LogoutModal from "./LogoutModal";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useEffect } from "react";
-import useCartStore from "@/stores/cartStore";
-import { getCartCount } from "@/app/action/cart";
-
 const HeaderUserInfo = ({ session, totalCart }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
-
-
-  // useEffect(() => {
-  //   getCartCount("66599dab3bcd7928228612cb");
-  // }, [])
-
-  console.log("totalCart",totalCart)
 
   return (
     <div className="hidden gap-x-4 text-3xl text-gray-600 icons md:flex">
@@ -77,7 +66,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
       )}
 
       <div className="relative cursor-pointer flex justify-center items-center">
-        <span className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2">
+        <span className="absolute w-[23px] h-[23px] text-xs font-semibold text-center text-white flex justify-center items-center bg-red-400 rounded-full -top-2 -right-2">
           {totalCart}
         </span>
         <Image
