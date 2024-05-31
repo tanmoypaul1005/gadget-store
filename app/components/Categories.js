@@ -1,60 +1,49 @@
-import { base_url } from "@/util/const";
-import { kuCategory } from "@/util/url";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getCategory } from "../action";
 
-const Categories =async () => {
+const Categories = async () => {
 
-  const category=await fetch(base_url+kuCategory,{ cache: "force-cache" })
-  const categoryData=await getCategory()
-  console.log(categoryData);
+  const categoryData = await getCategory();
 
   return (
     <>
       <div className="desktopNavbar">
         <nav className="justify-center hidden my-4 lg:flex">
           <ul className="flex items-center justify-center gap-12 font-bold  desktopNavbarUl font-sm">
-
             <li className="relative nav_items">
               <Link href="/">HOME</Link>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
             </li>
 
-            {
-              categoryData.data.map((item, index) => (
-                <li key={index} className="relative nav_items men_nav_item">
+            {categoryData.data.map((item, index) => (
+              <li key={index} className="relative nav_items men_nav_item">
                 <a href="#Men">{item?.title}</a>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-                {/* <!--? hoverItems --> */}
+
                 <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                  <li>
-                    <a href="#">Shirt</a>
-                  </li>
-                  <li>
-                    <a href="#">Shorts & Jeans</a>
-                  </li>
-                  <li>
-                    <a href="#">Safety</a>
-                  </li>
-                  <li>
-                    <a href="#">Wallet</a>
-                  </li>
+                  {
+                  item?.child?.length > 0 ? (
+                    item?.child?.map((subItem, index) => (
+                      <li key={index}>
+                        <Link href={`/category/${subItem?._id}`}>{subItem?.title}</Link>
+                      </li>
+                    ))
+                  ) : (
+                    <li>
+                      <a href="#">No Sub Category</a>
+                    </li>
+                  )}
                 </ul>
-                {/* <!--? hoverItems --> */}
               </li>
-              ))
-            }
-
-
-            <li className="relative nav_items category_nav_item">
+            ))}
+            {/* <li className="relative nav_items category_nav_item">
               <a href="#Categories">CATEGORIES</a>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
 
               <ul className="absolute z-10 hidden grid-cols-4 gap-4 p-4 font-normal text-gray-400 bg-white border shadow-lg categoriesItem top-10 rounded">
                 <li>
-                 
                   <ul className="flex flex-col items-start justify-start gap-2">
                     <li>
                       <a href="#"> Desktop </a>
@@ -109,7 +98,6 @@ const Categories =async () => {
                   </ul>
                 </li>
                 <li>
-
                   <ul className="flex flex-col items-start justify-start gap-2">
                     <li>
                       <a href="#"> Formal </a>
@@ -137,7 +125,6 @@ const Categories =async () => {
                   </ul>
                 </li>
                 <li>
-                
                   <ul className="flex flex-col items-start justify-start gap-2">
                     <li>
                       <a href="#"> Smart </a>
@@ -167,96 +154,8 @@ const Categories =async () => {
                   </ul>
                 </li>
               </ul>
-              {/* <!--? hoverItems --> */}
-            </li>
-            <li className="relative nav_items men_nav_item">
-              <a href="#Men">MEN</a>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-              {/* <!--? hoverItems --> */}
-              <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                <li>
-                  <a href="#">Shirt</a>
-                </li>
-                <li>
-                  <a href="#">Shorts & Jeans</a>
-                </li>
-                <li>
-                  <a href="#">Safety</a>
-                </li>
-                <li>
-                  <a href="#">Wallet</a>
-                </li>
-              </ul>
-              {/* <!--? hoverItems --> */}
-            </li>
-            <li className="relative nav_items women_nav_item">
-              <a href="#Women">WOMEN</a>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-              {/* <!--? hoverItems --> */}
-              <ul className="absolute flex-col text-black items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                <li>
-                  <a href="#">Dress & Frock</a>
-                </li>
-                <li>
-                  <a href="#">Earrings</a>
-                </li>
-                <li>
-                  <a href="#">Necklace</a>
-                </li>
-                <li>
-                  <a href="#">Makeup Kit</a>
-                </li>
-              </ul>
-              {/* <!--? hoverItems --> */}
-            </li>
-            <li className="relative nav_items jewelry_nav_item">
-              <a href="#Jewelry">JEWELRY</a>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-              {/* <!--? hoverItems --> */}
-              <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                <li>
-                  <a href="#">Earrings</a>
-                </li>
-                <li>
-                  <a href="#">Couple Rings</a>
-                </li>
-                <li>
-                  <a href="#">Necklace</a>
-                </li>
-                <li>
-                  <a href="#">Bracelets</a>
-                </li>
-              </ul>
-              {/* <!--? hoverItems --> */}
-            </li>
-            <li className="relative nav_items perfume_nav_item">
-              <a href="#Perfume">PERFUME</a>
-              <span className="absolute bottom-0 text-black left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-              {/* <!--? hoverItems --> */}
-              <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                <li>
-                  <a href="#">Clothes Perfume</a>
-                </li>
-                <li>
-                  <a href="#">Flower Fragrance</a>
-                </li>
-                <li>
-                  <a href="#">Safety</a>
-                </li>
-                <li>
-                  <a href="#">Air Freshener</a>
-                </li>
-              </ul>
-              {/* <!--? hoverItems --> */}
-            </li>
-            <li className="relative nav_items">
-              <a href="#Blog">BLOG</a>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-            </li>
-            <li className="relative nav_items">
-              <a href="#HotOffers">HOT OFFERS</a>
-              <span className="absolute text-black bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
-            </li>
+
+            </li> */}
           </ul>
         </nav>
       </div>
