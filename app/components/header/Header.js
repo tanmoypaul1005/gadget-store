@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import Categories from "../Categories";
 
 const Header = async () => {
+  
   const session = await auth();
 
   return (

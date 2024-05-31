@@ -1,17 +1,53 @@
+import { base_url } from "@/util/const";
+import { kuCategory } from "@/util/url";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { getCategory } from "../action";
 
-const Categories = () => {
+const Categories =async () => {
+
+  const category=await fetch(base_url+kuCategory,{ cache: "force-cache" })
+  const categoryData=await getCategory()
+  console.log(categoryData);
+
   return (
     <>
       <div className="desktopNavbar">
         <nav className="justify-center hidden my-4 lg:flex">
           <ul className="flex items-center justify-center gap-12 font-bold  desktopNavbarUl font-sm">
+
             <li className="relative nav_items">
               <Link href="/">HOME</Link>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
             </li>
+
+            {
+              categoryData.data.map((item, index) => (
+                <li key={index} className="relative nav_items men_nav_item">
+                <a href="#Men">{item?.title}</a>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
+                {/* <!--? hoverItems --> */}
+                <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
+                  <li>
+                    <a href="#">Shirt</a>
+                  </li>
+                  <li>
+                    <a href="#">Shorts & Jeans</a>
+                  </li>
+                  <li>
+                    <a href="#">Safety</a>
+                  </li>
+                  <li>
+                    <a href="#">Wallet</a>
+                  </li>
+                </ul>
+                {/* <!--? hoverItems --> */}
+              </li>
+              ))
+            }
+
+
             <li className="relative nav_items category_nav_item">
               <a href="#Categories">CATEGORIES</a>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
