@@ -1,13 +1,19 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import HeaderUserInfo from "./HeaderUserInfo";
 import { auth } from "@/auth";
 import Categories from "../Categories";
+import { findUserId } from "@/app/action/product/action";
+import { getCartCount } from "@/app/action/cart";
 
 const Header = async () => {
-  
   const session = await auth();
+
+  const user = await findUserId(session?.user?.email);
+
+  const cart = await getCartCount("66599dab3bcd7928228612cb");
+
+  console.log("cart", cart);
 
   return (
     <div className="w-full header">
@@ -27,7 +33,7 @@ const Header = async () => {
               <i className="cursor-pointer fa-solid fa-magnifying-glass"></i>
             </label>
           </form>
-          <HeaderUserInfo session={session} />
+          <HeaderUserInfo totalCart={cart} session={session} />
         </div>
       </div>
 

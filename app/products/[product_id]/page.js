@@ -1,3 +1,4 @@
+export const revalidate = 10;
 import { base_url } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import { commonView } from "@/util/utilityFunction";
@@ -5,16 +6,18 @@ import Image from "next/image";
 import React from "react";
 import Action from "./action/Action";
 import { auth } from "@/auth";
+import { findUserId } from "@/app/action/product/action";
 
 const ProductDetails = async ({ params }) => {
   const product = await fetch(
-    base_url + kuProductList + `/${params?.product_id}`,
-    { cache: "force-cache" }
+    base_url + kuProductList + `/${params?.product_id}`
   ).then((res) => res.json());
 
   const productDetails = product?.data;
 
   const session = await auth();
+
+  const user = await findUserId(session?.user?.email);
 
   return (
     <section className="overflow-hidden body-font">
@@ -86,7 +89,10 @@ const ProductDetails = async ({ params }) => {
                 </svg>
               </button> */}
             <div className="flex justify-start items-start mt-4">
-              <Action session={session} product_id={params?.product_id} />
+              <Action
+                user={user?._id}
+                product_id={params?.product_id}
+              />
             </div>
           </div>
         </div>
