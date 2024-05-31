@@ -7,8 +7,6 @@ export async function GET(request,{params}) {
 
     try {
         await connectMongo();
-
-        
         if (params.category_id) {
             let products = await Products.find({ category: params.category_id })
             return Response.json({success:true, status: 200, data: products, message: `Product is found` });
