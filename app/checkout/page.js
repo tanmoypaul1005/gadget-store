@@ -3,7 +3,7 @@ import React from "react";
 const Checkout = () => {
   return (
     <>
-      <div className="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+      <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
@@ -11,30 +11,29 @@ const Checkout = () => {
           <div className="relative">
             <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
-                <a
-                  className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700"
-                  href="#"
+                <div
+                  className="ring ring-emerald-400 ring-offset-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-xs font-semibold text-emerald-700"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
+                    stroke="white"
+                    strokeWidth="2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M5 13l4 4L19 7"
                     />
                   </svg>
-                </a>
+                </div>
                 <span className="font-semibold text-gray-900">Shop</span>
               </li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-400"
+                className="h-4 w-4 text-black"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -57,7 +56,7 @@ const Checkout = () => {
               </li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-400"
+                className="h-4 w-4 text-black"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -82,6 +81,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
         <div className="px-4 pt-8">
           <p className="text-xl font-medium">Order Summary</p>
@@ -189,7 +189,7 @@ const Checkout = () => {
                 type="text"
                 id="email"
                 name="email"
-                className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full text-black rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="your.email@gmail.com"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -220,7 +220,7 @@ const Checkout = () => {
                 type="text"
                 id="card-holder"
                 name="card-holder"
-                className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full text-black rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Your full name here"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -246,13 +246,13 @@ const Checkout = () => {
             >
               Card Details
             </label>
-            <div className="flex">
-              <div className="relative w-7/12 flex-shrink-0">
+
+              <div className="relative w-full flex-shrink-0">
                 <input
                   type="text"
                   id="card-no"
                   name="card-no"
-                  className="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                  className="w-full text-black rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                   placeholder="xxxx-xxxx-xxxx-xxxx"
                 />
                 <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -269,27 +269,16 @@ const Checkout = () => {
                   </svg>
                 </div>
               </div>
-              <input
-                type="text"
-                name="credit-expiry"
-                className="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="MM/YY"
-              />
-              <input
-                type="text"
-                name="credit-cvc"
-                className="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="CVC"
-              />
-            </div>
+
+
             <label
               for="billing-address"
               className="mt-4 mb-2 block text-sm font-medium"
             >
               Billing Address
             </label>
-            <div className="flex flex-col sm:flex-row">
-              <div className="relative flex-shrink-0 sm:w-7/12">
+        
+              <div className="relative flex-shrink-0 w-full">
                 <input
                   type="text"
                   id="billing-address"
@@ -305,34 +294,21 @@ const Checkout = () => {
                   />
                 </div>
               </div>
-              <select
-                type="text"
-                name="billing-state"
-                className="w-full rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-              >
-                <option value="State">State</option>
-              </select>
-              <input
-                type="text"
-                name="billing-zip"
-                className="flex-shrink-0 rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none sm:w-1/6 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="ZIP"
-              />
-            </div>
+       
 
-            <div className="mt-6 border-t border-b py-2">
+            <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                <p className="font-semibold text-gray-900">$399.00</p>
+                <p className="text-sm font-medium">Subtotal</p>
+                <p className="font-semibold">$399.00</p>
               </div>
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900">Shipping</p>
-                <p className="font-semibold text-gray-900">$8.00</p>
+                <p className="text-sm font-medium">Shipping</p>
+                <p className="font-semibold">$8.00</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between">
-              <p className="text-sm font-medium text-gray-900">Total</p>
-              <p className="text-2xl font-semibold text-gray-900">$408.00</p>
+              <p className="text-sm font-medium ">Total</p>
+              <p className="text-2xl font-semibold">$408.00</p>
             </div>
           </div>
           <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
