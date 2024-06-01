@@ -1,17 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import LogoutModal from "./LogoutModal";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
+const HeaderUserInfo = ({ session, totalCart }) => {
 
-const HeaderUserInfo = ({ session }) => {
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
     <div className="hidden gap-x-4 text-3xl text-gray-600 icons md:flex">
       {session ? (
         <div className="flex space-x-3">
-         
+          <Link href={"/profile"}>
             <Image
               style={{
                 maxWidth: "40px",
@@ -25,9 +27,10 @@ const HeaderUserInfo = ({ session }) => {
               width={20}
               height={20}
             />
-          <div className="text-xl cursor-pointer flex justify-center items-center font-bold text-white">
+            </Link>
+          <Link href={"/profile"} className="text-xl cursor-pointer flex justify-center items-center font-bold text-white">
             {session.user.name}
-          </div>
+          </Link>
           <div
             onClick={() => {
               setShowLogoutModal(true);
@@ -62,9 +65,9 @@ const HeaderUserInfo = ({ session }) => {
         </div>
       )}
 
-      <div className="relative cursor-pointer flex justify-center items-center">
-        <span className="absolute w-4 h-4 text-xs font-semibold text-center text-white bg-red-400 rounded-full -top-2 -right-2">
-          0
+      <Link href={"/checkout"} className="relative cursor-pointer flex justify-center items-center">
+        <span className="absolute w-[23px] h-[23px] text-xs font-semibold text-center text-white flex justify-center items-center bg-red-400 rounded-full -top-2 -right-2">
+          {totalCart}
         </span>
         <Image
           style={{
@@ -78,7 +81,7 @@ const HeaderUserInfo = ({ session }) => {
           width={20}
           height={20}
         />
-      </div>
+      </Link>
 
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
     </div>

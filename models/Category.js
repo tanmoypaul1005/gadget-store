@@ -8,10 +8,13 @@ const categorySchema = new mongoose.Schema({
     },
     status: {
         type: String,
+        default:"sub_category"
     },
-    image: {
-        type: String
+    parent_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category'
     }
+ 
 },{timestamps:true});
 
 export default mongoose.models.Category || mongoose.model('Category', categorySchema);
