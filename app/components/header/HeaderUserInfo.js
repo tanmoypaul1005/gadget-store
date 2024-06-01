@@ -56,7 +56,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
           onClick={async () => {
             console.log("clicked");
             await signIn("google", {
-              callbackUrl: "http://localhost:3000/api/auth/signin",
+              callbackUrl: "/",
             });
           }}
           className="text-xl flex justify-center cursor-pointer font-bold text-white"

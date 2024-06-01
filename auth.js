@@ -9,14 +9,16 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
-  adapter: MongoDBAdapter(mongoClientPromise, {databaseName: process.env.ENVIRONMENT }),
+  adapter: MongoDBAdapter(mongoClientPromise, {
+    databaseName: process.env.ENVIRONMENT,
+  }),
   session: {
-      strategy: 'jwt',
+    strategy: "jwt",
   },
   providers: [
-      GoogleProvider({
-          clientId: process.env.GOOGLE_CLIENT_ID,
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        }),
-  ]
-})
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+});
