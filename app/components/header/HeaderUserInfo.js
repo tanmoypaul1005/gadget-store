@@ -65,7 +65,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
         </div>
       )}
 
-      <div className="relative cursor-pointer flex justify-center items-center">
+      <Link href={"/checkout"} className="relative cursor-pointer flex justify-center items-center">
         <span className="absolute w-[23px] h-[23px] text-xs font-semibold text-center text-white flex justify-center items-center bg-red-400 rounded-full -top-2 -right-2">
           {totalCart}
         </span>
@@ -81,7 +81,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
           width={20}
           height={20}
         />
-      </div>
+      </Link>
 
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
     </div>

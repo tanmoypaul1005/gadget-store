@@ -2,21 +2,35 @@
  
 import { revalidatePath } from 'next/cache'
 import Cart from "@/models/Cart";
-import useCartStore from "@/stores/cartStore";
 import connectMongo from "@/util/db";
 import { kuCart } from "@/util/url";
-export const getCartCount = async (user_id) => {
-  const { setTotalCart } = useCartStore.getState();
+import Products from '@/models/Products';
 
+export const getCartCount = async (user_id) => {
   try {
     await connectMongo();
     const cart = await Cart?.findOne({ user: user_id }).lean().exec();
-    console.log("", cart?.cartItems?.length);
-    
-    await setTotalCart(cart?.cartItems?.length ?? 0);
-    return cart?.cartItems?.length ?? 0;
+
+    const cartData = await Promise.all(
+      cart?.cartItems?.map(async (item) => {
+        const product = await Products.findOne({ _id: item?.product })
+          .lean()
+          .exec();
+        return {
+          _id: item._id,
+          product:product,
+          quantity: item?.quantity,
+          
+        };
+      })
+    );
+    console.log("cartData",cartData)
+    return cartData;
+
   } catch (err) {
-    setTotalCart(0);
+     return {
+      cartItems:[]
+     }
   }
 };
 

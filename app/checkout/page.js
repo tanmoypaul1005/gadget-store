@@ -1,9 +1,22 @@
+import { auth } from "@/auth";
 import React from "react";
+import { findUserId } from "../action/product/action";
+import { getCartCount } from "../action/cart";
+import Image from "next/image";
 
-const Checkout = () => {
+const Checkout = async() => {
+
+  const session = await auth();
+
+  const user = await findUserId(session?.user?.email);
+
+  const cart = await getCartCount(user?._id);
+
+  // console.log("dxxxxxxxxxx",cart )
+
   return (
     <>
-      <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
+      <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
@@ -11,9 +24,7 @@ const Checkout = () => {
           <div className="relative">
             <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
-                <div
-                  className="ring ring-emerald-400 ring-offset-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-xs font-semibold text-emerald-700"
-                >
+                <div className="ring ring-emerald-400 ring-offset-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-xs font-semibold text-emerald-700">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
@@ -83,40 +94,34 @@ const Checkout = () => {
       </div>
 
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+
+
         <div className="px-4 pt-8">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
-            <div className="flex flex-col rounded-lg  sm:flex-row">
-              <img
-                className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div className="flex w-full flex-col px-4 py-4">
-                <span className="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span className="float-right text-gray-400">42EU - 8.5US</span>
-                <p className="text-lg font-bold">$138.99</p>
+            {
+              cart?.map((item,index) => (
+                <div key={index} className="flex flex-col rounded-lg  sm:flex-row">
+                <Image
+                  className="m-2 h-24 w-28 rounded-md border object-contain object-center"
+                  src={item?.product?.image}
+                  width={100}
+                  height={100}
+                  alt=""
+                />
+                <div className="flex w-full flex-col px-4 py-4">
+                  <span className="font-semibold">
+                    {item?.product?.name}
+                  </span>
+                  <span className="float-right text-gray-400">{item?.product?._id}</span>
+                  <p className="text-lg font-bold">${item?.product?.price}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col rounded-lg  sm:flex-row">
-              <img
-                className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div className="flex w-full flex-col px-4 py-4">
-                <span className="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span className="float-right text-gray-400">42EU - 8.5US</span>
-                <p className="mt-auto text-lg font-bold">$238.99</p>
-              </div>
-            </div>
+              ))
+            }
           </div>
 
           <p className="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -175,6 +180,8 @@ const Checkout = () => {
             </div>
           </form>
         </div>
+
+
         <div className="mt-10  px-4 pt-8 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
@@ -247,29 +254,28 @@ const Checkout = () => {
               Card Details
             </label>
 
-              <div className="relative w-full flex-shrink-0">
-                <input
-                  type="text"
-                  id="card-no"
-                  name="card-no"
-                  className="w-full text-black rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="xxxx-xxxx-xxxx-xxxx"
-                />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                  <svg
-                    className="h-4 w-4 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z" />
-                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z" />
-                  </svg>
-                </div>
+            <div className="relative w-full flex-shrink-0">
+              <input
+                type="text"
+                id="card-no"
+                name="card-no"
+                className="w-full text-black rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="xxxx-xxxx-xxxx-xxxx"
+              />
+              <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                <svg
+                  className="h-4 w-4 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z" />
+                  <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z" />
+                </svg>
               </div>
-
+            </div>
 
             <label
               for="billing-address"
@@ -277,24 +283,23 @@ const Checkout = () => {
             >
               Billing Address
             </label>
-        
-              <div className="relative flex-shrink-0 w-full">
-                <input
-                  type="text"
-                  id="billing-address"
-                  name="billing-address"
-                  className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                  placeholder="Street Address"
+
+            <div className="relative flex-shrink-0 w-full">
+              <input
+                type="text"
+                id="billing-address"
+                name="billing-address"
+                className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Street Address"
+              />
+              <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                <img
+                  className="h-4 w-4 object-contain"
+                  src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
+                  alt=""
                 />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
-                  <img
-                    className="h-4 w-4 object-contain"
-                    src="https://flagpack.xyz/_nuxt/4c829b6c0131de7162790d2f897a90fd.svg"
-                    alt=""
-                  />
-                </div>
               </div>
-       
+            </div>
 
             <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
