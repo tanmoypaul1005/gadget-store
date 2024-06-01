@@ -4,6 +4,7 @@ export const products_type_value = {
   top_rated: "top_rated",
   regular: "regular",
   popular: "popular",
+  day_offer:"day_offer"
 };
 
 export const products_type = [
@@ -12,4 +13,5 @@ export const products_type = [
   products_type_value.top_rated,
   products_type_value.regular,
   products_type_value.popular,
+  products_type_value.day_offer
 ];

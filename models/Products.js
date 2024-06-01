@@ -3,6 +3,7 @@ import { products_type } from '@/app/api/utils/const';
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
+    
     name: {
         type: String,
         required: true,

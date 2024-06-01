@@ -4,7 +4,6 @@ import { Toastr } from "@/util/utilityFunction";
 import React from "react";
 
 const ClearCart = (params) => {
-  
 
   return (
     <div

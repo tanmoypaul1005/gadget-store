@@ -7,6 +7,7 @@ import { findUserId } from "@/app/action/product/action";
 import { getCartCount } from "@/app/action/cart";
 
 const Header = async () => {
+  
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);

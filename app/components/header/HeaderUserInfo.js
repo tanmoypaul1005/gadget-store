@@ -38,9 +38,9 @@ const HeaderUserInfo = ({ session, totalCart }) => {
         <nav className="flex items-center px-12 border-b border-gray-300 py-3">
           {/* brand  */}
           <div className="flex items-center space-x-2 flex-grow">
-            <h1 className="text-xl font-semibold text-white select-none">
+            <Link href={"/"} className="text-xl font-semibold text-white select-none">
               Gadget store
-            </h1>
+            </Link>
           </div>
           {/* menu s */}
 
