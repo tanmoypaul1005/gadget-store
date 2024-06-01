@@ -3,16 +3,16 @@ import React from "react";
 import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
 import Image from "next/image";
+import ClearCart from "./components/ClearCart";
+import Clear from "./components/Clear";
+import CheckOutProduct from "./components/CheckOutProduct";
 
-const Checkout = async() => {
-
+const Checkout = async () => {
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
 
   const cart = await getCartCount(user?._id);
-
-  // console.log("dxxxxxxxxxx",cart )
 
   return (
     <>
@@ -94,34 +94,17 @@ const Checkout = async() => {
       </div>
 
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-
-
         <div className="px-4 pt-8">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
-            {
-              cart?.map((item,index) => (
-                <div key={index} className="flex flex-col rounded-lg  sm:flex-row">
-                <Image
-                  className="m-2 h-24 w-28 rounded-md border object-contain object-center"
-                  src={item?.product?.image}
-                  width={100}
-                  height={100}
-                  alt=""
-                />
-                <div className="flex w-full flex-col px-4 py-4">
-                  <span className="font-semibold">
-                    {item?.product?.name}
-                  </span>
-                  <span className="float-right text-gray-400">{item?.product?._id}</span>
-                  <p className="text-lg font-bold">${item?.product?.price}</p>
-                </div>
-              </div>
-              ))
-            }
+            {cart?.length > 0
+              ? cart?.map((item, index) => (
+                  <CheckOutProduct item={item} key={index} />
+                ))
+              : "No items in cart"}
           </div>
 
           <p className="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -180,7 +163,6 @@ const Checkout = async() => {
             </div>
           </form>
         </div>
-
 
         <div className="mt-10  px-4 pt-8 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
@@ -326,3 +308,19 @@ const Checkout = async() => {
 };
 
 export default Checkout;
+
+export async function generateStaticParams() {
+  const session = await auth();
+
+  const user = await findUserId(session?.user?.email);
+
+  const cart = await getCartCount(user?._id);
+
+  return recipeList?.data.map((item) => {
+    return {
+      params: {
+        cart,
+      },
+    };
+  });
+}
