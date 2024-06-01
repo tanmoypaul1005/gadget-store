@@ -9,6 +9,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 // import Fade from 'react-reveal/Fade';
 
 const HeaderUserInfo = ({ session, totalCart }) => {
+
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   const [mobileNav, setMobileNav] = useState(false);
@@ -27,6 +28,11 @@ const HeaderUserInfo = ({ session, totalCart }) => {
 
   return (
     <div className="w-full">
+      <LogoutModal
+        open={isShowLogoutModal}
+        setOpen={setShowLogoutModal}
+
+      />
       <header>
         {/* desktop nav  */}
         <nav className="flex items-center px-12 border-b border-gray-300 py-3">
@@ -73,7 +79,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                 <span className="text-sm font-medium">Favorites</span>
               </div>
 
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+              <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
                 <div className="relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +94,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                   </span>
                 </div>
                 <span className="text-sm font-medium">Cart</span>
-              </div>
+              </Link>
 
               {session ? (
                 <div className="flex space-x-3 ml-3">
@@ -165,7 +171,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
           {/* menu icon  */}
           <div className="block  md:hidden lg:hidden">
             <div className="flex space-x-3">
-            <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2">
+            <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2">
               <div className="relative">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +186,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                 </span>
               </div>
               <span className="text-sm font-medium">Cart</span>
-            </div>
+            </Link>
             <HiMenuAlt3
               className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110"
               onClick={handleClick}

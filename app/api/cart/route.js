@@ -6,33 +6,19 @@ export async function POST(request, response) {
   try {
     const res = await request.json();
     await connectMongo();
-    const _cart =await Cart.findOne({ user: res.user_id });
-
-    if (!_cart) {
-      const new_cart={
-        user:res.user_id,
-        cartItems:[{product:res.product_id,quantity:res.quantity}]
-      };
-      const cart = new Cart(new_cart);
-      await cart.save();
-      return Response.json({
-        success: true,
-        message: "Cart Created Successfully",
-        status: 201,
-        data: cart,
-      });
-    } else {
-      const cart = await Cart.findOneAndUpdate(
-        { user: res.user_id },
-        { $push: { cartItems: {product:res.product_id,quantity:res.quantity} } }
-      );
-      return Response.json({
-        success: true,
-        message: "Cart Updated Successfully",
-        status: 200,
-        data: cart,
-      });
-    }
+    const new_cart = {
+      user: res.user_id,
+      product: res.product_id,
+      quantity: res.quantity,
+    };
+    const cart = new Cart(new_cart);
+    await cart.save();
+    return Response.json({
+      success: true,
+      message: "Cart Created Successfully",
+      status: 201,
+      data: cart,
+    });
   } catch (err) {
     console.error(err);
     return Response.json({
@@ -43,14 +29,12 @@ export async function POST(request, response) {
   }
 }
 
-export async function GET(request,response) {
+export async function GET(request, response) {
   try {
-
     await connectMongo();
 
-    const url = new URL(request.url)
+    const url = new URL(request.url);
     const email = url.searchParams.get("email");
-
 
     if (!email) {
       return Response.json({
@@ -60,8 +44,8 @@ export async function GET(request,response) {
       });
     }
 
-    const user=await User.findOne({email:email});
-    if(!user){
+    const user = await User.findOne({ email: email });
+    if (!user) {
       return Response.json({
         success: false,
         message: "User Not Found",
@@ -69,7 +53,7 @@ export async function GET(request,response) {
       });
     }
 
-    const _cart =await Cart.findOne({ user: user._id });
+    const _cart = await Cart.findOne({ user: user._id });
     if (!_cart) {
       return Response.json({
         success: false,
