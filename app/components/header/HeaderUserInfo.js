@@ -10,7 +10,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
-    <div className="hidden gap-x-4 text-3xl text-gray-600 icons md:flex">
+    <div className="gap-x-4 text-3xl text-gray-600 icons md:flex">
       {session ? (
         <div className="flex space-x-3">
           <Link href={"/profile"}>
