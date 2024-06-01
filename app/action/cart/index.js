@@ -35,7 +35,7 @@ export const getCartCount = async (user_id) => {
 };
 
 
-export const addCart = async (formData) => {
+export const addCart = async (formData,pathName) => {
   try {
     const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "api" + kuCart, {
       method: 'POST',
@@ -51,7 +51,7 @@ export const addCart = async (formData) => {
     const data = await res.json();
 
     if (data?.success) {
-      revalidatePath("/products/6613c4098d77cd26c4fd21a3")
+      revalidatePath(pathName)
       console.log('Success:', data?.message);
       return data;
     } else {

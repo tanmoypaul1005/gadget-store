@@ -1,11 +1,8 @@
 "use client";
 import CommonButton from "@/components/button/CommonButton";
-import { kuCart } from "@/util/url";
 import React from "react";
 import { Toastr } from "@/util/utilityFunction";
-import { revalidatePath } from 'next/cache'
 import { addCart } from "@/app/action/cart";
-const fetch = require('node-fetch');
 
 const Action = ({ product_id,  user }) => {
   const formData = {
@@ -19,7 +16,7 @@ const Action = ({ product_id,  user }) => {
     <div className="flex justify-start space-x-5">
       <CommonButton
         onClick={async()=>{ 
-       const success= await addCart(formData);
+       const success= await addCart(formData,"/products/"+product_id);
         if(success.success){
           Toastr({ type: "success", message: success.message });
           }else{
