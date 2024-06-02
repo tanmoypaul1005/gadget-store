@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const DailyOffer = () => {
+const DailyOffer = ({product}) => {
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -51,11 +51,12 @@ const DailyOffer = () => {
       <h1 className="py-4 text-xl font-semibold border-b">Deal Of The Day</h1>
       <div className="flex flex-col justify-between w-full h-auto mt-10 border rounded-lg lg:flex-row">
         <Image
-          className="lg:w-1/2"
-          src="/images/products/shampoo.jpg"
+         style={{maxHeight:"300px",minHeight:"300px"}}
+          className="lg:w-1/2 object-contain w-fit flex justify-center items-center"
+          src={product?.image}
           alt=""
-          width={80}
-          height={80}
+          width={60}
+          height={60}
         />
         <div className="flex flex-col items-start gap-2 p-4 lg:w-1/2">
           <div className="text-yellow-500 stars">
@@ -65,16 +66,15 @@ const DailyOffer = () => {
             <ion-icon name="star"></ion-icon>
             <ion-icon name="star-half-outline"></ion-icon>
           </div>
-          <h4 className="text-lg font-bold">
-            SHAMPOO, CONDITIONER & FACEWASH PACKS
+          <h4 className="text-lg font-bold line-clamp-2">
+            {product?.name}
           </h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor sit
-            amet consectetur Lorem ipsum dolor
+          <p className="line-clamp-2">
+            {product?.description}
           </p>
           <div>
-            <strong className="text-xl font-bold text-red-400">$150.00</strong>
-            <s className="text-xl text-gray-500">$200.00</s>
+            <strong className="text-xl font-bold text-red-400">${product?.price}</strong>
+          
           </div>
           <button className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md">
             ADD TO CART

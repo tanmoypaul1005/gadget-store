@@ -21,6 +21,10 @@ const Products = async () => {
     (product, index) => product.type === products_type_value.top_rated
   );
 
+  const day_offer = products?.data?.find(
+    (product, index) => product.type === products_type_value.day_offer
+  );
+
   return (
     <div className="flex flex-col w-full lg:w-3/4">
       <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen min-w-screen md:grid-cols-2 lg:grid-cols-3">
@@ -47,7 +51,7 @@ const Products = async () => {
         </div>
       </div>
 
-      <DailyOffer />
+      <DailyOffer product={day_offer} />
 
       <NewProducts />
     </div>
