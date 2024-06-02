@@ -6,24 +6,25 @@ const Category = () => {
   return (
     <aside className="sticky top-0 flex-col hidden max-h-screen lg:flex lg:w-1/4">
       <div className="overflow-y-auto aside_section">
-        <div className="w-full p-4 text-black bg-white border shadow-lg categories rounded-xl">
-          <h1 className="mb-4 text-xl font-semibold text-black">CATEGORY</h1>
-          <div className="pb-3 text-lg text-black border-b">
+        <div className="w-full p-4 text-white border shadow-lg bg-cCommonBg categories rounded-xl">
+          <h1 className="mb-4 text-xl font-semibold ">CATEGORY</h1>
+          
+          <div className="pb-3 text-lg border-b">
             <details>
-              <div className=" flex items-baseline justify-between text-sm">
-                <a href="#">Shirt</a>
+              <div className="flex items-baseline justify-between text-sm text-white ">
+                <a className="text-white" href="#">Shirt</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Shorts & Jeans</a>
+                <a className="text-white" href="#">Shorts & Jeans</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Jacket</a>
+                <a className="text-white" href="#">Jacket</a>
                 <span>50</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Dress & Frock</a>
+                <a className="text-white" href="#">Dress & Frock</a>
                 <span>120</span>
               </div>
               <summary>
@@ -40,22 +41,22 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Sports</a>
+                <a className="text-white" href="#">Sports</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Formal</a>
+                <a className="text-white" href="#">Formal</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Casual</a>
+                <a className="text-white" href="#">Casual</a>
                 <span>50</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Safety Shoes</a>
+                <a className="text-white" href="#">Safety Shoes</a>
                 <span>120</span>
               </div>
               <summary>
@@ -72,18 +73,18 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Earrings</a>
+                <a className="text-white" href="#">Earrings</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Couple Rings</a>
+                <a className="text-white" href="#">Couple Rings</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Necklace</a>
+                <a  className="text-white" href="#">Necklace</a>
                 <span>50</span>
               </div>
               <summary>
@@ -100,22 +101,22 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Clothes Perfume</a>
+                <a className="text-white" href="#">Clothes Perfume</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Deodorant</a>
+                <a className="text-white" href="#">Deodorant</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Jacket</a>
+                <a className="text-white" href="#">Jacket</a>
                 <span>50</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Dress & Frock</a>
+                <a className="text-white" href="#">Dress & Frock</a>
                 <span>120</span>
               </div>
               <summary>
@@ -132,22 +133,22 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Shampoo</a>
+                <a className="text-white" href="#">Shampoo</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Sunscreen</a>
+                <a className="text-white" href="#">Sunscreen</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Body Wash</a>
+                <a className="text-white" href="#">Body Wash</a>
                 <span>50</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Makeup Kit</a>
+                <a className="text-white" href="#">Makeup Kit</a>
                 <span>120</span>
               </div>
               <summary>
@@ -164,14 +165,14 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Sunglasses</a>
+                <a className="text-white" href="#">Sunglasses</a>
                 <span>23</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Lenses</a>
+                <a className="text-white" href="#">Lenses</a>
                 <span>53</span>
               </div>
               <summary>
@@ -188,22 +189,22 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Wallet</a>
+                <a className="text-white" href="#">Wallet</a>
                 <span>300</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Purse</a>
+                <a className="text-white" href="#">Purse</a>
                 <span>30</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Gym Backpack</a>
+                <a className="text-white" href="#">Gym Backpack</a>
                 <span>50</span>
               </div>
               <div className="flex items-baseline justify-between text-sm">
-                <a href="#">Shopping Bag</a>
+                <a className="text-white" href="#">Shopping Bag</a>
                 <span>120</span>
               </div>
               <summary>
