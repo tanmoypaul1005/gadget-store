@@ -7,7 +7,7 @@ const ProductBox = ({ product }) => {
   return (
     <Link
       href={`/products/${product?._id}`}
-      className="flex items-center justify-start w-full gap-2 bg-white border rounded-lg shadow-sm cursor-pointer h-28"
+      className="flex items-center justify-start w-full gap-2 bg-[#0c1120] rounded-lg shadow-sm cursor-pointer h-28"
     >
       <div className="w-20 h-20 p-2">
         <Image
@@ -20,11 +20,11 @@ const ProductBox = ({ product }) => {
         />
       </div>
       <div className="text-gray-700">
-        <h4 className="w-full text-sm font-bold text-gray-900 line-clamp-1">
+        <h4 className="w-full text-sm font-bold text-white line-clamp-1">
           {commonView(product?.name)}
         </h4>
-        <h4>Clothes</h4>
-        <div className="flex items-center justify-start gap-4">
+       
+        <div className="flex items-center justify-start gap-4 text-white">
           <strong className="text-red-400">
             $ {commonView(product?.price)}
           </strong>
