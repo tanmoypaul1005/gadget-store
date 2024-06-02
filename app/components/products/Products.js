@@ -33,7 +33,7 @@ const Products = async () => {
 
   const user = await findUserId(session?.user?.email);
 
-  const isAddCartDayOffer=await findDayOffer(day_offer?._id);
+  const isAddCartDayOffer=await findDayOffer(day_offer?._id,user?._id);
 
   return (
     <div className="flex flex-col w-full lg:w-3/4">

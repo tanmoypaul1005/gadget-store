@@ -26,6 +26,8 @@ const HeaderUserInfo = ({ session, totalCart }) => {
     setMobileNav(!mobileNav);
   };
 
+  console.log("totalCart",totalCart)
+
   return (
     <div className="w-full">
       <LogoutModal
@@ -35,21 +37,21 @@ const HeaderUserInfo = ({ session, totalCart }) => {
       />
       <header>
         {/* desktop nav  */}
-        <nav className="flex items-center px-12 border-b border-gray-300 py-3">
+        <nav className="flex items-center px-12 py-3 border-b border-gray-300">
           {/* brand  */}
-          <div className="flex items-center space-x-2 flex-grow">
+          <div className="flex items-center flex-grow space-x-2">
             <Link href={"/"} className="text-xl font-semibold text-white select-none">
               Gadget store
             </Link>
           </div>
           {/* menu s */}
 
-          <div className="hidden md:flex lg:flex space-x-3">
-            <div className="px-6 w-full flex flex-col sm:flex-row justify-end">
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+          <div className="hidden space-x-3 md:flex lg:flex">
+            <div className="flex flex-col justify-end w-full px-6 sm:flex-row">
+              <div className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500"
+                  className="w-5 h-5 text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -63,10 +65,10 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                 <span className="text-sm font-medium">Orders</span>
               </div>
 
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+              <div className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500"
+                  className="w-5 h-5 text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -79,17 +81,17 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                 <span className="text-sm font-medium">Favorites</span>
               </div>
 
-              <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+              <Link href={"/checkout"} className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
                 <div className="relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-gray-500"
+                    className="w-5 h-5 text-gray-500"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
                     <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                   </svg>
-                  <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                  <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
                     {totalCart}
                   </span>
                 </div>
@@ -97,7 +99,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
               </Link>
 
               {session ? (
-                <div className="flex space-x-3 ml-3">
+                <div className="flex ml-3 space-x-3">
                   <Link href={"/profile"}>
                     <Image
                       style={{
@@ -115,7 +117,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                   </Link>
                   <Link
                     href={"/profile"}
-                    className="text-md cursor-pointer flex justify-center items-center font-bold text-white"
+                    className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
                   >
                     {session.user.name}
                   </Link>
@@ -123,7 +125,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                     onClick={() => {
                       setShowLogoutModal(true);
                     }}
-                    className="relative cursor-pointer flex justify-center items-center"
+                    className="relative flex items-center justify-center cursor-pointer"
                   >
                     <Image
                       style={{
@@ -148,7 +150,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                         callbackUrl: "/",
                       });
                     }}
-                    className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:text-black hover:bg-gray-100"
+                    className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
                   >
                     <span className="text-sm font-medium">Sign in</span>
                   </div>
@@ -159,7 +161,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                         callbackUrl: "/",
                       });
                     }}
-                    className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:text-black hover:bg-gray-100"
+                    className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
                   >
                     <span className="text-sm font-medium">Login</span>
                   </div>
@@ -169,26 +171,26 @@ const HeaderUserInfo = ({ session, totalCart }) => {
           </div>
 
           {/* menu icon  */}
-          <div className="block  md:hidden lg:hidden">
+          <div className="block md:hidden lg:hidden">
             <div className="flex space-x-3">
-            <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2">
+            <Link href={"/checkout"} className="flex items-center py-2 rounded-md cursor-pointer gap-x-1">
               <div className="relative">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-gray-500"
+                  className="w-5 h-5 text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                 </svg>
-                <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
                   {totalCart}
                 </span>
               </div>
               <span className="text-sm font-medium">Cart</span>
             </Link>
             <HiMenuAlt3
-              className="w-10 h-10 ring-blue-300 text-gray-700 border border-gray-400 focus:ring-4 cursor-pointer rounded-lg p-2 transform transition duration-200 hover:scale-110"
+              className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
               onClick={handleClick}
             />
           </div>
@@ -198,15 +200,15 @@ const HeaderUserInfo = ({ session, totalCart }) => {
         {/* mobile nav  */}
         {mobileNav && (
           <>
-            <nav className="bg-white shadow-lg mx-6 mt-2 rounded-lg border border-gray-300 py-4 block md:hidden lg:hidden">
+            <nav className="block py-4 mx-6 mt-2 bg-white border border-gray-300 rounded-lg shadow-lg md:hidden lg:hidden">
               <ul>
                 {menu.map((item) => (
                   <a
                     key={item.id}
                     href={item.to}
-                    className="text-gray-600 text-lg"
+                    className="text-lg text-gray-600"
                   >
-                    <li className="py-2 px-3 w-full hover:bg-gray-200 transition duration-300 cursor-default">
+                    <li className="w-full px-3 py-2 transition duration-300 cursor-default hover:bg-gray-200">
                       {item.text}
                     </li>
                   </a>
@@ -252,12 +254,12 @@ export default HeaderUserInfo;
 //     aria-labelledby="header-navigation"
 //     class="peer-checked:mt-8 peer-checked:max-h-32 flex max-h-0 w-full flex-col items-center justify-between  transition-all sm:ml-24 sm:max-h-full sm:flex-row sm:items-start"
 //   >
-//     <div className="py-3 px-6 w-full flex flex-col sm:flex-row justify-end">
+//     <div className="flex flex-col justify-end w-full px-6 py-3 sm:flex-row">
 
-//       <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+//       <div className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
 //         <svg
 //           xmlns="http://www.w3.org/2000/svg"
-//           className="h-5 w-5 text-gray-500"
+//           className="w-5 h-5 text-gray-500"
 //           viewBox="0 0 20 20"
 //           fill="currentColor"
 //         >
@@ -271,10 +273,10 @@ export default HeaderUserInfo;
 //         <span className="text-sm font-medium">Orders</span>
 //       </div>
 
-//       <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+//       <div className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
 //         <svg
 //           xmlns="http://www.w3.org/2000/svg"
-//           className="h-5 w-5 text-gray-500"
+//           className="w-5 h-5 text-gray-500"
 //           viewBox="0 0 20 20"
 //           fill="currentColor"
 //         >
@@ -287,17 +289,17 @@ export default HeaderUserInfo;
 //         <span className="text-sm font-medium">Favorites</span>
 //       </div>
 
-//       <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+//       <div className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100">
 //         <div className="relative">
 //           <svg
 //             xmlns="http://www.w3.org/2000/svg"
-//             className="h-5 w-5 text-gray-500"
+//             className="w-5 h-5 text-gray-500"
 //             viewBox="0 0 20 20"
 //             fill="currentColor"
 //           >
 //             <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
 //           </svg>
-//           <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+//           <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
 //             {totalCart}
 //           </span>
 //         </div>
@@ -356,7 +358,7 @@ export default HeaderUserInfo;
 //                 callbackUrl: "/",
 //               });
 //             }}
-//             className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:text-black hover:bg-gray-100"
+//             className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
 //           >
 //             <span className="text-sm font-medium">Sign in</span>
 //           </div>
@@ -367,7 +369,7 @@ export default HeaderUserInfo;
 //                 callbackUrl: "/",
 //               });
 //             }}
-//             className="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:text-black hover:bg-gray-100"
+//             className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
 //           >
 //             <span className="text-sm font-medium">Login</span>
 //           </div>

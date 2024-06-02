@@ -57,7 +57,7 @@ const DailyOffer = ({ isAddCartDayOffer,product,user }) => {
   };
 
  // console.log("user_id",user)
- console.log("isAddCartDayOffer",isAddCartDayOffer)
+//console.log("isAddCartDayOffer",isAddCartDayOffer)
 
  //console.log("product",product)
 
@@ -93,17 +93,17 @@ const DailyOffer = ({ isAddCartDayOffer,product,user }) => {
           </div>
           <button
             onClick={async () => {
-  // if(isAddCartDayOffer){
-  //   await deleteCart()
-  // }
-              
-
+             if(isAddCartDayOffer){
+               await deleteCart(isAddCartDayOffer?._id,"/")
+            }else{
+              console.log("formData",formData)
               const success = await addCart(formData,"/");
               if (success.success) {
                 Toastr({ type: "success", message: success.message });
               } else {
                 Toastr({ type: "error", message: success.message });
               }
+            }
             }}
             className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
           >
