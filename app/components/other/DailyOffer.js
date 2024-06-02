@@ -1,9 +1,11 @@
 "use client";
+import { addCart, deleteCart } from "@/app/action/cart";
+import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const DailyOffer = ({ product }) => {
+const DailyOffer = ({ isAddCartDayOffer,product,user }) => {
   
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
@@ -47,6 +49,18 @@ const DailyOffer = ({ product }) => {
     return () => clearInterval(timerId);
   }, []);
 
+    
+  const formData = {
+    product_id: product?._id,
+    user_id:user?._id,
+    quantity: 1,
+  };
+
+ // console.log("user_id",user)
+ console.log("isAddCartDayOffer",isAddCartDayOffer)
+
+ //console.log("product",product)
+
   return (
     <div className="my-10 day">
       <h1 className="py-4 text-xl font-semibold border-b">Deal Of The Day</h1>
@@ -77,7 +91,22 @@ const DailyOffer = ({ product }) => {
               ${product?.price}
             </strong>
           </div>
-          <button className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md">
+          <button
+            onClick={async () => {
+  // if(isAddCartDayOffer){
+  //   await deleteCart()
+  // }
+              
+
+              const success = await addCart(formData,"/");
+              if (success.success) {
+                Toastr({ type: "success", message: success.message });
+              } else {
+                Toastr({ type: "error", message: success.message });
+              }
+            }}
+            className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
+          >
             ADD TO CART
           </button>
           <h3 className="mt-4 text-sm font-semibold">

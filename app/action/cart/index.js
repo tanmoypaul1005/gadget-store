@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import Cart from "@/models/Cart";
 import connectMongo from "@/util/db";
 import { kuCart } from "@/util/url";
-import Products from "@/models/Products";
 
 export const getCartCount = async (user_id) => {
   try {
@@ -16,7 +15,7 @@ export const getCartCount = async (user_id) => {
   }
 };
 
-export const deleteCart = async (cart_id,path) => {
+export const deleteCart = async (cart_id, path) => {
   try {
     await connectMongo();
     const result = await Cart.findByIdAndDelete({ _id: cart_id });
@@ -57,5 +56,15 @@ export const addCart = async (formData, pathName) => {
       success: false,
       message: "Internal Server Error",
     };
+  }
+};
+
+export const findDayOffer = async (product_id) => {
+  try {
+    await connectMongo();
+    const day_offer = await Cart?.find({ product: product_id });
+      return day_offer;
+  } catch (err) {
+    return null;
   }
 };
