@@ -7,7 +7,7 @@ const ProductBox = ({ product }) => {
   return (
     <Link
       href={`/products/${product?._id}`}
-      className="flex items-center justify-start w-full gap-2 bg-[#0c1120] rounded-lg shadow-sm cursor-pointer h-28"
+      className="flex items-center justify-start w-full gap-2 bg-[#374151] rounded-lg shadow-sm cursor-pointer h-28"
     >
       <div className="w-20 h-20 p-2">
         <Image
