@@ -6,11 +6,11 @@ const Category = () => {
   return (
     <aside className="sticky top-0 flex-col hidden max-h-screen lg:flex lg:w-1/4">
       <div className="overflow-y-auto aside_section">
-        <div className="w-full p-4 text-black bg-white border shadow-lg categories rounded-xl">
-          <h1 className="mb-4 text-xl font-semibold text-black">CATEGORY</h1>
-          <div className="pb-3 text-lg text-black border-b">
+        <div className="w-full p-4 text-white border shadow-lg bg-cCommonBg categories rounded-xl">
+          <h1 className="mb-4 text-xl font-semibold ">CATEGORY</h1>
+          <div className="pb-3 text-lg border-b">
             <details>
-              <div className=" flex items-baseline justify-between text-sm">
+              <div className="flex items-baseline justify-between text-sm ">
                 <a href="#">Shirt</a>
                 <span>300</span>
               </div>
@@ -40,7 +40,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Sports</a>
@@ -72,7 +72,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Earrings</a>
@@ -100,7 +100,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Clothes Perfume</a>
@@ -132,7 +132,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Shampoo</a>
@@ -164,7 +164,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Sunglasses</a>
@@ -188,7 +188,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-          <div className="pb-3 text-lg text-black border-b">
+          <div className="pb-3 text-lg border-b">
             <details>
               <div className="flex items-baseline justify-between text-sm">
                 <a href="#">Wallet</a>

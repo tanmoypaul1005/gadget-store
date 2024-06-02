@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 const DailyOffer = ({ product }) => {
+  
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
