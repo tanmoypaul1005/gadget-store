@@ -6,11 +6,24 @@ export async function POST(request, response) {
   try {
     const res = await request.json();
     await connectMongo();
+
+    const day_offer = await Cart?.findOne({ product: res.product_id,user: res.user_id});
+
+    if(day_offer){
+      return Response.json({
+        success: false,
+        message: "Product Already Added",
+        status: 400,
+      });
+    } 
+
+
     const new_cart = {
       user: res.user_id,
       product: res.product_id,
       quantity: res.quantity,
     };
+
     const cart = new Cart(new_cart);
     await cart.save();
     return Response.json({

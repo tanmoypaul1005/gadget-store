@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const DailyOffer = ({user, product,isAddCartDayOffer }) => {
+const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -50,11 +50,11 @@ const DailyOffer = ({user, product,isAddCartDayOffer }) => {
 
   const formData = {
     product_id: product?._id,
-    user_id:user?._id,
+    user_id: user?._id,
     quantity: 1,
   };
-  
-  console.log("isAddCartDayOffer",isAddCartDayOffer)
+
+  console.log("isAddCartDayOffer", isAddCartDayOffer)
 
   return (
     <div className="my-10 day">
@@ -88,11 +88,15 @@ const DailyOffer = ({user, product,isAddCartDayOffer }) => {
           </div>
           <button
             onClick={async () => {
-               if(isAddCartDayOffer){
-                 await deleteCart(isAddCartDayOffer?._id,"/")
-              }else{
-                console.log("formData",formData)
-                const success = await addCart(formData,"/");
+              if (isAddCartDayOffer) {
+                const success = await deleteCart(isAddCartDayOffer?._id, "/")
+                if (success) {
+                  Toastr({ message: "Cart Cleared Successfully", type: "success" })
+                } else {
+                  Toastr({ message: "Cart Cleared Failed", type: "error" })
+                }
+              } else {
+                const success = await addCart(formData, "/");
                 if (success.success) {
                   Toastr({ type: "success", message: success.message });
                 } else {
@@ -102,7 +106,7 @@ const DailyOffer = ({user, product,isAddCartDayOffer }) => {
             }}
             className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
           >
-            ADD TO CART
+            {isAddCartDayOffer ? "REMOVE" : "ADD TO CART"}
           </button>
           <h3 className="mt-4 text-sm font-semibold">
             HURRY UP! OFFER ENDS IN:
