@@ -1,9 +1,11 @@
 "use client"
+import { addCart, deleteCart } from "@/app/action/cart";
+import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const DailyOffer = ({ product }) => {
+const DailyOffer = ({user, product,isAddCartDayOffer }) => {
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -46,6 +48,14 @@ const DailyOffer = ({ product }) => {
     return () => clearInterval(timerId);
   }, []);
 
+  const formData = {
+    product_id: product?._id,
+    user_id:user?._id,
+    quantity: 1,
+  };
+  
+  console.log("isAddCartDayOffer",isAddCartDayOffer)
+
   return (
     <div className="my-10 day">
       <h1 className="py-4 text-xl font-semibold border-b">Deal Of The Day</h1>
@@ -78,17 +88,17 @@ const DailyOffer = ({ product }) => {
           </div>
           <button
             onClick={async () => {
-              //  if(isAddCartDayOffer){
-              //    await deleteCart(isAddCartDayOffer?._id,"/")
-              // }else{
-              //   console.log("formData",formData)
-              //   const success = await addCart(formData,"/");
-              //   if (success.success) {
-              //     Toastr({ type: "success", message: success.message });
-              //   } else {
-              //     Toastr({ type: "error", message: success.message });
-              //   }
-              // }
+               if(isAddCartDayOffer){
+                 await deleteCart(isAddCartDayOffer?._id,"/")
+              }else{
+                console.log("formData",formData)
+                const success = await addCart(formData,"/");
+                if (success.success) {
+                  Toastr({ type: "success", message: success.message });
+                } else {
+                  Toastr({ type: "error", message: success.message });
+                }
+              }
             }}
             className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
           >

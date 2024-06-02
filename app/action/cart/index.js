@@ -59,3 +59,15 @@ export const addCart = async (formData, pathName) => {
     };
   }
 };
+
+
+
+export const findDayOffer = async (product_id) => {
+  try {
+    await connectMongo();
+    const day_offer = await Cart?.findOne({ product: product_id,user: user_id });
+      return day_offer;
+  } catch (err) {
+    return null;
+  }
+};
