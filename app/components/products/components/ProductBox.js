@@ -12,7 +12,7 @@ const ProductBox = ({ product }) => {
       <div className="w-20 h-20 p-2">
         <Image
           style={{ maxwidth: "60px", minWidth: "60px", height: "100%" }}
-          className="w-full h-full"
+          className="w-full h-full object-contain"
           src={product?.image}
           alt=""
           width={180}

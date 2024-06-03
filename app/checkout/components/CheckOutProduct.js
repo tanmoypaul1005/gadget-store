@@ -4,7 +4,6 @@ import React from "react";
 import ClearCart from "./ClearCart";
 
 const CheckOutProduct = ({ item }) => {
-  console.log("CheckOutProduct item:", item);
 
   if (!item || !item.product) {
     return null;

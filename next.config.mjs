@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['m.media-amazon.com', 'images.unsplash.com', 'lh3.googleusercontent.com'],
+    domains: ['m.media-amazon.com', 'images.unsplash.com', 'lh3.googleusercontent.com', 'i.imgur.com'],
   },
   serverActions: {
     bodySizeLimit: '2mb' // Set desired value here

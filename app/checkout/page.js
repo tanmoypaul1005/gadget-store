@@ -2,17 +2,19 @@ import { auth } from "@/auth";
 import React from "react";
 import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
-import Image from "next/image";
-import ClearCart from "./components/ClearCart";
-import Clear from "./components/Clear";
 import CheckOutProduct from "./components/CheckOutProduct";
 
 const Checkout = async () => {
+
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
 
   const cart = await getCartCount(user?._id);
+
+  const totalPrice = cart?.reduce((total, item) => {
+    return total + item?.quantity * item?.product?.price;
+  }, 0);
 
   return (
     <>
@@ -178,7 +180,7 @@ const Checkout = async () => {
                 type="text"
                 id="email"
                 name="email"
-                className="w-full text-black rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full text-black bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="your.email@gmail.com"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -209,7 +211,7 @@ const Checkout = async () => {
                 type="text"
                 id="card-holder"
                 name="card-holder"
-                className="w-full text-black rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full bg-cCommonBg  text-black rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Your full name here"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -241,7 +243,7 @@ const Checkout = async () => {
                 type="text"
                 id="card-no"
                 name="card-no"
-                className="w-full text-black rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full bg-cCommonBg  text-black rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="xxxx-xxxx-xxxx-xxxx"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -271,7 +273,7 @@ const Checkout = async () => {
                 type="text"
                 id="billing-address"
                 name="billing-address"
-                className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                className="w-full rounded-md bg-cCommonBg  border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder="Street Address"
               />
               <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -286,16 +288,16 @@ const Checkout = async () => {
             <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium">Subtotal</p>
-                <p className="font-semibold">$399.00</p>
+                <p className="font-semibold">${totalPrice}</p>
               </div>
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <p className="text-sm font-medium">Shipping</p>
                 <p className="font-semibold">$8.00</p>
-              </div>
+              </div> */}
             </div>
             <div className="mt-6 flex items-center justify-between">
               <p className="text-sm font-medium ">Total</p>
-              <p className="text-2xl font-semibold">$408.00</p>
+              <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>
           </div>
           <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
