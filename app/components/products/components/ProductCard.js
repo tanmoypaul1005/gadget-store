@@ -20,7 +20,7 @@ function ProductCard({ product }) {
             <span className="mr-3 text-xs uppercase">
               {commonView(product?.brand)}
             </span>
-            <p className="block text-lg font-bold capitalize truncate line-clamp-1">
+            <p className="block text-lg font-bold capitalize truncate line-clamp-2">
               {product?.name}
             </p>
             <div className="flex items-center">

@@ -47,7 +47,7 @@ function Banner() {
       animate={{ x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative flex justify-center items-center mx-auto mt-10 lg:h-[500px] rounded lg:w-3/4  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+      <div className="relative flex justify-center items-center mt-10 lg:h-[500px] rounded   banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
 
         {
           data?.map((item, idx) => (
