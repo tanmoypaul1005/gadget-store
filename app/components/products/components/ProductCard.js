@@ -24,7 +24,7 @@ function ProductCard({ product }) {
               {product?.name}
             </p>
             <div className="flex items-center">
-              <p className="my-3 text-lg font-semibold cursor-auto">
+              <p className="my-3 text-lg font-semibold cursor-auto text-red-400">
                 ${product?.price}
               </p>
               <del>
