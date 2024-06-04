@@ -2,13 +2,12 @@
 "use client";
 import { motion } from "framer-motion";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-
 import "./Carousel.css";
-
 import { useState } from "react";
 import { useEffect } from "react";
 
 function Banner() {
+
   const data = [
     {
       src: "https://picsum.photos/seed/img2/600/400",
@@ -54,7 +53,7 @@ function Banner() {
           className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer left-4"
         /> */}
         {
-          data.map((item, idx) => (
+          data?.map((item, idx) => (
             <img
               src={item.src}
               alt={item.alt}
