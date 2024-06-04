@@ -48,10 +48,7 @@ function Banner() {
       transition={{ delay: 1 }}
     >
       <div className="relative flex justify-center items-center mx-auto mt-10 lg:h-[500px] rounded lg:w-3/4  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
-        {/* <BsArrowRightCircleFill
-          onClick={nextSlide}
-          className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer left-4"
-        /> */}
+
         {
           data?.map((item, idx) => (
             <img
@@ -63,6 +60,10 @@ function Banner() {
             />
           ))
         }
+        <BsArrowLeftCircleFill
+          onClick={nextSlide}
+          className="absolute w-8 h-8 text-white filter drop-shadow-md cursor-pointer left-5 "
+        />
         <BsArrowRightCircleFill
           onClick={nextSlide}
           className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
