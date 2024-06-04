@@ -26,8 +26,8 @@ const BestSellers = async () => {
       <h2 className="text-lg font-semibold">BEST SELLERS</h2>
 
       {newArrivals?.map((product, index) => (
-        <Link href={"/product/"+product?._id}  key={index} className="flex items-center justify-start gap-2">
-          <div className="w-20 h-20 p-2 border rounded-md flex justify-center items-center shadow-lg bg-gray-300/20">
+        <Link href={"/products/"+product?._id}  key={index} className="flex items-center justify-start gap-2">
+          <div className="flex items-center justify-center w-20 h-20 p-2 border rounded-md shadow-lg bg-gray-300/20">
             <Image
               style={{
                 maxWidth: "50px",
