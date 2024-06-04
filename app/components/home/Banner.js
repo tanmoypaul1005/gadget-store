@@ -67,7 +67,7 @@ useEffect(() => {
         className="absolute filter drop-shadow-md w-8 h-8 text-white hover:cursor-pointer right-4"
       />
       <span className="absolute bottom-4 flex">
-        {data.map((_, idx) => {
+        {data?.map((_, idx) => {
           return (
             <button
               key={idx}
