@@ -49,19 +49,21 @@ function Banner() {
       transition={{ delay: 1 }}
     >
       <div className="relative flex justify-center items-center mx-auto mt-10 lg:h-[500px] rounded lg:w-3/4  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
-        <BsArrowLeftCircleFill
-          onClick={prevSlide}
+        {/* <BsArrowRightCircleFill
+          onClick={nextSlide}
           className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer left-4"
-        />
-        {data.map((item, idx) => (
-          <img
-            src={item.src}
-            alt={item.alt}
-            key={idx}
-            className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
-              }`}
-          />
-        ))}
+        /> */}
+        {
+          data.map((item, idx) => (
+            <img
+              src={item.src}
+              alt={item.alt}
+              key={idx}
+              className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
+                }`}
+            />
+          ))
+        }
         <BsArrowRightCircleFill
           onClick={nextSlide}
           className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
@@ -71,8 +73,8 @@ function Banner() {
             <button
               key={idx}
               className={`${slide === idx
-                  ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
-                  : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
                 }`}
               onClick={() => setSlide(idx)}
             ></button>
