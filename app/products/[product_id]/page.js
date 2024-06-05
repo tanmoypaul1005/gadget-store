@@ -9,6 +9,7 @@ import { auth } from "@/auth";
 import { findUserId } from "@/app/action/product/action";
 
 const ProductDetails = async ({ params }) => {
+
   const product = await fetch(
     base_url + kuProductList + `/${params?.product_id}`
   ).then((res) => res.json());
@@ -42,53 +43,18 @@ const ProductDetails = async ({ params }) => {
             <p className="leading-relaxed">
               {commonView(productDetails?.description)}
             </p>
-            <div className="flex items-center pb-5 mt-6 mb-5 border-b-2 border-gray-200">
-              <div className="flex">
+
+            <div className="text-2xl font-medium title-font text-red-400 pt-4">$58.00</div>
+            <div className="flex items-center pb-4  border-b-2 border-gray-200">
+              {/* <div className="flex">
                 <span className="mr-3">Color</span>
                 <button className="w-6 h-6 border-2 border-gray-300 rounded-full focus:outline-none"></button>
                 <button className="w-6 h-6 ml-1 bg-gray-700 border-2 border-gray-300 rounded-full focus:outline-none"></button>
                 <button className="w-6 h-6 ml-1 bg-red-500 border-2 border-gray-300 rounded-full focus:outline-none"></button>
-              </div>
-              <div className="flex items-center ml-6">
-                <span className="mr-3">Size</span>
-                <div className="relative text-gray-500">
-                  <select className="py-2 pl-3 pr-10 text-base border border-gray-400 rounded appearance-none focus:outline-none focus:border-red-500">
-                    <option>SM</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                  </select>
-                  <span className="absolute top-0 right-0 flex items-center justify-center w-10 h-full text-center text-gray-600 pointer-events-none">
-                    <svg
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      className="w-4 h-4"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </span>
-                </div>
-              </div>
+              </div> */}
             </div>
-
-            <span className="text-2xl font-medium title-font ">$58.00</span>
-            {/* <button className="inline-flex items-center justify-center w-10 h-10 p-0 ml-4 text-gray-500 bg-gray-200 border-0 rounded-full">
-                <svg
-                  fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                </svg>
-              </button> */}
-            <div className="flex justify-start items-start mt-4">
+       
+            <div className="flex justify-start items-start ">
               <Action
                 user={user?._id}
                 product_id={params?.product_id}
