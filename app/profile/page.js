@@ -1,8 +1,13 @@
 import Image from "next/image";
 import { auth } from "@/auth";
+import { getAddress } from "../action/address";
+import Address from "../components/Address/Address";
 
 const ProfileInfo = async () => {
+
   const session = await auth();
+
+  const address = await getAddress(session?.user?.email);
 
   return (
     <div className="flex flex-col items-center py-8 text-center">
@@ -27,6 +32,8 @@ const ProfileInfo = async () => {
       </div>
 
       <div className="w-3/4 border-b border-[#a4a4a4] py-6 lg:py-4"></div>
+      
+      {/* <Address email={session?.user?.email} address={address?.data} /> */}
     </div>
   );
 };

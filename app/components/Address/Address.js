@@ -1,9 +1,8 @@
 "use client";
-import AddressCard from "@/components/AddressCard";
-import CommonButton from "@/components/CommonButton";
 import React, { useState } from "react";
 import AddAddressModal from "./AddAddressModal";
-import { address_type } from "@/utils/const";
+import CommonButton from "@/components/button/CommonButton";
+import AddressCard from "./AddressCard";
 
 const Address = ({ address,email }) => {
   
@@ -11,19 +10,19 @@ const Address = ({ address,email }) => {
 
   const [selectType, setSelectType] = useState(null);
 
-  const shipping_address = address?.find(
-    (a) => a?.address_type === address_type.shipping_address
-  );
-  const billing_address = address?.find(
-    (a) => a?.address_type === address_type.billing_address
-  );
+//   const shipping_address = address?.find(
+//     (a) => a?.address_type === address_type.shipping_address
+//   );
+//   const billing_address = address?.find(
+//     (a) => a?.address_type === address_type.billing_address
+//   );
 
   return (
     <>
-      <div className="grid max-w-5xl grid-cols-2 gap-4 mx-auto">
+      {/* <div className="grid max-w-5xl grid-cols-2 gap-4 mx-auto">
         <div className="flex items-center justify-center">
           {billing_address?.title ? (
-            <AddressCard 
+            <AddressCard
             onOpen={() => {
               setSelectType(address_type.billing_address);
               setAddressModal(true)
@@ -65,8 +64,8 @@ const Address = ({ address,email }) => {
           />
         )}
       </div>
-      </div>
-      {/* <AddAddressModal
+      </div> */}
+      <AddAddressModal
         email={email}
         type={selectType}
         open={showAddAddressModal}
@@ -75,7 +74,7 @@ const Address = ({ address,email }) => {
           setAddressModal(false)
         }}
         editData={selectType === address_type.shipping_address  ? shipping_address : billing_address}
-      /> */}
+      />
     </>
   );
 };

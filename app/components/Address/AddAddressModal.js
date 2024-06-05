@@ -1,10 +1,12 @@
 "use client";
-import CommonButton from "@/components/CommonButton";
-import CommonModal from "@/components/CommonModal";
-import CommonInput from "@/components/input/CommonInput";
+
 import React, { useEffect, useState } from "react";
-import { Toastr } from "@/utils/utilityFunctions";
-import { addAddress } from "@/app/actions";
+
+import { Toastr } from "@/util/utilityFunction";
+import CommonModal from "../modal/CommonModal";
+import CommonInput from "@/components/input/CommonInput";
+import CommonButton from "@/components/button/CommonButton";
+import { addAddress } from "@/app/action/address";
 
 const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
   const [title, setTitle] = useState("");
