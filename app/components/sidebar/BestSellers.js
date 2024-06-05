@@ -1,7 +1,6 @@
 export const revalidate = 10;
 
-import { products_type_value } from "@/app/api/utils/const";
-import { base_url } from "@/util/const";
+import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import Image from "next/image";
 import Link from "next/link";
