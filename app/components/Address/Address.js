@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AddAddressModal from "./AddAddressModal";
 import CommonButton from "@/components/button/CommonButton";
 import AddressCard from "./AddressCard";
+import { address_type } from "@/util/const";
 
 const Address = ({ address,email }) => {
   
@@ -10,16 +11,16 @@ const Address = ({ address,email }) => {
 
   const [selectType, setSelectType] = useState(null);
 
-//   const shipping_address = address?.find(
-//     (a) => a?.address_type === address_type.shipping_address
-//   );
-//   const billing_address = address?.find(
-//     (a) => a?.address_type === address_type.billing_address
-//   );
+  const shipping_address = address?.find(
+    (a) => a?.address_type === address_type.shipping_address
+  );
+  const billing_address = address?.find(
+    (a) => a?.address_type === address_type.billing_address
+  );
 
   return (
     <>
-      {/* <div className="grid max-w-5xl grid-cols-2 gap-4 mx-auto">
+      <div className="grid max-w-5xl grid-cols-2 gap-4 mx-auto">
         <div className="flex items-center justify-center">
           {billing_address?.title ? (
             <AddressCard
@@ -36,7 +37,7 @@ const Address = ({ address,email }) => {
                 setAddressModal(true);
               }}
               width="w-[210px]"
-              btnLevel="Billing address"
+              btnLabel="Billing address"
               label=""
             />
           )}
@@ -59,12 +60,12 @@ const Address = ({ address,email }) => {
               setSelectType(address_type.shipping_address);
             }}
             width="w-[210px]"
-            btnLevel="Shipping address"
+            btnLabel="Shipping address"
             label=""
           />
         )}
       </div>
-      </div> */}
+      </div>
       <AddAddressModal
         email={email}
         type={selectType}

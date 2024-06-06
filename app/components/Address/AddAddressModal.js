@@ -15,8 +15,6 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
   const [postalCode, setPostalCode] = useState("");
   const [houseName, setHouseName] = useState("");
 
-  // console.log("editData", editData);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -53,7 +51,8 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
       <CommonModal
         open={open}
         setOpen={setOpen}
-        body={
+        title="Add Address"
+        content={
           <form onSubmit={handleSubmit} className="space-y-4">
             <CommonInput
               required={true}
@@ -86,7 +85,7 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
               onChange={(e) => setHouseName(e.target.value)}
             />
             <div className="flex items-center justify-center">
-              <CommonButton type="submit" width="w-[120px]" btnLevel="Saved" />
+              <CommonButton type="submit" width="w-[120px]" btnLabel="Saved" />
             </div>
           </form>
         }

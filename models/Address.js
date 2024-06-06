@@ -32,8 +32,6 @@ address:[
         required: true,
         trim: true,
       },
-
-
       house_name: {
         type: String,
         required: true,
@@ -41,7 +39,12 @@ address:[
         min: 3,
         max: 50,
       },
- 
+      address_type: {
+        type: String,
+        required: true,
+        enum: [address_type.shipping_address, address_type.billing_address],
+        required: true,
+      },
     }
 ]
 },{timestamps:true});

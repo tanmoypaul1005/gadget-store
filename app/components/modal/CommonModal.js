@@ -15,10 +15,11 @@ const style = {
     border: '2px solid grey' ,  
     boxShadow: 24,
     p: 0,
-    outLine:"none"
+    borderRadius: "10px",
+    outLine:"none",
   };
 
-export default function CommonModal({ open, setOpen, content = <></>,padding="p-5" }) {
+export default function CommonModal({ open, setOpen, content = <></>,padding="p-5",title="" }) {
 
     const handleClose = () => setOpen(false);
 
@@ -41,6 +42,7 @@ export default function CommonModal({ open, setOpen, content = <></>,padding="p-
                             width={10}
                             height={10}
                         />
+                        {title && <div className='text-3xl font-bold text-center text-white'>{title}</div>}
                         {content}
                     </div>
                 </Box>

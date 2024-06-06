@@ -31,9 +31,9 @@ const ProfileInfo = async () => {
         <p className="leading-[231%] lg:text-lg">{session?.user?.email}</p>
       </div>
 
-      <div className="w-3/4 border-b border-[#a4a4a4] py-6 lg:py-4"></div>
+      <div className="w-3/4 mb-5 border-b border-[#a4a4a4] py-6 lg:py-4"></div>
       
-      {/* <Address email={session?.user?.email} address={address?.data} /> */}
+      <Address email={session?.user?.email} address={address?.data} /> 
     </div>
   );
 };
