@@ -1,9 +1,8 @@
 export const revalidate = 10;
 
 import NewProducts from "./components/NewProducts";
-import { base_url } from "@/util/const";
+import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
-import { products_type_value } from "@/app/api/utils/const";
 import ProductBox from "./components/ProductBox";
 import DailyOffer from "../other/DailyOffer";
 import { auth } from "@/auth";

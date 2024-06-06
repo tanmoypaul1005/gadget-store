@@ -2,14 +2,11 @@
 "use client";
 import Image from "next/image";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
-
 import "./Carousel.css";
-
 import { useState } from "react";
 import { useEffect } from "react";
 
 function Banner() {
-
 
   const data = [
     {
@@ -30,15 +27,15 @@ function Banner() {
 
   const [slide, setSlide] = useState(0);
 
-  
-useEffect(() => {
-  const timer = setInterval(() => {
-    setSlide(slide => slide === data.length - 1 ? 0 : slide + 1);
-  }, 3000); // Change slide every 3 seconds
 
-  // Cleanup function to clear the timer when the component unmounts
-  return () => clearInterval(timer);
-}, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlide(slide => slide === data.length - 1 ? 0 : slide + 1);
+    }, 3000); // Change slide every 3 seconds
+
+    // Cleanup function to clear the timer when the component unmounts
+    return () => clearInterval(timer);
+  }, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
 
 
   const nextSlide = () => {
@@ -62,6 +59,11 @@ useEffect(() => {
           />
         );
       })}
+
+      <BsArrowLeftCircleFill
+        onClick={prevSlide}
+        className="absolute filter drop-shadow-md w-8 h-8 text-white hover:cursor-pointer left-4"
+      />
       <BsArrowRightCircleFill
         onClick={nextSlide}
         className="absolute filter drop-shadow-md w-8 h-8 text-white hover:cursor-pointer right-4"

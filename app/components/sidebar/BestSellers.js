@@ -1,7 +1,6 @@
 export const revalidate = 10;
 
-import { products_type_value } from "@/app/api/utils/const";
-import { base_url } from "@/util/const";
+import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,8 +25,8 @@ const BestSellers = async () => {
       <h2 className="text-lg font-semibold">BEST SELLERS</h2>
 
       {newArrivals?.map((product, index) => (
-        <Link href={"/product/"+product?._id}  key={index} className="flex items-center justify-start gap-2">
-          <div className="w-20 h-20 p-2 border rounded-md flex justify-center items-center shadow-lg bg-gray-300/20">
+        <Link href={"/products/"+product?._id}  key={index} className="flex items-center justify-start gap-2">
+          <div className="flex items-center justify-center w-20 h-20 p-2 border rounded-md shadow-lg bg-gray-300/20">
             <Image
               style={{
                 maxWidth: "50px",
@@ -52,7 +51,7 @@ const BestSellers = async () => {
               <ion-icon name="star-half-outline"></ion-icon>
             </div>
             <div className="flex items-center justify-start gap-4">
-              <s className="">$14.00</s> <strong>$7.00</strong>
+               <strong>$7.00</strong>
             </div>
           </div>
         </Link>

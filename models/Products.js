@@ -1,4 +1,4 @@
-import { products_type } from '@/app/api/utils/const';
+import { products_type } from '@/util/const';
 
 const mongoose = require('mongoose');
 

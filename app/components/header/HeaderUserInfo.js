@@ -46,7 +46,8 @@ const HeaderUserInfo = ({ session, totalCart }) => {
 
           <div className="hidden md:flex lg:flex space-x-3">
             <div className="px-6 w-full flex flex-col sm:flex-row justify-end">
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+
+              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-gray-500"
@@ -55,15 +56,15 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                 >
                   <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
                   <path
-                    fill-rule="evenodd"
+                    // fill-rule="evenodd"
                     d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                    clip-rule="evenodd"
+                    // clip-rule="evenodd"
                   />
                 </svg>
                 <span className="text-sm font-medium">Orders</span>
               </div>
 
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-gray-500"
@@ -71,15 +72,15 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                   fill="currentColor"
                 >
                   <path
-                    fill-rule="evenodd"
+                    // fill-rule="evenodd"
                     d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clip-rule="evenodd"
+                    // clip-rule="evenodd"
                   />
                 </svg>
                 <span className="text-sm font-medium">Favorites</span>
               </div>
 
-              <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-black hover:bg-gray-100">
+              <Link href={"/checkout"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
                 <div className="relative">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
