@@ -18,10 +18,9 @@ const Address = ({ address, email }) => {
     (a) => a?.address_type === address_type.billing_address
   );
 
-  console.log("address", address)
   return (
     <div>
-      <div className="grid max-w-5xl md:px-0 px-5 grid-cols-1  md:grid-cols-2 gap-4 mx-auto">
+      <div className="grid max-w-5xl md:px-0 px-5 grid-cols-1  md:grid-cols-2 gap-x-10 mx-auto">
         <div className="flex items-center justify-center">
           {billing_address?.title ? (
             <AddressCard
@@ -32,16 +31,16 @@ const Address = ({ address, email }) => {
               title="Billing address"
               address={billing_address} />
           ) : (
-<div className="flex items-start justify-start">
-            <CommonButton
-              onClick={() => {
-                setSelectType(address_type.billing_address);
-                setAddressModal(true);
-              }}
-              width="w-[210px]"
-              btnLabel="Billing address"
-              label=""
-            />
+            <div className="flex items-start justify-start">
+              <CommonButton
+                onClick={() => {
+                  setSelectType(address_type.billing_address);
+                  setAddressModal(true);
+                }}
+                width="w-[210px]"
+                btnLabel="Billing address"
+                label=""
+              />
             </div>
           )}
         </div>

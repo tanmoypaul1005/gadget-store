@@ -4,10 +4,14 @@ import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
 import CheckOutProduct from "./components/CheckOutProduct";
 import CommonInput from "@/components/input/CommonInput";
+import Address from "../components/Address/Address";
+import { getAddress } from "../action/address";
 
 const Checkout = async () => {
 
   const session = await auth();
+
+  const address = await getAddress(session?.user?.email);
 
   const user = await findUserId(session?.user?.email);
 
@@ -110,7 +114,7 @@ const Checkout = async () => {
               : "No items in cart"}
           </div>
 
-          <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+          {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
           <form className="mt-5 grid gap-6">
             <div className="relative">
               <input
@@ -164,7 +168,9 @@ const Checkout = async () => {
                 </div>
               </label>
             </div>
-          </form>
+          </form> */}
+          <div className="mt-8"></div>
+          <Address email={session?.user?.email} address={address?.data} />
         </div>
 
         <div className="mt-10  px-4 pt-8 lg:mt-0">

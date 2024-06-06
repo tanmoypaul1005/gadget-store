@@ -31,7 +31,7 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
       email,
     };
 
-    const data = await addAddress(body);
+    const data = await addAddress(body,window.location.pathname);
     if (data.success) {
       Toastr({ message: data?.message, type: "success" });
       setOpen(false);
@@ -69,12 +69,14 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
               onChange={(e) => setAddress(e.target.value)}
             />
             <CommonInput
+              type="number"
               required={true}
               label="Contact"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
             />
             <CommonInput
+              type="number"
               required={true}
               label="Postal Code"
               value={postalCode}

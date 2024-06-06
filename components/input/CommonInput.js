@@ -1,3 +1,4 @@
+"use client"
 
 // const CommonInput = ({ register, name, rules, type, error, placeholder = "",error_message=null }) => {
 //     return (
@@ -26,7 +27,7 @@
 // export default CommonInput;
 
 
-const CommonInput = ({ label = "", placeholder = "",value="",onChange=()=>{} }) => {
+const CommonInput = ({ type="text" ,label = "", placeholder = "",value="",onChange=()=>{} }) => {
     return (
         <>
             <label for="email" className="mt-4 mb-2 block text-sm font-medium">
@@ -36,10 +37,10 @@ const CommonInput = ({ label = "", placeholder = "",value="",onChange=()=>{} }) 
                 <input
                     value={value}
                     onChange={onChange}
-                    type="text"
+                    type={type}
                     id="email"
                     name="email"
-                    className="w-full text-black bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                     placeholder={placeholder}
                 />
             </div>

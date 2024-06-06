@@ -20,7 +20,7 @@ export async function getAddress(email = "") {
   }
 }
 
-export async function addAddress(body) {
+export async function addAddress(body,path) {
   try {
     const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "api/address", {
       method: "POST",
@@ -30,7 +30,7 @@ export async function addAddress(body) {
       body: JSON.stringify(body),
     });
     const data = await res.json();
-    revalidatePath("/profile");
+    revalidatePath(path);
     return data;
   } catch (error) {
     console.log("error: ", error);
