@@ -1,4 +1,5 @@
-import { address_type } from '@/utils/const';
+import { address_type } from '@/util/const';
+
 
 const mongoose=require('mongoose');
 

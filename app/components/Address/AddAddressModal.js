@@ -9,6 +9,8 @@ import CommonButton from "@/components/button/CommonButton";
 import { addAddress } from "@/app/action/address";
 
 const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
+
+
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [contact, setContact] = useState("");
@@ -17,6 +19,7 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const body = {
       email,
       title,
@@ -27,7 +30,6 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
       address_type: type,
       email,
     };
-    
 
     const data = await addAddress(body);
     if (data.success) {

@@ -5,10 +5,11 @@ import connectMongo from "@/util/db";
 export const dynamic = 'force-dynamic' 
 
 export async function POST(request) {
+  let body;
   try {
     await connectMongo();
 
-    const body = await request.json();
+    body = await request.json();
 
     const email = body?.email;
     const title = body.title;
@@ -16,7 +17,7 @@ export async function POST(request) {
     const postalCode=body.postalCode
     const address=body.address
     const house_name=body.house_name
-
+    const address_type=body.address_type
     const user_info= await User.findOne({ email: email });
 
     const user = user_info._id;
@@ -66,6 +67,8 @@ export async function GET(request) {
     await connectMongo();
     const searchParams = request.nextUrl.searchParams;
     const email = searchParams.get("email");
+
+    console.log("email: ", email)
     
     const user = await User.findOne({ email: email }).exec();
     
@@ -92,7 +95,7 @@ export async function GET(request) {
         success: true,
         status: 200,
         message: "Address found",
-        data: address?.address,
+        data:  address?.address,
       });
     }
   } catch (err) {

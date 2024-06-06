@@ -26,7 +26,7 @@
 // export default CommonInput;
 
 
-const CommonInput = ({ label = "", placeholder = "" }) => {
+const CommonInput = ({ label = "", placeholder = "",value="",onChange=()=>{} }) => {
     return (
         <>
             <label for="email" className="mt-4 mb-2 block text-sm font-medium">
@@ -34,6 +34,8 @@ const CommonInput = ({ label = "", placeholder = "" }) => {
             </label>
             <div className="relative">
                 <input
+                    value={value}
+                    onChange={onChange}
                     type="text"
                     id="email"
                     name="email"
