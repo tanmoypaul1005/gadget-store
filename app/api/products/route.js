@@ -1,9 +1,8 @@
 export const dynamic = 'force-dynamic' 
-
 import Product from '@/models/Products';
 import connectMongo from '@/util/db';
-import { products_type } from '../utils/const';
 import Category from '@/models/Category';
+import { products_type } from '@/util/const';
 
 
 export async function GET(request) {
