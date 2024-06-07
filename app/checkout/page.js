@@ -23,7 +23,7 @@ const Checkout = async () => {
 
   return (
     <>
-      <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
+      {/* <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
@@ -98,10 +98,10 @@ const Checkout = async () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="md:px-0 px-5 grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-        <div className="px-4 pt-8">
+      <div className="px-5 grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+        <div className="px-4">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
@@ -173,7 +173,7 @@ const Checkout = async () => {
           <Address email={session?.user?.email} address={address?.data} />
         </div>
 
-        <div className="mt-10  px-4 pt-8 lg:mt-0">
+        <div className="mt-10  px-4  lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
             Complete your order by providing your payment details.
@@ -182,9 +182,7 @@ const Checkout = async () => {
 
             <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
             <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
-            <CommonInput label={"Card Holder"} placeholder="Your full name here"/>
-            <CommonInput label={"Card Holder"} placeholder="xxxx-xxxx-xxxx-xxxx"/>
-            <CommonInput label={"Billing Address"} placeholder="Street Address"/>
+            <CommonInput label={"Contact Number"} placeholder="Street Address"/>
 
             <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
