@@ -109,11 +109,11 @@ const Checkout = async () => {
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
             {
-             cart?.length > 0
-              ? cart?.map((item, index) => (
-                <CheckOutProduct item={item} key={index} />
-              ))
-              : "No items in cart"}
+              cart?.length > 0
+                ? cart?.map((item, index) => (
+                  <CheckOutProduct item={item} key={index} />
+                ))
+                : "No items in cart"}
           </div>
 
           {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -200,12 +200,20 @@ const Checkout = async () => {
               <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>
           </div>
-          {/* <PlaceOrder
-            email={session?.user?.email}
-            address={address?.data}
-            cart={cart}
-            totalPrice={totalPrice}
-          /> */}
+          <PlaceOrder
+            data={
+              {
+                email: session?.user?.email,
+                address: address?.data,
+                total_amount: totalPrice,
+                // cart: cart,
+              }
+            }
+          // email={session?.user?.email}
+          // address={address?.data}
+          // cart={cart}
+          // totalPrice={totalPrice}
+          />
         </div>
       </div>
     </>
