@@ -8,7 +8,7 @@ import Advertisement from "./components/advertisement/Advertisement";
 export default function Home() {
   return (
     <>
-      <Advertisement />
+      {/* <Advertisement /> */}
       <main>
         <div className="w-full gap-8 px-8 mx-auto  min-h-auto lg:px-0 lg:w-5/6">
           <Banner />
