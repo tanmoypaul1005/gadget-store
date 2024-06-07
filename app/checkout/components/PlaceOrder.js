@@ -19,7 +19,7 @@ const PlaceOrder = ({ address, email,totalPrice=0 }) => {
             shipping_address: shipping_address._id,
             billing_address: billing_address._id,
             total_amount: totalPrice,
-            items: cart.map((c) => ({ cart: c._id })),
+            // items: cart.map((c) => ({ cart: c._id })),
         }
 
         // const response = await addOrder(body);
@@ -32,7 +32,7 @@ const PlaceOrder = ({ address, email,totalPrice=0 }) => {
 
     return (
         <button
-            onClick={handleOrder}
+            // onClick={handleOrder}
             className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
             Place Order
         </button>

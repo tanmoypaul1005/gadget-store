@@ -200,12 +200,12 @@ const Checkout = async () => {
               <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>
           </div>
-          <PlaceOrder
+          {/* <PlaceOrder
             email={session?.user?.email}
             address={address?.data}
             cart={cart}
             totalPrice={totalPrice}
-          />
+          /> */}
         </div>
       </div>
     </>
