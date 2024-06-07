@@ -6,6 +6,7 @@ import CheckOutProduct from "./components/CheckOutProduct";
 import CommonInput from "@/components/input/CommonInput";
 import Address from "../components/Address/Address";
 import { getAddress } from "../action/address";
+import PlaceOrder from "./components/PlaceOrder";
 
 const Checkout = async () => {
 
@@ -107,7 +108,8 @@ const Checkout = async () => {
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
-            {cart?.length > 0
+            {
+             cart?.length > 0
               ? cart?.map((item, index) => (
                 <CheckOutProduct item={item} key={index} />
               ))
@@ -181,7 +183,7 @@ const Checkout = async () => {
           <div>
             <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
             <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
-            <CommonInput label={"Contact Number"} placeholder="Street Address"/>
+            <CommonInput label={"Contact Number"} placeholder="Street Address" />
 
             <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
@@ -198,9 +200,12 @@ const Checkout = async () => {
               <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>
           </div>
-          <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
-            Place Order
-          </button>
+          <PlaceOrder
+            email={session?.user?.email}
+            address={address?.data}
+            cart={cart}
+            totalPrice={totalPrice}
+          />
         </div>
       </div>
     </>
@@ -210,7 +215,6 @@ const Checkout = async () => {
 export default Checkout;
 
 export async function generateStaticParams() {
-
 
   const session = await auth();
 

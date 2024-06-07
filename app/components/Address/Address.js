@@ -20,9 +20,8 @@ const Address = ({ address, email }) => {
 
   return (
     <div>
-
-      <div className="">
-        
+      
+      <div>
         <div className="flex items-start justify-start">
           {billing_address?.title ? (
 
@@ -73,6 +72,7 @@ const Address = ({ address, email }) => {
           )}
         </div>
       </div>
+
       <AddAddressModal
         email={email}
         type={selectType}
