@@ -10,7 +10,7 @@ const CheckOutProduct = ({ item }) => {
   }
 
   return (
-    <div className="flex flex-col rounded-lg sm:flex-row">
+    <div className="flex  rounded-lg ">
       <div className="flex justify-center items-center">
         <Image
           className="m-2 h-24 w-28 rounded-md border object-contain object-center"
