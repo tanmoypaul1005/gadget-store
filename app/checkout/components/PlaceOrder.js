@@ -2,6 +2,7 @@
 import { addOrder } from "@/app/action/order";
 import { address_type } from "@/util/const";
 import { Toastr } from "@/util/utilityFunction";
+import { useRouter } from 'next/navigation'
 
 const PlaceOrder = ({ data }) => {
 
@@ -12,6 +13,8 @@ const PlaceOrder = ({ data }) => {
         (a) => a?.address_type === address_type.billing_address
     );
 
+    const router = useRouter()
+
 
     const handleOrder = async () => {
  
@@ -21,7 +24,8 @@ const PlaceOrder = ({ data }) => {
             total_amount: data?.total_amount});
         console.log("response", response)
         if (response?.success) {
-            Toastr({ message: "Order placed successfully", type: "success" })
+            Toastr({ message: "Order placed successfully", type: "success" });
+            router.push('/order')
         } else {
             Toastr({ message: "Something went wrong", type: "error" })
         }
