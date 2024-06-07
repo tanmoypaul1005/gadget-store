@@ -9,7 +9,7 @@ const Categories = async () => {
 
   return (
     <>
-      <div className="desktopNavbar">
+      <div className="desktopNavbar mb-2">
         <nav className="justify-center hidden my-4 lg:flex">
           <ul className="flex items-center justify-center gap-x-12 font-bold  desktopNavbarUl font-sm">
             <li className="relative nav_items">

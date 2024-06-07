@@ -173,13 +173,12 @@ const Checkout = async () => {
           <Address email={session?.user?.email} address={address?.data} />
         </div>
 
-        <div className="mt-10  px-4  lg:mt-0">
+        <div className="mt-10 px-4 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
             Complete your order by providing your payment details.
           </p>
-          <div className="">
-
+          <div>
             <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
             <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
             <CommonInput label={"Contact Number"} placeholder="Street Address"/>
