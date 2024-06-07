@@ -22,12 +22,12 @@ const PlaceOrder = ({ address, email,totalPrice=0 }) => {
             items: cart.map((c) => ({ cart: c._id })),
         }
 
-        const response = await addOrder(body);
-        if(response?.success){
-            Toastr({message:"Order placed successfully",type:"success"})
-        }else{
-            Toastr({message:"Something went wrong",type:"success"})
-        }
+        // const response = await addOrder(body);
+        // if(response?.success){
+        //     Toastr({message:"Order placed successfully",type:"success"})
+        // }else{
+        //     Toastr({message:"Something went wrong",type:"success"})
+        // }
     }
 
     return (
