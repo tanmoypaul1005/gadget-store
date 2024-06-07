@@ -206,13 +206,8 @@ const Checkout = async () => {
                 email: session?.user?.email,
                 address: address?.data,
                 total_amount: totalPrice,
-                // cart: cart,
               }
             }
-          // email={session?.user?.email}
-          // address={address?.data}
-          // cart={cart}
-          // totalPrice={totalPrice}
           />
         </div>
       </div>

@@ -1,5 +1,4 @@
 "use client"
-
 import { addOrder } from "@/app/action/order";
 import { address_type } from "@/util/const";
 import { Toastr } from "@/util/utilityFunction";
@@ -14,20 +13,17 @@ const PlaceOrder = ({ data }) => {
     );
 
 
-    const handleOrder =async () => {
-        const body = {
-            email: data?.email,
+    const handleOrder = async () => {
+ 
+        const response = await addOrder({ email: data?.email,
             shipping_address: shipping_address._id,
             billing_address: billing_address._id,
-            total_amount: data?.total_amount,
-          
-        }
-
-        const response = await addOrder(body);
-        if(response?.success){
-            Toastr({message:"Order placed successfully",type:"success"})
-        }else{
-            Toastr({message:"Something went wrong",type:"error"})
+            total_amount: data?.total_amount});
+        console.log("response", response)
+        if (response?.success) {
+            Toastr({ message: "Order placed successfully", type: "success" })
+        } else {
+            Toastr({ message: "Something went wrong", type: "error" })
         }
     }
 

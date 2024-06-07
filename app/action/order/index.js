@@ -26,8 +26,8 @@ export const addOrder = async (body) => {
              items:cart?.map((c) => ({ cart: c._id })),
         });
         await order.save();
-
-        return { status: 200, success: true, data: order, message: "Order placed successfully" };
+        
+        return { status: 200, success: true, message: "Order placed successfully" };
     } catch (err) {
         console.error("error addOrder", err);
         return { status: 500, success: false, message: "Internal Server Error" };
