@@ -49,7 +49,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
           <div className="hidden md:flex lg:flex space-x-3">
             <div className="px-6 w-full flex flex-col sm:flex-row justify-end">
 
-              <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
+              <Link href={"/orders"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-gray-500"
@@ -64,7 +64,7 @@ const HeaderUserInfo = ({ session, totalCart }) => {
                   />
                 </svg>
                 <span className="text-sm font-medium">Orders</span>
-              </div>
+              </Link>
 
               <div className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
                 <svg
