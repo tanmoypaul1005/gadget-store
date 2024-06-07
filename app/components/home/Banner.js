@@ -48,7 +48,7 @@ function Banner() {
       animate={{ x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative flex justify-center items-center mt-10 lg:h-[500px] rounded   banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+      <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
 
         {
           data?.map((item, idx) => (
@@ -64,7 +64,7 @@ function Banner() {
           ))
         }
         <BsArrowLeftCircleFill
-          onClick={nextSlide}
+          onClick={prevSlide}
           className="absolute w-8 h-8 text-white filter drop-shadow-md cursor-pointer left-5 "
         />
         <BsArrowRightCircleFill
