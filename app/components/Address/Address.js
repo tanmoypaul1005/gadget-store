@@ -20,7 +20,7 @@ const Address = ({ address, email }) => {
 
   return (
     <div>
-      <div className="grid max-w-5xl md:px-0 px-5 grid-cols-1  md:grid-cols-2 gap-x-10 mx-auto">
+      <div className="grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-x-10 mx-auto">
         <div className="flex items-center justify-center">
           {billing_address?.title ? (
             <AddressCard
@@ -46,7 +46,7 @@ const Address = ({ address, email }) => {
         </div>
 
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center mt-5 md:mt-0  justify-center">
           {shipping_address?.title ? (
             <AddressCard
               onOpen={() => {
