@@ -27,7 +27,7 @@
 // export default CommonInput;
 
 
-const CommonInput = ({ type="text" ,label = "", placeholder = "",value="",onChange=()=>{} }) => {
+const CommonInput = ({disabled=false, type="text" ,label = "", placeholder = "",value="",onChange=()=>{} }) => {
     return (
         <>
             <label for="email" className="mt-4 mb-2 block text-sm font-medium">
@@ -35,12 +35,13 @@ const CommonInput = ({ type="text" ,label = "", placeholder = "",value="",onChan
             </label>
             <div className="relative">
                 <input
+                    disabled={disabled}
                     value={value}
                     onChange={onChange}
                     type={type}
                     id="email"
                     name="email"
-                    className="w-full text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                    className={`w-full ${disabled && "cursor-not-allowed"} text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500`}
                     placeholder={placeholder}
                 />
             </div>

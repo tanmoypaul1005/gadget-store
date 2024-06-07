@@ -6,6 +6,7 @@ import LogoutModal from "./LogoutModal";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
+import Search from "./Search";
 // import Fade from 'react-reveal/Fade';
 
 const HeaderUserInfo = ({ session, totalCart }) => {
@@ -38,11 +39,12 @@ const HeaderUserInfo = ({ session, totalCart }) => {
         <nav className="flex items-center px-12 border-b border-gray-300 py-3">
           {/* brand  */}
           <div className="flex items-center space-x-2 flex-grow">
-            <Link href={"/"} className="text-xl font-semibold text-white select-none">
+            <Link href={"/"} className="text-3xl font-semibold text-white select-none">
               Gadget store
             </Link>
+            <Search/>
           </div>
-          {/* menu s */}
+    
 
           <div className="hidden md:flex lg:flex space-x-3">
             <div className="px-6 w-full flex flex-col sm:flex-row justify-end">

@@ -180,7 +180,8 @@ const Checkout = async () => {
           </p>
           <div className="">
 
-            <CommonInput label={"Email"} placeholder="your.email@gmail.com" />
+            <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
+            <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
             <CommonInput label={"Card Holder"} placeholder="Your full name here"/>
             <CommonInput label={"Card Holder"} placeholder="xxxx-xxxx-xxxx-xxxx"/>
             <CommonInput label={"Billing Address"} placeholder="Street Address"/>

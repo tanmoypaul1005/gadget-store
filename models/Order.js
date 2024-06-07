@@ -4,9 +4,13 @@ const OrderSchema = new mongoose.Schema({
 
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 
-    orderedBy: { type: String, required: true },
+    shipping_address: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Address",
+        required: true,
+    },
 
-    address: {
+    billing_address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Address",
         required: true,
@@ -19,32 +23,13 @@ const OrderSchema = new mongoose.Schema({
 
     items: [
         {
-            productId: {
+            cart: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Product",
-            },
-            payable_price: {
-                type: Number,
+                ref: "Cart",
                 required: true,
-            },
-            purchasedQty: {
-                type: Number,
-                required: true,
-            },
-        },
+            }
+        }
     ],
-
-    payment_status: {
-        type: String,
-        enum: ["pending", "completed", "cancelled", "refund"],
-        required: true,
-    },
-
-    payment_type: {
-        type: String,
-        enum: ["cash", "card", "upi"],
-        required: true,
-    },
 
     order_status: {
         type: String,
