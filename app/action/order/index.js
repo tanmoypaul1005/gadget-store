@@ -26,6 +26,7 @@ export const addOrder = async (body) => {
             items: items,
         });
         await order.save();
+        await Cart.deleteMany({ user: user._id });
 
         return { status: 200, success: true, message: "Order placed successfully" };
     } catch (err) {
