@@ -9,7 +9,7 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
 // import Fade from 'react-reveal/Fade';
 
-const HeaderUserInfo = ({ session, totalCart }) => {
+const HeaderUserInfo = ({ session, totalCart,totalOrder }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -50,19 +50,28 @@ const HeaderUserInfo = ({ session, totalCart }) => {
             <div className="px-6 w-full flex flex-col sm:flex-row justify-end">
 
               <Link href={"/orders"} className="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:text-white hover:bg-cCommonBg">
+                <div className="relative">
+                  
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                >
+                  >
                   <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
                   <path
                     // fill-rule="evenodd"
                     d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                  // clip-rule="evenodd"
-                  />
+                    // clip-rule="evenodd"
+                    />
                 </svg>
+                {
+                    totalOrder > 0 ? <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">
+                    {totalOrder}
+                  </span> :
+                   ""
+                   }
+                    </div>
                 <span className="text-sm font-medium">Orders</span>
               </Link>
 

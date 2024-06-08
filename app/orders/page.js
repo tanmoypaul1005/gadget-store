@@ -4,9 +4,9 @@ import { getOrders } from '../action/order';
 import Image from 'next/image';
 
 const Orders = async () => {
+    
     const session = await auth();
     const order = await getOrders(session?.user?.email)
-    // console.log(JSON.parse(order?.data[0].items))
 
     return (
         <>
