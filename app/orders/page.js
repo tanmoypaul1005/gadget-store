@@ -23,7 +23,8 @@ const Orders = async() => {
                             Your Order</button>
                     </div>
                     <div className="w-full px-3 min-[400px]:px-6">
-                        <div className="flex flex-col items-center w-full gap-6 py-6 border-b border-gray-200 lg:flex-row">
+                        
+                        {/* <div className="flex flex-col items-center w-full gap-6 py-6 border-b border-gray-200 lg:flex-row">
                             <div className="img-box max-lg:w-full">
                                 <img src="https://pagedone.io/asset/uploads/1701167607.png" alt="Premium Watch image"
                                     className="aspect-square w-full lg:max-w-[140px]"/>
@@ -133,7 +134,7 @@ const Orders = async() => {
 
 
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                     <div className="flex flex-col items-center justify-between w-full px-6 border-t border-gray-200 lg:flex-row ">
