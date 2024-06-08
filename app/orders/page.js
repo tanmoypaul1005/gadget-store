@@ -28,26 +28,25 @@ const Orders = async () => {
                                 <div className="w-full px-3 min-[400px]:px-6">
 
                                     {
-                                        JSON.parse(item.items).map((product, index2) => (
-                                            <div key={index2} className="flex flex-col items-center w-full gap-6 py-6 border-b border-gray-200 lg:flex-row">
+                                        JSON.parse(item?.items)?.map((product, index2) => (
+                                            <div key={index2} className={`flex flex-col items-center w-full gap-6 py-6 ${index2 === (JSON.parse(item.items)?.length - 1)} border-b border-gray-200 lg:flex-row`}>
                                                 <div className="img-box max-lg:w-full">
                                                     <img src="https://pagedone.io/asset/uploads/1701167607.png" alt="Premium Watch image"
                                                         className="aspect-square w-full lg:max-w-[140px]" />
+                                                        
                                                 </div>
                                                 <div className="flex flex-row items-center w-full ">
                                                     <div className="grid w-full grid-cols-1 lg:grid-cols-2">
                                                         <div className="flex items-center">
                                                             <div className="">
                                                                 <h2 className="mb-3 text-xl font-semibold leading-8 text-white">
-                                                                    Premium Quality Dust Watch</h2>
+                                                                    {product?.product?.name}</h2>
                                                                 <p className="mb-3 text-lg font-normal leading-8 text-gray-500 ">
                                                                     By: Dust Studios</p>
                                                                 <div className="flex items-center ">
-                                                                    <p
-                                                                        className="pr-4 mr-4 text-base font-medium leading-7 text-white border-r border-gray-200">
-                                                                        Size: <span className="text-gray-500">100 ml</span></p>
+                                                                   
                                                                     <p className="text-base font-medium leading-7 text-white ">Qty: <span
-                                                                        className="text-gray-500">2</span></p>
+                                                                        className="text-gray-500">{product?.quantity}</span></p>
                                                                 </div>
                                                             </div>
 
