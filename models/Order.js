@@ -23,11 +23,12 @@ const OrderSchema = new mongoose.Schema({
 
     items: [
         {
-            cart: {
+            product: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Cart",
+                ref: "Product",
                 required: true,
-            }
+            },
+            quantity: { type: Number, default: 1 },
         }
     ],
 

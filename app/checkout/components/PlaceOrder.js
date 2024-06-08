@@ -25,7 +25,7 @@ const PlaceOrder = ({ data }) => {
         console.log("response", response)
         if (response?.success) {
             Toastr({ message: "Order placed successfully", type: "success" });
-            router.push('/order')
+            router.push('/orders')
         } else {
             Toastr({ message: "Something went wrong", type: "error" })
         }
@@ -34,7 +34,7 @@ const PlaceOrder = ({ data }) => {
     return (
         <button
             onClick={handleOrder}
-            className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+            className="w-full px-6 py-3 mt-4 mb-8 font-medium text-white bg-gray-900 rounded-md">
             Place Order
         </button>
     )
