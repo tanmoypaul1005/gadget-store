@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import React from 'react'
 import { getOrders } from '../action/order';
+import Image from 'next/image';
 
 const Orders = async () => {
     const session = await auth();
@@ -31,9 +32,16 @@ const Orders = async () => {
                                         JSON.parse(item?.items)?.map((product, index2) => (
                                             <div key={index2} className={`flex flex-col items-center w-full gap-6 py-6 ${index2 === (JSON.parse(item.items)?.length - 1)} border-b border-gray-200 lg:flex-row`}>
                                                 <div className="img-box max-lg:w-full">
-                                                    <img src="https://pagedone.io/asset/uploads/1701167607.png" alt="Premium Watch image"
-                                                        className="aspect-square w-full lg:max-w-[140px]" />
-                                                        
+                                                    {/* <img src="https://pagedone.io/asset/uploads/1701167607.png" alt="Premium Watch image"
+                                                        className="aspect-square w-full lg:max-w-[140px]" /> */}
+
+                                                    <Image
+                                                        className="aspect-square w-full lg:max-w-[140px]"
+                                                        src={product?.product?.image}
+                                                        alt="Premium Watch image"
+                                                        width={140}
+                                                        height={140}
+                                                    />
                                                 </div>
                                                 <div className="flex flex-row items-center w-full ">
                                                     <div className="grid w-full grid-cols-1 lg:grid-cols-2">
@@ -41,10 +49,10 @@ const Orders = async () => {
                                                             <div className="">
                                                                 <h2 className="mb-3 text-xl font-semibold leading-8 text-white">
                                                                     {product?.product?.name}</h2>
-                                                                <p className="mb-3 text-lg font-normal leading-8 text-gray-500 ">
-                                                                    By: Dust Studios</p>
+                                                                <p className="mb-3 text-lg font-normal leading-8 text-red-400">
+                                                                    {product?.product?.price}</p>
                                                                 <div className="flex items-center ">
-                                                                   
+
                                                                     <p className="text-base font-medium leading-7 text-white ">Qty: <span
                                                                         className="text-gray-500">{product?.quantity}</span></p>
                                                                 </div>
