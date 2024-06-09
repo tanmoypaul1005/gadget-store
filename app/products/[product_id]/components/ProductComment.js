@@ -46,7 +46,7 @@ const ProductComment = ({user}) => {
                   <Field>
                     <textarea
                       {...register("content", { required: "comment is required" })}
-                      className="w-full bg-[#030317] border border-slate-500 text-slate-300 p-4 rounded-md focus:outline-none"
+                      className="w-full resize-none bg-[#030317] border border-slate-500 text-slate-300 p-4 rounded-md focus:outline-none"
                       placeholder="Write a comment"
                       name='content'
                     ></textarea>
