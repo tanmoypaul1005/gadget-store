@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 
 const CommentCard = ({ comment, onCommentDelete }) => {
 
+     console.log("comment", comment)
+
     const [isMenuBarOpen, setMenuBarOpen] = useState(false);
 
     return (

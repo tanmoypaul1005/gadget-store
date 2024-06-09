@@ -12,9 +12,7 @@ import ProductComment from "./components/ProductComment";
 
 const ProductDetails = async ({ params }) => {
 
-  const product = await fetch(
-    base_url + kuProductList + `/${params?.product_id}`
-  ).then((res) => res.json());
+  const product = await fetch(base_url + kuProductList + `/${params?.product_id}`,{ cache: 'no-store' }).then((res) => res.json());
 
   const productDetails = product?.data;
 

@@ -69,7 +69,9 @@ const ProductComment = ({ data }) => {
 
         {
           data?.comments?.map((comment, index) => (
-            <CommentCard onCommentDelete={() => { handleCommentDelete(comment?.id) }} key={index} comment={comment} />
+            <CommentCard
+              // onCommentDelete={() => { handleCommentDelete(comment?.id) }} 
+              key={index} comment={comment} />
           ))
         }
 

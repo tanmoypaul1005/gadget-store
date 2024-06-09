@@ -1,14 +1,13 @@
 export const dynamic = 'force-dynamic'
 import Comment from "@/models/Comment";
 import Products from "@/models/Products";
-import User from "@/models/User";
 import connectMongo from "@/util/db";
 
 export async function GET(request, { params }) {
 
     try {
         await connectMongo();
-        const id = params.product_id
+        const id = params?.product_id
         if (id) {
             let products = await Products.findOne({ _id: id });
             let comment = await Comment.find({ product: id }).populate('user');
