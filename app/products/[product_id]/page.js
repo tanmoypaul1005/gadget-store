@@ -22,6 +22,8 @@ const ProductDetails = async ({ params }) => {
 
   const user = await findUserId(session?.user?.email);
 
+  console.log("productDetails", productDetails);
+
   return (
     <section className="overflow-hidden body-font">
       <div className="container px-5 py-24 mx-auto">
