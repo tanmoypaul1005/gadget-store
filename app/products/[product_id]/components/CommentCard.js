@@ -9,21 +9,21 @@ const CommentCard = async({ comment, onCommentDelete }) => {
 
     console.log("comment", comment)
   
-    //  const user =await getUser(comment?.user);
+     const user =await getUser(comment?.user);
 
-    //  console.log("user", user)
+     console.log("user", user)
 
     return (
         <div>
             <div className="flex items-start my-8 space-x-4">
-                <div className="text-white bg-indigo-600 avater-img">
-                     {/* <Avatar authId={comment?.author?.id} avatar={comment?.author?.avatar} name={comment?.author?.firstName}/>  */}
-                </div>
+
+                     <Avatar avatar={user?.data?.image} name={user?.data?.name}/>  
+
                 <div className="w-full">
                     <div className='relative flex justify-between'>
-                        {/* <h5 className="font-bold text-slate -500">{comment?.author?.firstName} {comment?.author?.lastName}</h5>
+                        <h5 className="font-bold text-white">{user?.data?.name}</h5>
 
-                        {auth?.id === comment?.author?.id && <div className="relative top-0 right-0">
+                        {/* {auth?.id === comment?.author?.id && <div className="relative top-0 right-0">
                             <button onClick={(e) => {
                                 setMenuBarOpen(!isMenuBarOpen)
                                 console.log("isMenuBarOpen", isMenuBarOpen)
@@ -50,7 +50,7 @@ const CommentCard = async({ comment, onCommentDelete }) => {
                                     </button>
                                 </div>
                             }
-                        </div>} */}
+                        </div>}  */}
 
                     </div>
 

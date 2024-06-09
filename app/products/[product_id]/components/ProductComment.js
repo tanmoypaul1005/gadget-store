@@ -1,18 +1,19 @@
-"use client"
+// "use client"
 import Field from '@/components/input/Field'
 import React from 'react'
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import CommentCard from './CommentCard';
+import User from '@/models/User';
 
 const ProductComment = ({ data }) => {
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    setError,
-  } = useForm();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  //   reset,
+  //   setError,
+  // } = useForm();
 
   const handleAddComment = async (formData) => {
     // try {
@@ -43,7 +44,7 @@ const ProductComment = ({ data }) => {
 
             <div className="w-full">
 
-              <form onSubmit={handleSubmit(handleAddComment)}>
+              {/* <form onSubmit={handleSubmit(handleAddComment)}>
                 <Field>
                   <textarea
                     {...register("content", { required: "comment is required" })}
@@ -61,7 +62,7 @@ const ProductComment = ({ data }) => {
                     Comment
                   </button>
                 </div>
-              </form>
+              </form> */}
 
             </div>
           </div>
