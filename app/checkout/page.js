@@ -6,6 +6,7 @@ import CheckOutProduct from "./components/CheckOutProduct";
 import CommonInput from "@/components/input/CommonInput";
 import Address from "../components/Address/Address";
 import { getAddress } from "../action/address";
+import PlaceOrder from "./components/PlaceOrder";
 
 const Checkout = async () => {
 
@@ -23,7 +24,7 @@ const Checkout = async () => {
 
   return (
     <>
-      <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
+      {/* <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
@@ -98,20 +99,21 @@ const Checkout = async () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-        <div className="px-4 pt-8">
+      <div className="px-5 grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
+        <div className="px-4">
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
-            {cart?.length > 0
-              ? cart?.map((item, index) => (
-                <CheckOutProduct item={item} key={index} />
-              ))
-              : "No items in cart"}
+            {
+              cart?.length > 0
+                ? cart?.map((item, index) => (
+                  <CheckOutProduct item={item} key={index} />
+                ))
+                : "No items in cart"}
           </div>
 
           {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -173,17 +175,15 @@ const Checkout = async () => {
           <Address email={session?.user?.email} address={address?.data} />
         </div>
 
-        <div className="mt-10  px-4 pt-8 lg:mt-0">
+        <div className="mt-10 px-4 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
             Complete your order by providing your payment details.
           </p>
-          <div className="">
-
-            <CommonInput label={"Email"} placeholder="your.email@gmail.com" />
-            <CommonInput label={"Card Holder"} placeholder="Your full name here"/>
-            <CommonInput label={"Card Holder"} placeholder="xxxx-xxxx-xxxx-xxxx"/>
-            <CommonInput label={"Billing Address"} placeholder="Street Address"/>
+          <div>
+            <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
+            <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
+            <CommonInput label={"Contact Number"} placeholder="Street Address" />
 
             <div className="mt-6 border-t border-b py-2 text-white">
               <div className="flex items-center justify-between">
@@ -200,9 +200,15 @@ const Checkout = async () => {
               <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>
           </div>
-          <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
-            Place Order
-          </button>
+          <PlaceOrder
+            data={
+              {
+                email: session?.user?.email,
+                address: address?.data,
+                total_amount: totalPrice,
+              }
+            }
+          />
         </div>
       </div>
     </>
@@ -212,6 +218,7 @@ const Checkout = async () => {
 export default Checkout;
 
 export async function generateStaticParams() {
+
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);

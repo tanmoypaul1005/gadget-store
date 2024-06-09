@@ -52,70 +52,7 @@ const Other = () => {
             </div>
 
             <div className="w-full OurServices lg:w-2/6">
-                <h1 className="pb-4 mb-8 text-xl font-semibold border-b">Our Services</h1>
-                <div
-                    // style="height: 23rem"
-                    className="flex flex-wrap items-center justify-between w-full p-4 border rounded-xl lg:flex-col lg:justify-center lg:px-8 lg:gap-8"
-                >
-                    <div
-                        className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
-                    >
-                        <ion-icon className="text-4xl" name="boat-outline"></ion-icon>
-                        <div>
-                            <h3 className="font-semibold">Worldwide Delivery</h3>
-                            <p className="text-xs">For Order Over $100</p>
-                        </div>
-                    </div>
-
-                    <div
-                        className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
-                    >
-                        <ion-icon
-                            className="text-4xl text-red-500"
-                            name="rocket-outline"
-                        ></ion-icon>
-                        <div>
-                            <h3 className="font-semibold">Worldwide Delivery</h3>
-                            <p className="text-xs">For Order Over $100</p>
-                        </div>
-                    </div>
-
-                    <div
-                        className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
-                    >
-                        <ion-icon className="text-4xl" name="call-outline"></ion-icon>
-                        <div>
-                            <h3 className="font-semibold">Worldwide Delivery</h3>
-                            <p className="text-xs">For Order Over $100</p>
-                        </div>
-                    </div>
-
-                    <div
-                        className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
-                    >
-                        <ion-icon
-                            className="text-4xl text-red-500"
-                            name="arrow-undo-outline"
-                        ></ion-icon>
-                        <div>
-                            <h3 className="font-semibold text-gray-700">Worldwide Delivery</h3>
-                            <p className="text-xs">For Order Over $100</p>
-                        </div>
-                    </div>
-
-                    <div
-                        className="flex items-center justify-center w-1/2 gap-2 lg:w-full lg:justify-between"
-                    >
-                        <ion-icon
-                            className="text-4xl text-red-500"
-                            name="ticket-outline"
-                        ></ion-icon>
-                        <div>
-                            <h3 className="font-semibold">Worldwide Delivery</h3>
-                            <p className="text-xs">For Order Over $100</p>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         </div>
     );

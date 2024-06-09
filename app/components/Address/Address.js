@@ -20,9 +20,11 @@ const Address = ({ address, email }) => {
 
   return (
     <div>
-      <div className="grid max-w-5xl md:px-0 px-5 grid-cols-1  md:grid-cols-2 gap-x-10 mx-auto">
-        <div className="flex items-center justify-center">
+      
+      <div>
+        <div className="flex items-start justify-start">
           {billing_address?.title ? (
+
             <AddressCard
               onOpen={() => {
                 setSelectType(address_type.billing_address);
@@ -46,7 +48,7 @@ const Address = ({ address, email }) => {
         </div>
 
 
-        <div className="flex items-center justify-center">
+        <div className="mt-5 flex items-start justify-start">
           {shipping_address?.title ? (
             <AddressCard
               onOpen={() => {
@@ -70,6 +72,7 @@ const Address = ({ address, email }) => {
           )}
         </div>
       </div>
+
       <AddAddressModal
         email={email}
         type={selectType}

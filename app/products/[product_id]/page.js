@@ -7,18 +7,20 @@ import React from "react";
 import Action from "./action/Action";
 import { auth } from "@/auth";
 import { findUserId } from "@/app/action/product/action";
+import ProductComment from "./components/ProductComment";
+
 
 const ProductDetails = async ({ params }) => {
 
-  const product = await fetch(
-    base_url + kuProductList + `/${params?.product_id}`
-  ).then((res) => res.json());
+  const product = await fetch(base_url + kuProductList + `/${params?.product_id}`,{ cache: 'no-store' }).then((res) => res.json());
 
   const productDetails = product?.data;
 
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
+
+  //console.log("productDetails xxxxd", productDetails);
 
   return (
     <section className="overflow-hidden body-font">
@@ -32,7 +34,7 @@ const ProductDetails = async ({ params }) => {
             height={500}
             alt=""
           />
-          <div className="w-full lg:w-1/2 lg:pl-10 py-6 lg:py-0">
+          <div className="w-full py-6 lg:w-1/2 lg:pl-10 lg:py-0">
             <h2 className="text-sm tracking-widest title-font">
               {commonView(productDetails?.brand)}
             </h2>
@@ -44,8 +46,8 @@ const ProductDetails = async ({ params }) => {
               {commonView(productDetails?.description)}
             </p>
 
-            <div className="text-2xl font-medium title-font text-red-400 pt-4">$58.00</div>
-            <div className="flex items-center pb-4  border-b-2 border-gray-200">
+            <div className="pt-4 text-2xl font-medium text-red-400 title-font">$58.00</div>
+            <div className="flex items-center pb-4 border-b-2 border-gray-200">
               {/* <div className="flex">
                 <span className="mr-3">Color</span>
                 <button className="w-6 h-6 border-2 border-gray-300 rounded-full focus:outline-none"></button>
@@ -53,8 +55,8 @@ const ProductDetails = async ({ params }) => {
                 <button className="w-6 h-6 ml-1 bg-red-500 border-2 border-gray-300 rounded-full focus:outline-none"></button>
               </div> */}
             </div>
-       
-            <div className="flex justify-start items-start ">
+
+            <div className="flex items-start justify-start ">
               <Action
                 user={user?._id}
                 product_id={params?.product_id}
@@ -63,6 +65,13 @@ const ProductDetails = async ({ params }) => {
           </div>
         </div>
       </div>
+
+      <ProductComment
+        data={{
+          comments: productDetails?.comment,
+          user: session?.user,
+        }}
+      />
     </section>
   );
 };

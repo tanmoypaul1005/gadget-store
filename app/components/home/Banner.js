@@ -5,20 +5,21 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import "./Carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import Image from "next/image";
 
 function Banner() {
 
   const data = [
     {
-      src: "https://picsum.photos/seed/img2/600/400",
+      src: "/images/banner/banner-3.png",
       alt: "Image 1 for carousel",
     },
     {
-      src: "https://picsum.photos/seed/img2/600/400",
+      src: "/images/banner/banner-2.png",
       alt: "Image 2 for carousel",
     },
     {
-      src: "https://picsum.photos/seed/img3/600/400",
+      src: "/images/banner/banner-1.png",
       alt: "Image 3 for carousel",
     },
   ];
@@ -47,21 +48,23 @@ function Banner() {
       animate={{ x: 0 }}
       transition={{ delay: 1 }}
     >
-      <div className="relative flex justify-center items-center mt-10 lg:h-[500px] rounded   banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+      <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
 
         {
           data?.map((item, idx) => (
-            <img
+            <Image
               src={item.src}
               alt={item.alt}
               key={idx}
+              width={1920}
+              height={1080}
               className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
                 }`}
             />
           ))
         }
         <BsArrowLeftCircleFill
-          onClick={nextSlide}
+          onClick={prevSlide}
           className="absolute w-8 h-8 text-white filter drop-shadow-md cursor-pointer left-5 "
         />
         <BsArrowRightCircleFill

@@ -10,14 +10,16 @@ const CheckOutProduct = ({ item }) => {
   }
 
   return (
-    <div className="flex flex-col rounded-lg sm:flex-row">
-      <Image
-        className="m-2 h-24 w-28 rounded-md border object-contain object-center"
-        src={item?.product?.image}
-        width={100}
-        height={100}
-        alt=""
-      />
+    <div className="flex  rounded-lg ">
+      <div className="flex justify-center items-center">
+        <Image
+          className="m-2 h-24 w-28 rounded-md border object-contain object-center"
+          src={item?.product?.image}
+          width={100}
+          height={100}
+          alt=""
+        />
+      </div>
       <div className="flex w-full flex-col px-4 py-4">
         <span className="font-semibold">{item?.product?.name}</span>
         <span className="float-right text-gray-400">{item.product._id}</span>
