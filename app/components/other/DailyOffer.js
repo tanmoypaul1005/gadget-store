@@ -1,5 +1,6 @@
 "use client"
 import { addCart, deleteCart } from "@/app/action/cart";
+import LoginAlertModal from "@/components/modal/LoginAlertModal";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -13,6 +14,8 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
     minutes: 0,
     seconds: 0,
   });
+
+  const [open, setOpen] = useState(false)
 
   // Calculate time left for the offer to end
   const calculateTimeLeft = () => {
@@ -87,21 +90,26 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
           </div>
           <button
             onClick={async () => {
-              if (isAddCartDayOffer) {
-                const success = await deleteCart(isAddCartDayOffer?._id, "/")
-                if (success) {
-                  Toastr({ message: "Cart Cleared Successfully", type: "success" })
+              if(user?._id){
+                if (isAddCartDayOffer) {
+                  const success = await deleteCart(isAddCartDayOffer?._id, "/")
+                  if (success) {
+                    Toastr({ message: "Cart Cleared Successfully", type: "success" })
+                  } else {
+                    Toastr({ message: "Cart Cleared Failed", type: "error" })
+                  }
                 } else {
-                  Toastr({ message: "Cart Cleared Failed", type: "error" })
+                  const success = await addCart(formData, "/");
+                  if (success.success) {
+                    Toastr({ type: "success", message: success.message });
+                  } else {
+                    Toastr({ type: "error", message: success.message });
+                  }
                 }
-              } else {
-                const success = await addCart(formData, "/");
-                if (success.success) {
-                  Toastr({ type: "success", message: success.message });
-                } else {
-                  Toastr({ type: "error", message: success.message });
-                }
+              }else{
+                setOpen(true)
               }
+           
             }}
             className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
           >
@@ -159,6 +167,8 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
           </div>
         </div>
       </div>
+
+      <LoginAlertModal open={open} setOpen={setOpen} />
     </div>
   );
 };

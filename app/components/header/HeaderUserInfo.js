@@ -32,7 +32,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
       <LogoutModal
         open={isShowLogoutModal}
         setOpen={setShowLogoutModal}
-
       />
       <header>
         {/* desktop nav  */}
