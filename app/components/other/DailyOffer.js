@@ -54,7 +54,6 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
     quantity: 1,
   };
 
-  console.log("isAddCartDayOffer", isAddCartDayOffer)
 
   return (
     <div className="my-10 day">

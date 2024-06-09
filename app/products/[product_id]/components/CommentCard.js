@@ -1,15 +1,17 @@
-"use client"
+
+import { getUser } from '@/app/action/user';
 import Avatar from '@/components/avatar/Avatar';
-import React, { useState } from 'react';
 // import { i3dots, iDelete } from '../../../app/utility/imageImports';
 // import { useAuth } from '../../../hooks/useAuth';
 // import Avatar from '../../../components/Avatar';
 
-const CommentCard = ({ comment, onCommentDelete }) => {
+const CommentCard = async({ comment, onCommentDelete }) => {
 
-     console.log("comment", comment)
+    console.log("comment", comment)
+  
+    //  const user =await getUser(comment?.user);
 
-    const [isMenuBarOpen, setMenuBarOpen] = useState(false);
+    //  console.log("user", user)
 
     return (
         <div>

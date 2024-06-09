@@ -20,7 +20,7 @@ const ProductDetails = async ({ params }) => {
 
   const user = await findUserId(session?.user?.email);
 
-  console.log("productDetails xxxxd", productDetails);
+  //console.log("productDetails xxxxd", productDetails);
 
   return (
     <section className="overflow-hidden body-font">
