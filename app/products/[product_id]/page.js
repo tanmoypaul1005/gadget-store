@@ -22,7 +22,7 @@ const ProductDetails = async ({ params }) => {
 
   const user = await findUserId(session?.user?.email);
 
-  console.log("productDetails", productDetails);
+  console.log("productDetails xxxxd", productDetails);
 
   return (
     <section className="overflow-hidden body-font">
@@ -68,7 +68,12 @@ const ProductDetails = async ({ params }) => {
         </div>
       </div>
 
-      <ProductComment user={session?.user} />
+      <ProductComment
+        data={{
+          comments: productDetails?.comment,
+          user: session?.user,
+        }}
+      />
     </section>
   );
 };
