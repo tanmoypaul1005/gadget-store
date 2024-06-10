@@ -6,13 +6,12 @@ import React from 'react'
 
 const FeaturedCategories = async() => {
 
-    const category = await fetch("http://localhost:3000/api/category/main-category",{ next: { revalidate: 1 } })
+    const category = await fetch(base_url+ kuMainCategory,{ next: { revalidate: 1 } })
     .then(res => res.json())
-
-    console.log("category",category)
 
     return (
         <div>
+
             <div className='flex flex-wrap gap-2'>
                 {
                     category?.data?.map((item, index) => (
