@@ -14,9 +14,9 @@ const BestSellers = async () => {
   );
 
   return (
-    <div className="flex flex-col items-start justify-start h-auto gap-4 mt-10 bestsellers 2-72">
+    <div className="flex flex-col items-start justify-start h-auto gap-4 bestsellers 2-72">
       <h2 className="text-lg font-semibold">BEST SELLERS</h2>
-      <div className="h-[100vh] border-r-2 border-yellow-300">
+
         {
           best_sellers?.map((product, index) => (
             <Link href={"/products/" + product?._id} key={index} className="flex items-center justify-start gap-2">
@@ -52,7 +52,7 @@ const BestSellers = async () => {
           ))
         }
       </div>
-    </div>
+
   );
 };
 
