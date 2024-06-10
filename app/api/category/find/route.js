@@ -6,9 +6,7 @@ export async function GET() {
     try {
       await connectMongo();
       let category = await Category.find({ parent_id: "66592f88ad349356134a3db9" });
-
-
-
+ 
      const category_id=category.map((item)=>{
         return item._id
       })
