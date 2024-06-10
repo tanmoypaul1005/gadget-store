@@ -4,3 +4,4 @@ export const kuRegister="/user/add";
 export const kuLogin="/user/login";
 export const kuCart="/cart";
 export const kuCategory="/category";
+export const kuMainCategory="/category/main-category";

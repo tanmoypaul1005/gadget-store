@@ -1,22 +1,23 @@
 import Category from "@/models/Category";
-import Products from "@/models/Products";
 import connectMongo from "@/util/db";
 
-export async function GET() {
+export async function POST(request) {
     try {
       await connectMongo();
-      let category = await Category.find({ parent_id: "66592f88ad349356134a3db9" });
- 
-     const category_id=category.map((item)=>{
-        return item._id
-      })
+      const { id, ...updateFields } = await request.json();
 
-      const products = await Products.find({ category: { $in: category_id } });
-    
+      const updatedCategory = await Category.findByIdAndUpdate(id, updateFields, { new: true });
+        if (!updatedCategory) {
+            return Response.json({
+            status: 404,
+            success: false,
+            message: "Category not found",
+            });
+        }
       return Response.json({
         status: 200,
         success: true,
-        data: products,
+        data: updatedCategory,
         message: "Category is Found",
       });
     } catch (err) {
