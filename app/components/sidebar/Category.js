@@ -6,7 +6,7 @@ const Category = () => {
   return (
     <aside className="sticky top-0 flex-col hidden max-h-screen lg:flex lg:w-1/4">
       <div className="overflow-y-auto aside_section">
-        <div className="w-full p-4 text-white border shadow-lg bg-cCommonBg categories rounded-xl">
+        {/* <div className="w-full p-4 text-white border shadow-lg bg-cCommonBg categories rounded-xl">
           <h1 className="mb-4 text-xl font-semibold ">CATEGORY</h1>
           
           <div className="pb-3 text-lg border-b">
@@ -221,7 +221,7 @@ const Category = () => {
               </summary>
             </details>
           </div>
-        </div>
+        </div> */}
 
         <BestSellers />
       </div>

@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div>
             <footer className="footer bg-[#212121] mt-10">
-                <div
+                {/* <div
                     className="flex flex-col items-start justify-start gap-4 px-6 py-8 brands md:px-8 md:py-10 lg:px-16 lg:py-12"
                 >
                     <h3 className="font-semibold text-red-400 text-md lg:text-lg">
@@ -65,7 +65,7 @@ const Footer = () => {
                         <a className="text-gray-500" href="#">Lipstick</a>
                     </div>
                 </div>
-                <hr />
+                <hr /> */}
                 <div className="px-6 py-8 md:px-8 md:py-10 lg:px-16 lg:py-12">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5">
                         <div>
