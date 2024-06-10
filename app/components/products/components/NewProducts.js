@@ -14,7 +14,7 @@ const NewProducts = async () => {
 
         <div className="newProductsContainer">
 
-            <section className="flex justify-between  gap-x-[50px] flex-wrap  justify-items-center gap-y-20">
+            <section className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-20">
                 {
                     products?.data?.map((product, index) => (
                         <ProductCard key={index} product={product}  />
