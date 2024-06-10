@@ -4,10 +4,12 @@ import React from "react";
 import { Toastr } from "@/util/utilityFunction";
 import { addCart } from "@/app/action/cart";
 import { useState } from "react";
+import LoginAlertModal from "@/components/modal/LoginAlertModal";
 
 const Action = ({ product_id, user }) => {
 
   const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false)
 
   const formData = {
     product_id: product_id,
@@ -54,6 +56,10 @@ const Action = ({ product_id, user }) => {
       <div className="flex justify-start space-x-5">
         <CommonButton
           onClick={async () => {
+            if (!user) {
+              setOpen(true)
+              return
+            }
             const success = await addCart(formData, "/products/" + product_id);
             if (success.success) {
               Toastr({ type: "success", message: success.message });
@@ -64,8 +70,10 @@ const Action = ({ product_id, user }) => {
           btnLabel="Add Cart"
           colorType="danger"
         />
-        <CommonButton btnLabel="Buy" colorType="danger" />
+
       </div>
+
+      <LoginAlertModal open={open} setOpen={setOpen} />
     </div>
   );
 };
