@@ -6,6 +6,10 @@ const categorySchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    icon:{
+        type: String,
+        default:""
+    },
     status: {
         type: String,
         default:"sub_category"
