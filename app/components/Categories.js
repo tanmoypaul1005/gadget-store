@@ -17,7 +17,7 @@ const Categories = async () => {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
             </li>
 
-            {categoryData?.data?.map((item, index) => (
+            {categoryData?.data?.slice(0,8)?.map((item, index) => (
               <li key={index} className="relative nav_items men_nav_item">
                 <a href="#Men">{item?.title}</a>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
