@@ -10,7 +10,7 @@ export async function GET(request, { params }) {
         const id = params?.product_id
         if (id) {
             let products = await Products.findOne({ _id: id });
-            let comment = await Comment.find({ product: id }).populate('user');
+            let comment = await Comment.find({ product: id }).sort({ createdAt: -1 }).populate('user');
            
             return Response.json({ success: true, status: 200, data: { ...products?._doc, comment }, message: `${products?.name} is Found` });
         } else {

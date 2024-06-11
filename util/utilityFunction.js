@@ -12,6 +12,16 @@ export const commonView = (data) => {
 }
 
 
+export function formatDate(dateString) {
+    if(dateString){
+    const options = {  day: 'numeric', month: 'long',year: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+    }else{
+        return "-- --";
+    }
+  }
+
+
 export const Toastr = ({ message = "", type = "error" }) => {
     toast(message, {
       position: "bottom-right",

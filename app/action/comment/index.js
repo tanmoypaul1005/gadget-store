@@ -1,17 +1,28 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
 import connectMongo from "@/util/db";
 
-export const addComment=async(body)=>{
+export const addComment=async(body,pathName)=>{
   try{
     await connectMongo();
-
-    const comment = new Comment({
-      user: body?.user,
-      post: body?.post,
-      comment: body?.comment,
+    const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL +`api/comment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
     });
-    await comment.save();
+    const data = await response?.json();
 
-    return { status: 200, success: true, message: "Comment added successfully" };
+    if (data?.success) {
+      await revalidatePath(pathName);
+      console.log("Success:", data?.message);
+      return data;
+    } else {
+      console.error("Error:", data?.message);
+    }
+    return data;
   }catch(err){
     console.error("error addComment", err);
     return { status: 500, success: false, message: "Internal Server Error" };

@@ -1,27 +1,25 @@
 
 import { getUser } from '@/app/action/user';
 import Avatar from '@/components/avatar/Avatar';
+import { formatDate } from '@/util/utilityFunction';
 // import { i3dots, iDelete } from '../../../app/utility/imageImports';
 // import { useAuth } from '../../../hooks/useAuth';
 // import Avatar from '../../../components/Avatar';
 
-const CommentCard = async({ comment, onCommentDelete }) => {
+const CommentCard = async ({ comment, onCommentDelete }) => {
 
-    console.log("comment", comment)
-  
-     const user =await getUser(comment?.user);
-
-     console.log("user", user)
+    const user = await getUser(comment?.user);
 
     return (
         <div>
             <div className="flex items-start my-8 space-x-4">
 
-                     <Avatar avatar={user?.data?.image} name={user?.data?.name}/>  
+                <Avatar avatar={user?.data?.image} name={user?.data?.name} />
 
                 <div className="w-full">
                     <div className='relative flex justify-between'>
                         <h5 className="font-bold text-white">{user?.data?.name}</h5>
+                        <h5 className="font-normal text-white">{formatDate(comment?.createdAt)}</h5>
 
                         {/* {auth?.id === comment?.author?.id && <div className="relative top-0 right-0">
                             <button onClick={(e) => {

@@ -21,136 +21,139 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
   };
 
   return (
-    <div className="w-full gap-8 px-8 mx-auto min-h-auto lg:px-0 lg:w-5/6 header">
+    <>
       <LogoutModal
         open={isShowLogoutModal}
         setOpen={setShowLogoutModal}
       />
-      <header>
-        {/* desktop nav  */}
-        <nav className="flex justify-between w-full py-3">
-          {/* brand  */}
-          <div className="flex items-center flex-grow space-x-2">
-            <Link href={"/"} className="text-3xl font-semibold text-white select-none">
-              Gadget store
-            </Link>
-            <Search />
-          </div>
 
-          <div>
-            <div className="hidden space-x-3 md:flex lg:flex">
-              <div className="flex flex-col justify-end w-full px-6 sm:flex-row">
-
-                <OrderButton 
-                  isHover={true}
-                  totalOrder={totalOrder}
-                />
-
-                {/* <Favorites /> */}
-
-                <CartIcon totalCart={totalCart} />
-
-                {session ? (
-                  <div className="flex ml-3 space-x-3">
-                    <Link href={"/profile"}>
-                      <Image
-                        style={{
-                          maxWidth: "40px",
-                          minWidth: "40px",
-                          maxHeight: "40px",
-                          minHeight: "40px",
-                        }}
-                        className="rounded-full"
-                        src={session?.user?.image}
-                        alt="pic"
-                        width={20}
-                        height={20}
-                      />
-                    </Link>
-                    <Link
-                      href={"/profile"}
-                      className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
-                    >
-                      {session.user.name}
-                    </Link>
-                    <div
-                      onClick={() => {
-                        setShowLogoutModal(true);
-                      }}
-                      className="relative flex items-center justify-center cursor-pointer"
-                    >
-                      <Image
-                        style={{
-                          maxWidth: "30px",
-                          minWidth: "30px",
-                          maxHeight: "30px",
-                          minHeight: "30px",
-                        }}
-                        src={"/images/icons/logOut.svg"}
-                        alt="pic"
-                        width={20}
-                        height={20}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <>
-                    <div
-                      onClick={async () => {
-                        
-                        await signIn("google", {
-                          callbackUrl: "/",
-                        });
-                      }}
-                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-                    >
-                      <span className="text-sm font-medium">Sign in</span>
-                    </div>
-                    <div
-                      onClick={async () => {
-                        await signIn("google", {
-                          callbackUrl: "/",
-                        });
-                      }}
-                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-                    >
-                      <span className="text-sm font-medium">Login</span>
-                    </div>
-                  </>
-                )}
-              </div>
+      <div className="common-class header">
+        <header>
+          {/* desktop nav  */}
+          <nav className="flex justify-between w-full py-3">
+            {/* brand  */}
+            <div className="flex items-center flex-grow ">
+              <Link href={"/"} className="text-3xl font-semibold text-white select-none">
+                Gadget store
+              </Link>
+              {/* <Search /> */}
             </div>
 
-            {/* menu icon  */}
-            <div className="block md:hidden lg:hidden">
-              <div className="flex space-x-3">
-                <CartIcon totalCart={totalCart} />
-                <HiMenuAlt3
-                  className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
-                  onClick={handleClick}
-                />
+            <div className="pr-2">
+              <div className="hidden gap-x-3 md:flex lg:flex">
+                <div className="flex flex-col justify-end w-full sm:flex-row">
+
+                  <OrderButton
+                    isHover={true}
+                    totalOrder={totalOrder}
+                  />
+
+                  {/* <Favorites /> */}
+
+                  <CartIcon totalCart={totalCart} />
+
+                  {session ? (
+                    <div className="flex ml-3 space-x-3">
+                      <Link href={"/profile"}>
+                        <Image
+                          style={{
+                            maxWidth: "40px",
+                            minWidth: "40px",
+                            maxHeight: "40px",
+                            minHeight: "40px",
+                          }}
+                          className="rounded-full"
+                          src={session?.user?.image}
+                          alt="pic"
+                          width={20}
+                          height={20}
+                        />
+                      </Link>
+                      <Link
+                        href={"/profile"}
+                        className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
+                      >
+                        {session.user.name}
+                      </Link>
+                      <div
+                        onClick={() => {
+                          setShowLogoutModal(true);
+                        }}
+                        className="relative flex items-center justify-center cursor-pointer"
+                      >
+                        <Image
+                          style={{
+                            maxWidth: "30px",
+                            minWidth: "30px",
+                            maxHeight: "30px",
+                            minHeight: "30px",
+                          }}
+                          src={"/images/icons/logOut.svg"}
+                          alt="pic"
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div
+                        onClick={async () => {
+
+                          await signIn("google", {
+                            callbackUrl: "/",
+                          });
+                        }}
+                        className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                      >
+                        <span className="text-sm font-medium">Sign in</span>
+                      </div>
+                      <div
+                        onClick={async () => {
+                          await signIn("google", {
+                            callbackUrl: "/",
+                          });
+                        }}
+                        className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                      >
+                        <span className="text-sm font-medium">Login</span>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* menu icon  */}
+              <div className="block md:hidden lg:hidden">
+                <div className="flex space-x-3">
+                  <CartIcon totalCart={totalCart} />
+                  <HiMenuAlt3
+                    className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+                    onClick={handleClick}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
 
-        {/* mobile nav  */}
-        {mobileNav && (
-          <>
-            <nav className="block py-4 mx-6 my-2 border border-gray-300 rounded-lg shadow-lg md:hidden lg:hidden">
-              <ul>
-                <li>
-                  <OrderButton totalOrder={totalOrder} isHover={false} />
-                </li>
-                <li>
-                  <Favorites isHover={false} />
-                </li>
-              </ul>
-            </nav>
-          </>
-        )}
-      </header>
-    </div>
+          {/* mobile nav  */}
+          {mobileNav && (
+            <>
+              <nav className="block py-4 mx-6 my-2 border border-gray-300 rounded-lg shadow-lg md:hidden lg:hidden">
+                <ul>
+                  <li>
+                    <OrderButton totalOrder={totalOrder} isHover={false} />
+                  </li>
+                  <li>
+                    <Favorites isHover={false} />
+                  </li>
+                </ul>
+              </nav>
+            </>
+          )}
+        </header>
+      </div>
+    </>
   );
 };
 
@@ -163,8 +166,8 @@ const CartIcon = ({ totalCart = 0 }) => {
     <>
       <Link href={"/checkout"} className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
         <div className="relative">
-      
-          <Image src={iCart} alt="" width={18} height={18}/>
+
+          <Image src={iCart} alt="" width={18} height={18} />
           {
             totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
@@ -206,7 +209,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
     <>
       <Link href={"/orders"} className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
         <div className="relative">
-          <Image src={iOrder} alt="" width={18} height={18}/>
+          <Image src={iOrder} alt="" width={18} height={18} />
           {
             totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}

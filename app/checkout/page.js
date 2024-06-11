@@ -28,14 +28,14 @@ const Checkout = async () => {
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
-        <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
+        <div className="py-2 mt-4 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div className="relative">
-            <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
+            <ul className="relative flex items-center justify-between w-full space-x-2 sm:space-x-4">
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
-                <div className="ring ring-emerald-400 ring-offset-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-400 text-xs font-semibold text-emerald-700">
+                <div className="flex items-center justify-center w-6 h-6 text-xs font-semibold rounded-full ring ring-emerald-400 ring-offset-2 bg-emerald-400 text-emerald-700">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
+                    className="w-4 h-4"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="white"
@@ -52,7 +52,7 @@ const Checkout = async () => {
               </li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-black"
+                className="w-4 h-4 text-black"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -66,7 +66,7 @@ const Checkout = async () => {
               </svg>
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
                 <a
-                  className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2"
+                  className="flex items-center justify-center w-6 h-6 text-xs font-semibold text-white bg-gray-600 rounded-full ring ring-gray-600 ring-offset-2"
                   href="#"
                 >
                   2
@@ -75,7 +75,7 @@ const Checkout = async () => {
               </li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-black"
+                className="w-4 h-4 text-black"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -89,7 +89,7 @@ const Checkout = async () => {
               </svg>
               <li className="flex items-center space-x-3 text-left sm:space-x-4">
                 <a
-                  className="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white"
+                  className="flex items-center justify-center w-6 h-6 text-xs font-semibold text-white bg-gray-400 rounded-full"
                   href="#"
                 >
                   3
@@ -101,13 +101,13 @@ const Checkout = async () => {
         </div>
       </div> */}
 
-      <div className="px-5 grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
-        <div className="px-4">
+      <div className="grid px-5 sm:px-0 common-class lg:grid-cols-2">
+        <div>
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
           </p>
-          <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4 sm:px-6">
+          <div className="px-2 py-4 mt-8 space-y-3 border rounded-lg sm:px-6">
             {
               cart?.length > 0
                 ? cart?.map((item, index) => (
@@ -117,28 +117,28 @@ const Checkout = async () => {
           </div>
 
           {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
-          <form className="mt-5 grid gap-6">
+          <form className="grid gap-6 mt-5">
             <div className="relative">
               <input
-                className="peer hidden"
+                className="hidden peer"
                 id="radio_1"
                 type="radio"
                 name="radio"
                 checked
               />
-              <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+              <span className="box-content absolute block w-3 h-3 -translate-y-1/2 bg-white border-8 border-gray-300 rounded-full peer-checked:border-gray-700 right-4 top-1/2"></span>
               <label
-                className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                className="flex p-4 border border-gray-300 rounded-lg cursor-pointer select-none peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50"
                 for="radio_1"
               >
                 <img
-                  className="w-14 object-contain"
+                  className="object-contain w-14"
                   src="/images/naorrAeygcJzX0SyNI4Y0.png"
                   alt=""
                 />
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">Fedex Delivery</span>
-                  <p className="text-slate-500 text-sm leading-6">
+                  <p className="text-sm leading-6 text-slate-500">
                     Delivery: 2-4 Days
                   </p>
                 </div>
@@ -146,25 +146,25 @@ const Checkout = async () => {
             </div>
             <div className="relative">
               <input
-                className="peer hidden"
+                className="hidden peer"
                 id="radio_2"
                 type="radio"
                 name="radio"
                 checked
               />
-              <span className="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+              <span className="box-content absolute block w-3 h-3 -translate-y-1/2 bg-white border-8 border-gray-300 rounded-full peer-checked:border-gray-700 right-4 top-1/2"></span>
               <label
-                className="peer-checked:border-2 peer-checked:border-gray-700  flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+                className="flex p-4 border border-gray-300 rounded-lg cursor-pointer select-none peer-checked:border-2 peer-checked:border-gray-700"
                 for="radio_2"
               >
                 <img
-                  className="w-14 object-contain"
+                  className="object-contain w-14"
                   src="/images/oG8xsl3xsOkwkMsrLGKM4.png"
                   alt=""
                 />
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">Fedex Delivery</span>
-                  <p className="text-slate-500 text-sm leading-6">
+                  <p className="text-sm leading-6 text-slate-500">
                     Delivery: 2-4 Days
                   </p>
                 </div>
@@ -175,7 +175,7 @@ const Checkout = async () => {
           <Address email={session?.user?.email} address={address?.data} />
         </div>
 
-        <div className="mt-10 px-4 lg:mt-0">
+        <div className="mt-10 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
             Complete your order by providing your payment details.
@@ -185,7 +185,7 @@ const Checkout = async () => {
             <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
             <CommonInput label={"Contact Number"} placeholder="Street Address" />
 
-            <div className="mt-6 border-t border-b py-2 text-white">
+            <div className="py-2 mt-6 text-white border-t border-b">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium">Subtotal</p>
                 <p className="font-semibold">${totalPrice}</p>
@@ -195,7 +195,7 @@ const Checkout = async () => {
                 <p className="font-semibold">$8.00</p>
               </div> */}
             </div>
-            <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center justify-between mt-6">
               <p className="text-sm font-medium ">Total</p>
               <p className="text-2xl font-semibold">${totalPrice}</p>
             </div>

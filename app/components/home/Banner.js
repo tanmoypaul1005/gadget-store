@@ -11,6 +11,14 @@ function Banner() {
 
   const data = [
     {
+      src: "/images/banner/banner-1.webp",
+      alt: "Image 3 for carousel",
+    },
+    {
+      src: "/images/banner/banner-4.png",
+      alt: "Image 3 for carousel",
+    },
+    {
       src: "/images/banner/banner-3.png",
       alt: "Image 1 for carousel",
     },
@@ -18,10 +26,8 @@ function Banner() {
       src: "/images/banner/banner-2.png",
       alt: "Image 2 for carousel",
     },
-    {
-      src: "/images/banner/banner-1.png",
-      alt: "Image 3 for carousel",
-    },
+
+
   ];
 
   const [slide, setSlide] = useState(0);
@@ -65,7 +71,7 @@ function Banner() {
         }
         <BsArrowLeftCircleFill
           onClick={prevSlide}
-          className="absolute w-8 h-8 text-white filter drop-shadow-md cursor-pointer left-5 "
+          className="absolute w-8 h-8 text-white cursor-pointer filter drop-shadow-md left-5 "
         />
         <BsArrowRightCircleFill
           onClick={nextSlide}

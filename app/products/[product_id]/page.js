@@ -12,15 +12,17 @@ import ProductComment from "./components/ProductComment";
 
 const ProductDetails = async ({ params }) => {
 
-  const product = await fetch(base_url + kuProductList + `/${params?.product_id}`,{ cache: 'no-store' }).then((res) => res.json());
+  const response = await fetch(base_url + kuProductList + `/${params?.product_id}`, { cache: 'no-store' });
 
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const product = await response.json();
   const productDetails = product?.data;
-
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
-
-  //console.log("productDetails xxxxd", productDetails);
 
   return (
     <section className="overflow-hidden body-font">
@@ -69,7 +71,8 @@ const ProductDetails = async ({ params }) => {
       <ProductComment
         data={{
           comments: productDetails?.comment,
-          user: session?.user,
+          user: user,
+          product_id: params?.product_id
         }}
       />
     </section>
