@@ -22,7 +22,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
         {
           products?.data?.length > 0 ? (
             products.data.map((product, index) => (
-              <div key={index} className="flex justify-start">
+              <div key={index} className="flex justify-center">
                 <div className="w-60"> {/* w-60 is approximately 240px */}
                   <ProductCard product={product} />
                 </div>

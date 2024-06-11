@@ -102,7 +102,7 @@ const Checkout = async () => {
       </div> */}
 
       <div className="grid px-5 sm:px-0 common-class lg:grid-cols-2">
-        <div className="">
+        <div>
           <p className="text-xl font-medium">Order Summary</p>
           <p className="text-gray-400">
             Check your items. And select a suitable shipping method.
@@ -175,7 +175,7 @@ const Checkout = async () => {
           <Address email={session?.user?.email} address={address?.data} />
         </div>
 
-        <div className="px-4 mt-10 lg:mt-0">
+        <div className="mt-10 lg:mt-0">
           <p className="text-xl font-medium">Payment Details</p>
           <p className="text-gray-400">
             Complete your order by providing your payment details.
