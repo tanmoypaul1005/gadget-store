@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
+import { iCart, iOrder } from "@/util/imageImports";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
@@ -40,33 +41,12 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             <div className="hidden space-x-3 md:flex lg:flex">
               <div className="flex flex-col justify-end w-full px-6 sm:flex-row">
 
-                <Link href={"/orders"} className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
-                  <div className="relative">
+                <OrderButton 
+                  isHover={true}
+                  totalOrder={totalOrder}
+                />
 
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-5 h-5 text-gray-500"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-                      <path
-                        // fill-rule="evenodd"
-                        d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                      // clip-rule="evenodd"
-                      />
-                    </svg>
-                    {
-                      totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
-                        {totalOrder}
-                      </span> :
-                        ""
-                    }
-                  </div>
-                  <span className="text-sm font-medium">Orders</span>
-                </Link>
-
-                <Favorites />
+                {/* <Favorites /> */}
 
                 <CartIcon totalCart={totalCart} />
 
@@ -117,23 +97,22 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                   <>
                     <div
                       onClick={async () => {
-                        console.log("clicked");
+                        
                         await signIn("google", {
                           callbackUrl: "/",
                         });
                       }}
-                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
+                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                     >
                       <span className="text-sm font-medium">Sign in</span>
                     </div>
                     <div
                       onClick={async () => {
-                        console.log("clicked");
                         await signIn("google", {
                           callbackUrl: "/",
                         });
                       }}
-                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer gap-x-1 hover:text-black hover:bg-gray-100"
+                      className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                     >
                       <span className="text-sm font-medium">Login</span>
                     </div>
@@ -184,14 +163,8 @@ const CartIcon = ({ totalCart = 0 }) => {
     <>
       <Link href={"/checkout"} className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
         <div className="relative">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-gray-500"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-          </svg>
+      
+          <Image src={iCart} alt="" width={18} height={18}/>
           {
             totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
@@ -199,7 +172,7 @@ const CartIcon = ({ totalCart = 0 }) => {
               ""
           }
         </div>
-        <span className="text-sm font-medium">Cart</span>
+        <span className="text-sm font-medium text-cDeepSaffron mt-[4px]">Cart</span>
       </Link>
     </>
   )
@@ -231,22 +204,9 @@ const Favorites = ({ isHover = true }) => {
 const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
   return (
     <>
-      <Link href={"/orders"} className={`flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
+      <Link href={"/orders"} className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
         <div className="relative">
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-gray-500"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
-            <path
-              // fill-rule="evenodd"
-              d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-            // clip-rule="evenodd"
-            />
-          </svg>
+          <Image src={iOrder} alt="" width={18} height={18}/>
           {
             totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}
@@ -254,7 +214,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
               ""
           }
         </div>
-        <span className="text-sm font-medium">Orders</span>
+        <span className="text-sm font-medium text-cDeepSaffron mt-[4px]">Orders</span>
       </Link>
     </>
   )
