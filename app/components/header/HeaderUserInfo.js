@@ -39,7 +39,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
           <div>
             <div className="hidden space-x-3 md:flex lg:flex">
-              <div className="flex flex-col justify-end w-full px-6 sm:flex-row">
+              <div className="flex flex-col justify-end w-full sm:flex-row">
 
                 <OrderButton 
                   isHover={true}
