@@ -11,7 +11,7 @@ const FeaturedCategories = async () => {
 
     return (
         <div>
-            <div className='grid grid-cols-1 gap-y-4 gap-x-4 3xl:gap-x-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7'>
+            <div className='grid items-center grid-cols-1 gap-14 justify-items-center md:justify-items-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 3xl:gap-x-14'>
                 {
                     category?.data?.map((item, index) => (
                         <CategoryBox item={item} key={index} />
