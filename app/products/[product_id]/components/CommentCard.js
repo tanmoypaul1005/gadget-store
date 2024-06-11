@@ -5,19 +5,19 @@ import Avatar from '@/components/avatar/Avatar';
 // import { useAuth } from '../../../hooks/useAuth';
 // import Avatar from '../../../components/Avatar';
 
-const CommentCard = async({ comment, onCommentDelete }) => {
+const CommentCard = async ({ comment, onCommentDelete }) => {
 
     console.log("comment", comment)
-  
-     const user =await getUser(comment?.user);
 
-     console.log("user", user)
+    const user = await getUser(comment?.user);
+
+    console.log("user", user)
 
     return (
         <div>
             <div className="flex items-start my-8 space-x-4">
 
-                     <Avatar avatar={user?.data?.image} name={user?.data?.name}/>  
+                <Avatar avatar={user?.data?.image} name={user?.data?.name} />
 
                 <div className="w-full">
                     <div className='relative flex justify-between'>
