@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* Styles for large screens (width 1920px and above) */
+@media (min-width: 1881px) {
+  .largeScreenContainer {
+    width: 1880px;
+    /* Set a fixed width for the container */
+    margin: 0 auto;
+    /* Center the container */
+  }
+}
+/* Styles for medium screens (width up to 1420px) */
+
+
 * {
   box-sizing: border-box;
   margin: 0;
