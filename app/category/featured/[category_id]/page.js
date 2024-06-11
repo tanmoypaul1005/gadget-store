@@ -11,18 +11,20 @@ const FeaturedCategoriesDetails = async ({ params }) => {
   const categoryDetails = await fetch(base_url + `/category/details/${params?.category_id}`, { next: { revalidate: 1 } })
     .then(res => res.json())
 
-  console.log("categoryDetails", categoryDetails)
 
   return (
     <>
-      <div className='flex justify-center items-center text-3xl font-bold mb-10'>
+      <div className='flex items-center justify-center mb-10 text-3xl font-bold'>
         {categoryDetails?.data?.title ?? "Category"}
       </div>
-      <div className="flex gap-10 justify-between mx-[40px] pb-[40px] flex-wrap">
-        {products?.data?.length > 0 ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-y-10 mx-[40px] pb-[40px] flex-wrap">
+        {
+        products?.data?.length > 0 ? (
           products.data.map((product, index) => (
-            <div key={index}>
-              <ProductCard product={product} />
+            <div key={index} className="flex justify-center">
+              <div className="w-60"> {/* w-60 is approximately 240px */}
+                <ProductCard product={product} />
+              </div>
             </div>
           ))
         ) : (
