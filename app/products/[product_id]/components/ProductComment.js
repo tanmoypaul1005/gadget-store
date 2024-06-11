@@ -4,6 +4,7 @@ import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
 
 const ProductComment = ({ data }) => {
+  
   return (
     <section id="comments">
       <div className="container w-full mx-auto md:w-10/12">
