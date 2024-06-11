@@ -9,40 +9,42 @@ const Categories = async () => {
 
   return (
     <>
-      <div className="desktopNavbar mb-2">
-        <nav className="justify-center hidden my-4 lg:flex">
-          <ul className="flex items-center justify-center gap-x-12 font-bold  desktopNavbarUl font-sm">
+      <div className="w-full mb-2 desktopNavbar">
+        <nav className="justify-center hidden w-full my-4 lg:flex">
+          <ul className="flex justify-between common-class">
             <li className="relative nav_items">
               <Link href="/">HOME</Link>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
             </li>
 
-            {categoryData?.data?.slice(0,8)?.map((item, index) => (
-              <li key={index} className="relative nav_items men_nav_item">
-                <a href="#Men">{item?.title}</a>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
+            {
+              categoryData?.data?.slice(0, 8)?.map((item, index) => (
+                <li key={index} className="relative nav_items men_nav_item">
+                  <a href="#Men">{item?.title}</a>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
 
-                <ul className="absolute text-black flex-col items-start justify-start hidden gap-2 p-4 font-normal bg-white border shadow-lg hoveredItems w-52 top-10 rounded">
-                  {
-                  item?.child?.length > 0 ? (
-                    item?.child?.map((subItem, index) => (
-                      <li key={index}>
-                        <Link href={`/category/${subItem?._id}`}>{subItem?.title}</Link>
-                      </li>
-                    ))
-                  ) : (
-                    <li>
-                      <a href="#">No Sub Category</a>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            ))}
+                  <ul className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal text-black bg-white border rounded shadow-lg hoveredItems w-52 top-10">
+                    {
+                      item?.child?.length > 0 ? (
+                        item?.child?.map((subItem, index) => (
+                          <li key={index}>
+                            <Link href={`/category/${subItem?._id}`}>{subItem?.title}</Link>
+                          </li>
+                        ))
+                      ) : (
+                        <li>
+                          <a href="#">No Sub Category</a>
+                        </li>
+                      )}
+                  </ul>
+                </li>
+              ))
+            }
             {/* <li className="relative nav_items category_nav_item">
               <a href="#Categories">CATEGORIES</a>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-400 transition-all ease-in-out"></span>
 
-              <ul className="absolute z-10 hidden grid-cols-4 gap-4 p-4 font-normal text-gray-400 bg-white border shadow-lg categoriesItem top-10 rounded">
+              <ul className="absolute z-10 hidden grid-cols-4 gap-4 p-4 font-normal text-gray-400 bg-white border rounded shadow-lg categoriesItem top-10">
                 <li>
                   <ul className="flex flex-col items-start justify-start gap-2">
                     <li>

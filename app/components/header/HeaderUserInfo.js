@@ -21,7 +21,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
   };
 
   return (
-    <div className="w-full gap-8 px-8 mx-auto min-h-auto lg:px-0 lg:w-5/6 header">
+    <div className="common-class header">
       <LogoutModal
         open={isShowLogoutModal}
         setOpen={setShowLogoutModal}
