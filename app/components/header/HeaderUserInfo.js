@@ -7,20 +7,12 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
-// import Fade from 'react-reveal/Fade';
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   const [mobileNav, setMobileNav] = useState(false);
-
-  const menu = [
-    { id: 1, text: "Home", to: "/" },
-    { id: 2, text: "About", to: "/about" },
-    { id: 3, text: "Service", to: "/service" },
-    { id: 4, text: "Contact", to: "/contact" },
-  ];
 
   //handle click
   const handleClick = () => {
