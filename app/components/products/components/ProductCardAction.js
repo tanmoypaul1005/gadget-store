@@ -13,8 +13,8 @@ const ProductCardAction = ({ data}) => {
 
     return (
         <div
-            onClick={async () => {
-                
+            onClick={async (e) => {
+                e.preventDefault();
                 const success = await addCart(formData, window.location.pathname);
                 if (success.success) {
                     Toastr({ type: "success", message: success.message });
