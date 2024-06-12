@@ -18,7 +18,7 @@ const ProductDetails = async ({ params }) => {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
-  const product = await response.json();
+  const product = await response?.json();
   const productDetails = product?.data;
   const session = await auth();
 
