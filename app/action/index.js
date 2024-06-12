@@ -1,4 +1,5 @@
 import Category from "@/models/Category";
+import Products from "@/models/Products";
 import connectMongo from "@/util/db";
 
 export async function getCategory() {
@@ -35,4 +36,15 @@ export async function getCategory() {
         message: "Internal Server Error",
       };
     }
-  }
+}
+
+
+export async function getCategorySearch(search = '') {
+  await connectMongo();
+
+  const categories = await Products.find({
+    name: { $regex: new RegExp(search, 'i') }
+  });
+
+  return categories;
+}
