@@ -27,8 +27,8 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
         setOpen={setShowLogoutModal}
       />
 
-      <div className="common-class header">
-        <header>
+      <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
+        <header className="">
           {/* desktop nav  */}
           <nav className="flex justify-between w-full py-3">
             {/* brand  */}
@@ -36,7 +36,9 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
               <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
                 Gadget store
               </Link>
-               <Search /> 
+              <div className="hidden w-full md:block lg:block">
+                <Search />
+              </div>
             </div>
 
             <div className="flex items-center justify-center pr-2">
@@ -133,6 +135,8 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                   />
                 </div>
               </div>
+
+
             </div>
           </nav>
 
@@ -152,6 +156,10 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             </>
           )}
         </header>
+
+        <div className="block w-full mb-5 md:hidden lg:hidden">
+          <Search />
+        </div>
       </div>
     </>
   );
