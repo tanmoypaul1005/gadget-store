@@ -18,14 +18,7 @@ const Search = () => {
     useEffect(() => {
         setSearchTerm('');
         setDropdownOpen(false);
-        console.log("pathname", pathname);
     }, [pathname]);
-
-    useEffect(() => {
-        setSearchTerm("");
-        setDropdownOpen(false);
-        console.log("pathname", window.location.pathname)
-    }, [window.location.pathname]);
     
     useEffect(() => {
         fetchData();

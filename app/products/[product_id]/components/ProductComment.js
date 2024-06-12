@@ -6,8 +6,8 @@ import CommentForm from "./CommentForm";
 const ProductComment = ({ data }) => {
   
   return (
-    <section id="comments">
-      <div className="container w-full mx-auto md:w-10/12">
+  
+      <div className="container w-full">
         <h2 className="text-2xl font-bold ">
           Comments ({data?.comments?.length ?? 0})
         </h2>
@@ -33,7 +33,7 @@ const ProductComment = ({ data }) => {
           ))}
         </div>
       </div>
-    </section>
+
   );
 };
 

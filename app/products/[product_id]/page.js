@@ -25,48 +25,48 @@ const ProductDetails = async ({ params }) => {
   const user = await findUserId(session?.user?.email);
 
   return (
-    <section className="overflow-hidden body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-wrap mx-auto lg:w-4/5">
-          <Image
-            style={{ maxHeight: "400px" }}
-            src={productDetails?.image}
-            className="object-contain object-center w-full border border-gray-200 rounded lg:w-1/2"
-            width={500}
-            height={500}
-            alt=""
-          />
-          <div className="w-full py-6 lg:w-1/2 lg:pl-10 lg:py-0">
-            <h2 className="text-sm tracking-widest title-font">
-              {commonView(productDetails?.brand)}
-            </h2>
-            <h1 className="mb-1 text-3xl font-medium title-font">
-              {commonView(productDetails?.name)}
-            </h1>
+    <div className="common-class">
 
-            <p className="leading-relaxed">
-              {commonView(productDetails?.description)}
-            </p>
+      <div className="flex flex-wrap pb-5">
+        <Image
+          style={{ maxHeight: "400px" }}
+          src={productDetails?.image}
+          className="object-contain object-center w-full border border-gray-200 rounded lg:w-1/2"
+          width={500}
+          height={500}
+          alt=""
+        />
+        <div className="w-full py-6 lg:w-1/2 lg:pl-10 lg:py-0">
+          <h2 className="text-sm tracking-widest title-font">
+            {commonView(productDetails?.brand)}
+          </h2>
+          <h1 className="mb-1 text-3xl font-medium title-font">
+            {commonView(productDetails?.name)}
+          </h1>
 
-            <div className="pt-4 text-2xl font-medium text-red-400 title-font">$58.00</div>
-            <div className="flex items-center pb-4 border-b-2 border-gray-200">
-              {/* <div className="flex">
+          <p className="leading-relaxed">
+            {commonView(productDetails?.description)}
+          </p>
+
+          <div className="pt-4 text-2xl font-medium text-red-400 title-font">$58.00</div>
+          <div className="flex items-center pb-4 border-b-2 border-gray-200">
+            {/* <div className="flex">
                 <span className="mr-3">Color</span>
                 <button className="w-6 h-6 border-2 border-gray-300 rounded-full focus:outline-none"></button>
                 <button className="w-6 h-6 ml-1 bg-gray-700 border-2 border-gray-300 rounded-full focus:outline-none"></button>
                 <button className="w-6 h-6 ml-1 bg-red-500 border-2 border-gray-300 rounded-full focus:outline-none"></button>
               </div> */}
-            </div>
+          </div>
 
-            <div className="flex items-start justify-start ">
-              <Action
-                user={user?._id}
-                product_id={params?.product_id}
-              />
-            </div>
+          <div className="flex items-start justify-start ">
+            <Action
+              user={user?._id}
+              product_id={params?.product_id}
+            />
           </div>
         </div>
       </div>
+
 
       <ProductComment
         data={{
@@ -75,7 +75,7 @@ const ProductDetails = async ({ params }) => {
           product_id: params?.product_id
         }}
       />
-    </section>
+    </div>
   );
 };
 
