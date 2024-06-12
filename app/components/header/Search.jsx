@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-
 import { public_base_url } from '@/util/const';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce';
 
@@ -13,6 +13,20 @@ const Search = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchValue] = useDebounce(searchTerm, 500);
 
+    const pathname = usePathname();
+
+    useEffect(() => {
+        setSearchTerm('');
+        setDropdownOpen(false);
+        console.log("pathname", pathname);
+    }, [pathname]);
+
+    useEffect(() => {
+        setSearchTerm("");
+        setDropdownOpen(false);
+        console.log("pathname", window.location.pathname)
+    }, [window.location.pathname]);
+    
     useEffect(() => {
         fetchData();
     }, [searchValue]);
@@ -25,7 +39,7 @@ const Search = () => {
 
     const fetchData = async () => {
         if (searchValue) {
-            fetch(public_base_url+`/search?query=${searchValue}`)
+            fetch(public_base_url + `/search?query=${searchValue}`)
                 .then(response => response.json())
                 .then(data => setSearchResults(data));
         } else {
