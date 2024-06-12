@@ -217,19 +217,19 @@ const Checkout = async () => {
 
 export default Checkout;
 
-// export async function generateStaticParams() {
+export async function generateStaticParams() {
 
-//   const session = await auth();
+  const session = await auth();
 
-//   const user = await findUserId(session?.user?.email);
+  const user = await findUserId(session?.user?.email);
 
-//   const cart = await getCartCount(user?._id);
+  const cart = await getCartCount(user?._id);
 
-//   return recipeList?.data.map((item) => {
-//     return {
-//       params: {
-//         cart,
-//       },
-//     };
-//   });
-// }
+  return recipeList?.data.map((item) => {
+    return {
+      params: {
+        cart,
+      },
+    };
+  });
+}
