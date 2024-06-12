@@ -20,9 +20,9 @@ const ProductDetails = async ({ params }) => {
 
   const product = await response?.json();
   const productDetails = product?.data;
-  const session = await auth();
+  // const session = await auth();
 
-  const user = await findUserId(session?.user?.email);
+  // const user = await findUserId(session?.user?.email);
 
   return (
     <div className="common-class">
