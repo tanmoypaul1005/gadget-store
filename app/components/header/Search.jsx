@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce';
 
@@ -8,7 +9,7 @@ const Search = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [searchValue] = useDebounce(searchTerm, 500);
 
     useEffect(() => {
@@ -29,6 +30,9 @@ const Search = () => {
         <div className='w-full'>
             <input
                 value={searchTerm}
+                onKeyDown={(e) => {
+                        setDropdownOpen(true);
+                }}
                 onChange={event => setSearchTerm(event.target.value)}
                 id="email"
                 name="email"
@@ -36,12 +40,14 @@ const Search = () => {
                 placeholder={"Search for products, brands and categories"}
             />
             {
-                searchResults?.data?.length > 0 && (
+                dropdownOpen && searchResults?.data?.length > 0 && (
                     <div className="relative">
                         <div className="absolute z-10 w-full mt-2 rounded-md shadow-lg bg-cCommonBg">
                             {searchResults?.data?.map((result, index) => (
-                                <div key={index} className="px-4 py-2 cursor-pointer hover:bg-zinc-700">
-                                    {result.name}
+                                <div onClick={()=>{setDropdownOpen(false);}} key={index} className="px-4 py-2 cursor-pointer hover:bg-zinc-700">
+                                    <Link href={`/products/${result?._id}`}>
+                                        {result.name}
+                                    </Link>
                                 </div>
                             ))}
                         </div>
