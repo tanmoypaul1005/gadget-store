@@ -32,14 +32,14 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           {/* desktop nav  */}
           <nav className="flex justify-between w-full py-3">
             {/* brand  */}
-            <div className="flex items-center flex-grow ">
-              <Link href={"/"} className="text-3xl font-semibold text-white select-none">
+            <div className="flex items-center flex-grow gap-x-4">
+              <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
                 Gadget store
               </Link>
-              {/* <Search /> */}
+               <Search /> 
             </div>
 
-            <div className="pr-2">
+            <div className="flex items-center justify-center pr-2">
               <div className="hidden gap-x-3 md:flex lg:flex">
                 <div className="flex flex-col justify-end w-full sm:flex-row">
 

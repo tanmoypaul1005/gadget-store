@@ -1,17 +1,21 @@
 import ProductCard from '@/app/components/products/components/ProductCard'
 import { base_url } from '@/util/const'
-import { kuCategory, kuMainCategory } from '@/util/url'
+import { kuMainCategory } from '@/util/url'
 import React from 'react'
 
 const FeaturedCategoriesDetails = async ({ params }) => {
 
-  const products = await fetch(base_url + kuMainCategory + `/${params?.category_id}`, { next: { revalidate: 1 } })
-    .then(res => res.json())
+  const response = await fetch(base_url + kuMainCategory + `/${params?.category_id}`);
+  const products = await response.json();
+  
+  const categoryResponse = await fetch(base_url + `/category/details/${params?.category_id}`);
 
-  const categoryDetails = await fetch(base_url + `/category/details/${params?.category_id}`, { next: { revalidate: 1 } })
-    .then(res => res.json())
-
-
+  if (!categoryResponse.ok) {
+    throw new Error(`HTTP error! status: ${categoryResponse.status}`);
+  }
+  
+  const categoryDetails = await categoryResponse.json();
+  
   return (
     <div className='common-class'>
       <div className='pb-2 mb-10 text-xl font-bold border-b border-white'>
@@ -22,7 +26,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
         {
           products?.data?.length > 0 ? (
             products.data.map((product, index) => (
-              <div key={index} className="flex justify-center">
+              <div key={index} className="flex justify-center sm:justify-start">
                 <div className="w-60"> {/* w-60 is approximately 240px */}
                   <ProductCard product={product} />
                 </div>
