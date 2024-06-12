@@ -12,7 +12,7 @@ import ProductComment from "./components/ProductComment";
 
 const ProductDetails = async ({ params }) => {
 
-  const response = await fetch(base_url + kuProductList + `/${params?.product_id}`, { cache: 'no-store' });
+  const response = await fetch(base_url + kuProductList + `/${params?.product_id}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
