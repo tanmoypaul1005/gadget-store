@@ -62,7 +62,7 @@ const Search = () => {
                                     searchResults?.data?.map((result, index) => (
                                         <div onClick={() => { setDropdownOpen(false); }} key={index} className="px-4 py-2 cursor-pointer hover:bg-zinc-700">
                                             <Link href={`/products/${result?._id}`}>
-                                                {result.name}
+                                                {result?.name}
                                             </Link>
                                         </div>
                                     ))) : <div className="px-4 py-6 text-center">No results found</div>}
