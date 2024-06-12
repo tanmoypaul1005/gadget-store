@@ -1,20 +1,21 @@
 export const revalidate = 10;
-import { base_url } from "@/util/const";
-import { kuProductList } from "@/util/url";
 import Image from "next/image";
 import Action from "./action/Action";
 import { auth } from "@/auth";
 import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
+import { getComment } from "@/app/action/comment";
 
 
 const ProductDetails = async ({ params }) => {
 
  
   const productDetails = await fetchProduct(params?.product_id);
+  const comments=await getComment(params?.product_id);
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
+
 
   return (
     <div className="common-class">
@@ -62,7 +63,7 @@ const ProductDetails = async ({ params }) => {
 
       <ProductComment
         data={{
-          comments: productDetails?.comment,
+          comments: comments?.data,
           user: user,
           product_id: params?.product_id
         }}

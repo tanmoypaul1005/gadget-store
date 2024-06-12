@@ -17,3 +17,16 @@ export async function POST(request) {
     }
 };
 
+
+export async function GET(request) {
+    try {
+        await connectMongo();
+
+        const comments = await Comment.find({}).sort({ createdAt: -1 }).populate('user');
+        return Response.json({ success: true, status: 200, data: comments, message: "Comments Found" });
+    } catch (err) {
+        console.error(err);
+        return Response.json({ success: false, status: 500, message: "Internal Server Error", data: null });
+    }
+}
+
