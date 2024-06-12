@@ -23,13 +23,15 @@ const ProductComment = ({ data }) => {
         </div>
 
         <div className="gap-y-2">
-          {data?.comments?.map((comment, index) => (
+          { 
+          data?.comments?.length > 0?
+          data?.comments?.map((comment, index) => (
             <CommentCard
-              // onCommentDelete={() => { handleCommentDelete(comment?.id) }}
               key={index}
               comment={comment}
             />
-          ))}
+          )): "No comments yet."
+        }
         </div>
       </div>
   );
