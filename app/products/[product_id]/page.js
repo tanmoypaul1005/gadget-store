@@ -4,22 +4,14 @@ import { kuProductList } from "@/util/url";
 import Image from "next/image";
 import Action from "./action/Action";
 import { auth } from "@/auth";
-import { findUserId } from "@/app/action/product/action";
+import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 
 
 const ProductDetails = async ({ params }) => {
 
-  const response = await fetch( `https://gadget-storebd.vercel.app/products/${params?.product_id}`);
-
-  
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-
-  const product = await response?.json();
-  const productDetails = product?.data;
+ 
+  const productDetails = await fetchProduct(params?.product_id);
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
