@@ -16,6 +16,12 @@ const Search = () => {
         fetchData();
     }, [searchValue]);
 
+    useEffect(() => {
+        if (!searchValue) {
+            setDropdownOpen(false)
+        }
+    }, [searchValue]);
+
     const fetchData = async () => {
         if (searchValue) {
             fetch(`http://localhost:3000/api/search?query=${searchValue}`)
@@ -31,7 +37,7 @@ const Search = () => {
             <input
                 value={searchTerm}
                 onKeyDown={(e) => {
-                        setDropdownOpen(true);
+                    setDropdownOpen(true);
                 }}
                 onChange={event => setSearchTerm(event.target.value)}
                 id="email"
@@ -40,16 +46,18 @@ const Search = () => {
                 placeholder={"Search for products, brands and categories"}
             />
             {
-                dropdownOpen && searchResults?.data?.length > 0 && (
+                dropdownOpen && (
                     <div className="relative">
                         <div className="absolute z-10 w-full mt-2 rounded-md shadow-lg bg-cCommonBg">
-                            {searchResults?.data?.map((result, index) => (
-                                <div onClick={()=>{setDropdownOpen(false);}} key={index} className="px-4 py-2 cursor-pointer hover:bg-zinc-700">
-                                    <Link href={`/products/${result?._id}`}>
-                                        {result.name}
-                                    </Link>
-                                </div>
-                            ))}
+                            {
+                                searchResults?.data?.length > 0 ? (
+                                    searchResults?.data?.map((result, index) => (
+                                        <div onClick={() => { setDropdownOpen(false); }} key={index} className="px-4 py-2 cursor-pointer hover:bg-zinc-700">
+                                            <Link href={`/products/${result?._id}`}>
+                                                {result.name}
+                                            </Link>
+                                        </div>
+                                    ))) : <div className="px-4 py-6 text-center">No results found</div>}
                         </div>
                     </div>
                 )
