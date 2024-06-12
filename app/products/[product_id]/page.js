@@ -4,25 +4,17 @@ import { kuProductList } from "@/util/url";
 import Image from "next/image";
 import Action from "./action/Action";
 import { auth } from "@/auth";
-import { findUserId } from "@/app/action/product/action";
+import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 
 
 const ProductDetails = async ({ params }) => {
 
-  const response = await fetch(base_url + kuProductList + `/${params?.product_id}`);
+ 
+  const productDetails = await fetchProduct(params?.product_id);
+  const session = await auth();
 
-  
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-
-  const product = await response?.json();
-  const productDetails = product?.data;
-  // const session = await auth();
-
-  // const user = await findUserId(session?.user?.email);
+  const user = await findUserId(session?.user?.email);
 
   return (
     <div className="common-class">
@@ -59,22 +51,22 @@ const ProductDetails = async ({ params }) => {
           </div>
 
           <div className="flex items-start justify-start ">
-            {/* <Action
+            <Action
               user={user?._id}
               product_id={params?.product_id}
-            /> */}
+            />
           </div>
         </div>
       </div>
 
 
-      {/* <ProductComment
+      <ProductComment
         data={{
           comments: productDetails?.comment,
           user: user,
           product_id: params?.product_id
         }}
-      /> */}
+      />
     </div>
   );
 };
