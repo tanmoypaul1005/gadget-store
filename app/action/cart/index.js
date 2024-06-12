@@ -19,7 +19,7 @@ export const getCartCount = async (user_id) => {
 export const deleteCart = async (cart_id,path) => {
   try {
     await connectMongo();
-    const result = await Cart.findByIdAndDelete({ _id: cart_id });
+    const result = await Cart?.findByIdAndDelete({ _id: cart_id });
     console.log("Success:", result);
     revalidatePath(path);
     return true;
