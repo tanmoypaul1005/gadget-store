@@ -2,6 +2,8 @@ export const base_url_src =process.env.BASE_URL;
 
 export const base_url=base_url_src + "api";
 
+export const public_base_url=process.env.NEXT_PUBLIC_BASE_URL + "api";
+
 
 export const products_type_value = {
     new_arrivals: "new_arrivals",

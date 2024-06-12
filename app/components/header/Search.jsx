@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
+import { public_base_url } from '@/util/const';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce';
@@ -24,7 +25,7 @@ const Search = () => {
 
     const fetchData = async () => {
         if (searchValue) {
-            fetch(`http://localhost:3000/api/search?query=${searchValue}`)
+            fetch(public_base_url+`/search?query=${searchValue}`)
                 .then(response => response.json())
                 .then(data => setSearchResults(data));
         } else {
