@@ -67,8 +67,6 @@ export async function GET(request) {
     await connectMongo();
     const searchParams = request.nextUrl.searchParams;
     const email = searchParams.get("email");
-
-    console.log("email: ", email)
     
     const user = await User.findOne({ email: email }).exec();
     

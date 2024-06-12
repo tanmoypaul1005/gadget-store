@@ -6,7 +6,6 @@ import CommentForm from "./CommentForm";
 const ProductComment = ({ data }) => {
   
   return (
-  
       <div className="container w-full">
         <h2 className="text-2xl font-bold ">
           Comments ({data?.comments?.length ?? 0})
@@ -33,7 +32,6 @@ const ProductComment = ({ data }) => {
           ))}
         </div>
       </div>
-
   );
 };
 
