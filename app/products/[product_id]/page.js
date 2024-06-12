@@ -120,3 +120,24 @@ export default ProductDetails;
                             </span>
                         </div> */
 }
+
+
+export async function generateStaticParams() {
+
+  const session = await auth();
+
+  const user = await findUserId(session?.user?.email);
+
+  const cart = await getCartCount(user?._id);
+
+  const products = await fetch(base_url + kuProductList,{ next: { revalidate: 1 } })
+  .then(res => res.json())
+
+  products?.data.map((product) => {
+    return {
+      params: {
+        product_id: product?._id
+      },
+    };
+  });
+}
