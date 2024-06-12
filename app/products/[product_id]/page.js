@@ -68,13 +68,13 @@ const ProductDetails = async ({ params }) => {
       </div>
 
 
-      <ProductComment
+      {/* <ProductComment
         data={{
           comments: productDetails?.comment,
           user: user,
           product_id: params?.product_id
         }}
-      />
+      /> */}
     </div>
   );
 };
