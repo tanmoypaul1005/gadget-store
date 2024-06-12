@@ -1,9 +1,7 @@
 export const revalidate = 10;
 import { base_url } from "@/util/const";
 import { kuProductList } from "@/util/url";
-import { commonView } from "@/util/utilityFunction";
 import Image from "next/image";
-import React from "react";
 import Action from "./action/Action";
 import { auth } from "@/auth";
 import { findUserId } from "@/app/action/product/action";
@@ -14,15 +12,17 @@ const ProductDetails = async ({ params }) => {
 
   const response = await fetch(base_url + kuProductList + `/${params?.product_id}`);
 
+  
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
+
   const product = await response?.json();
   const productDetails = product?.data;
-  const session = await auth();
+  // const session = await auth();
 
-  const user = await findUserId(session?.user?.email);
+  // const user = await findUserId(session?.user?.email);
 
   return (
     <div className="common-class">
@@ -38,14 +38,14 @@ const ProductDetails = async ({ params }) => {
         />
         <div className="w-full py-6 lg:w-1/2 lg:pl-10 lg:py-0">
           <h2 className="text-sm tracking-widest title-font">
-            {commonView(productDetails?.brand)}
+            {productDetails?.brand}
           </h2>
           <h1 className="mb-1 text-3xl font-medium title-font">
-            {commonView(productDetails?.name)}
+            {productDetails?.name}
           </h1>
 
           <p className="leading-relaxed">
-            {commonView(productDetails?.description)}
+            {productDetails?.description}
           </p>
 
           <div className="pt-4 text-2xl font-medium text-red-400 title-font">$58.00</div>
@@ -59,10 +59,10 @@ const ProductDetails = async ({ params }) => {
           </div>
 
           <div className="flex items-start justify-start ">
-            <Action
+            {/* <Action
               user={user?._id}
               product_id={params?.product_id}
-            />
+            /> */}
           </div>
         </div>
       </div>
