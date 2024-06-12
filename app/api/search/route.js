@@ -5,11 +5,19 @@ export async function GET(request) {
     try {
         await connectMongo(); // Ensure this connects successfully
         const searchParams = request.nextUrl.searchParams;
-        const query = searchParams.get("query");
-        console.log("query", query); // Check this output
+        let query = searchParams.get("query");
+        console.log("query", query);
+
+        // Remove quotes from the query
+        query = query.replace(/\"(.*?)\"/g, '$1');
 
         // Consider adding an index on the 'name' field in MongoDB for faster searches
-        const products = await Products.find({ name: { $regex: query, $options: 'i' } });
+        const products = await Products.find({
+            $or: [
+                { name: new RegExp(query, 'i') },
+                { brand: new RegExp(query, 'i') },
+            ]
+        }).limit(10);
 
         return Response.json({ status: 200, success: true, data: products, query, message: "Products Found" });
     } catch (err) {
