@@ -1,7 +1,8 @@
 
 import { getUser } from '@/app/action/user';
-import Avatar from '@/components/avatar/Avatar';
 import { formatDate } from '@/util/utilityFunction';
+import Image from 'next/image';
+import Link from 'next/link';
 // import { i3dots, iDelete } from '../../../app/utility/imageImports';
 // import { useAuth } from '../../../hooks/useAuth';
 // import Avatar from '../../../components/Avatar';
@@ -14,7 +15,23 @@ const CommentCard = async ({ comment, onCommentDelete }) => {
         <div>
             <div className="flex items-start my-8 space-x-4">
 
-                <Avatar avatar={user?.data?.image} name={user?.data?.name} />
+     
+
+                <Link href={"/profile"}>
+                        <Image
+                          style={{
+                            maxWidth: "40px",
+                            minWidth: "40px",
+                            maxHeight: "40px",
+                            minHeight: "40px",
+                          }}
+                          className="rounded-full"
+                          src={user?.data?.image}
+                          alt="pic"
+                          width={20}
+                          height={20}
+                        />
+                      </Link>
 
                 <div className="w-full">
                     <div className='relative flex justify-between'>
