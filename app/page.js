@@ -5,6 +5,8 @@ import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
 import { getAllCategory } from "./action";
+import SideBarCategory from "./components/SideBarCategory";
+import OfferBanner from "./components/home/OfferBanner";
 
 export default async function Home() {
 
@@ -15,7 +17,16 @@ export default async function Home() {
       {/* <Advertisement /> */}
       <main>
         <div className="common-class">
-          <Banner category={categoryData?.data} />
+          <div className="flex gap-x-2">
+            <div className=" h-full mt-[-15px]">
+              <SideBarCategory />
+            </div>
+
+            <div className="w-full">
+              <Banner />
+            </div>
+          </div>
+          <OfferBanner category={categoryData?.data} />
           <div className="mt-10"></div>
           <FeaturedCategories />
         </div>
