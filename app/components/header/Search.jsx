@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce';
-import { ImSpinner2 } from "react-icons/im";
 
 const Search = () => {
 
@@ -20,7 +19,7 @@ const Search = () => {
         setSearchTerm('');
         setDropdownOpen(false);
     }, [pathname]);
-
+    
     useEffect(() => {
         fetchData();
     }, [searchValue]);
@@ -31,31 +30,18 @@ const Search = () => {
         }
     }, [searchValue]);
 
-
-    const [isLoading, setIsLoading] = useState(false);
-
     const fetchData = async () => {
-        setIsLoading(true);
         if (searchValue) {
             fetch(public_base_url + `/search?query=${searchValue}`)
                 .then(response => response.json())
                 .then(data => setSearchResults(data));
-                setTimeout(() => {
-                    setIsLoading(false);
-                    
-                }, 1000);
         } else {
             setSearchResults([]);
-            setTimeout(() => {
-                setIsLoading(false);
-                
-            }, 1000);
         }
     }
 
- 
     return (
-        <div className='w-full relative'>
+        <div className='w-full'>
             <input
                 value={searchTerm}
                 onKeyDown={(e) => {
@@ -63,17 +49,10 @@ const Search = () => {
                 }}
                 onChange={event => setSearchTerm(event.target.value)}
                 id="email"
-                autoComplete='off'
-                auto
                 name="email"
                 className={`w-full text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500`}
                 placeholder={"Search for products, brands and categories"}
             />
-            {
-                isLoading && <div className='absolute right-2 top-1'>
-                    <ImSpinner2 className="animate-spin duration-150 text-gray-300 border-gray-400 w-5 h-[42px]" />
-                </div>
-            }
             {
                 dropdownOpen && (
                     <div className="relative">
