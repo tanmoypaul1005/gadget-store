@@ -1,25 +1,35 @@
 import ProductCard from '@/app/components/products/components/ProductCard'
 import { base_url } from '@/util/const'
 import { kuMainCategory } from '@/util/url'
+import Image from 'next/image'
 import React from 'react'
 
 const FeaturedCategoriesDetails = async ({ params }) => {
 
   const response = await fetch(base_url + kuMainCategory + `/${params?.category_id}`);
   const products = await response.json();
-  
+
   const categoryResponse = await fetch(base_url + `/category/details/${params?.category_id}`);
 
   if (!categoryResponse.ok) {
     throw new Error(`HTTP error! status: ${categoryResponse.status}`);
   }
-  
+
   const categoryDetails = await categoryResponse.json();
-  
+
   return (
     <div className='common-class'>
-      <div className='pb-2 mb-10 text-xl font-bold border-b border-white'>
-        {categoryDetails?.data?.title ?? "Category"}
+
+      <div className='mb-10'>
+        {
+          categoryDetails?.data?.banner ?
+            <img width={500} height={500} src={categoryDetails?.data?.banner} alt={categoryDetails?.data?.title} className='w-full h-[300px] object-cover' />
+            :
+            <div className='pb-2 text-xl font-bold border-b border-white'>
+              {categoryDetails?.data?.title ?? "Category"}
+            </div>
+        }
+
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 pb-[40px] flex-wrap">

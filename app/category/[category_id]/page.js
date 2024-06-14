@@ -9,11 +9,13 @@ const Category = async ({ params }) => {
 
   return (
     <div className="flex space-x-10 mx-[40px] pb-[40px]">
-      {products?.data?.map((product, index) => (
-        <div className="" key={index}>
-          <ProductCard key={index} product={product} />
-        </div>
-      ))}
+      {
+        products?.data?.map((product, index) => (
+          <div className="" key={index}>
+            <ProductCard key={index} product={product} />
+          </div>
+        ))
+      }
     </div>
   );
 };

@@ -10,6 +10,10 @@ const categorySchema = new mongoose.Schema({
         type: String,
         default:""
     },
+    banner:{
+        type: String,
+        default:""
+    },
     status: {
         type: String,
         default:"sub_category"
