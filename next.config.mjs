@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['m.media-amazon.com',"adminapi.applegadgetsbd.com","www.applegadgetsbd.com", 'images.unsplash.com', 'lh3.googleusercontent.com', 'i.imgur.com'],
+    domains: ["motionview.com.bd",'m.media-amazon.com',"adminapi.applegadgetsbd.com","www.applegadgetsbd.com", 'images.unsplash.com', 'lh3.googleusercontent.com', 'i.imgur.com'],
   },
   serverActions: {
     bodySizeLimit: '2mb' // Set desired value here

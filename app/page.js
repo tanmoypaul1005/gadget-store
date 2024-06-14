@@ -4,14 +4,18 @@ import Category from "./components/sidebar/Category";
 import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
+import { getAllCategory } from "./action";
 
-export default function Home() {
+export default async function Home() {
+
+  const categoryData = await getAllCategory();
+
   return (
     <>
       {/* <Advertisement /> */}
       <main>
         <div className="common-class">
-          <Banner />
+          <Banner category={categoryData?.data} />
           <div className="mt-10"></div>
           <FeaturedCategories />
         </div>
