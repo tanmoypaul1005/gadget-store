@@ -6,14 +6,8 @@ import "./Carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import SideBarCategory from "../SideBarCategory";
 
-function Banner({ category = [] }) {
-
-  const watch = category.find((i) => i.title === "Smart watch")
-
-  const airpods = category.find((i) => i.title === "Airpods")
+function Banner() {
 
   const data = [
     {
@@ -56,10 +50,6 @@ function Banner({ category = [] }) {
   return (
     <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
       <div>
-        <div className="flex gap-x-2">
-          <div className=" h-full mt-[-14px]">
-            <SideBarCategory />
-          </div>
           <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
             {data?.map((item, idx) => (
               <Image
@@ -93,41 +83,8 @@ function Banner({ category = [] }) {
               ))}
             </span>
           </div>
-
         </div>
 
-        <div className="flex w-full justify-between mt-10 gap-x-10">
-          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
-            <img
-              src="/images/banner/170512072268.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-
-          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
-            <img
-              src="/images/banner/171525369129.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-
-          <Link className="w-full" href={`/category/featured/${airpods?._id}`}>
-            <img
-              src="/images/banner/171808437763.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-        </div>
-      </div>
     </motion.div>
   );
 }
