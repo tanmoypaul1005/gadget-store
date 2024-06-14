@@ -5,6 +5,7 @@ import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
 import { getAllCategory } from "./action";
+import SideBarCategory from "./components/SideBarCategory";
 
 export default async function Home() {
 

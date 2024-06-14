@@ -7,14 +7,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import SideBarCategory from "../SideBarCategory";
 
 function Banner({ category = [] }) {
 
   const watch = category.find((i) => i.title === "Smart watch")
 
   const airpods = category.find((i) => i.title === "Airpods")
-
-  console.log("watch", watch)
 
   const data = [
     {
@@ -57,38 +56,44 @@ function Banner({ category = [] }) {
   return (
     <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
       <div>
-        <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
-          {data?.map((item, idx) => (
-            <Image
-              src={item.src}
-              alt={item.alt}
-              key={idx}
-              width={1920}
-              height={1080}
-              className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
-                }`}
-            />
-          ))}
-          <BsArrowLeftCircleFill
-            onClick={prevSlide}
-            className="absolute w-8 h-8 text-white cursor-pointer filter drop-shadow-md left-5 "
-          />
-          <BsArrowRightCircleFill
-            onClick={nextSlide}
-            className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
-          />
-          <span className="absolute flex bottom-4">
-            {data.map((_, idx) => (
-              <button
+        <div className="flex gap-x-2">
+          <div className=" h-full mt-[-14px]">
+            <SideBarCategory />
+          </div>
+          <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+            {data?.map((item, idx) => (
+              <Image
+                src={item.src}
+                alt={item.alt}
                 key={idx}
-                className={`${slide === idx
-                  ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
-                  : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                width={1920}
+                height={1080}
+                className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
                   }`}
-                onClick={() => setSlide(idx)}
-              ></button>
+              />
             ))}
-          </span>
+            <BsArrowLeftCircleFill
+              onClick={prevSlide}
+              className="absolute w-8 h-8 text-white cursor-pointer filter drop-shadow-md left-5 "
+            />
+            <BsArrowRightCircleFill
+              onClick={nextSlide}
+              className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
+            />
+            <span className="absolute flex bottom-4">
+              {data.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`${slide === idx
+                    ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                    : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                    }`}
+                  onClick={() => setSlide(idx)}
+                ></button>
+              ))}
+            </span>
+          </div>
+
         </div>
 
         <div className="flex w-full justify-between mt-10 gap-x-10">
