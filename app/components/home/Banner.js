@@ -6,8 +6,15 @@ import "./Carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-function Banner() {
+function Banner({ category = [] }) {
+
+  const watch = category.find((i) => i.title === "Smart watch")
+
+  const airpods = category.find((i) => i.title === "Airpods")
+
+  console.log("watch", watch)
 
   const data = [
     {
@@ -50,41 +57,72 @@ function Banner() {
   return (
     <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
       <div>
-          <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
-            {data?.map((item, idx) => (
-              <Image
-                src={item.src}
-                alt={item.alt}
+        <div className="relative flex justify-center items-center lg:h-[500px] rounded  banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+          {data?.map((item, idx) => (
+            <Image
+              src={item.src}
+              alt={item.alt}
+              key={idx}
+              width={1920}
+              height={1080}
+              className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
+                }`}
+            />
+          ))}
+          <BsArrowLeftCircleFill
+            onClick={prevSlide}
+            className="absolute w-8 h-8 text-white cursor-pointer filter drop-shadow-md left-5 "
+          />
+          <BsArrowRightCircleFill
+            onClick={nextSlide}
+            className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
+          />
+          <span className="absolute flex bottom-4">
+            {data.map((_, idx) => (
+              <button
                 key={idx}
-                width={1920}
-                height={1080}
-                className={`duration-700 rounded-lg shadow-md w-full h-full ${slide === idx ? "fade-animation" : "hidden"
+                className={`${slide === idx
+                  ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
+                  : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
                   }`}
-              />
+                onClick={() => setSlide(idx)}
+              ></button>
             ))}
-            <BsArrowLeftCircleFill
-              onClick={prevSlide}
-              className="absolute w-8 h-8 text-white cursor-pointer filter drop-shadow-md left-5 "
-            />
-            <BsArrowRightCircleFill
-              onClick={nextSlide}
-              className="absolute w-8 h-8 text-white filter drop-shadow-md hover:cursor-pointer right-4"
-            />
-            <span className="absolute flex bottom-4">
-              {data.map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`${slide === idx
-                    ? "bg-white h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
-                    : "bg-gray-500 h-2 w-2 rounded-full border-none outline-none shadow-md mx-1 cursor-pointer"
-                    }`}
-                  onClick={() => setSlide(idx)}
-                ></button>
-              ))}
-            </span>
-          </div>
+          </span>
         </div>
 
+        <div className="flex w-full justify-between mt-10 gap-x-10">
+          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
+            <img
+              src="/images/banner/170512072268.webp"
+              alt="Image 1 for carousel"
+              width={180}
+              height={180}
+              className="object-contain rounded-sm cursor-pointer"
+            />
+          </Link>
+
+          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
+            <img
+              src="/images/banner/171525369129.webp"
+              alt="Image 1 for carousel"
+              width={180}
+              height={180}
+              className="object-contain rounded-sm cursor-pointer"
+            />
+          </Link>
+
+          <Link className="w-full" href={`/category/featured/${airpods?._id}`}>
+            <img
+              src="/images/banner/171808437763.webp"
+              alt="Image 1 for carousel"
+              width={180}
+              height={180}
+              className="object-contain rounded-sm cursor-pointer"
+            />
+          </Link>
+        </div>
+      </div>
     </motion.div>
   );
 }
