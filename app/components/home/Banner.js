@@ -90,38 +90,6 @@ function Banner({ category = [] }) {
             ))}
           </span>
         </div>
-
-        <div className="flex w-full justify-between mt-10 gap-x-10">
-          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
-            <img
-              src="/images/banner/170512072268.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-
-          <Link className="w-full" href={`/category/featured/${watch?._id}`}>
-            <img
-              src="/images/banner/171525369129.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-
-          <Link className="w-full" href={`/category/featured/${airpods?._id}`}>
-            <img
-              src="/images/banner/171808437763.webp"
-              alt="Image 1 for carousel"
-              width={180}
-              height={180}
-              className="object-contain rounded-sm cursor-pointer"
-            />
-          </Link>
-        </div>
       </div>
     </motion.div>
   );
