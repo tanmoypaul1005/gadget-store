@@ -37,7 +37,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                 Gadget store
               </Link>
               <div className="hidden w-full md:block lg:block">
-                <Search />
+                {/* <Search /> */}
               </div>
             </div>
 
