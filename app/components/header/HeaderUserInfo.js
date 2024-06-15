@@ -30,7 +30,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
       <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
         <header className="">
           {/* desktop nav  */}
-          <nav className="flex justify-between w-full py-3">
+          <nav className="flex justify-between gap-x-2 w-full py-3">
             {/* brand  */}
             <div className="flex items-center flex-grow gap-x-4">
               <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
@@ -75,7 +75,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                         href={"/profile"}
                         className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
                       >
-                        {session.user.name}
+                        {session?.user?.name}
                       </Link>
                       <div
                         onClick={() => {

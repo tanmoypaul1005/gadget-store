@@ -81,6 +81,9 @@ img {
 .desktopNavbar a:hover {
   color: tomato;
 }
+.sidebar div:hover{
+  color: tomato;
+}
 @keyframes hoverAnimation {
   from {
     transform: translateY(2rem);

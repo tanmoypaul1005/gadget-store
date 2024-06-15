@@ -41,7 +41,7 @@ const ProductDetails = async ({ params }) => {
             {productDetails?.description}
           </p>
 
-          <div className="pt-4 text-2xl font-medium text-red-400 title-font">$58.00</div>
+          <div className="pt-4 text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
           <div className="flex items-center pb-4 border-b-2 border-gray-200">
             {/* <div className="flex">
                 <span className="mr-3">Color</span>

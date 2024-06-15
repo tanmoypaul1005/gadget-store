@@ -2,6 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import Image from 'next/image';
 import { getCategory } from '@/app/action';
+import { k_category_patch } from '@/util/patch';
 
 const SideBarCategory = async () => {
 
@@ -12,16 +13,15 @@ const SideBarCategory = async () => {
       <nav className="hidden w-full lg:flex flex-col">
         <div className='gap-x-2 flex justify-center items-center mb-3 py-3 rounded-t-lg  bg-cDeepSaffron'>
           <Image width={20} height={20} style={{ maxWidth: "20px", minHeight: "20px", minWidth: "20px", maxHeight: "20px" }} src='https://motionview.com.bd/images/category.svg' alt='' />
-          <div className=''>All Category</div>
+          <div className='text-lg font-semibold'>All Category</div>
         </div>
 
         <ul className="flex flex-col">
           {
-            categoryData?.data?.slice(0, 9)?.map((item, index) => (
-              <li key={index} className="relative nav_items men_nav_item">
-                <div className='border-b-2 pb-2 border-zinc-500 w-[200px]'>
-
-                  <a href="#Men" className='pl-2'>{item?.title}</a>
+            categoryData?.data?.slice(0, 10)?.map((item, index) => (
+              <li key={index} className="relative sidebar men_nav_item">
+                <div className={`py-[9.1px] ${index!== 9 ? "border-zinc-500 border-b-2": ""} w-[200px] cursor-pointer`}>
+                  <Link href={k_category_patch.featured+ item?._id} className='pl-3'>{item?.title}</Link>
                 </div>
                 <ul className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal text-black bg-white border rounded shadow-lg hoveredItems w-52 top-10 right-[-200px]">
                   {
