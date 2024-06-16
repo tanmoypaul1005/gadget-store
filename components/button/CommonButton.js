@@ -55,7 +55,7 @@ const CommonButton = ({
   } = colorDefinitions[colorType] || colorDefinitions.primary;
 
   return (
-    <button onClick={onClick} className={` px-6 py-3 text-xl font-semibold ml-auto text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600`}>
+    <button onClick={onClick} className={`max-h-[41px] min-h-[41px] px-6 py-[5px] text-lg font-semibold ml-auto text-white bg-red-500 border-0 rounded focus:outline-none hover:bg-red-600`}>
       {btnLabel}
     </button>
   );

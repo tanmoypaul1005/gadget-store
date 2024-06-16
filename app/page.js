@@ -17,11 +17,10 @@ export default async function Home() {
       {/* <Advertisement /> */}
       <main>
         <div className="common-class">
-          <div className="flex gap-x-2">
-            <div className=" h-full mt-[-15px]">
+          <div className="flex lg:gap-x-2 gap-x-0">
+            <div className="h-full mt-[-15px]">
               <SideBarCategory/>
             </div>
-
             <div className="w-full">
               <Banner />
             </div>

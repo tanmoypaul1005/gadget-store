@@ -32,28 +32,28 @@ const Action = ({ product_id, user }) => {
 
 
   return (
-    <div className="flex flex-col">
-      <div className="my-5">
-        <h3 className="mb-1 text-sm text-white uppercase">Quantity</h3>
+    <div className="flex gap-x-5 my-5">
+      <div className="">
+        {/* <h3 className="mb-1 text-sm text-white uppercase">Quantity</h3> */}
         <div className="flex text-white border border-gray-300 divide-x divide-gray-300 w-max">
           <div
-            className="flex items-center justify-center w-8 h-8 text-xl cursor-pointer select-none"
+            className="flex items-center justify-center w-8 max-h-[40px] min-h-[40px]ax-h-[40px] min-h-[40px] text-xl cursor-pointer select-none"
             onClick={decrementQuantity}
           >
             -
           </div>
-          <div className="flex items-center justify-center w-8 h-8 text-base">
+          <div className="flex items-center justify-center w-8 max-h-[40px] min-h-[40px] text-base">
             {quantity}
           </div>
           <div
-            className="flex items-center justify-center w-8 h-8 text-xl cursor-pointer select-none"
+            className="flex items-center justify-center w-8 max-h-[40px] min-h-[40px] text-xl cursor-pointer select-none"
             onClick={incrementQuantity}
           >
             +
           </div>
         </div>
       </div>
-      <div className="flex justify-start space-x-5">
+      <div className="flex justify-end items-end space-x-5">
         <CommonButton
           onClick={async () => {
             if (!user) {

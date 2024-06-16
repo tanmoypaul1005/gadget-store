@@ -9,7 +9,7 @@ const SideBarCategory = async () => {
   const categoryData = await getCategory();
 
   return (
-    <div className="desktopNavbar bg-cCommonBg rounded-lg">
+    <div className="bg-cCommonBg rounded-lg">
       <nav className="hidden w-full lg:flex flex-col">
         <div className='gap-x-2 flex justify-center items-center py-3 rounded-t-lg  bg-cDeepSaffron'>
           <Image width={20} height={20} style={{ maxWidth: "20px", minHeight: "20px", minWidth: "20px", maxHeight: "20px" }} src='https://motionview.com.bd/images/category.svg' alt='' />

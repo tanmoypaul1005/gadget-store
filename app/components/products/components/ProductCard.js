@@ -5,9 +5,10 @@ import Link from "next/link";
 import React from "react";
 import ProductCardAction from "./ProductCardAction";
 import { findUserId } from "@/app/action/product/action";
+import Rating from '@mui/material/Rating';
 
 export const ProductCard = async ({ product }) => {
-  
+
   const session = await auth();
   const user = await findUserId(session?.user?.email);
 
@@ -30,7 +31,10 @@ export const ProductCard = async ({ product }) => {
             <p className="block text-sm font-semibold capitalize truncate line-clamp-2">
               {product?.name}
             </p>
-            <div className="flex items-center">
+            <div className="">
+              <div className="mt-3">
+                <Rating name="disabled" value={5} disabled />
+              </div>
               <p className="my-3 text-lg font-semibold text-red-400 cursor-auto">
                 ${product?.price}
               </p>

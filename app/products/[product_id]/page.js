@@ -5,17 +5,15 @@ import { auth } from "@/auth";
 import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 import { getComment } from "@/app/action/comment";
-
+import Rating from '@mui/material/Rating';
 
 const ProductDetails = async ({ params }) => {
 
- 
   const productDetails = await fetchProduct(params?.product_id);
-  const comments=await getComment(params?.product_id);
+  const comments = await getComment(params?.product_id);
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
-
 
   return (
     <div className="common-class">
@@ -40,8 +38,11 @@ const ProductDetails = async ({ params }) => {
           <p className="leading-relaxed">
             {productDetails?.description}
           </p>
-
-          <div className="pt-4 text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
+          <div className="space-y-3 my-3">
+            <Rating name="disabled" value={5} disabled />
+            <div>Status: In Stock</div>
+            <div className="text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
+          </div>
           <div className="flex items-center pb-4 border-b-2 border-gray-200">
             {/* <div className="flex">
                 <span className="mr-3">Color</span>

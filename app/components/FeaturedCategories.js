@@ -11,11 +11,10 @@ const FeaturedCategories = async () => {
 
     return (
         <div>
-            <div className='grid items-center grid-cols-1 gap-14 justify-items-center md:justify-items-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 3xl:gap-x-14'>
+            <div className='grid items-center grid-cols-2 gap-14 justify-items-center md:justify-items-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 3xl:gap-x-14'>
                 {
                     category?.data?.map((item, index) => (
                         <div className='flex justify-center' key={index}>
-
                         <CategoryBox item={item} key={index} />
                         </div>
                     ))
@@ -30,7 +29,10 @@ export default FeaturedCategories
 
 const CategoryBox = ({ item }) => {
     return (
-        <Link href={`/category/featured/${item?._id}`} className='bg-cCommonBg rounded  flex-col min-h-[175px] max-h-[175px] max-w-[175px] min-w-[175px] flex justify-center items-center'>
+        <Link href={`/category/featured/${item?._id}`} className='bg-cCommonBg rounded  flex-col
+        md:min-h-[175px] md:max-h-[175px] md:max-w-[175px] md:min-w-[175px]
+         min-h-[145px] max-h-[145px] max-w-[145px] min-w-[145px]
+         flex justify-center items-center'>
             <Image style={{ maxWidth: "70px", minWidth: "70px", maxHeight: "70px", minHeight: "70px" }} width={70} height={70} src={item?.icon} alt="" />
             <div className='text-cDeepSaffron font-medium text-[15px] mt-3'>{item?.title}</div>
         </Link>
