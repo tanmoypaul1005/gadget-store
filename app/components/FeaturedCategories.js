@@ -30,10 +30,10 @@ export default FeaturedCategories
 const CategoryBox = ({ item }) => {
     return (
         <Link href={`/category/featured/${item?._id}`} className='bg-cCommonBg rounded  flex-col
-        md:min-h-[175px] md:max-h-[175px] md:max-w-[175px] md:min-w-[175px]
+        md:min-h-[170px] md:max-h-[170px] md:max-w-[170px] md:min-w-[170px]
          min-h-[145px] max-h-[145px] max-w-[145px] min-w-[145px]
          flex justify-center items-center'>
-            <Image style={{ maxWidth: "70px", minWidth: "70px", maxHeight: "70px", minHeight: "70px" }} width={70} height={70} src={item?.icon} alt="" />
+            <Image style={{ maxWidth: "65px", minWidth: "65px", maxHeight: "65px", minHeight: "65px" }} width={70} height={70} src={item?.icon} alt="" />
             <div className='text-cDeepSaffron font-medium text-[15px] mt-3'>{item?.title}</div>
         </Link>
     )
