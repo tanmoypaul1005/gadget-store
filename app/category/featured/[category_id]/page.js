@@ -1,4 +1,5 @@
 import ProductCard from '@/app/components/products/components/ProductCard'
+import CommonSelectBox from '@/components/input/CommonSelectBox'
 import { base_url } from '@/util/const'
 import { kuMainCategory } from '@/util/url'
 import Image from 'next/image'
@@ -25,8 +26,18 @@ const FeaturedCategoriesDetails = async ({ params }) => {
           categoryDetails?.data?.banner ?
             <img width={500} height={500} src={categoryDetails?.data?.banner} alt={categoryDetails?.data?.title} className='w-full h-[300px] object-cover' />
             :
-            <div className='pb-2 text-xl font-bold border-b border-white'>
-              {categoryDetails?.data?.title ?? "Category"}
+
+            <div className='p-3 flex justify-between rounded text-xl font-bold bg-cCommonBg w-full '>
+              <div>
+
+                {categoryDetails?.data?.title ?? "Category"}
+              </div>
+              <div>
+                <CommonSelectBox
+                  options={["Price: Low to High", "Price: High to Low", "Newest Arrivals", "Best Sellers"]}
+                  label={"Filter Products"}
+                />
+              </div>
             </div>
         }
 
