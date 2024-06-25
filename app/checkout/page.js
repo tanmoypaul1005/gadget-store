@@ -7,6 +7,8 @@ import CommonInput from "@/components/input/CommonInput";
 import Address from "../components/Address/Address";
 import { getAddress } from "../action/address";
 import PlaceOrder from "./components/PlaceOrder";
+import Image from "next/image";
+import { iNoCart } from "@/util/imageImports";
 
 const Checkout = async () => {
 
@@ -24,7 +26,10 @@ const Checkout = async () => {
 
   return (
     <>
-      {/* <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
+      {
+        cart?.length > 0 ?
+          <>
+            {/* <div className="flex flex-col items-center border-b bg-[#e2e8f0] py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32 ">
         <a href="#" className="text-2xl font-bold text-gray-800">
           sneekpeeks
         </a>
@@ -101,22 +106,22 @@ const Checkout = async () => {
         </div>
       </div> */}
 
-      <div className="grid px-5 sm:px-0 common-class lg:grid-cols-2">
-        <div>
-          <p className="text-xl font-medium">Order Summary</p>
-          <p className="text-gray-400">
-            Check your items. And select a suitable shipping method.
-          </p>
-          <div className="px-2 py-4 mt-8 space-y-3 border rounded-lg sm:px-6">
-            {
-              cart?.length > 0
-                ? cart?.map((item, index) => (
-                  <CheckOutProduct item={item} key={index} />
-                ))
-                : "No items in cart"}
-          </div>
+            <div className="grid px-5 sm:px-0 common-class lg:grid-cols-2">
+              <div>
+                <p className="text-xl font-medium">Order Summary</p>
+                <p className="text-gray-400">
+                  Check your items. And select a suitable shipping method.
+                </p>
+                <div className="px-2 py-4 mt-8 space-y-3 border rounded-lg sm:px-6">
+                  {
+                    cart?.length > 0
+                      ? cart?.map((item, index) => (
+                        <CheckOutProduct item={item} key={index} />
+                      ))
+                      : "No items in cart"}
+                </div>
 
-          {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
+                {/* <p className="mt-8 text-lg font-medium">Shipping Methods</p>
           <form className="grid gap-6 mt-5">
             <div className="relative">
               <input
@@ -171,47 +176,54 @@ const Checkout = async () => {
               </label>
             </div>
           </form> */}
-          <div className="mt-8"></div>
-          <Address email={session?.user?.email} address={address?.data} />
-        </div>
-
-        <div className="mt-10 lg:mt-0">
-          <p className="text-xl font-medium">Payment Details</p>
-          <p className="text-gray-400">
-            Complete your order by providing your payment details.
-          </p>
-          <div>
-            <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
-            <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
-            <CommonInput label={"Contact Number"} placeholder="Street Address" />
-
-            <div className="py-2 mt-6 text-white border-t border-b">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium">Subtotal</p>
-                <p className="font-semibold">${totalPrice}</p>
+                <div className="mt-8"></div>
+                <Address email={session?.user?.email} address={address?.data} />
               </div>
-              {/* <div className="flex items-center justify-between">
+
+              <div className="mt-10 lg:mt-0">
+                <p className="text-xl font-medium">Payment Details</p>
+                <p className="text-gray-400">
+                  Complete your order by providing your payment details.
+                </p>
+                <div>
+                  <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
+                  <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
+                  <CommonInput label={"Contact Number"} placeholder="Street Address" />
+
+                  <div className="py-2 mt-6 text-white border-t border-b">
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm font-medium">Subtotal</p>
+                      <p className="font-semibold">${totalPrice}</p>
+                    </div>
+                    {/* <div className="flex items-center justify-between">
                 <p className="text-sm font-medium">Shipping</p>
                 <p className="font-semibold">$8.00</p>
               </div> */}
+                  </div>
+                  <div className="flex items-center justify-between mt-6">
+                    <p className="text-sm font-medium ">Total</p>
+                    <p className="text-2xl font-semibold">${totalPrice}</p>
+                  </div>
+                </div>
+                <PlaceOrder
+                  data={
+                    {
+                      email: session?.user?.email,
+                      address: address?.data,
+                      total_amount: totalPrice,
+                    }
+                  }
+                />
+              </div>
             </div>
-            <div className="flex items-center justify-between mt-6">
-              <p className="text-sm font-medium ">Total</p>
-              <p className="text-2xl font-semibold">${totalPrice}</p>
-            </div>
+          </>
+          :
+          <div className='flex items-center justify-center'>
+            <Image alt='' src={iNoCart} style={{ maxWidth: "60%", maxHeight: "400px" }} />
           </div>
-          <PlaceOrder
-            data={
-              {
-                email: session?.user?.email,
-                address: address?.data,
-                total_amount: totalPrice,
-              }
-            }
-          />
-        </div>
-      </div>
+      }
     </>
+
   );
 };
 
