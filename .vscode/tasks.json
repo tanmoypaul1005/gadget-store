@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "/home/tanmoy-paul/Desktop/Projects/gadget-store",
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server"
+		},
+		{
+			"type": "npm",
+			"script": "dev",
+			"problemMatcher": [],
+			"label": "npm: dev",
+			"detail": "next dev"
+		},
+		{
+			"type": "npm",
+			"script": "install",
+			"group": "clean",
+			"problemMatcher": [],
+			"label": "npm: install",
+			"detail": "install dependencies from package"
+		}
+	]
+}

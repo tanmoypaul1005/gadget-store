@@ -2,9 +2,10 @@ import { auth } from '@/auth';
 import React from 'react'
 import { getOrders } from '../action/order';
 import Image from 'next/image';
+import { iNoOrder } from '@/util/imageImports';
 
 const Orders = async () => {
-    
+
     const session = await auth();
     const order = await getOrders(session?.user?.email)
 
@@ -35,7 +36,7 @@ const Orders = async () => {
                                                     JSON.parse(item?.items)?.map((product, index2) => (
                                                         <div key={index2} className={`flex flex-col items-center w-full gap-6 py-6 ${index2 === (JSON.parse(item.items)?.length - 1)} border-b border-gray-200 lg:flex-row`}>
                                                             <div className="img-box max-lg:w-full">
-                                      
+
                                                                 <Image
                                                                     className="aspect-square w-full lg:max-w-[140px]"
                                                                     src={product?.product?.image}
@@ -48,7 +49,7 @@ const Orders = async () => {
                                                                 <div className="grid w-full grid-cols-1 lg:grid-cols-2">
                                                                     <div className="flex items-center">
                                                                         <div className="">
-                                                                            <h2 className="mb-3 line-clamp-1 text-xl font-semibold leading-8 text-white">
+                                                                            <h2 className="mb-3 text-xl font-semibold leading-8 text-white line-clamp-1">
                                                                                 {product?.product?.name}</h2>
                                                                             <div className="flex items-center ">
 
@@ -217,7 +218,12 @@ const Orders = async () => {
                         }
                     </div>
                     :
-                    <div className="flex items-center justify-center text-2xl font-semibold h-screen">No Order Found!</div>
+                    <>
+                    <div className='flex items-center justify-center'>
+                        <Image alt='' src={iNoOrder} style={{ maxWidth: "50%", maxHeight: "400px" }} />
+                    </div>
+                    <div className="flex items-center justify-center text-2xl font-semibold">No Order Found!</div> 
+                    </>
             }
 
         </>
