@@ -7,7 +7,7 @@ import { getCartCount } from "@/app/action/cart";
 import { getOrders } from "@/app/action/order";
 
 const Header = async () => {
-  
+
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
@@ -18,7 +18,7 @@ const Header = async () => {
 
   return (
     <div className="mb-8">
-      <div className="flex flex-col items-center justify-between w-screen border-b top-header">
+      <div className="flex flex-col items-center justify-between border-b top-header">
         <HeaderUserInfo totalOrder={order?.data?.length} totalCart={cart?.length ?? 0} session={session} />
       </div>
       {/* <Categories /> */}
