@@ -109,13 +109,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                         onClick={handleGoogleAuthClick}
                         className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[4px]">Sign in</span>
+                        <span className="text-base font-medium mt-[6px]">Sign in</span>
                       </div>
                       <div
                         onClick={handleGoogleAuthClick}
                         className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[4px]">Login</span>
+                        <span className="text-base font-medium mt-[6px]">Login</span>
                       </div>
                     </>
                   )}
@@ -180,7 +180,7 @@ const CartIcon = ({ totalCart = 0 }) => {
               ""
           }
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Cart</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Cart</span>
       </Link>
     </>
   )
@@ -222,7 +222,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
               ""
           }
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Orders</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Orders</span>
       </Link>
     </>
   )
