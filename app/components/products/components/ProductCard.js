@@ -14,7 +14,7 @@ export const ProductCard = async ({ product }) => {
 
   return (
     <Link href={`/products/${product?._id}`}>
-      <div className="pt-5 text-white duration-500 shadow-md bg-cCommonBg w-60 rounded-xl hover:scale-105 hover:shadow-xl">
+      <div className="py-3 text-white duration-500 shadow-md bg-cCommonBg w-60 rounded-xl hover:scale-105 hover:shadow-xl">
         <>
           <Image
             style={{ maxHeight: "20px", minHeight: "200px" }}
@@ -24,18 +24,18 @@ export const ProductCard = async ({ product }) => {
             src={product?.image}
             className="object-contain object-center rounded-t-xl"
           />
-          <div className="px-4 py-3 w-60">
+          <div className="px-4 pt-2 w-60">
             <span className="mr-3 text-xs uppercase">
               {commonView(product?.brand)}
             </span>
             <p className="block text-sm font-semibold capitalize truncate line-clamp-2">
               {product?.name}
             </p>
-            <div className="">
-              <div className="mt-3">
+            <div>
+              <div className="mt-2">
                 <Rating name="disabled" value={5} disabled />
               </div>
-              <p className="my-3 text-lg font-semibold text-red-400 cursor-auto">
+              <p className="text-base font-semibold text-red-400 cursor-auto">
                 ${product?.price}
               </p>
               <del>
