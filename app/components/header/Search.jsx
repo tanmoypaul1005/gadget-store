@@ -53,7 +53,7 @@ const Search = () => {
 
  
     return (
-        <div className='w-full relative'>
+        <div className='relative w-full'>
             <input
                 value={searchTerm}
                 onKeyDown={(e) => {
@@ -63,8 +63,7 @@ const Search = () => {
                 id="email"
                 autoComplete='off'
                 auto
-                name="email"
-                className={`w-full text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500`}
+                className="w-full px-4 py-3 text-xs text-white border border-gray-200 rounded-md shadow-sm outline-none bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                 placeholder={"Search for products, brands and categories"}
             />
             {

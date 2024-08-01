@@ -20,6 +20,12 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
     setMobileNav(!mobileNav);
   };
 
+ const handleGoogleAuthClick= async () => {
+    await signIn("google", {
+      callbackUrl: "/",
+    });
+  }
+
   return (
     <>
       <LogoutModal
@@ -28,9 +34,9 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
       />
 
       <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
-        <header className="">
+        <header>
           {/* desktop nav  */}
-          <nav className="flex justify-between gap-x-2 w-full py-3">
+          <nav className="flex justify-between w-full py-3 gap-x-2">
             {/* brand  */}
             <div className="flex items-center flex-grow gap-x-4">
               <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
@@ -100,25 +106,16 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                   ) : (
                     <>
                       <div
-                        onClick={async () => {
-
-                          await signIn("google", {
-                            callbackUrl: "/",
-                          });
-                        }}
-                        className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                        onClick={handleGoogleAuthClick}
+                        className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-sm font-medium">Sign in</span>
+                        <span className="text-base font-medium mt-[4px]">Sign in</span>
                       </div>
                       <div
-                        onClick={async () => {
-                          await signIn("google", {
-                            callbackUrl: "/",
-                          });
-                        }}
-                        className="flex items-center px-4 py-2 ml-2 border rounded-md cursor-pointer border-cDeepSaffron gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                        onClick={handleGoogleAuthClick}
+                        className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-sm font-medium">Login</span>
+                        <span className="text-base font-medium mt-[4px]">Login</span>
                       </div>
                     </>
                   )}
@@ -172,18 +169,18 @@ export default HeaderUserInfo;
 const CartIcon = ({ totalCart = 0 }) => {
   return (
     <>
-      <Link href={"/checkout"} className="flex items-center px-4 py-2 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
+      <Link href={"/checkout"} className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
         <div className="relative">
 
           <Image src={iCart} alt="" width={18} height={18} />
           {
-            totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
+            totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
             </span> :
               ""
           }
         </div>
-        <span className="text-sm font-medium text-cDeepSaffron mt-[4px]">Cart</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Cart</span>
       </Link>
     </>
   )
@@ -206,7 +203,7 @@ const Favorites = ({ isHover = true }) => {
           // clip-rule="evenodd"
           />
         </svg>
-        <span className="text-sm font-medium">Favorites</span>
+        <span className="text-base font-medium">Favorites</span>
       </div>
     </>
   )
@@ -219,13 +216,13 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
         <div className="relative">
           <Image src={iOrder} alt="" width={18} height={18} />
           {
-            totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 h-4 p-2 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
+            totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}
             </span> :
               ""
           }
         </div>
-        <span className="text-sm font-medium text-cDeepSaffron mt-[4px]">Orders</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Orders</span>
       </Link>
     </>
   )

@@ -220,7 +220,7 @@ const Orders = async () => {
                     :
                     <>
                     <div className='flex items-center justify-center'>
-                        <Image alt='' src={iNoOrder} style={{ maxWidth: "50%", maxHeight: "400px" }} />
+                    <Image alt='' src={iNoOrder} style={{ maxWidth: "100%", maxHeight: "75vh", objectFit: "contain" }} />
                     </div>
                     <div className="flex items-center justify-center text-2xl font-semibold">No Order Found!</div> 
                     </>
