@@ -5,7 +5,6 @@ import connectMongo from "@/util/db";
 export async function getByCategoryProducts(category_id) {
 
     try {
-        console.log("category_id", category_id)
         await connectMongo();
         if (category_id) {
             let products = await Products.find({ category: category_id }).lean()
