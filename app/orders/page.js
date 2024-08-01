@@ -39,7 +39,7 @@ const Orders = async () => {
                           Expected Delivery Time
                         </p>
                         <p className="text-base font-medium leading-7 text-end whitespace-nowrap lg:mt-3 text-emerald-500">
-                          {formatDate(addDays(item?.createdAt, 3))}
+                          {formatDate(addDays(item?.createdAt, 5))}
                         </p>
                       </div>
                     </div>

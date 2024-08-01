@@ -35,12 +35,11 @@ export const ProductCard = async ({ product }) => {
               <div className="mt-2">
                 <Rating name="disabled" value={5} disabled />
               </div>
+              <div className="flex justify-between">
               <p className="text-base font-semibold text-red-400 cursor-auto">
                 ${product?.price}
               </p>
-              <del>
-                {/* <p className="ml-2 text-sm text-gray-600 cursor-auto">$199</p> */}
-              </del>
+
               {session?.user?.email && (
                 <ProductCardAction
                   data={{
@@ -50,6 +49,7 @@ export const ProductCard = async ({ product }) => {
                   }}
                 />
               )}
+              </div>
             </div>
           </div>
         </>
