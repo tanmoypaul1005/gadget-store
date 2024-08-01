@@ -90,12 +90,13 @@ export const getOrders = async (email) => {
             // Transform the orders to include product details
             const populatedOrders = orders.map(order => ({
                 _id: order._id,
+                createdAt: order.createdAt,
                 total_amount: order.total_amount,
                 order_status: order.order_status,
                 shipping_address: order.shipping_address,
                 billing_address: order.billing_address,
                 items: JSON.stringify(order.items?.map(item => { return { product: item?.product,quantity:item?.quantity} }))
-            }));
+            }));console.log("populatedOrders",populatedOrders);
 
             return { status: 200, data: populatedOrders, success: true };
         } else {

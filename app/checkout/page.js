@@ -10,6 +10,12 @@ import PlaceOrder from "./components/PlaceOrder";
 import Image from "next/image";
 import { iNoCart } from "@/util/imageImports";
 
+export const metadata = {
+  title: "Gadget store || Checkout",
+  description: "",
+};
+
+
 const Checkout = async () => {
 
   const session = await auth();

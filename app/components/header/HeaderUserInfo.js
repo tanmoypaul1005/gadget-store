@@ -172,7 +172,7 @@ const CartIcon = ({ totalCart = 0 }) => {
       <Link href={"/checkout"} className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
         <div className="relative">
 
-          <Image style={{maxWidth:"20px",minHeight:"20px",maxHeight:"20px",minWidth:"20px"}} src={iCart} alt="" width={18} height={18} />
+          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iCart} alt="" width={18} height={18} />
           {
             totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
@@ -214,7 +214,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
     <>
       <Link href={"/orders"} className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
         <div className="relative">
-          <Image style={{maxWidth:"20px",minHeight:"20px",maxHeight:"20px",minWidth:"20px"}} src={iOrder} alt="" width={18} height={18} />
+          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iOrder} alt="" width={18} height={18} />
           {
             totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}
