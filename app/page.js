@@ -10,7 +10,6 @@ import OfferBanner from "./components/home/OfferBanner";
 import NewProducts from "./components/products/components/NewProducts";
 
 export default async function Home() {
-
   const categoryData = await getAllCategory();
 
   return (
@@ -20,7 +19,7 @@ export default async function Home() {
         <div className="common-class">
           <div className="flex lg:gap-x-2 gap-x-0">
             <div className="h-full mt-[-15px]">
-              <SideBarCategory/>
+              <SideBarCategory />
             </div>
             <div className="w-full">
               <Banner />
@@ -31,16 +30,15 @@ export default async function Home() {
           <FeaturedCategories />
         </div>
 
-<div className="common-class">
+        <div className="common-class">
+          <section className="flex mt-16 ">
+            <Category />
+            <Products />
+          </section>
 
-        <section className="flex mt-16 ">
-          <Category />
-          <Products />
-        </section>
-
-        <NewProducts />
-</div>
-        <Other />
+          <NewProducts />
+        </div>
+        {/* <Other /> */}
       </main>
     </>
   );
