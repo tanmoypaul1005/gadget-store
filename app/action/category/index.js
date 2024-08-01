@@ -29,7 +29,6 @@ export async function getMainCategory() {
     try {
       await connectMongo();
       const category = await Category.find({ status: "main_category" });
-      console.log("category", category);
       return category;
     
     } catch (err) {

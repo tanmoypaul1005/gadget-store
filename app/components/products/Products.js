@@ -62,7 +62,6 @@ const Products = async () => {
 
       <DailyOffer user={user} isAddCartDayOffer={isAddCartDayOffer} product={day_offer} />
 
-      <NewProducts />
     </div>
   );
 };

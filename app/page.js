@@ -7,6 +7,7 @@ import FeaturedCategories from "./components/FeaturedCategories";
 import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
+import NewProducts from "./components/products/components/NewProducts";
 
 export default async function Home() {
 
@@ -30,10 +31,15 @@ export default async function Home() {
           <FeaturedCategories />
         </div>
 
-        <section className="flex mt-16 common-class ">
+<div className="common-class">
+
+        <section className="flex mt-16 ">
           <Category />
           <Products />
         </section>
+
+        <NewProducts />
+</div>
         <Other />
       </main>
     </>
