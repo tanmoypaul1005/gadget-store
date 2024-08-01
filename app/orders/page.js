@@ -27,7 +27,7 @@ const Orders = async () => {
                       </p>
                       <p className="mt-4 text-base font-semibold leading-7 text-white">
                         Order Create :{" "}
-                        <span className="font-medium text-gray-400">
+                        <span className="font-medium text-emerald-500">
                           {" "}
                           {formatDate(item?.createdAt)}
                         </span>
