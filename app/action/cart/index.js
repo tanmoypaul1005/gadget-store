@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import Cart from "@/models/Cart";
 import connectMongo from "@/util/db";
 import { kuCart } from "@/util/url";
-import Products from "@/models/Products";
 
 export const getCartCount = async (user_id) => {
   try {
@@ -58,8 +57,6 @@ export const addCart = async (formData, pathName) => {
     };
   }
 };
-
-
 
 export const findDayOffer = async (product_id,user_id) => {
   try {

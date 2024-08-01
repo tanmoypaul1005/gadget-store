@@ -109,13 +109,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                         onClick={handleGoogleAuthClick}
                         className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[4px]">Sign in</span>
+                        <span className="text-base font-medium mt-[6px]">Sign in</span>
                       </div>
                       <div
                         onClick={handleGoogleAuthClick}
                         className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[4px]">Login</span>
+                        <span className="text-base font-medium mt-[6px]">Login</span>
                       </div>
                     </>
                   )}
@@ -124,7 +124,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
               {/* menu icon  */}
               <div className="block md:hidden lg:hidden">
-                <div className="flex space-x-3">
+                <div className="flex space-x-2">
                   <CartIcon totalCart={totalCart} />
                   <HiMenuAlt3
                     className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
@@ -172,7 +172,7 @@ const CartIcon = ({ totalCart = 0 }) => {
       <Link href={"/checkout"} className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
         <div className="relative">
 
-          <Image src={iCart} alt="" width={18} height={18} />
+          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iCart} alt="" width={18} height={18} />
           {
             totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
@@ -180,7 +180,7 @@ const CartIcon = ({ totalCart = 0 }) => {
               ""
           }
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Cart</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Cart</span>
       </Link>
     </>
   )
@@ -214,7 +214,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
     <>
       <Link href={"/orders"} className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
         <div className="relative">
-          <Image src={iOrder} alt="" width={18} height={18} />
+          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iOrder} alt="" width={18} height={18} />
           {
             totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}
@@ -222,7 +222,7 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
               ""
           }
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[4px]">Orders</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Orders</span>
       </Link>
     </>
   )

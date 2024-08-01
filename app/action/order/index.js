@@ -90,6 +90,7 @@ export const getOrders = async (email) => {
             // Transform the orders to include product details
             const populatedOrders = orders.map(order => ({
                 _id: order._id,
+                createdAt: order.createdAt,
                 total_amount: order.total_amount,
                 order_status: order.order_status,
                 shipping_address: order.shipping_address,

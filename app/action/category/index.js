@@ -1,10 +1,10 @@
+import Category from "@/models/Category";
 import Products from "@/models/Products";
 import connectMongo from "@/util/db";
 
 export async function getByCategoryProducts(category_id) {
 
     try {
-        console.log("category_id", category_id)
         await connectMongo();
         if (category_id) {
             let products = await Products.find({ category: category_id }).lean()
@@ -24,3 +24,15 @@ export async function getByCategoryProducts(category_id) {
         return { message: "Internal Server Error",data:[] };
     }
 }
+
+export async function getMainCategory() {
+    try {
+      await connectMongo();
+      const category = await Category.find({ status: "main_category" });
+      return category;
+    
+    } catch (err) {
+      console.error(err);
+      return []
+    }
+  }

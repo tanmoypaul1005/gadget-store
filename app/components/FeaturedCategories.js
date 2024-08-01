@@ -3,17 +3,19 @@ import { kuMainCategory } from '@/util/url'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { getMainCategory } from '../action/category'
+
 
 const FeaturedCategories = async () => {
 
-    const response = await fetch(base_url + kuMainCategory);
-    const category = await response.json();
+   // const response = await fetch(base_url + kuMainCategory);
+    const category = await getMainCategory();
 
     return (
         <div>
-            <div className='grid items-center grid-cols-2 gap-14 justify-items-center md:justify-items-start sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 3xl:gap-x-14'>
+            <div className="flex flex-wrap justify-between gap-x-3 gap-y-3">
                 {
-                    category?.data?.map((item, index) => (
+                    category?.map((item, index) => (
                         <div className='flex justify-center' key={index}>
                         <CategoryBox item={item} key={index} />
                         </div>
