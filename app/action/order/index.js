@@ -96,7 +96,7 @@ export const getOrders = async (email) => {
                 shipping_address: order.shipping_address,
                 billing_address: order.billing_address,
                 items: JSON.stringify(order.items?.map(item => { return { product: item?.product,quantity:item?.quantity} }))
-            }));console.log("populatedOrders",populatedOrders);
+            }));
 
             return { status: 200, data: populatedOrders, success: true };
         } else {
