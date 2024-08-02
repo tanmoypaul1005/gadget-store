@@ -1,37 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Gadget Store BD
 
-## Getting Started
+Welcome to Gadget Store BD, your one-stop shop for the latest gadgets and electronics!
 
-First, run the development server:
+[Live Site](https://gadget-storebd.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
+- Browse a wide selection of gadgets and electronics
+- Search for products by name or category
+- View detailed product information and reviews
+- Add products to your cart and checkout
+- User authentication and profile management
+- Admin dashboard for managing products and orders
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Technologies Used
+- **Frontend**: React, Next.js, Tailwind CSS
+- **State Management**: Zustand, Redux, Redux-Toolkit
+- **Backend**: Node.js, Express.js, Mongoose
+- **Database**: MongoDB
+- **Authentication**: Passport.js
+- **Deployment**: Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/gadget-store-bd.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd gadget-store-bd
+    ```
+3. Install dependencies for both client and server:
+    ```bash
+    # For client
+    cd client
+    npm install
 
-## Learn More
+    # For server
+    cd ../server
+    npm install
+    ```
+4. Set up environment variables:
+    - Create a `.env` file in the `server` directory and add the following:
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret_key
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
+1. Start the development server:
+    ```bash
+    # In the server directory
+    npm run dev
+    ```
+2. Start the client:
+    ```bash
+    # In the client directory
+    npm run dev
+    ```
+3. Open your browser and go to `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the code style and write tests for new features.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Deploy on Vercel
+## Contact
+For any questions or feedback, feel free to reach out:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Email**: [tlanmoy@example.com](mailto:tlanmoy@example.com)
+- **GitHub**: [yourusername](https://github.com/yourusername)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# gadget-store
+Happy shopping at Gadget Store BD!
+
+
