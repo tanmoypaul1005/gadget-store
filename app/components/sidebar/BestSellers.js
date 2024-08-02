@@ -50,7 +50,7 @@ const BestSellers = async () => {
                   <ion-icon name="star-half-outline"></ion-icon>
                 </div>
                 <div className="flex items-center justify-start gap-4">
-                  <strong>$7.00</strong>
+                  <strong>${product?.price}</strong>
                 </div>
               </div>
             </Link>

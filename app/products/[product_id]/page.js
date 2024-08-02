@@ -16,7 +16,7 @@ const ProductDetails = async ({ params }) => {
   const user = await findUserId(session?.user?.email);
 
   return (
-    <div>
+    <div className="common-class">
 
       <div className="flex flex-wrap pb-5">
         <Image
