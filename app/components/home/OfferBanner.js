@@ -6,7 +6,7 @@ const OfferBanner = ({category=[]}) => {
 
     const airpods = category.find((i) => i.title === "Airpods")
     return (
-        <div className="flex w-full justify-between mt-10 gap-x-10">
+        <div className="flex justify-between w-full gap-x-10">
           <Link className="w-full" href={`/category/featured/${watch?._id}`}>
             <img
               src="/images/banner/170512072268.webp"

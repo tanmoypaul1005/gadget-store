@@ -1,6 +1,5 @@
 export const revalidate = 10;
 
-import NewProducts from "./components/NewProducts";
 import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import ProductBox from "./components/ProductBox";
@@ -10,8 +9,9 @@ import { findUserId } from "@/app/action/product/action";
 import { findDayOffer } from "@/app/action/cart";
 
 const Products = async () => {
-
-  const products = await fetch(base_url + kuProductList).then((res) => res.json());
+  const products = await fetch(base_url + kuProductList).then((res) =>
+    res.json()
+  );
 
   const newArrivals = products?.data?.filter(
     (product, index) => product.type === products_type_value.new_arrivals
@@ -31,8 +31,7 @@ const Products = async () => {
 
   const user = await findUserId(session?.user?.email);
 
-  const isAddCartDayOffer=await findDayOffer(day_offer?._id,user?._id);
-
+  const isAddCartDayOffer = await findDayOffer(day_offer?._id, user?._id);
 
   return (
     <div className="flex flex-col w-full lg:w-3/4">
@@ -59,9 +58,13 @@ const Products = async () => {
           ))}
         </div>
       </div>
-
-      <DailyOffer user={user} isAddCartDayOffer={isAddCartDayOffer} product={day_offer} />
-
+      <div className="my-10">
+        <DailyOffer
+          user={user}
+          isAddCartDayOffer={isAddCartDayOffer}
+          product={day_offer}
+        />
+      </div>
     </div>
   );
 };
