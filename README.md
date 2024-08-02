@@ -71,15 +71,6 @@ Welcome to Gadget Store BD, your one-stop shop for the latest gadgets and electr
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the code style and write tests for new features.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Contact
-For any questions or feedback, feel free to reach out:
-
-- **Email**: [tlanmoy@example.com](mailto:tlanmoy@example.com)
-- **GitHub**: [yourusername](https://github.com/yourusername)
-
-Happy shopping at Gadget Store BD!
 
 
