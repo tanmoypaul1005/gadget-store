@@ -16,7 +16,7 @@ const ProductDetails = async ({ params }) => {
   const user = await findUserId(session?.user?.email);
 
   return (
-    <div className="">
+    <div>
 
       <div className="flex flex-wrap pb-5">
         <Image
@@ -60,7 +60,6 @@ const ProductDetails = async ({ params }) => {
           </div>
         </div>
       </div>
-
 
       <ProductComment
         data={{

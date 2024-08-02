@@ -1,6 +1,6 @@
 import Banner from "./components/home/Banner";
 import Products from "./components/products/Products";
-import Category from "./components/sidebar/Category";
+
 import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
@@ -8,6 +8,7 @@ import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
 import NewProducts from "./components/products/components/NewProducts";
+import BestSellers from "./components/sidebar/BestSellers";
 
 export default async function Home() {
   const categoryData = await getAllCategory();
@@ -27,10 +28,10 @@ export default async function Home() {
         <FeaturedCategories />
 
         <div>
-          <section className="flex">
-            <Category />
+          <div className="flex h-full">
+            <BestSellers />
             <Products />
-          </section>
+          </div>
           <NewProducts />
         </div>
         {/* <Other /> */}

@@ -34,7 +34,7 @@ const Products = async () => {
   const isAddCartDayOffer = await findDayOffer(day_offer?._id, user?._id);
 
   return (
-    <div className="flex flex-col w-full lg:w-3/4">
+    <div className="flex flex-col w-full h-full lg:w-3/4">
       <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen min-w-screen md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-col gap-4 NewArrivals">
           <h1 className="pb-4 text-xl font-semibold border-b">New Arrivals</h1>
