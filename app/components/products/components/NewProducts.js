@@ -11,8 +11,8 @@ const NewProducts = async () => {
   }).then((res) => res.json());
 
   return (
-    <div className="flex gap-x-5">
-      <ProductFilter />
+
+
       <div className="newProductsContainer">
         <section className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-20">
           {products?.data?.map((product, index) => (
@@ -20,7 +20,7 @@ const NewProducts = async () => {
           ))}
         </section>
       </div>
-    </div>
+   
   );
 };
 
