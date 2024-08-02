@@ -38,7 +38,7 @@ const ProductDetails = async ({ params }) => {
           <p className="leading-relaxed">
             {productDetails?.description}
           </p>
-          <div className="space-y-3 my-3">
+          <div className="my-3 space-y-3">
             <Rating name="disabled" value={5} disabled />
             <div>Status: In Stock</div>
             <div className="text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
@@ -60,7 +60,6 @@ const ProductDetails = async ({ params }) => {
           </div>
         </div>
       </div>
-
 
       <ProductComment
         data={{
