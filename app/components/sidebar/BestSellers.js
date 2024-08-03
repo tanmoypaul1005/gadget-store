@@ -33,11 +33,11 @@ const BestSellers = async () => {
                     minWidth: "70px",
                     minHeight: "70px",
                   }}
-                  className="object-contain object-center w-full h-full"
+                  className="object-contain object-center rounded-t-xl"
                   src={product?.image}
                   alt=""
-                  height={20}
-                  width={20}
+                  height={70}
+                  width={70}
                 />
               </div>
               <div className="">

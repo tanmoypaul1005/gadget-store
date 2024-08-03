@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
@@ -72,22 +73,22 @@ const Footer = () => {
                             <h2 className="font-bold text-white text-md">POPULAR CATEGORIES</h2>
                             <hr className="w-16 mt-2 mb-4 title" />
                             <ul className="flex flex-col justify-start gap-2 text-gray-500">
-                                <li><a href="#">Fashion</a></li>
-                                <li><a href="#">Electronic</a></li>
-                                <li><a href="#">Cosmetic</a></li>
-                                <li><a href="#">Health</a></li>
-                                <li><a href="#">Watches</a></li>
+                                <li><Link href="/">Fashion</Link></li>
+                                <li><Link href="/">Electronic</Link></li>
+                                <li><Link href="/">Cosmetic</Link></li>
+                                <li><Link href="/">Health</Link></li>
+                                <li><Link href="/">Watches</Link></li>
                             </ul>
                         </div>
                         <div>
                             <h2 className="font-bold text-white text-md">PRODUCTS</h2>
                             <hr className="w-16 mt-2 mb-4 title" />
                             <ul className="flex flex-col justify-start gap-2 text-gray-500">
-                                <li><a href="#">Prices Drop</a></li>
-                                <li><a href="#">New Products</a></li>
-                                <li><a href="#">Best Sales</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Sitemap</a></li>
+                                <li><Link href="/">Prices Drop</Link></li>
+                                <li><Link href="/">New Products</Link></li>
+                                <li><Link href="/">Best Sales</Link></li>
+                                <li><Link href="/">Contact Us</Link></li>
+                                <li><Link href="/">Sitemap</Link></li>
                             </ul>
                         </div>
 
@@ -95,22 +96,22 @@ const Footer = () => {
                             <h2 className="font-bold text-white text-md">OUR COMPANY</h2>
                             <hr className="w-16 mt-2 mb-4 title" />
                             <ul className="flex flex-col justify-start gap-2 text-gray-500">
-                                <li><a href="#">Delivery</a></li>
-                                <li><a href="#">Legal Notice</a></li>
-                                <li><a href="#">Terms And Conditions</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Secure Payment</a></li>
+                                <li><Link href="/">Delivery</Link></li>
+                                <li><Link href="/">Legal Notice</Link></li>
+                                <li><Link href="/">Terms And Conditions</Link></li>
+                                <li><Link href="/">About Us</Link></li>
+                                <li><Link href="/">Secure Payment</Link></li>
                             </ul>
                         </div>
                         <div>
                             <h2 className="font-bold text-white text-md">SERVICES</h2>
                             <hr className="w-16 mt-2 mb-4 title" />
                             <ul className="flex flex-col justify-start gap-2 text-gray-500">
-                                <li><a href="#">Prices Drop</a></li>
-                                <li><a href="#">New Products</a></li>
-                                <li><a href="#">Best Sales</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Sitemap</a></li>
+                                <li><Link href="/">Prices Drop</Link></li>
+                                <li><Link href="/">New Products</Link></li>
+                                <li><Link href="/">Best Sales</Link></li>
+                                <li><Link href="/">Contact Us</Link></li>
+                                <li><Link href="/">Sitemap</Link></li>
                             </ul>
                         </div>
                         <div>
@@ -119,17 +120,15 @@ const Footer = () => {
                             <ul className="flex flex-col justify-start gap-2 text-gray-500">
                                 <li>
                                     <ion-icon className="text-lg" name="location-outline"></ion-icon>
-                                    <a href="#"
-                                    >Dhaka, Bangladesh</a
-                                    >
+                                    <Link href="/">Dhaka, Bangladesh</Link>
                                 </li>
                                 <li>
                                     <ion-icon className="text-lg" name="call-outline"></ion-icon>
-                                    <a href="#">01736932489</a>
+                                    <Link href="/">01736932489</Link>
                                 </li>
                                 <li>
                                     <ion-icon className="text-lg" name="mail-outline"></ion-icon>
-                                    <a href="#">tanmoypaul1005@gmail.com</a>
+                                    <Link href="/">tanmoypaul1005@gmail.com</Link>
                                 </li>
                             </ul>
                         </div>
@@ -138,19 +137,19 @@ const Footer = () => {
                             <hr className="w-16 mt-2 mb-4 title" />
                             <ul className="flex justify-start gap-2 text-lg text-gray-500">
                                 <li>
-                                    <a href="#">
+                                    <Link href="/">
                                         <ion-icon name="logo-instagram"></ion-icon>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link href="/">
                                         <ion-icon name="logo-github"></ion-icon>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <Link href="/">
                                         <ion-icon name="logo-linkedin"></ion-icon>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
