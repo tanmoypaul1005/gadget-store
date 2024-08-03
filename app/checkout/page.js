@@ -9,6 +9,7 @@ import { getAddress } from "../action/address";
 import PlaceOrder from "./components/PlaceOrder";
 import Image from "next/image";
 import { iNoCart } from "@/util/imageImports";
+import Contact from "./components/Contact";
 
 export const metadata = {
   title: "Gadget store || Checkout",
@@ -194,7 +195,7 @@ const Checkout = async () => {
                 <div>
                   <CommonInput disabled={true} label={"Name"} value={session?.user?.name} placeholder="your.email@gmail.com" />
                   <CommonInput disabled={true} label={"Email"} value={session?.user?.email} placeholder="your.email@gmail.com" />
-                  <CommonInput label={"Contact Number"} placeholder="Street Address" />
+                  <Contact/>
 
                   <div className="py-2 mt-6 text-white border-t border-b">
                     <div className="flex items-center justify-between">

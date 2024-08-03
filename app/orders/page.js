@@ -15,7 +15,7 @@ const Orders = async () => {
         <div className="space-y-3">
           {order?.data?.map((item, index) => (
             <section key={index} className="relative">
-              <div className="w-full mx-auto max-w-7xl lg-6">
+              <div className="w-full common-class">
                 <div className="max-w-xl pt-6 border border-gray-200 main-box rounded-xl max-lg:mx-auto lg:max-w-full">
                   <div className="flex flex-col justify-between px-6 pb-6 border-b border-gray-200 lg:flex-row lg:items-center">
                     <div className="data">
