@@ -14,7 +14,6 @@
     "@emotion/styled": "^11.11.5",
     "@headlessui/react": "^2.0.4",
     "@heroicons/react": "^2.1.4",
-    "@material-tailwind/react": "^2.1.9",
     "@mui/material": "^5.15.20",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",

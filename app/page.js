@@ -9,6 +9,7 @@ import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
 import NewProducts from "./components/products/components/NewProducts";
 import BestSellers from "./components/sidebar/BestSellers";
+import TopBrand from "./components/topBrand/TopBrand";
 
 export default async function Home() {
   const categoryData = await getAllCategory();
@@ -29,10 +30,12 @@ export default async function Home() {
 
         <div>
           <div className="flex h-full">
-            <BestSellers />
+            <BestSellers /> 
             <Products />
           </div>
           <NewProducts />
+
+          <TopBrand/>
         </div>
         {/* <Other /> */}
       </div>
