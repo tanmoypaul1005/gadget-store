@@ -17,7 +17,6 @@ export const metadata = {
   description: "",
 };
 
-
 const Checkout = async () => {
 
   const session = await auth();
@@ -93,7 +92,7 @@ const Checkout = async () => {
           <div className='flex flex-col items-center justify-center'>
           <Image alt='No items in cart' src={iNoCart} style={{ maxWidth: "60%", maxHeight: "350px" }} />
           <div className='mt-4 text-center'>
-            <h2 className='text-2xl font-semibold text-red-500'>Your Cart is Empty</h2>
+            <h2 className='text-2xl font-semibold text-red-500'>Your Cart is Empty!</h2>
             <p className='mt-2 font-semibold text-red-500'>{"Looks like you haven't added anything to your cart yet."}</p>
            <ShoppingButton/>
           </div>
@@ -117,7 +116,7 @@ export async function generateStaticParams() {
   return recipeList?.data.map((item) => {
     return {
       params: {
-        cart,
+        cart
       },
     };
   });

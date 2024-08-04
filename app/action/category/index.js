@@ -36,3 +36,14 @@ export async function getMainCategory() {
       return []
     }
   }
+
+  export const getCategoryDetails = async (category_id) => {
+    try{
+      await connectMongo();
+      const category = await Category.findById(category_id);
+      return category;
+    }catch(err){
+      console.error(err);
+      return {}
+    }
+  }
