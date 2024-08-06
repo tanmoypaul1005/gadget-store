@@ -1,9 +1,10 @@
 "use client";
+// import CategoryProducts from "@/app/category/components/CategoryProducts";
 import React, { useState } from "react";
-import TopBrandProducts from "./TopBrandProducts";
+
 
 const Tabs = ({ categoryList = [] }) => {
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState(categoryList[0]?._id);
 
   return (
     <>
@@ -23,7 +24,7 @@ const Tabs = ({ categoryList = [] }) => {
         ))}
       </div>
 
-      <TopBrandProducts selectedId={selectedId} />
+{/* { selectedId &&     <CategoryProducts category_id={selectedId} />} */}
     </>
   );
 };
