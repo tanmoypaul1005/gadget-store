@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import CategoryProducts from "@/app/category/components/CategoryProducts";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
@@ -31,7 +30,7 @@ const Tabs = ({ categoryList = [] }) => {
         ))}
       </div>
 
-      {selectedId && <CategoryProducts category_id={selectedId} />} 
+      {/* {selectedId && <CategoryProducts category_id={selectedId} />}  */}
     </>
   );
 };
