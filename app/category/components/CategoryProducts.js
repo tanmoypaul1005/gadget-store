@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 const CategoryProducts = ({ category_id = null }) => {
+  
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -23,10 +24,9 @@ const CategoryProducts = ({ category_id = null }) => {
     fetchProducts();
   }, [category_id]);
 
-  console.log("products", products);
 
   return (
-    <div className="flex w-full mt-10 space-x-10">
+    <div className="flex w-full pt-5 space-x-10">
 
       {products.length > 0 ? (
         products.map((product, index) => (

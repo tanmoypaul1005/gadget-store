@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
   return (
       <div className="flex flex-col self-center w-full max-w-xs overflow-hidden bg-gray-700 border rounded-lg shadow-md group border-gray-100/30">
         <a
@@ -32,20 +32,19 @@ const ProductCard = () => {
               d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z"
             />
           </svg>
-          <span className="absolute top-0 left-0 px-2 m-2 text-sm font-medium text-center text-white bg-black rounded-full">
+          {/* <span className="absolute top-0 left-0 px-2 m-2 text-sm font-medium text-center text-white bg-black rounded-full">
             39% OFF
-          </span>
+          </span> */}
         </a>
         <div className="px-5 pb-5 mt-4">
           <a href="#">
-            <h5 className="text-xl tracking-tight text-white">
-              Nike Air MX Super 2500 - Red
+            <h5 className="text-xl tracking-tight text-white line-clamp-1">
+             {product?.name ?? "NA"}
             </h5>
           </a>
           <div className="flex items-center justify-between mt-2 mb-5">
             <p>
-              <span className="text-3xl font-bold text-white">$449</span>
-              <span className="text-sm text-white line-through">$699</span>
+              <span className="text-3xl font-bold text-white">${product?.price}</span>
             </p>
           </div>
           <a

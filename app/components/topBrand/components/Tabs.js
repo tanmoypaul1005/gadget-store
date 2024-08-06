@@ -11,7 +11,6 @@ const Tabs = ({ categoryList = [] }) => {
     setSelectedId(categoryList[0]?._id);
   }, [selectedId]);
 
-  console.log("selectedId", selectedId);
 
   return (
     <>
