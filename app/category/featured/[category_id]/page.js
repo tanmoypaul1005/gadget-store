@@ -27,9 +27,8 @@ const FeaturedCategoriesDetails = async ({ params }) => {
             <img width={500} height={500} src={categoryDetails?.data?.banner} alt={categoryDetails?.data?.title} className='w-full h-[300px] object-cover' />
             :
 
-            <div className='p-3 flex justify-between rounded text-xl font-bold bg-cCommonBg w-full '>
+            <div className='flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg '>
               <div>
-
                 {categoryDetails?.data?.title ?? "Category"}
               </div>
               <div>
