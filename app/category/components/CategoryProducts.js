@@ -1,21 +1,36 @@
-// import { getByCategoryProducts } from '@/app/action/category';
-// import ProductCard from '@/app/components/products/components/ProductCard';
+"use client";
+//import ProductCard from '@/app/components/products/components/ProductCard';
+import { useEffect, useState } from 'react';
 
-import { getByCategoryProducts } from "@/app/action/category";
+const CategoryProducts = ({ category_id = null }) => {
+  const [products, setProducts] = useState([]);
 
-const CategoryProducts = async({category_id=null}) => {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (category_id) {
+        try {
+          const response = await fetch(`/api/category/products?category_id=${category_id}`);
+          const data = await response.json();
+          setProducts(data.data);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+    };
 
-    const products =category_id ? await getByCategoryProducts(category_id):[];
+    fetchProducts();
+  }, [category_id]);
+  console.log("products", products);
 
-    return (
-        <div className="flex mt-10 space-x-10">
-        {/* {products?.data?.map((product, index) => (
-          <div key={index}>
-            <ProductCard key={index} product={product} />
-          </div>
-        ))} */}
-      </div>
-    )
-}
+  return (
+    <div className="flex mt-10 space-x-10">
+      {/* {products?.map((product, index) => (
+        <div key={index}>
+          <ProductCard key={index} product={product} />
+        </div>
+      ))} */}
+    </div>
+  );
+};
 
-export default CategoryProducts
+export default CategoryProducts;
