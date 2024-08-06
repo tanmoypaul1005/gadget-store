@@ -1,6 +1,11 @@
+"use client"
 import React from 'react';
+import { useState } from 'react';
 
 const TopBrand = () => {
+
+    const [selected, setSelected] = useState("")
+    
     return (
         <div className='flex flex-col items-center justify-center space-y-2'>
             <div className='text-2xl font-semibold leading-9'>Top Brand Products</div>

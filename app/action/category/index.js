@@ -40,10 +40,23 @@ export async function getMainCategory() {
   export const getCategoryDetails = async (category_id) => {
     try{
       await connectMongo();
-      const category = await Category.findById(category_id);
-      return category;
+      const categories = await Category.findById(category_id);
+      return categories;
     }catch(err){
       console.error(err);
       return {}
+    }
+  }
+
+
+
+  export const getSelectedCategoryDetails = async (title) => {
+    try {
+      await connectMongo();
+      const categories = await Category.findOne({title:title});
+      return categories;
+    } catch (err) {
+      console.error(err);
+      return [];
     }
   }

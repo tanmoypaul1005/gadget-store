@@ -14,6 +14,10 @@ const categorySchema = new mongoose.Schema({
         type: String,
         default:""
     },
+    top_brand:{
+      type: Boolean,
+        default:false
+    },
     status: {
         type: String,
         default:"sub_category"

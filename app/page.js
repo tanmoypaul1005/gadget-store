@@ -1,6 +1,5 @@
 import Banner from "./components/home/Banner";
 import Products from "./components/products/Products";
-
 import Other from "./components/other/Other";
 import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
