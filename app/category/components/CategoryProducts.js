@@ -26,7 +26,7 @@ const CategoryProducts = ({ category_id = null }) => {
 
 
   return (
-    <div className="flex w-full pt-5 space-x-10">
+    <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
 
       {products.length > 0 ? (
         products.map((product, index) => (

@@ -5,11 +5,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 const Tabs = ({ categoryList = [] }) => {
+  
   const [selectedId, setSelectedId] = useState(categoryList[0]?._id);
-
-  useEffect(() => {
-    setSelectedId(categoryList[0]?._id);
-  }, [selectedId]);
 
 
   return (
