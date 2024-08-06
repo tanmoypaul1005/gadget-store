@@ -1,31 +1,27 @@
+import Image from "next/image";
 import React from "react";
 
 const ProductCard = ({product}) => {
   return (
-      <div className="flex flex-col self-center w-full max-w-xs overflow-hidden bg-gray-700 border rounded-lg shadow-md group border-gray-100/30">
-        <a
-          className="relative flex mx-3 mt-3 overflow-hidden h-60 rounded-xl"
-          href="#"
-        >
-          <img
-            className="object-contain w-full h-full transition-all duration-1000 delay-100 peer"
+      <div className="flex flex-col self-center px-3 py-2 overflow-hidden bg-gray-700 border rounded-lg shadow-md w-72 group border-gray-100/30">
+      <Image
+            style={{ maxHeight: "20px", minHeight: "200px" }}
+            alt=""
+            width={200}
+            height={500}
             src={product?.image}
-            alt="product image"
+            className="object-contain object-center rounded-t-xl"
           />
       
-          {/* <span className="absolute top-0 left-0 px-2 m-2 text-sm font-medium text-center text-white bg-black rounded-full">
-            39% OFF
-          </span> */}
-        </a>
-        <div className="px-5 pb-5 mt-4">
+        <div className="mt-2">
           <a href="#">
-            <h5 className="text-xl tracking-tight text-white line-clamp-1">
+            <h5 className="text-lg tracking-tight text-white line-clamp-1">
              {product?.name ?? "NA"}
             </h5>
           </a>
           <div className="flex items-center justify-between mt-2 mb-5">
             <p>
-              <span className="text-3xl font-bold text-white">${product?.price}</span>
+              <span className="text-xl font-bold text-white">${product?.price}</span>
             </p>
           </div>
           <a
