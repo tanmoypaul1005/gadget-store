@@ -1,10 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-// import CategoryProducts from "@/app/category/components/CategoryProducts";
+//import CategoryProducts from "@/app/category/components/CategoryProducts";
 import React, { useState } from "react";
-
+import { useEffect } from "react";
 
 const Tabs = ({ categoryList = [] }) => {
   const [selectedId, setSelectedId] = useState(categoryList[0]?._id);
+
+  useEffect(() => {
+    setSelectedId(categoryList[0]?._id);
+  }, [selectedId]);
+
+  console.log("selectedId", selectedId);
 
   return (
     <>
@@ -24,7 +31,7 @@ const Tabs = ({ categoryList = [] }) => {
         ))}
       </div>
 
-{/* { selectedId &&     <CategoryProducts category_id={selectedId} />} */}
+      {/* {selectedId && <CategoryProducts category_id={selectedId} />} */}
     </>
   );
 };

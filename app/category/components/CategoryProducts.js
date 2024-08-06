@@ -2,17 +2,17 @@ import { getByCategoryProducts } from '@/app/action/category';
 import ProductCard from '@/app/components/products/components/ProductCard';
 import React from 'react'
 
-const CategoryProducts = async({category_id}) => {
+const CategoryProducts = async({category_id=null}) => {
 
-    const products = await getByCategoryProducts(category_id);
+    // const products =category_id ? await getByCategoryProducts(category_id):[];
 
     return (
         <div className="flex mt-10 space-x-10">
-        {products?.data?.map((product, index) => (
+        {/* {products?.data?.map((product, index) => (
           <div key={index}>
             <ProductCard key={index} product={product} />
           </div>
-        ))}
+        ))} */}
       </div>
     )
 }
