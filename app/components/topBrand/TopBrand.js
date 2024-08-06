@@ -1,21 +1,15 @@
-"use client"
 import React from 'react';
-import { useState } from 'react';
+import Tabs from './components/Tabs';
+import { getTopBrandList } from '@/app/action/category';
 
-const TopBrand = () => {
+const TopBrand = async() => {
 
-    const [selected, setSelected] = useState("")
-    
+    const categoryList = await getTopBrandList();
+
     return (
         <div className='flex flex-col items-center justify-center space-y-2'>
             <div className='text-2xl font-semibold leading-9'>Top Brand Products</div>
-            <div className='flex space-x-8'>
-                <div className='text-sm font-normal leading-5 text-white cursor-pointer hover:text-cDeepSaffron'>Samsung</div>
-                <div className='text-sm font-normal leading-5 text-white cursor-pointer hover:text-cDeepSaffron'>MUI</div>
-                <div className='text-sm font-normal leading-5 text-white cursor-pointer hover:text-cDeepSaffron'>Apple</div>
-                <div className='text-sm font-normal leading-5 text-white cursor-pointer hover:text-cDeepSaffron'>HP</div>
-                <div className='text-sm font-normal leading-5 text-white cursor-pointer hover:text-cDeepSaffron'>Lenovo</div>
-            </div>
+            <Tabs categoryList={categoryList}/>
         </div>
     );
 };
