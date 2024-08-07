@@ -1,23 +1,26 @@
 // import Products from "@/models/Products";
 // import connectMongo from "@/util/db";
+import axios from "axios";
 import { create } from "zustand";
 
 
 export const useProductStore = create((set) => ({
 
-    allProductList: [],
-    setProductList: (value) => set({ allProductList: value }),
+    productList: [],
+    setProductList: (value) => set({ productList: value }),
 
 }));
 
 
-export const fetchProductList = async (min_price = 0, max_price = 0) => {
-    // const { setProductList } = useProductStore.getState();
-    // try {
-    //   await connectMongo();
-    //   const response = await Products({ min_price, max_price });
-    //   setProductList(response);
-    // } catch {
-    //   return [];
-    // }
+export const fetchProductList = async (categoryId) => {
+    const { setProductList } = useProductStore.getState();
+    try {
+      const response = await axios.get(`/api/category/products?category_id=${categoryId}`);
+      const data = response?.data?.data || [];
+      console.log("data",data);
+      setProductList(data);
+    } catch (error) {
+      console.error(error);
+      setProductList([]);
+    }
   };

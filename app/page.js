@@ -34,7 +34,7 @@ export default async function Home() {
           </div>
           <NewProducts />
 
-          {/* <TopBrand/> */}
+          <TopBrand/> 
         </div>
         {/* <Other /> */}
       </div>

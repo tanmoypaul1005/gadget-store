@@ -25,7 +25,7 @@ const Tabs = ({ categoryList = [] }) => {
         ))}
       </div>
 
-       {selectedId && <CategoryProducts category_id={selectedId} />}  
+       {/* {selectedId && <CategoryProducts category_id={selectedId} />}   */}
     </>
   );
 };

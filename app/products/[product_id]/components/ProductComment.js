@@ -1,4 +1,4 @@
-// "use client"
+
 import React from "react";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
