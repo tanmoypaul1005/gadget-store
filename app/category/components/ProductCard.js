@@ -1,13 +1,13 @@
 import Image from "next/image";
 import React from "react";
-import AddCartButton from "./AddCartButton";
+// import AddCartButton from "./AddCartButton";
 import Link from "next/link";
-import { auth } from "@/auth";
-import { findUserId } from "@/app/action/product/action";
+// import { auth } from "@/auth";
+// import { findUserId } from "@/app/action/product/action";
 
 const ProductCard = async ({ product }) => {
-  const session = await auth();
-  const user = await findUserId(session?.user?.email);
+  // const session = await auth();
+  // const user = await findUserId(session?.user?.email);
   return (
     <Link
       href={`/products/${product?.id}`}
@@ -35,13 +35,15 @@ const ProductCard = async ({ product }) => {
             </span>
           </p>
         </div>
-        {session?.user?.email && <AddCartButton  
-                          data={{
-                            product_id: product?._id,
-                            user: user,
-                            session: session,
-                          }}
-        />}
+        {/* {session?.user?.email && (
+          <AddCartButton
+            data={{
+              product_id: product?._id,
+              user: user,
+              session: session,
+            }}
+          />
+        )} */}
       </div>
     </Link>
   );
