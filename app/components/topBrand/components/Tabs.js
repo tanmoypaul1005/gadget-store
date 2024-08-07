@@ -2,12 +2,10 @@
 "use client";
 import CategoryProducts from "@/app/category/components/CategoryProducts";
 import React, { useState } from "react";
-import { useEffect } from "react";
 
 const Tabs = ({ categoryList = [] }) => {
   
-  const [selectedId, setSelectedId] = useState(categoryList[0]?._id);
-
+  const [selectedId, setSelectedId] = useState(categoryList?.length> 0? categoryList[0]?._id:null);
 
   return (
     <>
