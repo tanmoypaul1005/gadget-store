@@ -1,33 +1,60 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-import CategoryProducts from "@/app/category/components/CategoryProducts";
-import React, { useState } from "react";
-import { useEffect } from "react";
 
-const Tabs = ({ categoryList = [] }) => {
-  
-  const [selectedId, setSelectedId] = useState(categoryList[0]?._id);
+"use client"
+import ProductCard from '@/app/category/components/ProductCard';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 
+const Tabs = ({ categoryList }) => {
+
+  const [selectedId, setSelectedId] = useState(categoryList?.length > 0 ?categoryList[0]?.id :null);
+  const [products, setProducts] = useState([]);
+
+  console.log('Selected ID:', selectedId);
+
+  useEffect(() => {
+    if (selectedId) {
+      fetch(`api/category/products?category_id=${selectedId}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Products:', data);
+          setProducts(data);
+        })
+        .catch(error => {
+          console.error('Error fetching products:', error);
+        });
+    }
+  }, [selectedId]);
 
   return (
     <>
       <div className="flex space-x-8">
         {categoryList?.map((category, index) => (
           <div
-            onClick={() => setSelectedId(category?._id)}
+            onClick={() => {
+              console.log("Category clicked:", category?._id);
+              setSelectedId(category?._id);
+            }}
             key={index}
             className={`border-b-2 ${
               selectedId === category?._id
                 ? "text-cDeepSaffron border-cDeepSaffron"
                 : "text-white border-slate-800"
-            }  text-sm font-normal leading-5  cursor-pointer hover:text-cDeepSaffron`}
+            }  text-sm font-normal leading-5 cursor-pointer hover:text-cDeepSaffron`}
           >
             {category?.title}
           </div>
         ))}
       </div>
 
-       {selectedId && <CategoryProducts category_id={selectedId} />}  
+      {selectedId && <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
+        {products?.data?.length > 0 ? (
+          products?.data?.map((product, productIndex) => (
+            <ProductCard key={productIndex} product={product} />
+          ))
+        ) : (
+          <div>No products found</div>
+        )}
+      </div>} 
     </>
   );
 };
