@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import CategoryProducts from "@/app/category/components/CategoryProducts";
 import React, { useState } from "react";
 
-const Tabs = ({ categoryList = [] }) => {
+const Tabs = ({ categoryList = [],productList=[] }) => {
   
   const [selectedId, setSelectedId] = useState(categoryList?.length> 0? categoryList[0]?._id:null);
+
+  console.log("categoryList", productList);
 
   return (
     <>
@@ -25,7 +26,17 @@ const Tabs = ({ categoryList = [] }) => {
         ))}
       </div>
 
-       {/* {selectedId && <CategoryProducts category_id={selectedId} />}   */}
+        {/* {selectedId && 
+            <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
+            {products.length > 0 ? (
+              products.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              ))
+            ) : (
+              <div>No products found</div>
+            )}
+          </div>
+        }    */}
     </>
   );
 };

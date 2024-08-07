@@ -9,8 +9,7 @@ const ProductCard = async ({ product }) => {
   // const session = await auth();
   // const user = await findUserId(session?.user?.email);
   return (
-    <Link
-      href={`/products/${product?.id}`}
+    <div
       className="flex flex-col self-center px-3 py-2 overflow-hidden bg-gray-700 border rounded-lg shadow-md w-72 group border-gray-100/30"
     >
       <Image
@@ -45,7 +44,7 @@ const ProductCard = async ({ product }) => {
           />
         )} */}
       </div>
-    </Link>
+    </div>
   );
 };
 

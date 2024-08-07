@@ -73,3 +73,31 @@ export const getSelectedCategoryDetails = async (title) => {
     return [];
   }
 };
+
+
+
+export async function getTopBrandProducts() {
+  try {
+    await connectMongo();
+
+    // Fetch all categories
+    const categories = await Category.find({top_brand: true}).lean().exec();
+    const response = {};
+
+    // Fetch products for each category
+    for (const category of categories) {
+      const products = await Products.find({ category: category._id }).lean().exec();
+      response[category.title] = products;
+    }
+
+    return {
+      success: true,
+      status: 200,
+      data: response,
+      message: `Products are found`,
+    };
+  } catch (err) {
+    console.error(err);
+    return { message: "Internal Server Error", data: {} };
+  }
+}
