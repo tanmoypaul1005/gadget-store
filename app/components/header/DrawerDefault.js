@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import { useGeneralStore } from "@/app/stores/generalStore";
 import { useState } from "react";
