@@ -8,6 +8,7 @@ import {
 import { useGeneralStore } from "@/app/stores/generalStore";
 import { useState } from "react";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export function DrawerDefault() {
   const { mobileNav, setMobileNav } = useGeneralStore();
@@ -34,13 +35,13 @@ export function DrawerDefault() {
     <>
       {mobileNav && (
 
-          <Drawer open={mobileNav} onClose={closeDrawer} className="p-4">
+          <Drawer open={mobileNav} onClose={()=>{}} className="p-4">
             <>
             <div className="flex items-center justify-between mb-6 text-black gap-x-4">
               <Typography variant="h5" color="blue-gray">
                 Material Tailwind
               </Typography>
-              <div className="flex items-center justify-center cursor-pointer">
+              <div onClick={closeDrawer} className="flex items-center justify-center cursor-pointer">
 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -58,15 +59,18 @@ export function DrawerDefault() {
                 </svg>
 
               </div>
-             
             </div>
+
+            <div className="space-y-3">
             {
                 categories?.map((category, index) => (
-                  <div className="flex flex-col text-black " key={index}>
+                  <Link href={`/category/${category?.id}`} className="flex flex-col text-black cursor-pointer hover:text-cDeepSaffron " key={index}>
                       {category?.title}
-                  </div>
+                  </Link>
                 ))
               }
+            </div>
+
                     </>
           </Drawer>
 
