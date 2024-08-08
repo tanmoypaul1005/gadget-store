@@ -9,14 +9,14 @@ import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
 import { iCart, iOrder } from "@/util/imageImports";
 import { DrawerDefault } from "./DrawerDefault";
+import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
-  const [mobileNav, setMobileNav] = useState(false);
+  const {mobileNav, setMobileNav} = useGeneralStore()
 
-  //handle click
   const handleClick = () => {
     setMobileNav(!mobileNav);
   };
@@ -55,7 +55,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                     isHover={true}
                     totalOrder={totalOrder}
                   />
-
 
                   <CartIcon totalCart={totalCart} />
 
@@ -135,13 +134,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
             </div>
           </nav>
-
-          {/* mobile nav  */}
-          {mobileNav && (
-            <>
-           <DrawerDefault open={mobileNav} setOpen={setMobileNav} />
-            </>
-          )}
         </header>
 
         <div className="block w-full mb-5 md:hidden lg:hidden">
