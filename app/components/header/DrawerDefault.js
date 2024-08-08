@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
-import {
-  Drawer,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 import { useGeneralStore } from "@/app/stores/generalStore";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -29,18 +26,17 @@ export function DrawerDefault() {
       });
   }, []);
 
-  console.log("[categories]", categories);
 
   return (
     <>
       {mobileNav && (
 
-          <Drawer open={mobileNav} onClose={()=>{}} className="p-4">
-            <>
+          <Drawer open={mobileNav} onClose={closeDrawer}>
+            <div className="p-4">
             <div className="flex items-center justify-between mb-6 text-black gap-x-4">
-              <Typography variant="h5" color="blue-gray">
+              <div variant="h5" color="blue-gray">
                 Material Tailwind
-              </Typography>
+              </div>
               <div onClick={closeDrawer} className="flex items-center justify-center cursor-pointer">
 
                 <svg
@@ -64,14 +60,14 @@ export function DrawerDefault() {
             <div className="space-y-3">
             {
                 categories?.map((category, index) => (
-                  <Link href={`/category/${category?.id}`} className="flex flex-col text-black cursor-pointer hover:text-cDeepSaffron " key={index}>
+                  <Link href={`/category/featured/${category?._id}`} className="flex flex-col text-black cursor-pointer hover:text-cDeepSaffron " key={index}>
                       {category?.title}
                   </Link>
                 ))
               }
             </div>
 
-                    </>
+                    </div>
           </Drawer>
 
       )}
