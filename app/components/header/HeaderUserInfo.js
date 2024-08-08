@@ -8,14 +8,15 @@ import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
 import { iCart, iOrder } from "@/util/imageImports";
+import { DrawerDefault } from "./DrawerDefault";
+import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
-  const [mobileNav, setMobileNav] = useState(false);
+  const {mobileNav, setMobileNav} = useGeneralStore();
 
-  //handle click
   const handleClick = () => {
     setMobileNav(!mobileNav);
   };
@@ -35,14 +36,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
       <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
         <header>
-          {/* desktop nav  */}
           <nav className="flex justify-between w-full py-3 gap-x-2">
-            {/* brand  */}
+
             <div className="flex items-center flex-grow gap-x-4">
               <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
                 Gadget store
               </Link>
-              <div className="hidden w-full md:block lg:block">
+              <div className="common-responsive">
                 <Search /> 
               </div>
             </div>
@@ -55,8 +55,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                     isHover={true}
                     totalOrder={totalOrder}
                   />
-
-                  {/* <Favorites /> */}
 
                   <CartIcon totalCart={totalCart} />
 
@@ -136,25 +134,9 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
             </div>
           </nav>
-
-          {/* mobile nav  */}
-          {mobileNav && (
-            <>
-              <nav className="block py-4 mx-6 my-2 border border-gray-300 rounded-lg shadow-lg md:hidden lg:hidden">
-                <ul>
-                  <li>
-                    <OrderButton totalOrder={totalOrder} isHover={false} />
-                  </li>
-                  <li>
-                    <Favorites isHover={false} />
-                  </li>
-                </ul>
-              </nav>
-            </>
-          )}
         </header>
 
-        <div className="block w-full mb-5 md:hidden lg:hidden">
+        <div className="block w-full mb-5 md:hidden">
           <Search />
         </div>
       </div>
@@ -187,27 +169,8 @@ const CartIcon = ({ totalCart = 0 }) => {
 }
 
 
-const Favorites = ({ isHover = true }) => {
-  return (
-    <>
-      <div className={`flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-5 h-5 text-gray-500"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            // fill-rule="evenodd"
-            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-          // clip-rule="evenodd"
-          />
-        </svg>
-        <span className="text-base font-medium">Favorites</span>
-      </div>
-    </>
-  )
-}
+
+
 
 const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
   return (

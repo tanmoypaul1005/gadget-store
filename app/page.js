@@ -20,15 +20,13 @@ export default async function Home() {
           <div className="h-full mt-[-15px]">
             <SideBarCategory />
           </div>
-          <div className="w-full"><Banner /></div>
+          <Banner />
         </div>
         <OfferBanner category={categoryData?.data} />
-       
         <FeaturedCategories />
-
         <div>
           <div className="flex h-full">
-            <BestSellers /> 
+            <BestSellers />
             <Products />
           </div>
           <NewProducts />

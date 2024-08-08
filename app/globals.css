@@ -19,6 +19,9 @@
   @apply w-full gap-8 px-8 mx-auto lg:px-0 lg:w-5/6;
   min-height: auto;
 }
+.common-responsive {
+  @apply hidden w-full md:block lg:block
+}
 
 * {
   box-sizing: border-box;
