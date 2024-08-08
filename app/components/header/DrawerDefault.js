@@ -5,9 +5,12 @@ import Drawer from '@mui/material/Drawer';
 import { useGeneralStore } from "@/app/stores/generalStore";
 import { useState } from "react";
 import { useEffect } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 export function DrawerDefault() {
+  const router = useRouter()
+
   const { mobileNav, setMobileNav } = useGeneralStore();
 
   const [categories, setCategories] = useState([]);
@@ -32,10 +35,10 @@ export function DrawerDefault() {
       {mobileNav && (
 
           <Drawer open={mobileNav} onClose={closeDrawer}>
-            <div className="p-4">
+            <div className="px-8 py-4">
             <div className="flex items-center justify-between mb-6 text-black gap-x-4">
               <div variant="h5" color="blue-gray">
-                Material Tailwind
+              All Categories
               </div>
               <div onClick={closeDrawer} className="flex items-center justify-center cursor-pointer">
 
@@ -60,9 +63,15 @@ export function DrawerDefault() {
             <div className="space-y-3">
             {
                 categories?.map((category, index) => (
-                  <Link href={`/category/featured/${category?._id}`} className="flex flex-col text-black cursor-pointer hover:text-cDeepSaffron " key={index}>
+                  <div 
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    closeDrawer();
+                    router.push(`/category/featured/${category?._id}`)
+                  }}
+                    className="flex flex-col text-black cursor-pointer hover:text-cDeepSaffron " key={index}>
                       {category?.title}
-                  </Link>
+                  </div>
                 ))
               }
             </div>
