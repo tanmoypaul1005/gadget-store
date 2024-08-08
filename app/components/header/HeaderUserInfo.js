@@ -15,7 +15,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
-  const {mobileNav, setMobileNav} = useGeneralStore()
+  const {mobileNav, setMobileNav} = useGeneralStore();
 
   const handleClick = () => {
     setMobileNav(!mobileNav);
@@ -136,7 +136,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           </nav>
         </header>
 
-        <div className="block w-full mb-5 md:hidden lg:hidden">
+        <div className="block w-full mb-5 md:hidden">
           <Search />
         </div>
       </div>

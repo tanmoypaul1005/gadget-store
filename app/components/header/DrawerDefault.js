@@ -43,16 +43,6 @@ export function DrawerDefault() {
                 </svg>
               </IconButton>
             </div>
-            <Typography color="gray" className="pr-4 mb-8 font-normal">
-              Material Tailwind features multiple React and HTML components, all
-              written with Tailwind CSS classes and Material Design guidelines.
-            </Typography>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outlined">
-                Documentation
-              </Button>
-              <Button size="sm">Get Started</Button>
-            </div>
           </Drawer>
         </div>
       )}
