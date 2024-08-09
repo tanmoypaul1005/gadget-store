@@ -6,6 +6,7 @@ import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
 import NewProducts from "./components/products/components/NewProducts";
 import BestSellers from "./components/sidebar/BestSellers";
+import TopRate from "./top-rate/page";
 
 export default async function Home() {
   const categoryData = await getAllCategory();
@@ -26,6 +27,7 @@ export default async function Home() {
             <BestSellers />
             <Products />
           </div>
+          <TopRate/>
           <NewProducts />
         </div>
       </div>

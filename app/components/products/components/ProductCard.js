@@ -33,7 +33,7 @@ export const ProductCard = async ({ product }) => {
             </p>
             <div>
               <div className="mt-2">
-                <Rating name="disabled" value={5} disabled />
+                <Rating name="disabled" value={parseInt(product?.ratting ?? 0)} disabled />
               </div>
               <div className="flex justify-between">
               <p className="text-base font-semibold text-red-400 cursor-auto">

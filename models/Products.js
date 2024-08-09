@@ -21,6 +21,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    ratting:{
+        type: Number,
+        required: true,
+        default:2
+    },
     type: {
         type: String,
         required: true,
