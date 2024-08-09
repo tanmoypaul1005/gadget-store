@@ -1,7 +1,5 @@
 import Banner from "./components/home/Banner";
 import Products from "./components/products/Products";
-import Other from "./components/other/Other";
-import Advertisement from "./components/advertisement/Advertisement";
 import FeaturedCategories from "./components/FeaturedCategories";
 import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
@@ -14,7 +12,6 @@ export default async function Home() {
 
   return (
     <>
-      {/* <Advertisement /> */}
       <div className="space-y-10 common-class">
         <div className="flex lg:gap-x-2 gap-x-0">
           <div className="h-full mt-[-15px]">
@@ -31,7 +28,6 @@ export default async function Home() {
           </div>
           <NewProducts />
         </div>
-        {/* <Other /> */}
       </div>
     </>
   );

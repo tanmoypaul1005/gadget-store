@@ -1,6 +1,6 @@
 import ProductCard from "@/app/components/products/components/ProductCard";
 import { base_url } from "@/util/const";
-import { kuMainCategory } from "@/util/url";
+import { kuCategoryDetails, kuMainCategory } from "@/util/url";
 import Image from "next/image";
 import React from "react";
 
@@ -11,7 +11,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
   const products = await response.json();
 
   const categoryResponse = await fetch(
-    base_url + `/category/details/${params?.category_id}`
+    base_url + `${kuCategoryDetails}/${params?.category_id}`
   );
 
   if (!categoryResponse.ok) {
