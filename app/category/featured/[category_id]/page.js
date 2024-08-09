@@ -1,5 +1,4 @@
-import ProductCard from "@/app/components/products/components/ProductCard";
-import CommonSelectBox from "@/components/input/CommonSelectBox";
+import ProductCard from "@/app/components/products/components/ProductCard";;
 import { base_url } from "@/util/const";
 import { kuMainCategory } from "@/util/url";
 import Image from "next/image";
@@ -25,7 +24,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
     <div className="common-class">
       <div className="mb-10">
         {categoryDetails?.data?.banner ? (
-          <img
+          <Image
             width={500}
             height={500}
             src={categoryDetails?.data?.banner}
@@ -33,19 +32,8 @@ const FeaturedCategoriesDetails = async ({ params }) => {
             className="w-full h-[300px] object-cover"
           />
         ) : (
-          <div className="flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
+          <div className="w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
             <div>{categoryDetails?.data?.title ?? "Category"}</div>
-            <div>
-              <CommonSelectBox
-                options={[
-                  "Price: Low to High",
-                  "Price: High to Low",
-                  "Newest Arrivals",
-                  "Best Sellers",
-                ]}
-                label={"Filter Products"}
-              />
-            </div>
           </div>
         )}
       </div>
@@ -53,11 +41,8 @@ const FeaturedCategoriesDetails = async ({ params }) => {
       {products?.data?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 pb-[40px] flex-wrap">
           {products.data.map((product, index) => (
-            <div key={index} className="flex justify-center sm:justify-start">
-              <div className="w-60">
-                {" "}
+            <div key={index} className="flex justify-center w-60 sm:justify-start">
                 <ProductCard product={product} />
-              </div>
             </div>
           ))}
         </div>
