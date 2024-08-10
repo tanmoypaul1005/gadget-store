@@ -3,11 +3,13 @@ import React from "react";
 import AddCartButton from "./AddCartButton";
 import { findUserId } from "@/app/action/product/action";
 import { auth } from "@/auth";
+import Link from "next/link";
 
 const ProductCard = async ({ product }) => {
   const session = await auth();
   const user = await findUserId(session?.user?.email);
   return (
+    <Link href={`/product/${product?._id}`}>
     <div className="flex flex-col self-center w-64 px-3 py-2 overflow-hidden bg-gray-700 border rounded-lg shadow-md group border-gray-100/30">
       <div className="flex items-center justify-center">
       <Image
@@ -40,6 +42,7 @@ const ProductCard = async ({ product }) => {
         )}
       </div>
     </div>
+    </Link>
   );
 };
 

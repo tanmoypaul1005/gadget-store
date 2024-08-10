@@ -13,16 +13,8 @@ export async function GET(request) {
     if (products_type.includes(query)) {
       products = await Product.find({ type: query });
     } else if (query === null) {
-      products = await Product.find({});
-      // Filter products to ensure rating is between 0 and 4
-      products = products.map((product) => {
-        if (product.rating < 0) {
-          product.rating = 0;
-        } else if (product.rating > 4) {
-          product.rating = 4;
-        }
-        return product;
-      });
+      products = await Product.find({ ratting: { $gt: 0,$lt:5 } });
+
     } else {
       return Response.json({
         success: false,
@@ -41,7 +33,7 @@ export async function GET(request) {
         return product;
       })
     );
-
+    
     return Response.json({
       status: 200,
       success: true,
