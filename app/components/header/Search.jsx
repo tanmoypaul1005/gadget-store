@@ -8,6 +8,8 @@ import { useDebounce } from "use-debounce";
 import { ImSpinner2 } from "react-icons/im";
 import { BiSearch } from "react-icons/bi";
 import { useGeneralStore } from "@/app/stores/generalStore";
+import { iCancel } from "@/util/imageImports";
+import Image from "next/image";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,9 +66,20 @@ const Search = () => {
             id="email"
             autoComplete="off"
             auto
-            className="w-full px-4 py-3 text-xs text-white border border-gray-200 rounded-md shadow-sm outline-none bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full py-3 pl-4 text-xs text-white border border-gray-200 rounded-md shadow-sm outline-none pr-14 bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder={"Search for products, brands and categories"}
           />
+          {searchValue && 
+          <div 
+          onClick={()=>{setSearchTerm("")}}
+          className="absolute cursor-pointer top-3 right-9">
+            <Image style={{
+              maxWidth:"16px",
+              minWidth:"16px",
+              maxHeight:"16px",
+              minHeight:"16px"
+            }} src={iCancel} alt=""/>
+          </div>}
 
           <div className="absolute top-0 right-2">
             {isLoading ? (

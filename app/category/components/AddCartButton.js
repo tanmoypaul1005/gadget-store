@@ -5,24 +5,24 @@ import React from "react";
 
 const AddCartButton = ({data}) => {
 
-  // const formData = {
-  //   product_id: data?.product_id,
-  //   user_id: data?.user?._id,
-  //   quantity: 1,
-  // };
+  const formData = {
+    product_id: data?.product_id,
+    user_id: data?.user?._id,
+    quantity: 1,
+  };
   
   return (
     <div
-      // onClick={async (e) => {
-      //   e.preventDefault();
-      //   const success = await addCart(formData, window.location.pathname);
-      //   if (success.success) {
-      //     Toastr({ type: "success", message: success.message });
-      //   } else {
-      //     Toastr({ type: "error", message: success.message });
-      //   }
-      // }}
-      className="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+      onClick={async (e) => {
+        e.preventDefault();
+        const success = await addCart(formData, window.location.pathname);
+        if (success.success) {
+          Toastr({ type: "success", message: success.message });
+        } else {
+          Toastr({ type: "error", message: success.message });
+        }
+      }}
+      className="cursor-pointer hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

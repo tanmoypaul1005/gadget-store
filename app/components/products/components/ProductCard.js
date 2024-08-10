@@ -5,10 +5,9 @@ import Link from "next/link";
 import React from "react";
 import ProductCardAction from "./ProductCardAction";
 import { findUserId } from "@/app/action/product/action";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 
 export const ProductCard = async ({ product }) => {
-
   const session = await auth();
   const user = await findUserId(session?.user?.email);
 
@@ -32,23 +31,36 @@ export const ProductCard = async ({ product }) => {
               {product?.name}
             </p>
             <div>
-              <div className="mt-2">
-                <Rating name="disabled" value={5} disabled />
+              <div className="mt-2 flex space-x-0.5">
+                <Rating
+                  sx={{
+                    // "& .MuiRating-iconFilled": {
+                    //   color: "#FFD700" // Change this to your desired color for filled stars
+                    // },
+                    "& .MuiRating-iconEmpty": {
+                      color: "#ffff", // Change this to your desired color for empty stars
+                    },
+                  }}
+                  name="read-only"
+                  value={parseInt(product?.ratting ?? 0)}
+                  readOnly
+                />
+                <div>({parseInt(product?.ratting ?? 0)})</div>
               </div>
               <div className="flex justify-between">
-              <p className="text-base font-semibold text-red-400 cursor-auto">
-                ${product?.price}
-              </p>
+                <p className="text-base font-semibold text-red-400 cursor-auto">
+                  ${product?.price}
+                </p>
 
-              {session?.user?.email && (
-                <ProductCardAction
-                  data={{
-                    product_id: product?._id,
-                    user: user,
-                    session: session,
-                  }}
-                />
-              )}
+                {session?.user?.email && (
+                  <ProductCardAction
+                    data={{
+                      product_id: product?._id,
+                      user: user,
+                      session: session,
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>

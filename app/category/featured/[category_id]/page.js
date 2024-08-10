@@ -1,7 +1,6 @@
 import ProductCard from "@/app/components/products/components/ProductCard";
-import CommonSelectBox from "@/components/input/CommonSelectBox";
 import { base_url } from "@/util/const";
-import { kuMainCategory } from "@/util/url";
+import { kuCategoryDetails, kuMainCategory } from "@/util/url";
 import Image from "next/image";
 import React from "react";
 
@@ -12,7 +11,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
   const products = await response.json();
 
   const categoryResponse = await fetch(
-    base_url + `/category/details/${params?.category_id}`
+    base_url + `${kuCategoryDetails}/${params?.category_id}`
   );
 
   if (!categoryResponse.ok) {
@@ -25,27 +24,16 @@ const FeaturedCategoriesDetails = async ({ params }) => {
     <div className="common-class">
       <div className="mb-10">
         {categoryDetails?.data?.banner ? (
-          <img
-            width={500}
-            height={500}
+          <Image
+            width={1800}
+            height={1800}
             src={categoryDetails?.data?.banner}
             alt={categoryDetails?.data?.title}
             className="w-full h-[300px] object-cover"
           />
         ) : (
-          <div className="flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
+          <div className="w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
             <div>{categoryDetails?.data?.title ?? "Category"}</div>
-            <div>
-              <CommonSelectBox
-                options={[
-                  "Price: Low to High",
-                  "Price: High to Low",
-                  "Newest Arrivals",
-                  "Best Sellers",
-                ]}
-                label={"Filter Products"}
-              />
-            </div>
           </div>
         )}
       </div>
@@ -53,11 +41,11 @@ const FeaturedCategoriesDetails = async ({ params }) => {
       {products?.data?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 pb-[40px] flex-wrap">
           {products.data.map((product, index) => (
-            <div key={index} className="flex justify-center sm:justify-start">
-              <div className="w-60">
-                {" "}
-                <ProductCard product={product} />
-              </div>
+            <div
+              key={index}
+              className="flex justify-center w-60 sm:justify-start"
+            >
+              <ProductCard product={product} />
             </div>
           ))}
         </div>
