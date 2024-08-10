@@ -6,6 +6,7 @@ import React from "react";
 import ProductCardAction from "./ProductCardAction";
 import { findUserId } from "@/app/action/product/action";
 import Rating from "@mui/material/Rating";
+import CommonRating from "@/components/CommonRating";
 
 export const ProductCard = async ({ product }) => {
   const session = await auth();
@@ -32,19 +33,7 @@ export const ProductCard = async ({ product }) => {
             </p>
             <div>
               <div className="mt-2 flex space-x-0.5">
-                <Rating
-                  sx={{
-                    // "& .MuiRating-iconFilled": {
-                    //   color: "#FFD700" // Change this to your desired color for filled stars
-                    // },
-                    "& .MuiRating-iconEmpty": {
-                      color: "#ffff", // Change this to your desired color for empty stars
-                    },
-                  }}
-                  name="read-only"
-                  value={parseInt(product?.ratting ?? 0)}
-                  readOnly
-                />
+                <CommonRating value={parseInt(product?.ratting ?? 0)}/>
                 <div>({parseInt(product?.ratting ?? 0)})</div>
               </div>
               <div className="flex justify-between">
