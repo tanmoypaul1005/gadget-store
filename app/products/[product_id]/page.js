@@ -6,6 +6,7 @@ import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 import { getComment } from "@/app/action/comment";
 import Rating from '@mui/material/Rating';
+import CommonRating from "@/components/CommonRating";
 
 const ProductDetails = async ({ params }) => {
 
@@ -39,7 +40,7 @@ const ProductDetails = async ({ params }) => {
             {productDetails?.description}
           </p>
           <div className="my-3 space-y-3">
-            <Rating name="disabled" value={5} disabled />
+            <CommonRating value={parseInt(productDetails?.ratting ?? 0)}/>
             <div>Status: In Stock</div>
             <div className="text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
           </div>
