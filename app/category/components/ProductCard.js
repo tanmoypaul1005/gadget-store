@@ -4,12 +4,13 @@ import AddCartButton from "./AddCartButton";
 import { findUserId } from "@/app/action/product/action";
 import { auth } from "@/auth";
 import Link from "next/link";
+import CommonRating from "@/components/CommonRating";
 
 const ProductCard = async ({ product }) => {
   const session = await auth();
   const user = await findUserId(session?.user?.email);
   return (
-    <Link href={`/product/${product?._id}`}>
+    <Link href={`/products/${product?._id}`}>
     <div className="flex flex-col self-center w-64 px-3 py-2 overflow-hidden bg-gray-700 border rounded-lg shadow-md group border-gray-100/30">
       <div className="flex items-center justify-center">
       <Image
@@ -26,10 +27,12 @@ const ProductCard = async ({ product }) => {
         <h5 className="text-lg tracking-tight text-white line-clamp-1">
           {product?.name ?? "NA"}
         </h5>
-        <div className="flex items-center justify-between mt-2 mb-5">
-          <span className="text-xl font-bold text-white">
+        <div className="mt-2 flex space-x-0.5">
+                <CommonRating value={parseInt(product?.ratting ?? 0)}/>
+                <div>({parseInt(product?.ratting ?? 0)})</div>
+        </div>
+        <div className="flex items-center justify-between mt-2 mb-5 text-xl font-bold text-white">
             ${product?.price}
-          </span>
         </div>
         {session?.user?.email && (
           <AddCartButton
