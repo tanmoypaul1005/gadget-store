@@ -69,17 +69,25 @@ const Search = () => {
             className="w-full py-3 pl-4 text-xs text-white border border-gray-200 rounded-md shadow-sm outline-none pr-14 bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder={"Search for products, brands and categories"}
           />
-          {searchValue && 
-          <div 
-          onClick={()=>{setSearchTerm("")}}
-          className="absolute cursor-pointer top-3 right-9">
-            <Image style={{
-              maxWidth:"16px",
-              minWidth:"16px",
-              maxHeight:"16px",
-              minHeight:"16px"
-            }} src={iCancel} alt=""/>
-          </div>}
+          {searchValue && (
+            <div
+              onClick={() => {
+                setSearchTerm("");
+              }}
+              className="absolute cursor-pointer top-3 right-9"
+            >
+              <Image
+                style={{
+                  maxWidth: "16px",
+                  minWidth: "16px",
+                  maxHeight: "16px",
+                  minHeight: "16px",
+                }}
+                src={iCancel}
+                alt=""
+              />
+            </div>
+          )}
 
           <div className="absolute top-0 right-2">
             {isLoading ? (
@@ -93,16 +101,17 @@ const Search = () => {
             <div className="relative">
               <div className="absolute z-10 w-full mt-2 rounded-md shadow-lg bg-cCommonBg">
                 {searchResults?.data?.length > 0 ? (
-                  searchResults?.data?.map((result, index) => (
+                  searchResults?.data?.slice(0, 5)?.map((result, index) => (
                     <div
                       onClick={() => {
                         setDropdownOpen(false);
                       }}
                       key={index}
-                      className="px-4 py-2 cursor-pointer hover:bg-zinc-700"
+                      className="px-4 py-2 cursor-pointer hover:bg-zinc-800"
                     >
-                      <Link href={`/products/${result?._id}`}>
-                        {result?.name}
+                      <Link className="flex items-center space-x-2" href={`/products/${result?._id}`}>
+                        <div><Image style={{maxHeight:"40px",minHeight:"40px",maxWidth:"40px",minWidth:"40px"}} src={result?.image} alt="" width={40} height={40}/> </div>
+                        <div>{result?.name}</div>
                       </Link>
                     </div>
                   ))
