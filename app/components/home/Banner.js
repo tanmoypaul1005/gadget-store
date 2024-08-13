@@ -53,7 +53,7 @@ function Banner() {
 
   return (
     <>
-     {!mobileNav &&<motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
+     {!mobileNav && <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
       <div>
         <div className="relative flex justify-center items-center lg:h-[500px] rounded banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
           {data?.map((item, idx) => (
