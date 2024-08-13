@@ -21,8 +21,9 @@ const CheckOutProduct = ({ item }) => {
       </div>
       <div className="flex flex-col w-full px-4 py-4">
         <span className="font-semibold">{item?.product?.name}</span>
-        <span className="float-right text-gray-400">{item.product._id}</span>
-        <p className="text-lg font-bold">${item?.product?.price}</p>
+        <span className="float-right text-gray-400"> Qty:{item?.quantity}</span>
+        <span className="float-right text-gray-400">Cart id: {item.product._id}</span>
+        <p className="text-lg font-bold">price: ${item?.product?.price}</p>
       </div>
       <ClearCart data={item?._id} />
     </div>

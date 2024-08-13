@@ -5,7 +5,6 @@ import Link from "next/link";
 import React from "react";
 import ProductCardAction from "./ProductCardAction";
 import { findUserId } from "@/app/action/product/action";
-import Rating from "@mui/material/Rating";
 import CommonRating from "@/components/CommonRating";
 
 export const ProductCard = async ({ product }) => {
@@ -29,16 +28,16 @@ export const ProductCard = async ({ product }) => {
               {commonView(product?.brand)}
             </span>
             <p className="block text-sm font-semibold capitalize truncate line-clamp-2">
-              {product?.name}
+              {product?.name ?? ""}
             </p>
             <div>
-              <div className="mt-2 flex space-x-0.5">
+              <div className="my-2 flex space-x-0.5">
                 <CommonRating value={parseInt(product?.ratting ?? 0)}/>
                 <div>({parseInt(product?.ratting ?? 0)})</div>
               </div>
               <div className="flex justify-between">
                 <p className="text-base font-semibold text-red-400 cursor-auto">
-                  ${product?.price}
+                  ${product?.price ?? 0}
                 </p>
 
                 {session?.user?.email && (
