@@ -5,11 +5,9 @@ import { auth } from "@/auth";
 import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 import { getComment } from "@/app/action/comment";
-import Rating from '@mui/material/Rating';
 import CommonRating from "@/components/CommonRating";
 
 const ProductDetails = async ({ params }) => {
-
   const productDetails = await fetchProduct(params?.product_id);
   const comments = await getComment(params?.product_id);
   const session = await auth();
@@ -18,7 +16,6 @@ const ProductDetails = async ({ params }) => {
 
   return (
     <div className="common-class">
-
       <div className="flex flex-wrap pb-5">
         <Image
           style={{ maxHeight: "400px" }}
@@ -30,34 +27,29 @@ const ProductDetails = async ({ params }) => {
         />
         <div className="w-full py-6 lg:w-1/2 lg:pl-10 lg:py-0">
           <h2 className="text-sm tracking-widest title-font">
-            {productDetails?.brand}
+            {productDetails?.brand ?? "NA"}
           </h2>
           <h1 className="mb-1 text-3xl font-medium title-font">
-            {productDetails?.name}
+            {productDetails?.name ?? "NA"}
           </h1>
 
-          <p className="leading-relaxed">
-            {productDetails?.description}
-          </p>
+          <p className="leading-relaxed">{productDetails?.description}</p>
           <div className="my-3 space-y-3">
-            <CommonRating value={parseInt(productDetails?.ratting ?? 0)}/>
+            <div className="mt-2 flex space-x-0.5">
+              <CommonRating value={parseInt(productDetails?.ratting ?? 0)} />
+              <div>({parseInt(productDetails?.ratting ?? 0 ?? 0)})</div>
+            </div>
             <div>Status: In Stock</div>
-            <div className="text-2xl font-medium text-red-400 title-font">{productDetails?.price.toLocaleString("en-US", { style: 'currency', currency: 'USD' })}</div>
+            <div className="text-2xl font-medium text-red-400 title-font">
+              {productDetails?.price.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </div>
           </div>
-          <div className="flex items-center pb-4 border-b-2 border-gray-200">
-            {/* <div className="flex">
-                <span className="mr-3">Color</span>
-                <button className="w-6 h-6 border-2 border-gray-300 rounded-full focus:outline-none"></button>
-                <button className="w-6 h-6 ml-1 bg-gray-700 border-2 border-gray-300 rounded-full focus:outline-none"></button>
-                <button className="w-6 h-6 ml-1 bg-red-500 border-2 border-gray-300 rounded-full focus:outline-none"></button>
-              </div> */}
-          </div>
-
+        
           <div className="flex items-start justify-start ">
-            <Action
-              user={user?._id}
-              product_id={params?.product_id}
-            />
+            <Action user={user?._id} product_id={params?.product_id} />
           </div>
         </div>
       </div>
@@ -66,7 +58,7 @@ const ProductDetails = async ({ params }) => {
         data={{
           comments: comments?.data,
           user: user,
-          product_id: params?.product_id
+          product_id: params?.product_id,
         }}
       />
     </div>
@@ -114,4 +106,3 @@ export default ProductDetails;
                             </span>
                         </div> */
 }
-
