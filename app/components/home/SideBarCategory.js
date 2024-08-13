@@ -18,9 +18,9 @@ const SideBarCategory = async () => {
 
         <ul className="flex flex-col">
           {
-            categoryData?.data?.slice(0, 10)?.map((item, index) => (
+            categoryData?.data?.slice(0, 9)?.map((item, index) => (
               <li key={index} className="relative sidebar men_nav_item">
-                <div className={`py-[9.8px] ${index!== 9 ? "border-zinc-500 border-b-2": ""} w-[200px] cursor-pointer`}>
+                <div className={`py-[9.8px] ${index!== 8 ? "border-zinc-500 border-b-2": ""} w-[200px] cursor-pointer`}>
                   <Link href={k_category_patch.featured+ item?._id} className='pl-3'>{item?.title}</Link>
                 </div>
                 <ul className="absolute flex-col items-start justify-start hidden gap-2 p-4 font-normal text-black bg-white border rounded shadow-lg hoveredItems w-52 top-0 right-[-210px]">
