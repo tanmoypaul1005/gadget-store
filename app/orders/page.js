@@ -239,7 +239,7 @@ const Orders = async () => {
               src={iNoOrder}
               style={{
                 maxWidth: "100%",
-                maxHeight: "75vh",
+                maxHeight: "55vh",
                 objectFit: "contain",
               }}
             />

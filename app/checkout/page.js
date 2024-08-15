@@ -92,8 +92,8 @@ const Checkout = async () => {
           <div className='flex flex-col items-center justify-center'>
           <Image alt='No items in cart' src={iNoCart} style={{ maxWidth: "500px", maxHeight: "500px" }} />
           <div className='mt-4 text-center'>
-            <h2 className='text-2xl font-semibold text-red-300'>Your Cart is Empty!</h2>
-            <p className='mt-2 font-semibold text-red-300'>{"Looks like you haven't added anything to your cart yet."}</p>
+            <h2 className='text-2xl font-semibold text-white'>Your Cart is Empty!</h2>
+            <p className='mt-2 font-semibold text-white'>{"Looks like you haven't added anything to your cart yet."}</p>
            <ShoppingButton/>
           </div>
         </div>
