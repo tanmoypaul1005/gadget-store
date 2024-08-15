@@ -12,49 +12,43 @@ import { DrawerDefault } from "./DrawerDefault";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
-
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
-  const {mobileNav, setMobileNav} = useGeneralStore();
+  const { mobileNav, setMobileNav } = useGeneralStore();
 
   const handleClick = () => {
     setMobileNav(!mobileNav);
   };
 
- const handleGoogleAuthClick= async () => {
+  const handleGoogleAuthClick = async () => {
     await signIn("google", {
       callbackUrl: "/",
     });
-  }
+  };
 
   return (
     <>
-      <LogoutModal
-        open={isShowLogoutModal}
-        setOpen={setShowLogoutModal}
-      />
+      <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
 
       <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
         <header>
           <nav className="flex justify-between w-full py-3 gap-x-2">
-
             <div className="flex items-center flex-grow gap-x-4">
-              <Link href={"/"} className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none">
+              <Link
+                href={"/"}
+                className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none"
+              >
                 Gadget store
               </Link>
               <div className="common-responsive">
-                <Search /> 
+                <Search />
               </div>
             </div>
 
             <div className="flex items-center justify-center pr-2">
               <div className="hidden gap-x-3 md:flex lg:flex">
                 <div className="flex flex-col justify-end w-full sm:flex-row">
-
-                  <OrderButton
-                    isHover={true}
-                    totalOrder={totalOrder}
-                  />
+                  <OrderButton isHover={true} totalOrder={totalOrder} />
 
                   <CartIcon totalCart={totalCart} />
 
@@ -105,15 +99,15 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                     <>
                       <div
                         onClick={handleGoogleAuthClick}
-                        className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                        className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[6px]">Sign in</span>
+                        Sign in
                       </div>
                       <div
                         onClick={handleGoogleAuthClick}
-                        className="flex items-center px-4 ml-2 rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                        className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
                       >
-                        <span className="text-base font-medium mt-[6px]">Login</span>
+                        Login
                       </div>
                     </>
                   )}
@@ -130,8 +124,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                   />
                 </div>
               </div>
-
-
             </div>
           </nav>
         </header>
@@ -146,47 +138,76 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
 export default HeaderUserInfo;
 
-
-
 const CartIcon = ({ totalCart = 0 }) => {
   return (
     <>
-      <Link href={"/checkout"} className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg">
+      <Link
+        href={"/checkout"}
+        className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg"
+      >
         <div className="relative">
-
-          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iCart} alt="" width={18} height={18} />
-          {
-            totalCart > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
+          <Image
+            style={{
+              maxWidth: "22px",
+              minHeight: "22px",
+              maxHeight: "22px",
+              minWidth: "22px",
+            }}
+            src={iCart}
+            alt=""
+            width={18}
+            height={18}
+          />
+          {totalCart > 0 ? (
+            <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalCart}
-            </span> :
-              ""
-          }
+            </span>
+          ) : (
+            ""
+          )}
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Cart</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
+          Cart
+        </span>
       </Link>
     </>
-  )
-}
-
-
-
-
+  );
+};
 
 const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
   return (
     <>
-      <Link href={"/orders"} className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""} `}>
+      <Link
+        href={"/orders"}
+        className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${
+          isHover ? "hover:text-white hover:bg-cCommonBg" : ""
+        } `}
+      >
         <div className="relative">
-          <Image style={{maxWidth:"22px",minHeight:"22px",maxHeight:"22px",minWidth:"22px"}} src={iOrder} alt="" width={18} height={18} />
-          {
-            totalOrder > 0 ? <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
+          <Image
+            style={{
+              maxWidth: "22px",
+              minHeight: "22px",
+              maxHeight: "22px",
+              minWidth: "22px",
+            }}
+            src={iOrder}
+            alt=""
+            width={18}
+            height={18}
+          />
+          {totalOrder > 0 ? (
+            <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
               {totalOrder}
-            </span> :
-              ""
-          }
+            </span>
+          ) : (
+            ""
+          )}
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">Orders</span>
+        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
+          Orders
+        </span>
       </Link>
     </>
-  )
-}
+  );
+};
