@@ -28,6 +28,10 @@ function Banner() {
       src: "/images/banner/banner-2.png",
       alt: "Image 2 for carousel",
     },
+    {
+      src: "/images/banner/banner-5.png",
+      alt: "Image 2 for carousel",
+    },
   ];
 
   const { mobileNav } = useGeneralStore();
