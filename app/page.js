@@ -7,8 +7,6 @@ import OfferBanner from "./components/home/OfferBanner";
 import NewProducts from "./components/products/components/NewProducts";
 import BestSellers from "./components/sidebar/BestSellers";
 import TopRate from "./top-rate/page";
-import Message from "./components/Message";
-
 
 export default async function Home() {
   const categoryData = await getAllCategory();
@@ -16,7 +14,6 @@ export default async function Home() {
   return (
     <>
       <div className="space-y-10 common-class">
-<Message/>
         
         <div className="flex lg:gap-x-2 gap-x-0">
           <div className="h-full mt-[-15px]">
