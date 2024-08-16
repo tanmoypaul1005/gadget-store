@@ -111,7 +111,7 @@ const Search = () => {
                     >
                       <Link className="flex items-center space-x-2" href={`/products/${result?._id}`}>
                         <div><Image style={{maxHeight:"40px",minHeight:"40px",maxWidth:"40px",minWidth:"40px"}} src={result?.image} alt="" width={40} height={40}/> </div>
-                        <div>{result?.name}</div>
+                        <div className="line-clamp-2">{result?.name}</div>
                       </Link>
                     </div>
                   ))
