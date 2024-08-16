@@ -14,11 +14,14 @@ export default async function Home() {
   return (
     <>
       <div className="space-y-10 common-class">
+        
         <div className="flex lg:gap-x-2 gap-x-0">
           <div className="h-full mt-[-15px]">
             <SideBarCategory />
           </div>
-          <div className="w-full"><Banner /></div>
+          <div className="w-full">
+            <Banner />
+          </div>
         </div>
         <OfferBanner category={categoryData?.data} />
         <FeaturedCategories />
@@ -27,7 +30,7 @@ export default async function Home() {
             <BestSellers />
             <Products />
           </div>
-          <TopRate/>
+          <TopRate />
           <NewProducts />
         </div>
       </div>
