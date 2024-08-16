@@ -28,12 +28,12 @@ const SideBarCategory = async () => {
                     item?.child?.length > 0 ? (
                       item?.child?.map((subItem, index) => (
                         <li key={index}>
-                          <Link href={`/category/${subItem?._id}`}>{subItem?.title}</Link>
+                          <Link className='hover:text-red-600' href={`/category/${subItem?._id}`}>{subItem?.title}</Link>
                         </li>
                       ))
                     ) : (
                       <li>
-                        <a href="#">No Sub Category</a>
+                        <div>No Sub Category</div>
                       </li>
                     )}
                 </ul>
