@@ -50,7 +50,7 @@ const Cart = () => {
             </div>
 
             <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-gray-800">
+              <h4 class="text-lg max-sm:text-base font-bold text-white">
                 $20.00
               </h4>
 
@@ -127,7 +127,7 @@ const Cart = () => {
             </div>
 
             <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-gray-800">
+              <h4 class="text-lg max-sm:text-base font-bold text-white">
                 $60.00
               </h4>
 
@@ -204,7 +204,7 @@ const Cart = () => {
             </div>
 
             <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-gray-800">
+              <h4 class="text-lg max-sm:text-base font-bold text-white">
                 $40.00
               </h4>
 
@@ -279,7 +279,7 @@ const Cart = () => {
             </div>
 
             <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-gray-800">
+              <h4 class="text-lg max-sm:text-base font-bold text-white">
                 $60.00
               </h4>
 
