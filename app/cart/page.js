@@ -2,37 +2,37 @@ import React from "react";
 
 const Cart = () => {
   return (
-    <div class="font-sans common-class mt-5">
-      <h1 class="text-3xl font-bold text-white text-center">
+    <div className="mt-5 font-sans common-class">
+      <h1 className="text-3xl font-bold text-center text-white">
         Shopping Cart
       </h1>
 
-      <div class="grid md:grid-cols-3 gap-8 mt-5">
-        <div class="md:col-span-2 space-y-4">
-          <div class="grid grid-cols-3 items-start gap-4">
-            <div class="col-span-2 flex items-start gap-4">
-              <div class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0 bg-gray-100 p-2 rounded-md">
+      <div className="grid gap-8 mt-5 md:grid-cols-3">
+        <div className="space-y-4 md:col-span-2">
+          <div className="grid items-start grid-cols-3 gap-4">
+            <div className="flex items-start col-span-2 gap-4">
+              <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                 <img
                   src="https://readymadeui.com/images/product14.webp"
-                  class="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <div class="flex flex-col">
-                <h3 class="text-base font-bold text-white">
+              <div className="flex flex-col">
+                <h3 className="text-base font-bold text-white">
                   Velvet Sneaker
                 </h3>
-                <p class="text-xs font-semibold text-white mt-0.5">
+                <p className="text-xs font-semibold text-white mt-0.5">
                   Size: MD
                 </p>
 
                 <button
                   type="button"
-                  class="mt-6 font-semibold text-red-500 text-xs flex items-center gap-1 shrink-0"
+                  className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 fill-current inline"
+                    className="inline w-4 fill-current"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -49,30 +49,30 @@ const Cart = () => {
               </div>
             </div>
 
-            <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-white">
+            <div className="ml-auto">
+              <h4 className="text-lg font-bold text-white max-sm:text-base">
                 $20.00
               </h4>
 
               <button
                 type="button"
-                class="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"
+                className="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gwhite text-xs outline-none bg-transparent rounded-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 124 124"
                 >
                   <path
                     d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                    data-original="#000000"
+                    data-original="#ffff"
                   ></path>
                 </svg>
 
-                <span class="mx-3 font-bold">2</span>
+                <span className="mx-3 font-bold">2</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 42 42"
                 >
                   <path
@@ -84,32 +84,32 @@ const Cart = () => {
             </div>
           </div>
 
-          <hr class="border-gray-300" />
+          <hr className="border-gray-300" />
 
-          <div class="grid grid-cols-3 items-start gap-4">
-            <div class="col-span-2 flex items-start gap-4">
-              <div class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0 bg-gray-100 p-2 rounded-md">
+          <div className="grid items-start grid-cols-3 gap-4">
+            <div className="flex items-start col-span-2 gap-4">
+              <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                 <img
-                  src="https://readymadeui.com/images/watch5.webp"
-                  class="w-full h-full object-contain"
+                  src="https://readymadeui.com/images/product14.webp"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <div class="flex flex-col">
-                <h3 class="text-base font-bold text-white">
-                  Smart Watch Timex
+              <div className="flex flex-col">
+                <h3 className="text-base font-bold text-white">
+                  Velvet Sneaker
                 </h3>
-                <p class="text-xs font-semibold text-white mt-0.5">
-                  Size: SM
+                <p className="text-xs font-semibold text-white mt-0.5">
+                  Size: MD
                 </p>
 
                 <button
                   type="button"
-                  class="mt-6 font-semibold text-red-500 text-xs flex items-center gap-1 shrink-0"
+                  className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 fill-current inline"
+                    className="inline w-4 fill-current"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -126,30 +126,30 @@ const Cart = () => {
               </div>
             </div>
 
-            <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-white">
-                $60.00
+            <div className="ml-auto">
+              <h4 className="text-lg font-bold text-white max-sm:text-base">
+                $20.00
               </h4>
 
               <button
                 type="button"
-                class="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"
+                className="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gwhite text-xs outline-none bg-transparent rounded-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 124 124"
                 >
                   <path
                     d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                    data-original="#000000"
+                    data-original="#ffff"
                   ></path>
                 </svg>
 
-                <span class="mx-3 font-bold">1</span>
+                <span className="mx-3 font-bold">2</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 42 42"
                 >
                   <path
@@ -161,32 +161,33 @@ const Cart = () => {
             </div>
           </div>
 
-          <hr class="border-gray-300" />
 
-          <div class="grid grid-cols-3 items-start gap-4">
-            <div class="col-span-2 flex items-start gap-4">
-              <div class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0 bg-gray-100 p-2 rounded-md">
+          <hr className="border-gray-300" />
+
+          <div className="grid items-start grid-cols-3 gap-4">
+            <div className="flex items-start col-span-2 gap-4">
+              <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                 <img
-                  src="https://readymadeui.com/images/watch4.webp"
-                  class="w-full h-full object-contain"
+                  src="https://readymadeui.com/images/product14.webp"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <div class="flex flex-col">
-                <h3 class="text-base font-bold text-white">
-                  French Connection
+              <div className="flex flex-col">
+                <h3 className="text-base font-bold text-white">
+                  Velvet Sneaker
                 </h3>
-                <p class="text-xs font-semibold text-white mt-0.5">
-                  Size: LG
+                <p className="text-xs font-semibold text-white mt-0.5">
+                  Size: MD
                 </p>
 
                 <button
                   type="button"
-                  class="mt-6 font-semibold text-red-500 text-xs flex items-center gap-1 shrink-0"
+                  className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 fill-current inline"
+                    className="inline w-4 fill-current"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -203,30 +204,30 @@ const Cart = () => {
               </div>
             </div>
 
-            <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-white">
-                $40.00
+            <div className="ml-auto">
+              <h4 className="text-lg font-bold text-white max-sm:text-base">
+                $20.00
               </h4>
 
               <button
                 type="button"
-                class="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"
+                className="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gwhite text-xs outline-none bg-transparent rounded-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 124 124"
                 >
                   <path
                     d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                    data-original="#000000"
+                    data-original="#ffff"
                   ></path>
                 </svg>
 
-                <span class="mx-3 font-bold">1</span>
+                <span className="mx-3 font-bold">2</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 42 42"
                 >
                   <path
@@ -238,30 +239,33 @@ const Cart = () => {
             </div>
           </div>
 
-          <hr class="border-gray-300" />
 
-          <div class="grid grid-cols-3 items-start gap-4">
-            <div class="col-span-2 flex items-start gap-4">
-              <div class="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0 bg-gray-100 p-2 rounded-md">
+          <hr className="border-gray-300" />
+
+          <div className="grid items-start grid-cols-3 gap-4">
+            <div className="flex items-start col-span-2 gap-4">
+              <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                 <img
-                  src="https://readymadeui.com/images/watch7.webp"
-                  class="w-full h-full object-contain"
+                  src="https://readymadeui.com/images/product14.webp"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <div class="flex flex-col text-white">
-                <h3 class="text-base font-bold text-white">Smart Watch</h3>
-                <p class="text-xs font-semibold mt-0.5">
-                  Size: LG
+              <div className="flex flex-col">
+                <h3 className="text-base font-bold text-white">
+                  Velvet Sneaker
+                </h3>
+                <p className="text-xs font-semibold text-white mt-0.5">
+                  Size: MD
                 </p>
 
                 <button
                   type="button"
-                  class="mt-6 font-semibold text-red-500 text-xs flex items-center gap-1 shrink-0"
+                  className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 fill-current inline"
+                    className="inline w-4 fill-current"
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -278,30 +282,30 @@ const Cart = () => {
               </div>
             </div>
 
-            <div class="ml-auto">
-              <h4 class="text-lg max-sm:text-base font-bold text-white">
-                $60.00
+            <div className="ml-auto">
+              <h4 className="text-lg font-bold text-white max-sm:text-base">
+                $20.00
               </h4>
 
               <button
                 type="button"
-                class="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"
+                className="mt-6 flex items-center px-3 py-1.5 border border-gray-300 text-gwhite text-xs outline-none bg-transparent rounded-md"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 124 124"
                 >
                   <path
                     d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                    data-original="#000000"
+                    data-original="#ffff"
                   ></path>
                 </svg>
 
-                <span class="mx-3 font-bold">1</span>
+                <span className="mx-3 font-bold">2</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-2.5 fill-current"
+                  className="w-2.5 fill-current"
                   viewBox="0 0 42 42"
                 >
                   <path
@@ -312,30 +316,31 @@ const Cart = () => {
               </button>
             </div>
           </div>
+
         </div>
 
-        <div class="bg-gray-100 rounded-md p-4 h-max">
-          <h3 class="text-lg max-sm:text-base font-bold text-gray-800 border-b border-gray-300 pb-2">
+        <div className="p-4 bg-gray-100 rounded-md h-max">
+          <h3 className="pb-2 text-lg font-bold text-gray-800 border-b border-gray-300 max-sm:text-base">
             Order Summary
           </h3>
 
-          <form class="mt-6">
+          <form className="mt-6">
             <div>
-              <h3 class="text-base text-gray-800  font-semibold mb-4">
+              <h3 className="mb-4 text-base font-semibold text-gray-800">
                 Enter Details
               </h3>
-              <div class="space-y-3">
-                <div class="relative flex items-center">
+              <div className="space-y-3">
+                <div className="relative flex items-center">
                   <input
                     type="text"
                     placeholder="Full Name"
-                    class="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
+                    className="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="#bbb"
                     stroke="#bbb"
-                    class="w-4 h-4 absolute right-4"
+                    className="absolute w-4 h-4 right-4"
                     viewBox="0 0 24 24"
                   >
                     <circle
@@ -351,17 +356,17 @@ const Cart = () => {
                   </svg>
                 </div>
 
-                <div class="relative flex items-center">
+                <div className="relative flex items-center">
                   <input
                     type="email"
                     placeholder="Email"
-                    class="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
+                    className="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="#bbb"
                     stroke="#bbb"
-                    class="w-4 h-4 absolute right-4"
+                    className="absolute w-4 h-4 right-4"
                     viewBox="0 0 682.667 682.667"
                   >
                     <defs>
@@ -391,15 +396,15 @@ const Cart = () => {
                   </svg>
                 </div>
 
-                <div class="relative flex items-center">
+                <div className="relative flex items-center">
                   <input
                     type="number"
                     placeholder="Phone No."
-                    class="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
+                    className="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
                   />
                   <svg
                     fill="#bbb"
-                    class="w-4 h-4 absolute right-4"
+                    className="absolute w-4 h-4 right-4"
                     viewBox="0 0 64 64"
                   >
                     <path
@@ -412,32 +417,32 @@ const Cart = () => {
             </div>
           </form>
 
-          <ul class="text-gray-800 mt-6 space-y-3">
-            <li class="flex flex-wrap gap-4 text-sm">
-              Subtotal <span class="ml-auto font-bold">$200.00</span>
+          <ul className="mt-6 space-y-3 text-gray-800">
+            <li className="flex flex-wrap gap-4 text-sm">
+              Subtotal <span className="ml-auto font-bold">$200.00</span>
             </li>
-            <li class="flex flex-wrap gap-4 text-sm">
-              Shipping <span class="ml-auto font-bold">$2.00</span>
+            <li className="flex flex-wrap gap-4 text-sm">
+              Shipping <span className="ml-auto font-bold">$2.00</span>
             </li>
-            <li class="flex flex-wrap gap-4 text-sm">
-              Tax <span class="ml-auto font-bold">$4.00</span>
+            <li className="flex flex-wrap gap-4 text-sm">
+              Tax <span className="ml-auto font-bold">$4.00</span>
             </li>
-            <hr class="border-gray-300" />
-            <li class="flex flex-wrap gap-4 text-sm font-bold">
-              Total <span class="ml-auto">$206.00</span>
+            <hr className="border-gray-300" />
+            <li className="flex flex-wrap gap-4 text-sm font-bold">
+              Total <span className="ml-auto">$206.00</span>
             </li>
           </ul>
 
-          <div class="mt-6 space-y-3">
+          <div className="mt-6 space-y-3">
             <button
               type="button"
-              class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
             >
               Checkout
             </button>
             <button
               type="button"
-              class="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
+              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
             >
               Continue Shopping{" "}
             </button>
