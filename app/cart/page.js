@@ -2,12 +2,12 @@ import React from "react";
 
 const Cart = () => {
   return (
-    <div class="font-sans common-class">
-      <h1 class="text-3xl font-bold text-gray-800 text-center">
+    <div class="font-sans common-class mt-5">
+      <h1 class="text-3xl font-bold text-white text-center">
         Shopping Cart
       </h1>
 
-      <div class="grid md:grid-cols-3 gap-8 mt-16">
+      <div class="grid md:grid-cols-3 gap-8 mt-5">
         <div class="md:col-span-2 space-y-4">
           <div class="grid grid-cols-3 items-start gap-4">
             <div class="col-span-2 flex items-start gap-4">
