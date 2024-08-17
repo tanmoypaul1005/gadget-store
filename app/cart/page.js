@@ -4,6 +4,7 @@ import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
 import Image from "next/image";
 import RemoveCart from "./components/RemoveCart";
+import Link from "next/link";
 
 const Cart = async () => {
   const session = await auth();
@@ -14,9 +15,7 @@ const Cart = async () => {
 
   return (
     <div className="mt-5 font-sans common-class">
-      <h1 className="text-xl font-bold text-white text-start">
-        Shopping Cart
-      </h1>
+      <h1 className="text-xl font-bold text-white text-start">Shopping Cart</h1>
 
       <div className="grid gap-8 mt-5 md:grid-cols-3">
         <div className="space-y-4 md:col-span-2">
@@ -39,7 +38,7 @@ const Cart = async () => {
                       {item?.product?.name}
                     </h3>
                     <p className="text-xs font-semibold text-white mt-0.5">
-                    Qty:{item?.quantity}
+                      Qty:{item?.quantity}
                     </p>
 
                     <button
@@ -60,7 +59,7 @@ const Cart = async () => {
                           data-original="#000000"
                         ></path>
                       </svg>
-                     <RemoveCart data={item?._id}/>
+                      <RemoveCart data={item?._id} />
                     </button>
                   </div>
                 </div>
@@ -99,10 +98,9 @@ const Cart = async () => {
                   </button>
                 </div>
               </div>
-              {parseInt(cart?.length)-1 !== parseInt(index) && (
+              {parseInt(cart?.length) - 1 !== parseInt(index) && (
                 <hr className="mt-2 border-gray-300" />
               )}
-
             </div>
           ))}
         </div>
@@ -222,18 +220,23 @@ const Cart = async () => {
           </ul>
 
           <div className="mt-6 space-y-3">
-            <button
-              type="button"
-              className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
-            >
-              Checkout
-            </button>
+            <Link href={"/checkout"}>
+              <button
+                type="button"
+                className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+              >
+                Checkout
+              </button>
+            </Link>
+<div className="mt-3"></div>
+            <Link  href={"/"}>
             <button
               type="button"
               className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
             >
               Continue Shopping{" "}
             </button>
+            </Link>
           </div>
         </div>
       </div>
