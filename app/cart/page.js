@@ -2,6 +2,8 @@ import { auth } from "@/auth";
 import React from "react";
 import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
+import Image from "next/image";
+import RemoveCart from "./components/RemoveCart";
 
 const Cart = async () => {
   const session = await auth();
@@ -12,7 +14,7 @@ const Cart = async () => {
 
   return (
     <div className="mt-5 font-sans common-class">
-      <h1 className="text-3xl font-bold text-center text-white">
+      <h1 className="text-xl font-bold text-white text-start">
         Shopping Cart
       </h1>
 
@@ -23,18 +25,21 @@ const Cart = async () => {
               <div key={index} className="grid items-start grid-cols-3 gap-4">
                 <div className="flex items-start col-span-2 gap-4">
                   <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
-                    <img
-                      src="https://readymadeui.com/images/product14.webp"
+                    <Image
+                      src={item?.product?.image}
+                      alt=""
                       className="object-contain w-full h-full"
+                      width={100}
+                      height={100}
                     />
                   </div>
 
                   <div className="flex flex-col">
                     <h3 className="text-base font-bold text-white">
-                      Velvet Sneaker
+                      {item?.product?.name}
                     </h3>
                     <p className="text-xs font-semibold text-white mt-0.5">
-                      Size: MD
+                    Qty:{item?.quantity}
                     </p>
 
                     <button
@@ -55,14 +60,14 @@ const Cart = async () => {
                           data-original="#000000"
                         ></path>
                       </svg>
-                      REMOVE
+                     <RemoveCart data={item?._id}/>
                     </button>
                   </div>
                 </div>
 
                 <div className="ml-auto">
-                  <h4 className="text-lg font-bold text-white max-sm:text-base">
-                    $20.00
+                  <h4 className="text-lg font-bold text-white text-end max-sm:text-base">
+                    ${item?.product?.price}
                   </h4>
 
                   <button
