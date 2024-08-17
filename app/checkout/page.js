@@ -36,7 +36,7 @@ const Checkout = async () => {
       {
         cart?.length > 0 ?
           <>
-            <div className="grid px-5 sm:px-0 common-class lg:grid-cols-2">
+            <div className="grid px-5 common-topGap sm:px-0 common-class lg:grid-cols-2">
               <div>
                 <p className="text-xl font-medium">Order Summary</p>
                 <p className="text-gray-400">
