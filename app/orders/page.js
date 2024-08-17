@@ -12,7 +12,7 @@ const Orders = async () => {
   return (
     <>
       {order?.data?.length > 0 ? (
-        <div className="space-y-3">
+        <div className="space-y-3 common-topGap">
           {order?.data?.map((item, index) => (
             <section key={index} className="relative">
               <div className="w-full common-class">

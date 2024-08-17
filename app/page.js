@@ -12,10 +12,9 @@ export default async function Home() {
   const categoryData = await getAllCategory();
 
   return (
-    <>
+
       <div className="space-y-10 common-class">
-        
-        <div className="flex lg:gap-x-2 gap-x-0">
+        <div className="flex common-topGap lg:gap-x-2 gap-x-0">
           <div className="h-full mt-[-15px]">
             <SideBarCategory />
           </div>
@@ -34,6 +33,6 @@ export default async function Home() {
           <NewProducts />
         </div>
       </div>
-    </>
+    
   );
 }

@@ -13,8 +13,24 @@
     /* Center the container */
   }
 }
+.common-topGap{
+  margin-top: 48px;
+}
 /* Styles for medium screens (width up to 1420px) */
+/* Adjust the height of the header as needed */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10; /* Ensure the header is above other content */
+}
 
+.main-content {
+  margin-top: 64px; /* Adjust this value to match the height of your header */
+  overflow-y: auto;
+  height: calc(100vh - 64px); /* Ensure the content takes the full height minus the header */
+}
 .common-class {
   @apply w-full gap-8 px-8 mx-auto lg:px-0 lg:w-5/6;
   min-height: auto;
@@ -80,7 +96,7 @@ img {
 .hoveredItems {
   z-index: 10;
   animation: hoverAnimation 0.3s ease-in-out forwards;
-}
+} 
 .desktopNavbar a:hover {
   color: tomato;
 }

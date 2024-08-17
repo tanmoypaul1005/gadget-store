@@ -15,7 +15,7 @@ const ProductDetails = async ({ params }) => {
   const user = await findUserId(session?.user?.email);
 
   return (
-    <div className="common-class">
+    <div className="common-topGap common-class">
       <div className="flex flex-wrap pb-5">
         <Image
           style={{ maxHeight: "400px" }}
