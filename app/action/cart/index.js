@@ -67,3 +67,32 @@ export const findDayOffer = async (product_id,user_id) => {
     return null;
   }
 };
+
+
+
+export const updateCartQuantity = async (id, newQuantity) => {
+  await connectMongo();
+
+  try {
+    // Find the cart for the user
+    const cart = await Cart.findOne({ _id:id });
+
+    if (!cart) {
+      throw new Error("Cart not found");
+    }
+  
+    // Update the quantity of the product in the cart
+    cart.quantity = newQuantity;
+
+    // Save the updated cart
+    await cart.save();
+
+    // Optionally revalidate the path if needed
+    revalidatePath(kuCart);
+
+    return cart;
+  } catch (error) {
+    console.error("Error updating cart quantity:", error);
+    throw error;
+  }
+};

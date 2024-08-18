@@ -8,7 +8,6 @@ import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
 import { iCart, iOrder } from "@/util/imageImports";
-import { DrawerDefault } from "./DrawerDefault";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
@@ -24,6 +23,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
     await signIn("google", {
       callbackUrl: "/",
     });
+  };
+
+  const truncateName = (name, maxLength) => {
+    if (name.length > maxLength) {
+      return name.substring(0, maxLength) + "...";
+    }
+    return name;
   };
 
   return (
@@ -73,7 +79,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                         href={"/profile"}
                         className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
                       >
-                        {session?.user?.name}
+                        {truncateName(session?.user?.name, 10)}
                       </Link>
                       <div
                         onClick={() => {
@@ -142,7 +148,7 @@ const CartIcon = ({ totalCart = 0 }) => {
   return (
     <>
       <Link
-        href={"/checkout"}
+        href={"/cart"}
         className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg"
       >
         <div className="relative">

@@ -39,7 +39,7 @@ const Address = ({ address, email }) => {
                   setSelectType(address_type.billing_address);
                   setAddressModal(true);
                 }}
-                width="w-[210px]"
+                width="max-w-[200px] min-w-[200px]"
                 btnLabel="Billing address"
                 label=""
               />
@@ -48,7 +48,7 @@ const Address = ({ address, email }) => {
         </div>
 
 
-        <div className="mt-5 flex items-start justify-start">
+        <div className="flex items-start justify-start mt-5">
           {shipping_address?.title ? (
             <AddressCard
               onOpen={() => {
@@ -64,7 +64,7 @@ const Address = ({ address, email }) => {
                   setAddressModal(true);
                   setSelectType(address_type.shipping_address);
                 }}
-                width="w-[210px]"
+                width="max-w-[200px] min-w-[200px]"
                 btnLabel="Shipping address"
                 label=""
               />
