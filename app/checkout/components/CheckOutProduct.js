@@ -25,7 +25,7 @@ const CheckOutProduct = ({ item }) => {
         <span className="float-right text-gray-400">Cart id: {item.product._id}</span>
         <p className="text-lg font-bold">price: ${item?.product?.price}</p>
       </div>
-      <ClearCart data={item?._id} />
+      {/* <ClearCart data={item?._id} /> */}
     </div>
   );
 };

@@ -11,6 +11,7 @@ import ShoppingButton from "../checkout/components/ShoppingButton";
 import { iNoCart } from "@/util/imageImports";
 
 const Cart = async () => {
+  
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
