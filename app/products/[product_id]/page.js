@@ -35,9 +35,8 @@ const ProductDetails = async ({ params }) => {
 
           <p className="leading-relaxed">{productDetails?.description}</p>
           <div className="my-3 space-y-3">
-            <div className="mt-2 flex space-x-0.5">
+            <div className="mt-2">
               <CommonRating value={parseInt(productDetails?.ratting ?? 0)} />
-              <div>({parseInt(productDetails?.ratting ?? 0 ?? 0)})</div>
             </div>
             <div>Status: In Stock</div>
             <div className="text-2xl font-medium text-red-400 title-font">

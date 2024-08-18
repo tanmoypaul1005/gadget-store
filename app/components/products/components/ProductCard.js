@@ -31,9 +31,8 @@ export const ProductCard = async ({ product }) => {
               {product?.name ?? ""}
             </p>
             <div>
-              <div className="my-2 flex space-x-0.5">
+              <div className="my-2">
                 <CommonRating value={parseInt(product?.ratting ?? 0)}/>
-                <div>({parseInt(product?.ratting ?? 0)})</div>
               </div>
               <div className="flex justify-between">
                 <p className="text-base font-semibold text-red-400 cursor-auto">

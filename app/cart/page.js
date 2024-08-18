@@ -9,6 +9,7 @@ import QuantityButton from "./components/QuantityButton";
 import Summary from "./components/Summary";
 import ShoppingButton from "../checkout/components/ShoppingButton";
 import { iNoCart } from "@/util/imageImports";
+import CommonRating from "@/components/CommonRating";
 
 const Cart = async () => {
   
@@ -48,10 +49,11 @@ const Cart = async () => {
                         <p className="text-xs font-semibold text-white mt-0.5">
                           Brand: {item?.product?.brand?? ""}
                         </p>
+                        <CommonRating size="small" value={parseInt(item?.product?.ratting ?? 0)} />
 
                         <button
                           type="button"
-                          className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
+                          className="flex items-center gap-1 text-xs font-semibold text-red-500 shrink-0"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
