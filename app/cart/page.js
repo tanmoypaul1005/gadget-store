@@ -46,7 +46,7 @@ const Cart = async () => {
                           {item?.product?.name}
                         </h3>
                         <p className="text-xs font-semibold text-white mt-0.5">
-                          Qty:{item?.quantity ?? 0}
+                          Brand: {item?.product?.brand?? ""}
                         </p>
 
                         <button
