@@ -7,93 +7,94 @@ import RemoveCart from "./components/RemoveCart";
 import Link from "next/link";
 import QuantityButton from "./components/QuantityButton";
 import Summary from "./components/Summary";
+import ShoppingButton from "../checkout/components/ShoppingButton";
+import { iNoCart } from "@/util/imageImports";
 
 const Cart = async () => {
+  
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
 
   const carts = await getCartCount(user?._id);
-  
-  const steps = [
-    { isActive: false, isCompleted: true, stepName: 'Shopping Cart' },
-    { isActive: false, isCompleted: true, stepName: 'Step 2' },
-    { isActive: true, isCompleted: false, stepName: 'Step 3' },
-    { isActive: false, isCompleted: false, stepName: 'Step 4' },
-  ];
-  
+
   return (
-    <div className="font-sans common-topGap common-class">
+    <>
+      {carts?.length > 0 ? (
+        <div className="font-sans common-topGap common-class">
+          <div className="grid gap-8 mt-5 md:grid-cols-3">
+            <div className="space-y-4 md:col-span-2">
+              {carts?.map((item, index) => (
+                <div key={index}>
+                  <div
+                    key={index}
+                    className="grid items-start grid-cols-3 gap-4"
+                  >
+                    <div className="flex items-start col-span-2 gap-4">
+                      <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
+                        <Image
+                          src={item?.product?.image}
+                          alt=""
+                          className="object-contain w-full h-full"
+                          width={100}
+                          height={100}
+                        />
+                      </div>
 
+                      <div className="flex flex-col">
+                        <h3 className="text-base font-bold text-white line-clamp-2">
+                          {item?.product?.name}
+                        </h3>
+                        <p className="text-xs font-semibold text-white mt-0.5">
+                          Qty:{item?.quantity ?? 0}
+                        </p>
 
-    
-      <div className="grid gap-8 mt-5 md:grid-cols-3">
-        <div className="space-y-4 md:col-span-2">
-          {carts?.map((item, index) => (
-            <div key={index}>
-              <div key={index} className="grid items-start grid-cols-3 gap-4">
-                <div className="flex items-start col-span-2 gap-4">
-                  <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
-                    <Image
-                      src={item?.product?.image}
-                      alt=""
-                      className="object-contain w-full h-full"
-                      width={100}
-                      height={100}
-                    />
+                        <button
+                          type="button"
+                          className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="inline w-4 fill-current"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+                              data-original="#000000"
+                            ></path>
+                            <path
+                              d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+                              data-original="#000000"
+                            ></path>
+                          </svg>
+                          <RemoveCart data={item?._id} />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="ml-auto">
+                      <h4 className="text-lg font-bold text-white text-end max-sm:text-base">
+                        ${item?.product?.price}
+                      </h4>
+
+                      <QuantityButton
+                        id={item?._id}
+                        initialQuantity={item?.quantity ?? 0}
+                      />
+                    </div>
                   </div>
-
-                  <div className="flex flex-col">
-                    <h3 className="text-base font-bold text-white line-clamp-2">
-                      {item?.product?.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-white mt-0.5">
-                      Qty:{item?.quantity ?? 0}
-                    </p>
-
-                    <button
-                      type="button"
-                      className="flex items-center gap-1 mt-6 text-xs font-semibold text-red-500 shrink-0"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="inline w-4 fill-current"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
-                          data-original="#000000"
-                        ></path>
-                        <path
-                          d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
-                          data-original="#000000"
-                        ></path>
-                      </svg>
-                      <RemoveCart data={item?._id} />
-                    </button>
-                  </div>
+                  {parseInt(carts?.length) - 1 !== parseInt(index) && (
+                    <hr className="mt-2 border-gray-300" />
+                  )}
                 </div>
-
-                <div className="ml-auto">
-                  <h4 className="text-lg font-bold text-white text-end max-sm:text-base">
-                    ${item?.product?.price}
-                  </h4>
-
-                  <QuantityButton id={item?._id} initialQuantity={item?.quantity ?? 0}/>
-                </div>
-              </div>
-              {parseInt(carts?.length) - 1 !== parseInt(index) && (
-                <hr className="mt-2 border-gray-300" />
-              )}
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div className="p-4 bg-gray-100 rounded-md h-max">
-          <h3 className="pb-2 text-lg font-bold text-gray-800 border-b border-gray-300 max-sm:text-base">
-            Order Summary
-          </h3>
-{/* 
+            <div className="p-4 bg-gray-100 rounded-md h-max">
+              <h3 className="pb-2 text-lg font-bold text-gray-800 border-b border-gray-300 max-sm:text-base">
+                Order Summary
+              </h3>
+              {/* 
           <form className="mt-6">
             <div>
               <h3 className="mb-4 text-base font-semibold text-gray-800">
@@ -187,30 +188,49 @@ const Cart = async () => {
             </div>
           </form> */}
 
-         <Summary carts={carts}/>
+              <Summary carts={carts} />
 
-          <div className="mt-6 space-y-3">
-            <Link href={"/checkout"}>
-              <button
-                type="button"
-                className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
-              >
-                Checkout
-              </button>
-            </Link>
-            <div className="mt-3"></div>
-            <Link href={"/"}>
-              <button
-                type="button"
-                className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
-              >
-                Continue Shopping{" "}
-              </button>
-            </Link>
+              <div className="mt-6 space-y-3">
+                <Link href={"/checkout"}>
+                  <button
+                    type="button"
+                    className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md"
+                  >
+                    Checkout
+                  </button>
+                </Link>
+                <div className="mt-3"></div>
+                <Link href={"/"}>
+                  <button
+                    type="button"
+                    className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent text-gray-800 border border-gray-300 rounded-md"
+                  >
+                    Continue Shopping{" "}
+                  </button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center">
+          <Image
+            alt="No items in cart"
+            src={iNoCart}
+            style={{ maxWidth: "500px", maxHeight: "500px" }}
+          />
+          <div className="mt-4 text-center">
+            <h2 className="text-2xl font-semibold text-white">
+              Your Cart is Empty!
+            </h2>
+            <p className="mt-2 font-semibold text-white">
+              {"Looks like you haven't added anything to your cart yet."}
+            </p>
+            <ShoppingButton />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
