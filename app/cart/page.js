@@ -6,21 +6,30 @@ import Image from "next/image";
 import RemoveCart from "./components/RemoveCart";
 import Link from "next/link";
 import QuantityButton from "./components/QuantityButton";
+import Summary from "./components/Summary";
 
 const Cart = async () => {
   const session = await auth();
 
   const user = await findUserId(session?.user?.email);
 
-  const cart = await getCartCount(user?._id);
-
+  const carts = await getCartCount(user?._id);
+  
+  const steps = [
+    { isActive: false, isCompleted: true, stepName: 'Shopping Cart' },
+    { isActive: false, isCompleted: true, stepName: 'Step 2' },
+    { isActive: true, isCompleted: false, stepName: 'Step 3' },
+    { isActive: false, isCompleted: false, stepName: 'Step 4' },
+  ];
+  
   return (
-    <div className="mt-5 font-sans common-class">
-      <h1 className="text-xl font-bold text-white text-start">Shopping Cart</h1>
+    <div className="font-sans common-topGap common-class">
 
+
+    
       <div className="grid gap-8 mt-5 md:grid-cols-3">
         <div className="space-y-4 md:col-span-2">
-          {cart?.map((item, index) => (
+          {carts?.map((item, index) => (
             <div key={index}>
               <div key={index} className="grid items-start grid-cols-3 gap-4">
                 <div className="flex items-start col-span-2 gap-4">
@@ -73,7 +82,7 @@ const Cart = async () => {
                   <QuantityButton id={item?._id} initialQuantity={item?.quantity ?? 0}/>
                 </div>
               </div>
-              {parseInt(cart?.length) - 1 !== parseInt(index) && (
+              {parseInt(carts?.length) - 1 !== parseInt(index) && (
                 <hr className="mt-2 border-gray-300" />
               )}
             </div>
@@ -84,7 +93,7 @@ const Cart = async () => {
           <h3 className="pb-2 text-lg font-bold text-gray-800 border-b border-gray-300 max-sm:text-base">
             Order Summary
           </h3>
-
+{/* 
           <form className="mt-6">
             <div>
               <h3 className="mb-4 text-base font-semibold text-gray-800">
@@ -176,23 +185,9 @@ const Cart = async () => {
                 </div>
               </div>
             </div>
-          </form>
+          </form> */}
 
-          <ul className="mt-6 space-y-3 text-gray-800">
-            <li className="flex flex-wrap gap-4 text-sm">
-              Subtotal <span className="ml-auto font-bold">$200.00</span>
-            </li>
-            <li className="flex flex-wrap gap-4 text-sm">
-              Shipping <span className="ml-auto font-bold">$2.00</span>
-            </li>
-            <li className="flex flex-wrap gap-4 text-sm">
-              Tax <span className="ml-auto font-bold">$4.00</span>
-            </li>
-            <hr className="border-gray-300" />
-            <li className="flex flex-wrap gap-4 text-sm font-bold">
-              Total <span className="ml-auto">$206.00</span>
-            </li>
-          </ul>
+         <Summary carts={carts}/>
 
           <div className="mt-6 space-y-3">
             <Link href={"/checkout"}>

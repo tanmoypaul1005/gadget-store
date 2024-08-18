@@ -148,7 +148,7 @@ const CartIcon = ({ totalCart = 0 }) => {
   return (
     <>
       <Link
-        href={"/checkout"}
+        href={"/cart"}
         className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg"
       >
         <div className="relative">
