@@ -34,7 +34,7 @@ const QuantityButton = ({ id, initialQuantity = 1 }) => {
       <svg
         onClick={decrement}
         xmlns="http://www.w3.org/2000/svg"
-        className="w-2.5 fill-current cursor-pointer"
+        className="w-4 cursor-pointer fill-current"
         viewBox="0 0 124 124"
       >
         <path
@@ -48,7 +48,7 @@ const QuantityButton = ({ id, initialQuantity = 1 }) => {
       <svg
         onClick={increment}
         xmlns="http://www.w3.org/2000/svg"
-        className="w-2.5 fill-current cursor-pointer"
+        className="w-4 cursor-pointer fill-current"
         viewBox="0 0 42 42"
       >
         <path
