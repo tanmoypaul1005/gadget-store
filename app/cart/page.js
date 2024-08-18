@@ -29,9 +29,9 @@ const Cart = async () => {
                 <div key={index}>
                   <div
                     key={index}
-                    className="grid items-start grid-cols-3 gap-4"
+                    className="flex items-start gap-4"
                   >
-                    <div className="flex items-start col-span-2 gap-4">
+                    <div className="flex items-start w-full col-span-2 gap-4">
                       <div className="p-2 bg-gray-100 rounded-md w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                         <Image
                           src={item?.product?.image}
@@ -42,8 +42,8 @@ const Cart = async () => {
                         />
                       </div>
 
-                      <div className="flex flex-col">
-                        <h3 className="text-base font-bold text-white line-clamp-2">
+                      <div className="flex flex-col w-full">
+                        <h3 className="w-full text-base font-bold text-white line-clamp-2">
                           {item?.product?.name}
                         </h3>
                         <p className="text-xs font-semibold text-white mt-0.5">

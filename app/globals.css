@@ -13,8 +13,14 @@
     /* Center the container */
   }
 }
-.common-topGap{
-  margin-top: 48px;
+.common-topGap {
+  margin-top: 85px; /* Default for mobile screens */
+}
+
+@media (min-width: 1024px) {
+  .common-topGap {
+    margin-top: 48px; /* For laptop screens and larger */
+  }
 }
 /* Styles for medium screens (width up to 1420px) */
 /* Adjust the height of the header as needed */
