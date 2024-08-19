@@ -13,6 +13,20 @@
     /* Center the container */
   }
 }
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 0.3s ease-in-out;
+}
+
 .common-topGap {
   margin-top: 85px; /* Default for mobile screens */
 }

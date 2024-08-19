@@ -9,6 +9,8 @@ import LoginAlertModal from "@/components/modal/LoginAlertModal";
 const Action = ({ product_id, user }) => {
 
   const [quantity, setQuantity] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const [open, setOpen] = useState(false)
 
   const formData = {
@@ -30,11 +32,26 @@ const Action = ({ product_id, user }) => {
     }
   };
 
+  const handleClick = async () => {
+    if (!user) {
+      setOpen(true);
+      return;
+    }
+    setIsAnimating(true);
+    const success = await addCart({ product_id, user_id: user._id, quantity: 1 }, "/products/" + product_id);
+    setIsAnimating(false);
+
+    if (success.success) {
+      Toastr({ type: "success", message: success.message });
+    } else {
+      Toastr({ type: "error", message: success.message });
+    }
+  };
+
 
   return (
-    <div className="flex gap-x-5 my-5">
-      <div className="">
-        {/* <h3 className="mb-1 text-sm text-white uppercase">Quantity</h3> */}
+    <div className="flex my-5 gap-x-5">
+      <div>
         <div className="flex text-white border border-gray-300 divide-x divide-gray-300 w-max">
           <div
             className="flex items-center justify-center w-8 max-h-[40px] min-h-[40px]ax-h-[40px] min-h-[40px] text-xl cursor-pointer select-none"
@@ -53,7 +70,7 @@ const Action = ({ product_id, user }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-end items-end space-x-5">
+      <div className="flex items-end justify-end space-x-5">
         <CommonButton
           onClick={async () => {
             if (!user) {
@@ -70,7 +87,6 @@ const Action = ({ product_id, user }) => {
           btnLabel="Add Cart"
           colorType="danger"
         />
-
       </div>
 
       <LoginAlertModal open={open} setOpen={setOpen} />
