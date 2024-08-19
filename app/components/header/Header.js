@@ -21,7 +21,6 @@ const Header = async ({className}) => {
       <div className="flex flex-col items-center justify-between border-b top-header">
         <HeaderUserInfo totalOrder={order?.data?.length} totalCart={cart?.length ?? 0} session={session} />
       </div>
-      {/* <Categories /> */}
     </div>
   );
 };
