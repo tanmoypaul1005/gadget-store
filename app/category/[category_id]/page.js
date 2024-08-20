@@ -12,7 +12,7 @@ const Category = async ({ params }) => {
   const category = await getCategoryDetails(params?.category_id);
 
   return (
-    <div className="common-class">
+    <div className="common-class common-topGap">
       <div className="flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
         <div>{category ?.title ?? "Category"}</div>
       </div>
