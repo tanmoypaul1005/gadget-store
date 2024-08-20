@@ -8,6 +8,7 @@ import { getComment } from "@/app/action/comment";
 import CommonRating from "@/components/CommonRating";
 
 const ProductDetails = async ({ params }) => {
+  
   const productDetails = await fetchProduct(params?.product_id);
   const comments = await getComment(params?.product_id);
   const session = await auth();
