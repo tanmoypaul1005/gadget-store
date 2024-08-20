@@ -4,7 +4,7 @@ import FeaturedCategories from "./components/FeaturedCategories";
 import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
-import NewProducts from "./components/products/components/NewProducts";
+import RegularProducts from "./components/products/components/RegularProducts";
 import BestSellers from "./components/sidebar/BestSellers";
 import TopRate from "./top-rate/page";
 
@@ -30,7 +30,7 @@ export default async function Home() {
             <Products />
           </div>
           <TopRate />
-          <NewProducts />
+          <RegularProducts />
         </div>
       </div>
     

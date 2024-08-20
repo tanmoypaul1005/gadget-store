@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 
-const NewProducts = async () => {
+const RegularProducts = async () => {
   
   const products = await fetch(base_url + kuProductList, {
     next: { revalidate: 1 },
@@ -30,4 +30,4 @@ const NewProducts = async () => {
   );
 };
 
-export default NewProducts;
+export default RegularProducts;
