@@ -12,27 +12,24 @@ export default async function Home() {
   const categoryData = await getAllCategory();
 
   return (
-
-      <div className="space-y-10 common-class">
-        <div className="flex common-topGap lg:gap-x-2 gap-x-0">
-          <div className="h-full mt-[-15px]">
-            <SideBarCategory />
-          </div>
-          <div className="w-full">
-            <Banner />
-          </div>
+    <div className="space-y-10 common-class">
+      <div className="flex common-topGap lg:gap-x-2 gap-x-0">
+        <div className="h-full mt-[-15px]">
+          <SideBarCategory />
         </div>
-        <OfferBanner category={categoryData?.data} />
-        <FeaturedCategories />
-        <div>
-          <div className="flex h-full">
-            <BestSellers />
-            <Products />
-          </div>
-          <TopRate />
-          <RegularProducts />
+        <div className="w-full">
+          <Banner />
         </div>
       </div>
-    
+      <OfferBanner category={categoryData?.data} />
+      <FeaturedCategories />
+
+      <div className="flex h-full">
+        <BestSellers />
+        <Products />
+      </div>
+      <TopRate />
+      <RegularProducts />
+    </div>
   );
 }
