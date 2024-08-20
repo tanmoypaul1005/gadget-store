@@ -36,7 +36,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
     <>
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
 
-      <div className="flex flex-col w-full px-8 mx-auto md:gap-8 lg:px-0 lg:w-5/6">
+      <div className="flex flex-col w-full common-class">
         <header>
           <nav className="flex justify-between w-full py-3 gap-x-2">
             <div className="flex items-center flex-grow gap-x-4">

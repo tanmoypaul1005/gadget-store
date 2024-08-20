@@ -21,7 +21,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
   const categoryDetails = await categoryResponse.json();
 
   return (
-    <div className="common-class">
+    <div className="common-class common-topGap">
       <div className="mb-10">
         {categoryDetails?.data?.banner ? (
           <Image
