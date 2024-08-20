@@ -39,3 +39,5 @@ const RegularProducts = async () => {
 };
 
 export default RegularProducts;
+
+
