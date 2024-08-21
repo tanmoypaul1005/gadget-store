@@ -1,13 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Products = () => {
+  
   const [selectedOption, setSelectedOption] = useState("most-popular");
+  const [categories, setCategories] = useState([]);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/category");
+        const data = await response.json();
+        setCategories(data?.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+console.log("categories",categories)
   // const products = await fetch(base_url + kuProductList, {
   //   next: { revalidate: 1 },
   // }).then((res) => res.json());
@@ -224,7 +240,7 @@ const Products = () => {
           </div>
         </div>
 
-        <main className="px-4 sm:px-6 lg:px-8">
+        <main className="common-class">
           <div className="flex items-baseline justify-between border-b border-gray-200">
             <h1 className="pb-4 text-2xl font-bold tracking-tight text-white">
               Product list
@@ -232,8 +248,6 @@ const Products = () => {
 
             <div className="flex items-center">
               <div className="relative inline-block text-left">
-
-                  
                   <select
                     id="sort-menu"
                     className="z-10 w-40 p-2 text-black origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -323,23 +337,16 @@ const Products = () => {
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="pb-6 space-y-4 text-sm font-medium border-b border-gray-200"
-                >
-                  <li>
-                    <a href="#">Totes</a>
-                  </li>
-                  <li>
-                    <a href="#">Backpacks</a>
-                  </li>
-                  <li>
-                    <a href="#">Travel Bags</a>
-                  </li>
-                  <li>
-                    <a href="#">Hip Bags</a>
-                  </li>
-                  <li>
-                    <a href="#">Laptop Sleeves</a>
-                  </li>
+                  className="pb-6 space-y-2 text-sm font-medium border-b border-gray-200"
+                >  
+                 {
+                    categories.map((item,index)=>(
+                      <li key={index}>
+                        {item?.title}
+                    </li>
+                    ))
+                 }
+
                 </ul>
 
                 {/* <div className="py-6 border-b border-gray-200">
