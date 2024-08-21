@@ -12,6 +12,9 @@ export async function GET(request) {
     const maxPrice = parseFloat(searchParams.get("maxPrice"));
     const category = searchParams.get("category");
 
+    console.log("queryType", minPrice, maxPrice, category);
+
+
     let query = {};
 
     if (products_type.includes(queryType)) {
@@ -32,7 +35,7 @@ export async function GET(request) {
 
     let products = await Products.find(query);
 
-    return new Response(JSON.stringify({ success: true, products }), {
+    return new Response(JSON.stringify({ success: true,minPrice, maxPrice, category, products }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

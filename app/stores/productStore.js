@@ -9,8 +9,8 @@ export const useProductStore = create((set) => ({
 
     filterForm:{
       category:null,
-      minPrice:null,
-      maxPrice:null,
+      minPrice:10,
+      maxPrice:300000,
     },
     setFilterForm: (value) => set({ filterForm: value }),
 

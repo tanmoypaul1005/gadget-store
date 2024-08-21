@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./components/Card";
 import { useProductStore } from "../stores/productStore";
 import RangeSlider from "@/components/input/RangeSlider";
+import axios from "axios";
 
 const Products = () => {
 
@@ -13,30 +14,33 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
-  const [filter, setFilter] = useState();
-
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+ 
 
   const handlePriceChange = (value) => {
-    setFilter({ ...filter, minPrice: value[0], maxPrice: value[1] });
+    setFilterForm({ ...filterForm, minPrice: value[0], maxPrice: value[1] });
   }
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get("/api/products/filter",{params:filterForm});
+        console.log("response",response);
+        setProducts(response?.data?.products);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchProducts();
+  }, [filterForm]);
 
   // useEffect(() => {
   //   const fetchProducts = async () => {
   //     try {
-  //       const category = "electronics"; // Example category
-  //       const minPrice = 100; // Example min price
-  //       const maxPrice = 500; // Example max price
-  
-  //       const queryParams = new URLSearchParams({
-  //         category,
-  //         minPrice: minPrice.toString(),
-  //         maxPrice: maxPrice.toString(),
-  //       });
-  
-  //       const response = await fetch(`/api/products/filter?${queryParams.toString()}`);
+  //       const response = await fetch("/api/products/filter");
   //       if (!response.ok) {
   //         throw new Error("Network response was not ok");
   //       }
@@ -46,26 +50,9 @@ const Products = () => {
   //       setError(error.message);
   //     }
   //   };
-  
+
   //   fetchProducts();
   // }, []);
-  
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("/api/products/filter");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setProducts(data?.products);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     const fetchCategories = async () => {
