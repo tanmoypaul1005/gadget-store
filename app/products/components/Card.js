@@ -1,22 +1,31 @@
+import Image from "next/image";
 import React from "react";
 
-const Card = () => {
+const Card = ({ product }) => {
   return (
-    <div className="relative w-full max-w-xs m-10 overflow-hidden bg-white rounded-lg shadow-md">
-      <a href="#">
-        <img
-          className="object-cover rounded-t-lg h-60"
-          src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+    <div className="relative w-full max-w-[250px] min-w-[250px] px-2  overflow-hidden bg-white rounded-lg shadow-md">
+      <div className="flex items-center justify-center">
+        <Image
+          style={{
+            maxWidth: "220px",
+            maxHeight: "220px",
+            minHeight: "220px",
+            minWidth: "220px",
+          }}
+          className="rounded-t-lg "
+          src={product?.image}
           alt="product image"
+          width={500}
+          height={500}
         />
-      </a>
+      </div>
       <span className="absolute top-0 left-0 text-sm text-center text-white -rotate-45 -translate-x-6 translate-y-4 bg-black w-28">
         Sale
       </span>
-      <div className="px-5 pb-5 mt-4">
+      <div className="pb-5 mt-4 ">
         <a href="#">
-          <h5 className="text-xl font-semibold tracking-tight text-slate-900">
-            Nike Air MX Super 5000
+          <h5 className="text-xl font-semibold tracking-tight line-clamp-1 text-slate-900">
+            {product?.name}
           </h5>
         </a>
         <div className="mt-2.5 mb-5 flex items-center">
@@ -71,12 +80,11 @@ const Card = () => {
         </div>
         <div className="flex items-center justify-between">
           <p>
-            <span className="text-3xl font-bold text-slate-900">$249</span>
-            <span className="text-sm line-through text-slate-900">$299</span>
+            <span className="text-xl font-bold text-slate-900">$249</span>
+
           </p>
-          <a
-            href="#"
-            className="flex items-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+          <div
+            className="flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md bg-slate-900 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +101,7 @@ const Card = () => {
               />
             </svg>
             Add to cart
-          </a>
+          </div>
         </div>
       </div>
     </div>

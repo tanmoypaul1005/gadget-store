@@ -31,8 +31,6 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  console.log("products", products);
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -46,7 +44,6 @@ const Products = () => {
 
     fetchCategories();
   }, []);
-  console.log("categories", categories);
 
 
   return (
@@ -498,8 +495,7 @@ const Products = () => {
               </form>
 
               <div className="lg:col-span-3">
-
-                <div className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-8">
+                <div className="flex sm:flex-row flex-col sm:justify-between  gap-x-[50px] flex-wrap justify-items-center gap-y-8">
 
                 {
                   products?.map((product, index) => (
@@ -512,13 +508,6 @@ const Products = () => {
           </section>
         </main>
       </div>
-      {/* <div className="newProductsContainer common-topGap common-class">
-      <section className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-12">
-        {regularProducts?.map((product, index) => (
-          <ProductCard key={index} product={product} />
-        ))}
-      </section>
-    </div> */}
     </>
   );
 };
