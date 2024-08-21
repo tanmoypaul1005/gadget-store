@@ -2,8 +2,12 @@
 import { Checkbox, FormControlLabel } from '@mui/material'
 import React from 'react'
 
-export default function CommonCheckbox({ disabled = false, checked = false, onChange = () => { }, label = '', labelClass = '', width = "25px",
-  height = "25px", }) {
+export default function CommonCheckbox({ 
+  disabled = false, checked = false, 
+  onChange = () => { }, label = '',
+   width = "25px",
+  height = "25px"
+}) {
   return (
 
     <>

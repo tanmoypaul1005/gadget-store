@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+import Category from "@/models/Category";
 import Products from "@/models/Products";
 import { products_type } from "@/util/const";
 import connectMongo from "@/util/db";
@@ -28,9 +29,19 @@ export async function GET(request) {
     if (!isNaN(maxPrice)) {
       query.price = { ...query.price, $lte: maxPrice };
     }
-
+    
     if (category) {
-      query.category = category;
+      // Find subcategories based on the parent category ID
+      let subcategories = await Category.find({ parent_id: category });
+  
+      // Extract the IDs of the subcategories
+      const category_ids = subcategories.map((item) => item._id);
+  
+      // Include the parent category ID as well
+      category_ids.push(category);
+  
+      // Filter products by category and its subcategories
+      query.category = { $in: category_ids };
     }
 
     let products = await Products.find(query);
