@@ -13,9 +13,6 @@ export async function GET(request) {
     const maxPrice = parseFloat(searchParams.get("maxPrice"));
     const category = searchParams.get("category");
 
-    console.log("queryType", minPrice, maxPrice, category);
-
-
     let query = {};
 
     if (products_type.includes(queryType)) {
@@ -58,9 +55,6 @@ export async function GET(request) {
     });
   }
 }
-
-
-
 
 
 // try {
