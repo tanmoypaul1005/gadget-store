@@ -3,7 +3,7 @@ import React from "react";
 
 const Card = ({ product }) => {
   return (
-    <div className="relative w-full max-w-[250px] min-w-[250px] px-2  overflow-hidden bg-white rounded-lg shadow-md">
+    <div className="relative w-full max-w-[250px] min-w-[250px] px-2 pt-2 overflow-hidden bg-white rounded-lg shadow-md">
       <div className="flex items-center justify-center">
         <Image
           style={{

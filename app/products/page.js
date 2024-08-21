@@ -1,19 +1,55 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ProductFilter from "../components/products/components/ProductFilter";
 import Card from "./components/Card";
+import { useProductStore } from "../stores/productStore";
+import RangeSlider from "@/components/input/RangeSlider";
 
 const Products = () => {
+
+  const {filterForm,setFilterForm}=useProductStore();
 
   const [selectedOption, setSelectedOption] = useState("most-popular");
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
+  const [filter, setFilter] = useState();
+
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  const handlePriceChange = (value) => {
+    setFilter({ ...filter, minPrice: value[0], maxPrice: value[1] });
+  }
+
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const category = "electronics"; // Example category
+  //       const minPrice = 100; // Example min price
+  //       const maxPrice = 500; // Example max price
+  
+  //       const queryParams = new URLSearchParams({
+  //         category,
+  //         minPrice: minPrice.toString(),
+  //         maxPrice: maxPrice.toString(),
+  //       });
+  
+  //       const response = await fetch(`/api/products/filter?${queryParams.toString()}`);
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       const data = await response.json();
+  //       setProducts(data?.products);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+  
+  //   fetchProducts();
+  // }, []);
+  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -47,7 +83,6 @@ const Products = () => {
 
 
   return (
-    <>
       <div className="common-topGap">
         <div
           className="relative z-40 lg:hidden"
@@ -352,11 +387,19 @@ const Products = () => {
                   role="list"
                   className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-200"
                 >
-                  {categories.map((item, index) => (
+                  {categories?.map((item, index) => (
                     <li key={index}>{item?.title}</li>
                   ))}
                 </ul>
-                <ProductFilter />
+                <RangeSlider
+        label="Price"
+        min={0}
+        max={200000}
+        initialValue={[20, 100]}
+        color="#f17e23"
+        onChangeCallback={handlePriceChange}
+      />
+
                 {/* <div className="py-6 border-b border-gray-200">
                     <h3 className="flow-root -my-3">
                       <button type="button" className="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
@@ -496,7 +539,6 @@ const Products = () => {
 
               <div className="lg:col-span-3">
                 <div className="flex sm:flex-row flex-col sm:justify-between  gap-x-[50px] flex-wrap justify-items-center gap-y-8">
-
                 {
                   products?.map((product, index) => (
                     <Card key={index} product={product} />
@@ -508,7 +550,6 @@ const Products = () => {
           </section>
         </main>
       </div>
-    </>
   );
 };
 
