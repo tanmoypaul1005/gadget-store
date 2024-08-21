@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductFilter from "../components/products/components/ProductFilter";
+import Card from "./components/Card";
 
 const Products = () => {
 
@@ -500,11 +501,11 @@ const Products = () => {
 
                 <div className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-8">
 
-                {/* {
+                {
                   products?.map((product, index) => (
-                    <ProductCard key={index} product={product} />
+                    <Card key={index} product={product} />
                   ))
-                } */}
+                }
                 </div>
               </div>
             </div>
