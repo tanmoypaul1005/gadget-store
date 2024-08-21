@@ -19,7 +19,7 @@ export default function ProductFilter() {
   return (
     <div>
       <div className="text-white">Price</div>
-      <Box sx={{ width: 280 }}>
+      <Box sx={{ width: 300 }}>
         <div className="px-[9.5px]">
         <Slider
           getAriaLabel={() => "Temperature range"}

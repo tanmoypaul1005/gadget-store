@@ -3,13 +3,34 @@ import React, { useEffect, useState } from "react";
 import ProductFilter from "../components/products/components/ProductFilter";
 
 const Products = () => {
-  
+
   const [selectedOption, setSelectedOption] = useState("most-popular");
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/api/products/filter");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setProducts(data?.products);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  console.log("products", products);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -25,13 +46,7 @@ const Products = () => {
     fetchCategories();
   }, []);
   console.log("categories", categories);
-  // const products = await fetch(base_url + kuProductList, {
-  //   next: { revalidate: 1 },
-  // }).then((res) => res.json());
 
-  // const regularProducts = products?.data?.filter(
-  //   (product, index) => product.type === products_type_value.regular
-  // );
 
   return (
     <>
@@ -481,7 +496,17 @@ const Products = () => {
                   </div> */}
               </form>
 
-              <div className="lg:col-span-3"></div>
+              <div className="lg:col-span-3">
+
+                <div className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-8">
+
+                {/* {
+                  products?.map((product, index) => (
+                    <ProductCard key={index} product={product} />
+                  ))
+                } */}
+                </div>
+              </div>
             </div>
           </section>
         </main>
