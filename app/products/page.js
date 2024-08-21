@@ -11,7 +11,7 @@ const Products = () => {
   const { filterForm, setFilterForm } = useProductStore();
 
   const [selectedOption, setSelectedOption] = useState("most-popular");
-  const [categories, setCategories] = useState([]);
+
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
@@ -37,38 +37,6 @@ const Products = () => {
 
     fetchProducts();
   }, [filterForm]);
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await fetch("/api/products/filter");
-  //       if (!response.ok) {
-  //         throw new Error("Network response was not ok");
-  //       }
-  //       const data = await response.json();
-  //       setProducts(data?.products);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, []);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch("/api/category");
-        const data = await response.json();
-        setCategories(data?.data);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
 
   return (
     <div className="common-topGap">
@@ -109,33 +77,10 @@ const Products = () => {
 
             <form className="mt-4 border-t border-gray-200">
               <h3 className="sr-only">Categories</h3>
-              <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                <li>
-                  <a href="#" className="block px-2 py-3">
-                    Totes
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="block px-2 py-3">
-                    Backpacks
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="block px-2 py-3">
-                    Travel Bags
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="block px-2 py-3">
-                    Hip Bags
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="block px-2 py-3">
-                    Laptop Sleeves
-                  </a>
-                </li>
-              </ul>
+              <div className="p-3">
+
+              <FilterCategory textColor="text-black" />
+              </div>
 
               {/* <div className="px-4 py-6 border-t border-gray-200">
                     <h3 className="flow-root -mx-2 -my-3">
@@ -284,19 +229,13 @@ const Products = () => {
           </h1>
 
           <div className="flex items-center">
-            <div className="relative inline-block text-left">
               <select
                 id="sort-menu"
                 className="z-10 w-40 p-2 text-black origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
                 value={selectedOption}
                 onChange={handleChange}
               >
-                <option
-                  className="block px-4 py-2 text-sm font-medium text-gray-900"
-                  value="most-popular"
-                >
-                  Most Popular
-                </option>
+                
                 <option
                   className="block px-4 py-2 text-sm text-gray-500"
                   value="best-rating"
@@ -322,7 +261,6 @@ const Products = () => {
                   Price: High to Low
                 </option>
               </select>
-            </div>
 
             <button
               type="button"

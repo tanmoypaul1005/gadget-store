@@ -5,7 +5,7 @@ import React from 'react'
 export default function CommonCheckbox({ 
   disabled = false, checked = false, 
   onChange = () => { }, label = '',
-   width = "25px",
+  width = "25px",
   height = "25px"
 }) {
   return (
@@ -30,10 +30,8 @@ export default function CommonCheckbox({
                     marginLeft: '8px',
                     marginRight: '-8px',
                     backgroundColor: 'transparent !important',
-                    fontFamily: 'fEuclidLimadiRegular',
                     '&.Mui-checked': {
-                      color: '#285D43',
-                      fontFamily: 'fEuclidLimadiRegular',
+                      color: '#f17e23'
                     },
                     '&:hover': {
                       color: "", // replace with your desired hover color
