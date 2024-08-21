@@ -7,10 +7,10 @@ const Card = ({ product }) => {
       <div className="flex items-center justify-center">
         <Image
           style={{
-            maxWidth: "220px",
-            maxHeight: "220px",
-            minHeight: "220px",
-            minWidth: "220px",
+            maxWidth: "200px",
+            maxHeight: "200px",
+            minHeight: "200px",
+            minWidth: "200px",
           }}
           className="rounded-t-lg "
           src={product?.image}
@@ -24,7 +24,7 @@ const Card = ({ product }) => {
       </span>
       <div className="pb-5 mt-4 ">
         <a href="#">
-          <h5 className="text-xl font-semibold tracking-tight line-clamp-1 text-slate-900">
+          <h5 className="text-base font-semibold tracking-tight line-clamp-1 text-slate-900">
             {product?.name}
           </h5>
         </a>
@@ -52,7 +52,7 @@ const Card = ({ product }) => {
         </div>
         <div className="flex items-center justify-between">
           <p>
-            <span className="text-xl font-bold text-slate-900">${product?.price}</span>
+            <span className="text-base font-bold text-slate-900">${product?.price}</span>
 
           </p>
           <button
@@ -60,7 +60,7 @@ const Card = ({ product }) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 mr-2"
+              className="w-5 h-5 mr-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
