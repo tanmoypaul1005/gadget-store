@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import ProductFilter from "../components/products/components/ProductFilter";
 
 const Products = () => {
   
@@ -23,7 +24,7 @@ const Products = () => {
 
     fetchCategories();
   }, []);
-console.log("categories",categories)
+  console.log("categories", categories);
   // const products = await fetch(base_url + kuProductList, {
   //   next: { revalidate: 1 },
   // }).then((res) => res.json());
@@ -248,45 +249,44 @@ console.log("categories",categories)
 
             <div className="flex items-center">
               <div className="relative inline-block text-left">
-                  <select
-                    id="sort-menu"
-                    className="z-10 w-40 p-2 text-black origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    value={selectedOption}
-                    onChange={handleChange}
+                <select
+                  id="sort-menu"
+                  className="z-10 w-40 p-2 text-black origin-top-right bg-white rounded-md shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  value={selectedOption}
+                  onChange={handleChange}
+                >
+                  <option
+                    className="block px-4 py-2 text-sm font-medium text-gray-900"
+                    value="most-popular"
                   >
-                    <option
-                      className="block px-4 py-2 text-sm font-medium text-gray-900"
-                      value="most-popular"
-                    >
-                      Most Popular
-                    </option>
-                    <option
-                      className="block px-4 py-2 text-sm text-gray-500"
-                      value="best-rating"
-                    >
-                      Best Rating
-                    </option>
-                    <option
-                      className="block px-4 py-2 text-sm text-gray-500"
-                      value="newest"
-                    >
-                      Newest
-                    </option>
-                    <option
-                      className="block px-4 py-2 text-sm text-gray-500"
-                      value="low-to-high"
-                    >
-                      Price: Low to High
-                    </option>
-                    <option
-                      className="block px-4 py-2 text-sm text-gray-500"
-                      value="high-to-low"
-                    >
-                      Price: High to Low
-                    </option>
-                  </select>
-                </div>
-             
+                    Most Popular
+                  </option>
+                  <option
+                    className="block px-4 py-2 text-sm text-gray-500"
+                    value="best-rating"
+                  >
+                    Best Rating
+                  </option>
+                  <option
+                    className="block px-4 py-2 text-sm text-gray-500"
+                    value="newest"
+                  >
+                    Newest
+                  </option>
+                  <option
+                    className="block px-4 py-2 text-sm text-gray-500"
+                    value="low-to-high"
+                  >
+                    Price: Low to High
+                  </option>
+                  <option
+                    className="block px-4 py-2 text-sm text-gray-500"
+                    value="high-to-low"
+                  >
+                    Price: High to Low
+                  </option>
+                </select>
+              </div>
 
               <button
                 type="button"
@@ -337,18 +337,13 @@ console.log("categories",categories)
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
-                  className="pb-6 space-y-2 text-sm font-medium border-b border-gray-200"
-                >  
-                 {
-                    categories.map((item,index)=>(
-                      <li key={index}>
-                        {item?.title}
-                    </li>
-                    ))
-                 }
-
+                  className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-200"
+                >
+                  {categories.map((item, index) => (
+                    <li key={index}>{item?.title}</li>
+                  ))}
                 </ul>
-
+                <ProductFilter />
                 {/* <div className="py-6 border-b border-gray-200">
                     <h3 className="flow-root -my-3">
                       <button type="button" className="flex items-center justify-between w-full py-3 text-sm text-gray-400 bg-white hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
