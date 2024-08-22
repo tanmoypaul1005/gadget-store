@@ -75,7 +75,6 @@ export const getSelectedCategoryDetails = async (title) => {
 };
 
 
-
 export async function getTopBrandProducts() {
   try {
     await connectMongo();
