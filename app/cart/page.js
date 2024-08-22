@@ -20,9 +20,9 @@ const Cart = async () => {
   const carts = await getCartCount(user?._id);
 
   return (
-    <>
+    <div className="common-topGap">
       {carts?.length > 0 ? (
-        <div className="font-sans common-topGap common-class">
+        <div className="font-sans common-class">
           <div className="grid gap-8 mt-5 md:grid-cols-3">
             <div className="space-y-4 md:col-span-2">
               {carts?.map((item, index) => (
@@ -225,14 +225,14 @@ const Cart = async () => {
             <h2 className="text-2xl font-semibold text-white">
               Your Cart is Empty!
             </h2>
-            <p className="mt-2 font-semibold text-white">
+            <p className="mx-5 mt-2 font-semibold text-white">
               {"Looks like you haven't added anything to your cart yet."}
             </p>
             <ShoppingButton />
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
