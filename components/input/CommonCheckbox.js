@@ -59,7 +59,7 @@ export default function CommonCheckbox({
               backgroundColor: 'transparent !important',
               fontFamily: 'fEuclidLimadiRegular',
               '&.Mui-checked': {
-                color: "#285D43",
+                color: "#f17e23",
                 fontFamily: 'fEuclidLimadiRegular',
               },
               '&:hover': {

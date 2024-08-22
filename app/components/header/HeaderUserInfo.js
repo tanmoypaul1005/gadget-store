@@ -11,6 +11,7 @@ import { iCart, iOrder } from "@/util/imageImports";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
+  
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   const { mobileNav, setMobileNav } = useGeneralStore();
@@ -42,7 +43,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             <div className="flex items-center flex-grow gap-x-4">
               <Link
                 href={"/"}
-                className="text-3xl max-w-[190px] min-w-[190px]  font-semibold text-white select-none"
+                className="text-xl font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
               >
                 Gadget store
               </Link>
@@ -103,18 +104,8 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                     </div>
                   ) : (
                     <>
-                      <div
-                        onClick={handleGoogleAuthClick}
-                        className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-                      >
-                        Sign in
-                      </div>
-                      <div
-                        onClick={handleGoogleAuthClick}
-                        className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-                      >
-                        Login
-                      </div>
+                      <LoginButton text="Sign in" onClick={handleGoogleAuthClick}  />
+                      <LoginButton onClick={handleGoogleAuthClick}  />
                     </>
                   )}
                 </div>
@@ -122,7 +113,9 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
               {/* menu icon  */}
               <div className="block md:hidden lg:hidden">
-                <div className="flex space-x-2">
+                <div className="flex">
+                
+                  <LoginButton onClick={handleGoogleAuthClick}  />
                   <CartIcon totalCart={totalCart} />
                   <HiMenuAlt3
                     className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
@@ -216,3 +209,14 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
     </>
   );
 };
+
+const LoginButton = ({ onClick,text="Login" }) => {
+  return (
+    <div
+    onClick={onClick}
+    className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+  >
+    {text}
+  </div>
+  )
+}

@@ -6,7 +6,6 @@ import "./Carousel.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 function Banner() {
@@ -59,7 +58,7 @@ function Banner() {
     <>
      {!mobileNav && <motion.div animate={{ x: 0 }} transition={{ delay: 1 }}>
       <div>
-        <div className="relative flex justify-center items-center lg:h-[454px] rounded banner lg:-mt-4 w-full h-64 sm:h-96 md:h-128">
+        <div className="relative flex justify-center items-center lg:h-[454px] rounded banner lg:-mt-4 w-full h-56 sm:h-64 md:h-128">
           {data?.map((item, idx) => (
             <Image
               src={item.src}
