@@ -36,9 +36,9 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
     <>
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
 
-      <div className="flex flex-col w-full common-class">
-        <header>
-          <nav className="flex justify-between w-full py-3 gap-x-2">
+      <div className="flex flex-col w-full h-fit common-class">
+       
+          <nav className="flex justify-between w-full pt-3 md:pb-3 gap-x-2">
             <div className="flex items-center flex-grow gap-x-4">
               <Link
                 href={"/"}
@@ -132,9 +132,8 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
               </div>
             </div>
           </nav>
-        </header>
 
-        <div className="block w-full mb-5 md:hidden">
+        <div className="block mt-[-18px] md:mt-0 w-full mb-5 md:hidden">
           <Search />
         </div>
       </div>

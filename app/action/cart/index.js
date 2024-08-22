@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import Cart from "@/models/Cart";
 import connectMongo from "@/util/db";
 import { kuCart } from "@/util/url";
+import { auth } from "@/auth";
+import { findUserId } from "../product/action";
 
 export const getCartCount = async (user_id) => {
   try {
@@ -96,3 +98,27 @@ export const updateCartQuantity = async (id, newQuantity) => {
     throw error;
   }
 };
+
+export const serverAddCart = async (product_id,location) => {
+   try{
+    await connectMongo();
+    const session = await auth();
+    const user = await findUserId(session?.user?.email); 
+  
+    const formData = {
+      product_id: product_id,
+      user_id: user?._id,
+      quantity: 1,
+    };
+  
+    const res=await addCart(formData, location);
+    return res;
+   }
+    catch(err){
+      console.error("Error:", error);
+      return {
+        success: false,
+        message: "Internal Server Error",
+      };
+    }
+}

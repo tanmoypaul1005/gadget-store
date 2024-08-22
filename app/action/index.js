@@ -58,10 +58,6 @@ export const getAllCategory = async () => {
   }
 }
 
-
-
-
-
 export async function getCategorySearch(search = '') {
   await connectMongo();
 

@@ -1,5 +1,3 @@
-// import Products from "@/models/Products";
-// import connectMongo from "@/util/db";
 import axios from "axios";
 import { create } from "zustand";
 
@@ -8,6 +6,13 @@ export const useProductStore = create((set) => ({
 
     productList: [],
     setProductList: (value) => set({ productList: value }),
+
+    filterForm:{
+      category:null,
+      minPrice:10,
+      maxPrice:300000,
+    },
+    setFilterForm: (value) => set({ filterForm: value }),
 
 }));
 
