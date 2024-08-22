@@ -45,15 +45,18 @@ const Tabs = ({ categoryList }) => {
       </div>
 
       {selectedId && 
-      <div className="flex flex-wrap items-center justify-between pt-5 gap-x-3 gap-y-3">
-        {products?.data?.length > 0 ? (
-          products?.data?.map((product, productIndex) => (
-            <Card key={productIndex} product={product} />
-          ))
-        ) : (
-          <div className="max-h-[338px] text-2xl font-bold min-h-[338px] flex justify-center items-center">No products found</div>
-        )}
-      </div>} 
+   <div className="flex flex-wrap items-center justify-center pt-5 gap-x-3 gap-y-3">
+   {products?.data?.length > 0 ? (
+     products?.data?.map((product, productIndex) => (
+       <Card key={productIndex} product={product} />
+     ))
+   ) : (
+     <div className="max-h-[338px] text-2xl font-bold min-h-[338px] flex justify-center items-center">
+       No products found
+     </div>
+   )}
+ </div>
+      } 
     </>
   );
 };
