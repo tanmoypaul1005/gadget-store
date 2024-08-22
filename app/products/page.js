@@ -9,7 +9,6 @@ import { ColorRing } from "react-loader-spinner";
 
 const Products = () => {
 
-
   const { filterForm, setFilterForm } = useProductStore();
   const [isOpenSidebar, setOpenSidebar] = useState(true);
   const [products, setProducts] = useState([]);
@@ -35,9 +34,9 @@ const Products = () => {
         setLoading(false);
       }
     };
-
     fetchProducts();
   }, [filterForm]);
+
 
   return (
     <div className="common-topGap">

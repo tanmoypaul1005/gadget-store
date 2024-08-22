@@ -3,8 +3,7 @@ import { useProductStore } from "@/app/stores/productStore";
 import CommonCheckbox from "@/components/input/CommonCheckbox";
 import React, { useEffect, useState } from "react";
 
-const FilterCategory = ({textColor="text-white",onChange}) => {
-    
+const FilterCategory = ({ textColor = "text-white", onChange=()=>{} }) => {
   const [categories, setCategories] = useState([]);
   const { filterForm, setFilterForm } = useProductStore();
 
@@ -18,39 +17,44 @@ const FilterCategory = ({textColor="text-white",onChange}) => {
         console.error("Error fetching categories:", error);
       }
     };
-
     fetchCategories();
   }, []);
 
-  
+  const handleSelectCategory = (item) => {
+    setFilterForm({
+      ...filterForm,
+      category: filterForm.category === item?._id ? null : item?._id,
+    });
+    onChange();
+  };
+
   return (
     <ul
       role="list"
       className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-200"
     >
-      {
-      categories?.length > 0 ?
-      
-      categories?.map((item, index) => (
-        <li className="flex" key={index}>
-            <CommonCheckbox 
+      {categories?.length > 0 ? (
+        categories?.map((item, index) => (
+          <li className="flex" key={index}>
+            <CommonCheckbox
               checked={filterForm.category === item?._id}
-                onChange={() => {
-                    setFilterForm({
-                    ...filterForm,
-                    category: filterForm.category === item?._id ? null : item?._id,
-                    });
-                    onChange(); 
-                }}
+              onChange={async () => {
+                await handleSelectCategory(item);
+              }}
             />
-          <div className={`flex items-center justify-center ${textColor}`}> {item?.title}</div>
-        </li>
-      ))
-      : 
-      <div className="flex items-center justify-center h-96">
-        <div className="text-lg font-semibold text-gray-500">No categories found</div>
+            <div className={`flex items-center justify-center ${textColor}`}>
+              {" "}
+              {item?.title}
+            </div>
+          </li>
+        ))
+      ) : (
+        <div className="flex items-center justify-center h-96">
+          <div className="text-lg font-semibold text-gray-500">
+            No categories found
+          </div>
         </div>
-      }
+      )}
     </ul>
   );
 };
