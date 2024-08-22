@@ -10,25 +10,12 @@ const CommentCard = async ({ comment, onCommentDelete }) => {
     return (
         <div>
             <div className="flex items-start my-8 space-x-4">
-                
-                        {/* <Image
-                          style={{
-                            maxWidth: "40px",
-                            minWidth: "40px",
-                            maxHeight: "40px",
-                            minHeight: "40px",
-                          }}
-                          className="rounded-full"
-                          src={user?.data?.image}
-                          alt="pic"
-                          width={20}
-                          height={20}
-                        /> */}
-                        <Avatar avatar={user?.data?.image ?? ""} name={user?.data?.name??""} />
-                      
+
+                <Avatar avatar={user?.data?.image ?? ""} name={user?.data?.name ?? ""} />
+
                 <div className="w-full">
 
-                    <div className='relative flex justify-between'>
+                    <div className='relative flex-col justify-between gap-y-2 md:flex-row'>
                         <h5 className="font-bold text-white"> {user?.data?.name}</h5>
                         <h5 className="font-normal text-white">{formatDate(comment?.createdAt)}</h5>
 
@@ -63,7 +50,7 @@ const CommentCard = async ({ comment, onCommentDelete }) => {
 
                     </div>
 
-                    <p className="text-slate-300">
+                    <p className="mt-2 text-slate-300 md:mt-0">
                         {comment?.comment ?? comment?.title}
                     </p>
                 </div>
