@@ -35,12 +35,10 @@ const FilterCategory = ({ textColor = "text-white", onChange=()=>{} }) => {
     >
       {categories?.length > 0 ? (
         categories?.map((item, index) => (
-          <li className="flex" key={index}>
+          <li onClick={async()=>{ await handleSelectCategory(item);}} 
+          className="flex cursor-pointer" key={index}>
             <CommonCheckbox
               checked={filterForm.category === item?._id}
-              onChange={async () => {
-                await handleSelectCategory(item);
-              }}
             />
             <div className={`flex items-center justify-center ${textColor}`}>
               {" "}
