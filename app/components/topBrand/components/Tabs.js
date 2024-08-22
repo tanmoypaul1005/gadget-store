@@ -25,11 +25,10 @@ const Tabs = ({ categoryList }) => {
 
   return (
     <>
-      <div className="flex space-x-8">
+      <div className="flex space-x-3 sm:space-x-8">
         {categoryList?.map((category, index) => (
           <div
             onClick={() => {
-              console.log("Category clicked:", category?._id);
               setSelectedId(category?._id);
             }}
             key={index}
