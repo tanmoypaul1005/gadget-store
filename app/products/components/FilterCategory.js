@@ -27,7 +27,10 @@ const FilterCategory = ({textColor="text-white"}) => {
       role="list"
       className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-200"
     >
-      {categories?.map((item, index) => (
+      {
+      categories?.length > 0 ?
+      
+      categories?.map((item, index) => (
         <li className="flex" key={index}>
             <CommonCheckbox 
               checked={filterForm.category === item?._id}
@@ -40,7 +43,12 @@ const FilterCategory = ({textColor="text-white"}) => {
             />
           <div className={`flex items-center justify-center ${textColor}`}> {item?.title}</div>
         </li>
-      ))}
+      ))
+      : 
+      <div className="flex items-center justify-center h-96">
+        <div className="text-lg font-semibold text-gray-500">No categories found</div>
+        </div>
+      }
     </ul>
   );
 };
