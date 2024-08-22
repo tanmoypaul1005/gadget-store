@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 const Tabs = ({ categoryList }) => {
 
-  const [selectedId, setSelectedId] = useState(categoryList?.length > 0 ?categoryList[0]?.id :null);
+  const [selectedId, setSelectedId] = useState(categoryList?.length > 0 ?categoryList[0]?._id :null);
   const [products, setProducts] = useState([]);
-  console.log("Category List:", products);
+  
   useEffect(() => {
     if (selectedId) {
       fetch(`api/category/products?category_id=${selectedId}`)
@@ -44,7 +44,8 @@ const Tabs = ({ categoryList }) => {
         ))}
       </div>
 
-      {selectedId && <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
+      {selectedId && 
+      <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
         {products?.data?.length > 0 ? (
           products?.data?.map((product, productIndex) => (
             <Card key={productIndex} product={product} />

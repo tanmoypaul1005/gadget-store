@@ -2,17 +2,18 @@
 import { serverAddCart } from "@/app/action/cart";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
 const Card = ({ product }) => {
-  const router = useRouter()
-  return (
+  
+  const router = useRouter();
 
+  return (
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
-    }} className="relative w-full max-w-[250px] min-w-[250px] px-2 pt-2 overflow-hidden bg-white rounded-lg shadow-md">
+    }} 
+    className="relative w-full max-w-[250px] min-w-[250px] px-2 py-3 overflow-hidden bg-white rounded-lg shadow-md">
       <div className="flex items-center justify-center">
         <Image
           style={{
@@ -31,13 +32,11 @@ const Card = ({ product }) => {
       <span className="absolute top-0 left-0 text-sm text-center text-white -rotate-45 -translate-x-6 translate-y-4 bg-black w-28">
         Sale
       </span>
-      <div className="pb-5 mt-4 ">
-        <a href="#">
+      <div className="mt-2.5">
           <h5 className="text-base font-semibold tracking-tight line-clamp-1 text-slate-900">
             {product?.name}
           </h5>
-        </a>
-        <div className="mt-2.5 mb-5 flex items-center">
+        <div className="my-2.5 flex items-center">
           <span className="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
             {parseInt(product?.ratting ?? 0)}.0
           </span>
