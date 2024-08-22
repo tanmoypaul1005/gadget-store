@@ -8,8 +8,10 @@ import FilterCategory from "./components/FilterCategory";
 import { ColorRing } from "react-loader-spinner";
 
 const Products = () => {
-  const { filterForm, setFilterForm } = useProductStore();
 
+
+  const { filterForm, setFilterForm } = useProductStore();
+  const [isOpenSidebar, setOpenSidebar] = useState(true);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -55,11 +57,12 @@ const Products = () => {
     <div className="common-topGap">
       <div className="relative z-40 lg:hidden" role="dialog" aria-modal="true">
        
-        {/* <div className="fixed inset-0 z-40 flex">
+       {isOpenSidebar && <div className="fixed inset-0 z-40 flex">
           <div className="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
             <div className="flex items-center justify-between px-4">
               <h2 className="text-lg font-medium text-gray-900">Filters</h2>
               <button
+                onClick={() => setOpenSidebar(false)}
                 type="button"
                 className="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
               >
@@ -84,7 +87,7 @@ const Products = () => {
               <FilterCategory textColor="text-black" />
             </div>
           </div>
-        </div> */}
+        </div>}
       </div>
 
       <main className="common-class">
@@ -113,6 +116,7 @@ const Products = () => {
               </svg>
             </button>
             <button
+              onClick={() => setOpenSidebar(true)}
               type="button"
               className="p-2 ml-4 -m-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
             >
