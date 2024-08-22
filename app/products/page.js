@@ -54,11 +54,8 @@ const Products = () => {
   return (
     <div className="common-topGap">
       <div className="relative z-40 lg:hidden" role="dialog" aria-modal="true">
-        <div
-          className="fixed inset-0 bg-black bg-opacity-25"
-          aria-hidden="true"
-        ></div>
-        <div className="fixed inset-0 z-40 flex">
+       
+        {/* <div className="fixed inset-0 z-40 flex">
           <div className="relative flex flex-col w-full h-full max-w-xs py-4 pb-12 ml-auto overflow-y-auto bg-white shadow-xl">
             <div className="flex items-center justify-between px-4">
               <h2 className="text-lg font-medium text-gray-900">Filters</h2>
@@ -66,7 +63,7 @@ const Products = () => {
                 type="button"
                 className="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
               >
-                <span className="sr-only">Close menu</span>
+
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -87,7 +84,7 @@ const Products = () => {
               <FilterCategory textColor="text-black" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <main className="common-class">
@@ -152,7 +149,7 @@ const Products = () => {
 
             <div className="lg:col-span-3">
               {loading ? (
-                <div className="flex justify-center items-center h-[340px]">
+                <div className="flex justify-center items-center h-[360px]">
                   <ColorRing
                     visible={true}
                     height="80"
