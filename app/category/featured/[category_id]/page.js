@@ -50,7 +50,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
           ))}
         </div>
       ) : (
-        <div className="flex  items-center h-[60vh] justify-center w-full text-lg text-white">
+        <div className="flex items-center h-[60vh] justify-center w-full text-lg text-white">
           <p>No products found</p>
         </div>
       )}

@@ -51,7 +51,7 @@ const Tabs = ({ categoryList }) => {
             <Card key={productIndex} product={product} />
           ))
         ) : (
-          <div>No products found</div>
+          <div className="max-h-[338px] text-2xl font-bold min-h-[338px] flex justify-center items-center">No products found</div>
         )}
       </div>} 
     </>
