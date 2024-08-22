@@ -14,17 +14,17 @@ const Products = async () => {
   );
 
   const newArrivals = products?.data?.filter(
-    (product, index) => product.type === products_type_value.new_arrivals
+    (product) => product.type === products_type_value.new_arrivals
   );
   const trending = products?.data?.filter(
-    (product, index) => product.type === products_type_value.trending
+    (product) => product.type === products_type_value.trending
   );
   const topRated = products?.data?.filter(
-    (product, index) => product.type === products_type_value.top_rated
+    (product) => product.type === products_type_value.top_rated
   );
 
   const day_offer = products?.data?.find(
-    (product, index) => product.type === products_type_value.day_offer
+    (product) => product.type === products_type_value.day_offer
   );
 
   const session = await auth();
@@ -58,7 +58,7 @@ const Products = async () => {
           ))}
         </div>
       </div>
-      <div className="my-10">
+      <div className="mt-10">
         <DailyOffer
           user={user}
           isAddCartDayOffer={isAddCartDayOffer}
