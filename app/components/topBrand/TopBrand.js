@@ -1,23 +1,10 @@
-"use client"
-import React, { useEffect, useState } from 'react';
+
 import Tabs from './components/Tabs';
+import { getTopBrandList } from '@/app/action/category';
 
-const TopBrand = () => {
-    
-  const [categoryList, setCategoryList] = useState([]);
+const TopBrand = async() => {
 
-  useEffect(() => {
-    // Fetch category list
-    fetch('/api/category/top-brand')
-      .then(response => response.json())
-      .then(data => {
-        console.log('Category list:', data);
-        setCategoryList(data?.categories);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+  const categoryList=await getTopBrandList();
 
   return (
     <div className='flex flex-col items-center justify-center my-5 space-y-2'>

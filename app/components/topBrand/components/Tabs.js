@@ -1,16 +1,14 @@
 
 "use client"
-import ProductCard from '@/app/category/components/ProductCard';
+import Card from '@/app/products/components/Card';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
 const Tabs = ({ categoryList }) => {
 
-  const [selectedId, setSelectedId] = useState(categoryList?.length > 0 ?categoryList[0]?.id :null);
+  const [selectedId, setSelectedId] = useState(categoryList?.length > 0 ?categoryList[0]?._id :null);
   const [products, setProducts] = useState([]);
-
-  console.log('Selected ID:', selectedId);
-
+  
   useEffect(() => {
     if (selectedId) {
       fetch(`api/category/products?category_id=${selectedId}`)
@@ -46,10 +44,11 @@ const Tabs = ({ categoryList }) => {
         ))}
       </div>
 
-      {selectedId && <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
+      {selectedId && 
+      <div className="flex flex-wrap items-center justify-between pt-5 gap-x-3 gap-y-3">
         {products?.data?.length > 0 ? (
           products?.data?.map((product, productIndex) => (
-            <ProductCard key={productIndex} product={product} />
+            <Card key={productIndex} product={product} />
           ))
         ) : (
           <div>No products found</div>
