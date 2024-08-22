@@ -3,10 +3,11 @@ import { useProductStore } from "@/app/stores/productStore";
 import CommonCheckbox from "@/components/input/CommonCheckbox";
 import React, { useEffect, useState } from "react";
 
-const FilterCategory = ({textColor="text-white"}) => {
+const FilterCategory = ({textColor="text-white",onChange}) => {
     
   const [categories, setCategories] = useState([]);
   const { filterForm, setFilterForm } = useProductStore();
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -39,6 +40,7 @@ const FilterCategory = ({textColor="text-white"}) => {
                     ...filterForm,
                     category: filterForm.category === item?._id ? null : item?._id,
                     });
+                    onChange(); 
                 }}
             />
           <div className={`flex items-center justify-center ${textColor}`}> {item?.title}</div>

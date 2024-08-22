@@ -39,20 +39,6 @@ const Products = () => {
     fetchProducts();
   }, [filterForm]);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await axios.get("/api/products/filter", { params: filterForm });
-  //       console.log("response", response);
-  //       setProducts(response?.data?.products);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   };
-
-  //   fetchProducts();
-  // }, [filterForm]);
-
   return (
     <div className="common-topGap">
       <div className="relative z-40 lg:hidden" role="dialog" aria-modal="true">
@@ -84,7 +70,7 @@ const Products = () => {
               </button>
             </div>
             <div className="p-3 mt-4 border-t border-gray-200">
-              <FilterCategory textColor="text-black" />
+              <FilterCategory onChange={()=>{setOpenSidebar(false)}} textColor="text-black" />
             </div>
           </div>
         </div>}
@@ -137,7 +123,7 @@ const Products = () => {
           </div>
         </div>
 
-        <section aria-labelledby="products-heading" className="pt-6 pb-24">
+        <section aria-labelledby="products-heading" className="pt-6">
           <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
             <div className="hidden lg:block">
               <FilterCategory />
@@ -171,7 +157,7 @@ const Products = () => {
                   />
                 </div>
               ) : (
-                <div className="flex sm:flex-row flex-col sm:justify-between  gap-x-[50px] flex-wrap justify-items-center gap-y-8">
+                <div className="flex sm:flex-row flex-col sm:justify-between items-center  gap-x-[50px] flex-wrap justify-items-center gap-y-8">
                   {products?.map((product, index) => (
                     <Card key={index} product={product} />
                   ))}
