@@ -100,15 +100,25 @@ export const updateCartQuantity = async (id, newQuantity) => {
 };
 
 export const serverAddCart = async (product_id,location) => {
-   
-  const session = await auth();
-  const user = await findUserId(session?.user?.email); 
-
-  const formData = {
-    product_id: product_id,
-    user_id: user?._id,
-    quantity: 1,
-  };
-
-  await addCart(formData, location);
+   try{
+    await connectMongo();
+    const session = await auth();
+    const user = await findUserId(session?.user?.email); 
+  
+    const formData = {
+      product_id: product_id,
+      user_id: user?._id,
+      quantity: 1,
+    };
+  
+    const res=await addCart(formData, location);
+    return res;
+   }
+    catch(err){
+      console.error("Error:", error);
+      return {
+        success: false,
+        message: "Internal Server Error",
+      };
+    }
 }
