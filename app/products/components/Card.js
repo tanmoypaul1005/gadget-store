@@ -14,7 +14,7 @@ const Card = ({ product }) => {
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
     }} 
-    className="relative w-full max-w-[250px] min-w-[250px] px-2 py-3 overflow-hidden bg-white rounded-lg shadow-md">
+    className="relative w-full max-w-[250px] min-w-[250px] px-2 py-3 overflow-hidden bg-gray-700 rounded-lg shadow-md">
       <div className="flex items-center justify-center">
         <Image
           style={{
@@ -34,17 +34,14 @@ const Card = ({ product }) => {
         Sale
       </span>
       <div className="mt-2.5">
-          <h5 className="text-base font-semibold tracking-tight line-clamp-1 text-slate-900">
+          <h5 className="text-base font-semibold tracking-tight text-white line-clamp-1">
             {product?.name}
           </h5>
         <div className="my-2.5 flex items-center">
           <CommonRating value={parseInt(product?.ratting ?? 0)}/>
         </div>
         <div className="flex items-center justify-between">
-          <div className="text-base font-bold text-slate-900">${product?.price}</div>
-
-
-
+          <div className="text-base font-bold text-white">${product?.price}</div>
           <button
             type='button'
             onClick={async(e) => { 

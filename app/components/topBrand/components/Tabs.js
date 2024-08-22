@@ -45,7 +45,7 @@ const Tabs = ({ categoryList }) => {
       </div>
 
       {selectedId && 
-      <div className="flex flex-wrap justify-between pt-5 gap-x-3 gap-y-3">
+      <div className="flex flex-wrap items-center justify-between pt-5 gap-x-3 gap-y-3">
         {products?.data?.length > 0 ? (
           products?.data?.map((product, productIndex) => (
             <Card key={productIndex} product={product} />
