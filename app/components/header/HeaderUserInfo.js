@@ -104,7 +104,7 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       )}
       
       <div className="ml-2 mr-3">
-        <CartIcon  isMobile={true} totalCart={totalCart} iconSize="14px" padding="px-0" />
+        <CartIcon isMobile={true} totalCart={totalCart} iconSize="14px" padding="px-0" />
       </div>
       <div className="ml-1"></div>
       <HiMenuAlt3
@@ -120,7 +120,7 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
     <>
       <Link
         href={"/cart"}
-        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white ${isMobile} hover:bg-cCommonBg`}
+        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white ${!isMobile && "hover:bg-cCommonBg"} `}
       >
         <div className="relative">
           <Image

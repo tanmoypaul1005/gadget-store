@@ -79,8 +79,8 @@ const Cart = async () => {
                       </div>
                     </div>
 
-                    <div className="hidden ml-auto md:flex">
-                      <h4 className="text-lg font-bold text-white text-end max-sm:text-base">
+                    <div className="hidden ml-auto md:flex md:flex-col">
+                      <h4 className="flex items-end justify-end text-lg font-bold text-white text-end max-sm:text-base">
                         ${item?.product?.price}
                       </h4>
 
