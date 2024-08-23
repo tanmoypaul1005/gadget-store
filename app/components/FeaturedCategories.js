@@ -27,7 +27,6 @@ const CategoryBox = ({ item }) => {
         min-h-[108px] max-h-[108px] max-w-[108px] min-w-[108px]
         sm:min-h-[145px] sm:max-h-[145px] sm:max-w-[145px] sm:min-w-[145px]
         md:min-h-[170px] md:max-h-[170px] md:max-w-[170px] md:min-w-[170px]
-        
         flex justify-center items-center"
     >
       <Image
