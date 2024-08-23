@@ -114,14 +114,57 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             {/* menu icon  */}
             <div className="block md:hidden lg:hidden">
               <div className="flex">
+              {
+            session ? <div className="flex space-x-1">
+              <Link className="flex items-center justify-center" href={"/profile"}>
+                <Image
+                  style={{
+                    maxWidth: "20px",
+                    minWidth: "20px",
+                    maxHeight: "20px",
+                    minHeight: "20px",
+                  }}
+                  className="rounded-full"
+                  src={session?.user?.image}
+                  alt="pic"
+                  width={20}
+                  height={20}
+                />
+              </Link>
+              <Link
+                href={"/profile"}
+                className="flex items-center justify-center text-base font-bold text-white cursor-pointer"
+              >
+                {truncateName(session?.user?.name, 10)}
+              </Link>
+              <div
+                onClick={() => {
+                  setShowLogoutModal(true);
+                }}
+                className="relative flex items-center justify-center cursor-pointer"
+              >
+                <Image
+                  style={{
+                    maxWidth: "20px",
+                    minWidth: "20px",
+                    maxHeight: "20px",
+                    minHeight: "20px",
+                  }}
+                  src={"/images/icons/logOut.svg"}
+                  alt="pic"
+                  width={20}
+                  height={20}
+                />
+              </div>
+            </div> : <div
+              onClick={handleGoogleAuthClick}
+              className="flex items-center px-2 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+            >
+              Login
+            </div>
+          }
 
-                <div
-                  onClick={handleGoogleAuthClick}
-                  className="flex items-center px-2 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-                >
-                  Login
-                </div>
-                <CartIcon padding="px-2" totalCart={totalCart} />
+          <CartIcon showTitle={false} iconSize="18px" padding="px-2" totalCart={totalCart} />
                 <div className="mr-2"></div>
                 <HiMenuAlt3
                   className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
@@ -142,7 +185,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
 export default HeaderUserInfo;
 
-const CartIcon = ({ totalCart = 0,padding="px-4" }) => {
+const CartIcon = ({iconSize="22px", showTitle=true, totalCart = 0, padding = "px-4" }) => {
   return (
     <>
       <Link
@@ -152,10 +195,10 @@ const CartIcon = ({ totalCart = 0,padding="px-4" }) => {
         <div className="relative">
           <Image
             style={{
-              maxWidth: "22px",
-              minHeight: "22px",
-              maxHeight: "22px",
-              minWidth: "22px",
+              maxWidth: {iconSize},
+              minHeight: {iconSize},
+              maxHeight:{iconSize},
+              minWidth:{iconSize},
             }}
             src={iCart}
             alt=""
@@ -170,9 +213,9 @@ const CartIcon = ({ totalCart = 0,padding="px-4" }) => {
             ""
           )}
         </div>
-        <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
+{  showTitle &&      <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
           Cart
-        </span>
+        </span>}
       </Link>
     </>
   );
