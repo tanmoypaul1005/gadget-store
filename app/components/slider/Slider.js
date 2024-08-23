@@ -24,7 +24,10 @@ const responsive = {
 
 const Slider = ({products}) => {
   return (
-    <div className="">
+    <div>
+         <div className="flex items-center justify-center w-full text-2xl font-semibold text-center text-white ">
+        Top Rated Products
+      </div>
       <Carousel
         responsive={responsive}
         autoPlay={true}
