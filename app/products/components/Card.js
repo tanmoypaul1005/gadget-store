@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const Card = ({ product }) => {
+const Card = ({ product,width="max-w-[250px] min-w-[250px]" }) => {
   
   const router = useRouter();
 
@@ -14,7 +14,7 @@ const Card = ({ product }) => {
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
     }} 
-    className="relative w-full max-w-[250px] min-w-[250px] px-2 py-3 overflow-hidden bg-gray-700 rounded-lg shadow-md">
+    className={`relative w-full  px-2 py-3 cursor-pointer overflow-hidden bg-gray-700 rounded-lg shadow-md ${width}`}>
       <div className="flex items-center justify-center">
         <Image
           style={{

@@ -12,14 +12,14 @@ const LogoutModal = ({ open, setOpen }) => {
         content={
           <>
             <div className="flex items-center justify-center w-full ">
-              <h1 className="text-2xl font-bold  mt-5">
+              <h1 className="mt-5 text-2xl font-bold">
                 Are you sure you want to logout?
               </h1>
             </div>
             <div className="flex justify-between w-full mt-5">
               <button
                 onClick={() => setOpen(false)}
-                className="px-4 py-2 text-white bg-red-400 rounded-lg"
+                className="px-4 py-2 font-semibold text-white bg-red-400 rounded-lg"
               >
                 Cancel
               </button>
@@ -30,7 +30,7 @@ const LogoutModal = ({ open, setOpen }) => {
                   });
                   setOpen(false);
                 }}
-                className="px-4 py-2 text-white bg-green-400 rounded-lg"
+                className="px-4 py-2 font-semibold text-white bg-green-400 rounded-lg"
               >
                 Logout
               </button>

@@ -19,6 +19,11 @@ const responsive = {
     breakpoint: { max: 767, min: 464 },
     items: 1,
     slidesToSlide: 1 // optional, default to 1.
+  },
+  smallMobile: {
+    breakpoint: { max: 463, min: 0 },
+    items: 1,
+    slidesToSlide: 1 // optional, default to 1.
   }
 };
 
@@ -26,7 +31,7 @@ const Slider = ({ products }) => {
   return (
     <div>
       <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white ">
-        Top Rated Products
+        Top Rated Products 🔥
       </div>
       <Carousel
         responsive={responsive}
@@ -41,7 +46,7 @@ const Slider = ({ products }) => {
         {products?.map((product, index) => {
           return (
             <div className="flex items-center justify-center slider" key={index}>
-              <Card product={product} />
+              <Card width="max-w-[270px] min-w-[270px]" product={product} />
             </div>
           );
         })}
