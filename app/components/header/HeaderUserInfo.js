@@ -103,9 +103,10 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
         <LoginButton text="Login" onClick={onLogin} />
       )}
       
-      <div className="mx-2">
-        <CartIcon showTitle={false} totalCart={totalCart} iconSize="16px" padding="px-0" />
+      <div className="ml-2 mr-3">
+        <CartIcon  isMobile={true} totalCart={totalCart} iconSize="14px" padding="px-0" />
       </div>
+      <div className="ml-1"></div>
       <HiMenuAlt3
         className="w-8 h-8 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
@@ -114,12 +115,12 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
   </div>
 );
 
-const CartIcon = ({isMobile=false, iconSize = "22px", showTitle = true, totalCart = 0, padding = "px-4" }) => {
+const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "px-4" }) => {
   return (
     <>
       <Link
         href={"/cart"}
-        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg`}
+        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white ${isMobile} hover:bg-cCommonBg`}
       >
         <div className="relative">
           <Image
@@ -135,14 +136,14 @@ const CartIcon = ({isMobile=false, iconSize = "22px", showTitle = true, totalCar
             height={18}
           />
           {totalCart > 0 ? (
-            <span className="absolute flex items-center justify-center w-4 text-xs text-white bg-red-500 rounded-full -top-2 -right-2">
+            <span className={`absolute flex items-center justify-center w-4 ${isMobile? "text-[10px]":"text-xs"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
               {totalCart}
             </span>
           ) : (
             ""
           )}
         </div>
-        {showTitle && <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
+        {!isMobile && <span className="text-base font-medium text-cDeepSaffron mt-[6px]">
           Cart
         </span>}
       </Link>
