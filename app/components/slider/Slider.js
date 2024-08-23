@@ -22,10 +22,10 @@ const responsive = {
   }
 };
 
-const Slider = ({products}) => {
+const Slider = ({ products }) => {
   return (
     <div>
-         <div className="flex items-center justify-center w-full text-2xl font-semibold text-center text-white ">
+      <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white ">
         Top Rated Products
       </div>
       <Carousel
@@ -33,15 +33,15 @@ const Slider = ({products}) => {
         autoPlay={true}
         swipeable={true}
         draggable={true}
-        showDots={true}
+        showDots={false}
         infinite={true}
         partialVisible={false}
-        dotListClass="custom-dot-list-style"
+        dotListClass=""
       >
         {products?.map((product, index) => {
           return (
             <div className="flex items-center justify-center slider" key={index}>
-              <Card product={product}/>
+              <Card product={product} />
             </div>
           );
         })}

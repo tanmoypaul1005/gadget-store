@@ -10,7 +10,7 @@
   .slider {
     margin:0 20px;
     overflow:"hidden";
-    padding:2rem 0;
+    /* padding:2rem 0; */
   }
   
   .slider img {
@@ -19,7 +19,7 @@
   }
   
   .react-multi-carousel-list {
-  padding: 0rem 0 2rem 0;
+  padding: 0rem 0 0rem 0;
   }
   
   .custom-dot-list-style button{
