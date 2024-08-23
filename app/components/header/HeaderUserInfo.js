@@ -104,9 +104,9 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       )}
       
       <div className="ml-2 mr-3">
-        <CartIcon isMobile={true} totalCart={totalCart} iconSize="14px" padding="px-0" />
+        <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
       </div>
-      <div className="ml-1"></div>
+      <div className="ml-2"></div>
       <HiMenuAlt3
         className="w-8 h-8 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
@@ -125,10 +125,10 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
         <div className="relative">
           <Image
             style={{
-              maxWidth: { iconSize },
-              minHeight: { iconSize },
-              maxHeight: { iconSize },
-              minWidth: { iconSize },
+              maxWidth:iconSize ,
+              minHeight: iconSize ,
+              maxHeight:  iconSize ,
+              minWidth: iconSize ,
             }}
             src={iCart}
             alt=""
@@ -136,7 +136,7 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
             height={18}
           />
           {totalCart > 0 ? (
-            <span className={`absolute flex items-center justify-center w-4 ${isMobile? "text-[10px]":"text-xs"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
+            <span className={`absolute flex items-center justify-center ${isMobile? "text-[10px] w-[14px]":"text-xs w-4"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
               {totalCart}
             </span>
           ) : (
@@ -185,13 +185,13 @@ const UserMenu = ({ session, onLogout, compact = false }) => (
         className="rounded-full"
         src={session?.user?.image}
         alt="User Picture"
-        width={compact ? 20 : 40}
-        height={compact ? 20 : 40}
+        width={compact ? 18 : 40}
+        height={compact ? 18 : 40}
       />
     </Link>
     <Link
       href="/profile"
-      className="flex items-center justify-center text-sm font-bold text-white cursor-pointer"
+      className="flex items-center justify-center text-xs font-bold text-white cursor-pointer md:text-base"
     >
       {truncateName(session?.user?.name, 10)}
     </Link>
