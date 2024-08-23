@@ -104,22 +104,22 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       )}
       
       <div className="mx-2">
-        <CartIcon showTitle={false} totalCart={totalCart} iconSize="18px" padding="px-2" />
+        <CartIcon showTitle={false} totalCart={totalCart} iconSize="16px" padding="px-0" />
       </div>
       <HiMenuAlt3
-        className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+        className="w-8 h-8 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
       />
     </div>
   </div>
 );
 
-const CartIcon = ({ iconSize = "22px", showTitle = true, totalCart = 0, padding = "px-4" }) => {
+const CartIcon = ({isMobile=false, iconSize = "22px", showTitle = true, totalCart = 0, padding = "px-4" }) => {
   return (
     <>
       <Link
         href={"/cart"}
-        className={"flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg"}
+        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg`}
       >
         <div className="relative">
           <Image
@@ -190,7 +190,7 @@ const UserMenu = ({ session, onLogout, compact = false }) => (
     </Link>
     <Link
       href="/profile"
-      className="flex items-center justify-center text-base font-bold text-white cursor-pointer"
+      className="flex items-center justify-center text-sm font-bold text-white cursor-pointer"
     >
       {truncateName(session?.user?.name, 10)}
     </Link>
