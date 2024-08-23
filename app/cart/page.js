@@ -42,14 +42,19 @@ const Cart = async () => {
                         />
                       </div>
 
-                      <div className="flex flex-col w-full">
-                        <h3 className="w-full text-base font-bold text-white line-clamp-2">
+                      <div className="flex flex-col w-full gap-y-2">
+                        <h3 className="w-full text-sm font-bold text-white md:text-base line-clamp-1">
                           {item?.product?.name}
                         </h3>
-                        <p className="text-xs font-semibold text-white mt-0.5">
+                        <p className="hidden md:flex text-xs font-semibold text-white mt-0.5">
                           Brand: {item?.product?.brand?? ""}
                         </p>
-                        <CommonRating size="small" value={parseInt(item?.product?.ratting ?? 0)} />
+
+                      <h4 className="text-lg font-bold text-white md:hidden text-start max-sm:text-sm">
+                        ${item?.product?.price}
+                      </h4>
+
+                       <div className="hidden md:flex"> <CommonRating size="small" value={parseInt(item?.product?.ratting ?? 0)} /></div>
 
                         <button
                           type="button"
@@ -74,7 +79,7 @@ const Cart = async () => {
                       </div>
                     </div>
 
-                    <div className="ml-auto">
+                    <div className="hidden ml-auto md:flex">
                       <h4 className="text-lg font-bold text-white text-end max-sm:text-base">
                         ${item?.product?.price}
                       </h4>
