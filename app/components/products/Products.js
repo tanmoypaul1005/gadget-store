@@ -58,7 +58,7 @@ const Products = async () => {
           ))}
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-5">
         <DailyOffer
           user={user}
           isAddCartDayOffer={isAddCartDayOffer}
