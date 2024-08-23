@@ -1,5 +1,4 @@
 export const revalidate = 10;
-
 import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import ProductBox from "./components/ProductBox";
@@ -9,6 +8,7 @@ import { findUserId } from "@/app/action/product/action";
 import { findDayOffer } from "@/app/action/cart";
 
 const Products = async () => {
+  
   const products = await fetch(base_url + kuProductList).then((res) =>
     res.json()
   );

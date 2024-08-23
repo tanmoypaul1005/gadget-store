@@ -7,7 +7,7 @@ import { BsArrowRightCircle } from "react-icons/bs";
 import Link from "next/link";
 
 const RegularProducts = async () => {
-  
+
   const products = await fetch(base_url + kuProductList, {
     next: { revalidate: 1 },
   }).then((res) => res.json());
@@ -19,21 +19,21 @@ const RegularProducts = async () => {
   return (
     <div className="flex flex-col px-5 py-5 bg-gray-600 rounded">
       <div className="flex justify-between mb-4">
-      <div className="text-xl font-semibold text-white text-start w-fit">
-        Regular Products 🔥
-      </div> 
-      <Link href={"/products"} className="cursor-pointer ">
-        <BsArrowRightCircle className="inline-block text-2xl text-white" />
-      </Link>
+        <div className="text-xl font-semibold text-white text-start w-fit">
+          Regular Products 🔥
+        </div>
+        <Link href={"/products"} className="cursor-pointer ">
+          <BsArrowRightCircle className="inline-block text-2xl text-white" />
+        </Link>
       </div>
-      
-      <div className="newProductsContainer">
-        <section className="flex sm:flex-row flex-col sm:justify-between justify-center items-center gap-x-[50px] flex-wrap justify-items-center gap-y-8">
-          {regularProducts?.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </section>
-      </div>
+
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
+        {regularProducts?.map((product, index) => (
+          <ProductCard key={index} product={product} />
+        ))}
+      </section>
+
     </div>
   );
 };
