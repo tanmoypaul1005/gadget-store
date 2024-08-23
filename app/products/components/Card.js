@@ -53,7 +53,7 @@ const Card = ({ product }) => {
                 Toastr({ type: "error", message: success.message });
               } 
               }}
-            className="flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md bg-slate-900 hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            className="flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
