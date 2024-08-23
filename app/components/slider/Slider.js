@@ -31,7 +31,7 @@ const Slider = ({ products }) => {
   return (
     <div>
       <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white ">
-        Top Rated Products
+        Top Rated Products 🔥
       </div>
       <Carousel
         responsive={responsive}
