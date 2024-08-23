@@ -11,7 +11,7 @@ import { iCart, iOrder } from "@/util/imageImports";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
-  
+
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   const { mobileNav, setMobileNav } = useGeneralStore();
@@ -38,93 +38,99 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
 
       <div className="flex flex-col w-full h-fit common-class">
-       
-          <nav className="flex justify-between w-full pt-3 md:pb-3 gap-x-2">
-            <div className="flex items-center flex-grow gap-x-4">
-              <Link
-                href={"/"}
-                className="text-xl font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
-              >
-                Gadget store
-              </Link>
-              <div className="common-responsive">
-                <Search />
-              </div>
+
+        <nav className="flex justify-between w-full pt-3 md:pb-3 gap-x-2">
+          <div className="flex items-center flex-grow gap-x-4">
+            <Link
+              href={"/"}
+              className="text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
+            >
+              Gadget store
+            </Link>
+            <div className="common-responsive">
+              <Search />
             </div>
+          </div>
 
-            <div className="flex items-center justify-center pr-2">
-              <div className="hidden gap-x-3 md:flex lg:flex">
-                <div className="flex flex-col justify-end w-full sm:flex-row">
-                  <OrderButton isHover={true} totalOrder={totalOrder} />
+          <div className="flex items-center justify-center pr-2">
+            <div className="hidden gap-x-3 md:flex lg:flex">
+              <div className="flex flex-col justify-end w-full sm:flex-row">
+                <OrderButton isHover={true} totalOrder={totalOrder} />
 
-                  <CartIcon totalCart={totalCart} />
+                <CartIcon totalCart={totalCart} />
 
-                  {session ? (
-                    <div className="flex ml-3 space-x-3">
-                      <Link href={"/profile"}>
-                        <Image
-                          style={{
-                            maxWidth: "40px",
-                            minWidth: "40px",
-                            maxHeight: "40px",
-                            minHeight: "40px",
-                          }}
-                          className="rounded-full"
-                          src={session?.user?.image}
-                          alt="pic"
-                          width={20}
-                          height={20}
-                        />
-                      </Link>
-                      <Link
-                        href={"/profile"}
-                        className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
-                      >
-                        {truncateName(session?.user?.name, 10)}
-                      </Link>
-                      <div
-                        onClick={() => {
-                          setShowLogoutModal(true);
+                {session ? (
+                  <div className="flex ml-3 space-x-3">
+                    <Link href={"/profile"}>
+                      <Image
+                        style={{
+                          maxWidth: "40px",
+                          minWidth: "40px",
+                          maxHeight: "40px",
+                          minHeight: "40px",
                         }}
-                        className="relative flex items-center justify-center cursor-pointer"
-                      >
-                        <Image
-                          style={{
-                            maxWidth: "30px",
-                            minWidth: "30px",
-                            maxHeight: "30px",
-                            minHeight: "30px",
-                          }}
-                          src={"/images/icons/logOut.svg"}
-                          alt="pic"
-                          width={20}
-                          height={20}
-                        />
-                      </div>
+                        className="rounded-full"
+                        src={session?.user?.image}
+                        alt="pic"
+                        width={20}
+                        height={20}
+                      />
+                    </Link>
+                    <Link
+                      href={"/profile"}
+                      className="flex items-center justify-center font-bold text-white cursor-pointer text-md"
+                    >
+                      {truncateName(session?.user?.name, 10)}
+                    </Link>
+                    <div
+                      onClick={() => {
+                        setShowLogoutModal(true);
+                      }}
+                      className="relative flex items-center justify-center cursor-pointer"
+                    >
+                      <Image
+                        style={{
+                          maxWidth: "30px",
+                          minWidth: "30px",
+                          maxHeight: "30px",
+                          minHeight: "30px",
+                        }}
+                        src={"/images/icons/logOut.svg"}
+                        alt="pic"
+                        width={20}
+                        height={20}
+                      />
                     </div>
-                  ) : (
-                    <>
-                      <LoginButton text="Sign in" onClick={handleGoogleAuthClick}  />
-                      <LoginButton onClick={handleGoogleAuthClick}  />
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* menu icon  */}
-              <div className="block md:hidden lg:hidden">
-                <div className="flex">
-                
-                  <LoginButton onClick={handleGoogleAuthClick}  />
-                  <CartIcon totalCart={totalCart} />
-                  <HiMenuAlt3
-                    className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
-                    onClick={handleClick}
-                  />
-                </div>
+                  </div>
+                ) : (
+                  <>
+                    <LoginButton text="Sign in" onClick={handleGoogleAuthClick} />
+                    <LoginButton onClick={handleGoogleAuthClick} />
+                  </>
+                )}
               </div>
             </div>
-          </nav>
+
+            {/* menu icon  */}
+            <div className="block md:hidden lg:hidden">
+              <div className="flex">
+
+                <div
+                  onClick={handleGoogleAuthClick}
+                  className="flex items-center px-2 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+                >
+                  Login
+                </div>
+                <CartIcon padding="px-2" totalCart={totalCart} />
+                <div className="mr-2"></div>
+                <HiMenuAlt3
+                  className="w-10 h-10 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+                  onClick={handleClick}
+                />
+              </div>
+            </div>
+          </div>
+        </nav>
 
         <div className="block mt-[-18px] md:mt-0 w-full mb-5 md:hidden">
           <Search />
@@ -136,12 +142,12 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
 export default HeaderUserInfo;
 
-const CartIcon = ({ totalCart = 0 }) => {
+const CartIcon = ({ totalCart = 0,padding="px-4" }) => {
   return (
     <>
       <Link
         href={"/cart"}
-        className="flex items-center px-4 rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg"
+        className={`flex items-center ${padding} rounded-md cursor-pointer gap-x-1 hover:text-white hover:bg-cCommonBg`}
       >
         <div className="relative">
           <Image
@@ -177,9 +183,8 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
     <>
       <Link
         href={"/orders"}
-        className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${
-          isHover ? "hover:text-white hover:bg-cCommonBg" : ""
-        } `}
+        className={`flex cursor-pointer justify-center items-center gap-x-1 rounded-md py-2 px-4 ${isHover ? "hover:text-white hover:bg-cCommonBg" : ""
+          } `}
       >
         <div className="relative">
           <Image
@@ -210,13 +215,13 @@ const OrderButton = ({ isHover = true, totalOrder = 0 }) => {
   );
 };
 
-const LoginButton = ({ onClick,text="Login" }) => {
+const LoginButton = ({ onClick, text = "Login" }) => {
   return (
     <div
-    onClick={onClick}
-    className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
-  >
-    {text}
-  </div>
+      onClick={onClick}
+      className="flex items-center px-4 ml-2 text-base font-medium rounded-md cursor-pointer gap-x-1 text-cDeepSaffron hover:bg-cCommonBg"
+    >
+      {text}
+    </div>
   )
 }

@@ -10,8 +10,8 @@ const ProfileInfo = async () => {
   const address = await getAddress(session?.user?.email);
 
   return (
-    <div className="flex flex-col items-center py-8 text-center">
-      <div className="relative max-h-[180px] max-w-[180px] rounded-full lg:mb-8 h-[100px] w-[100px] bg-orange-600 grid place-items-center text-4xl text-white">
+    <div className="flex flex-col items-center text-center common-class common-topGap">
+      <div className="relative max-h-[180px] max-w-[180px] rounded-full  h-[100px] w-[100px] bg-orange-600 grid place-items-center text-white">
         {
           session?.user?.image ? (
             <Image
@@ -31,11 +31,9 @@ const ProfileInfo = async () => {
         <p className="leading-[231%] lg:text-lg">{session?.user?.email}</p>
       </div>
 
-      <div className="w-3/4 mb-5 border-b border-[#a4a4a4] py-6 lg:py-4"></div>
+      <div className="w-full  border-b border-[#a4a4a4]"></div>
 
-      <div className="w-3/4">
-        <Address email={session?.user?.email} address={address?.data} />
-      </div>
+      <Address email={session?.user?.email} address={address?.data} />
 
     </div>
   );

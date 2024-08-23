@@ -8,6 +8,7 @@ import RegularProducts from "./components/products/components/RegularProducts";
 import BestSellers from "./components/sidebar/BestSellers";
 import TopRate from "./top-rate/page";
 import TopBrand from "./components/topBrand/TopBrand";
+import TopRateProduct from "./components/slider/TopRateProduct";
 
 export default async function Home() {
   const categoryData = await getAllCategory();
@@ -29,9 +30,11 @@ export default async function Home() {
         <BestSellers />
         <Products />
       </div>
-      <TopRate />
+      {/* <TopRate /> */}
+      <TopRateProduct />
       <RegularProducts />
       <TopBrand/>
+
     </div>
   );
 }

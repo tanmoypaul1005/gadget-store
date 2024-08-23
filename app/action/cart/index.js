@@ -104,7 +104,12 @@ export const serverAddCart = async (product_id,location) => {
     await connectMongo();
     const session = await auth();
     const user = await findUserId(session?.user?.email); 
-  
+    if(!user){
+      return {
+        success: false,
+        message: "User not found",
+      };
+    }
     const formData = {
       product_id: product_id,
       user_id: user?._id,
