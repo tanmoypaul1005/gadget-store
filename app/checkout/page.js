@@ -12,11 +12,6 @@ import { iNoCart } from "@/util/imageImports";
 import Contact from "./components/Contact";
 import ShoppingButton from "./components/ShoppingButton";
 
-export const metadata = {
-  title: "Gadget store || Checkout",
-  description: "",
-};
-
 const Checkout = async () => {
 
   const session = await auth();
@@ -42,19 +37,20 @@ const Checkout = async () => {
                 <p className="text-gray-400">
                   Check your items. And select a suitable shipping method.
                 </p>
-                <div className="px-2 py-4 mt-8 space-y-3 border rounded-lg sm:px-6">
+                <div className="px-2 py-4 my-5 space-y-3 border rounded-lg sm:px-6">
                   {
                     cart?.length > 0
                       ? cart?.map((item, index) => (
                         <CheckOutProduct item={item} key={index} />
                       ))
-                      : "No items in cart"}
+                      : "No items in cart"
+                  }
                 </div>
-                <div className="mt-8"></div>
+               
                 <Address email={session?.user?.email} address={address?.data} />
               </div>
 
-              <div className="mt-10 lg:mt-0">
+              <div>
                 <p className="text-xl font-medium">Payment Details</p>
                 <p className="text-gray-400">
                   Complete your order by providing your payment details.
