@@ -106,7 +106,7 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       <div className="ml-2 mr-3">
         <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
       </div>
-      <div className="ml-2"></div>
+      <div className="ml-3"></div>
       <HiMenuAlt3
         className="w-8 h-8 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
