@@ -1,6 +1,6 @@
 "use client"
 import { addCart, deleteCart } from "@/app/action/cart";
-import LoginAlertModal from "@/components/modal/LoginAlertModal";
+import LoginAlertModal from "@/app/components/modal/LoginAlertModal";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import React, { useState } from "react";

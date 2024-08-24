@@ -1,10 +1,10 @@
 "use client";
-import CommonButton from "@/components/button/CommonButton";
+import CommonButton from "@/app/components/button/CommonButton";
 import React from "react";
 import { Toastr } from "@/util/utilityFunction";
 import { addCart } from "@/app/action/cart";
 import { useState } from "react";
-import LoginAlertModal from "@/components/modal/LoginAlertModal";
+import LoginAlertModal from "@/app/components/modal/LoginAlertModal";
 
 const Action = ({ product_id, user }) => {
 

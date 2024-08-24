@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 
 import { Toastr } from "@/util/utilityFunction";
 import CommonModal from "../modal/CommonModal";
-import CommonInput from "@/components/input/CommonInput";
-import CommonButton from "@/components/button/CommonButton";
+import CommonInput from "@/app/components/input/CommonInput";
+import CommonButton from "@/app/components/button/CommonButton";
 import { addAddress } from "@/app/action/address";
 
 const AddAddressModal = ({ open, setOpen, type, email, editData }) => {

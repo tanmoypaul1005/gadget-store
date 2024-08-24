@@ -1,11 +1,11 @@
 "use client";
 import { ImSpinner2 } from "react-icons/im";
-import CommonInput from "@/components/input/CommonInput";
+import CommonInput from "@/app/components/input/CommonInput";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { kuLogin } from "@/util/url";
 import { Toastr } from "@/util/utilityFunction";
-import CommonPassword from "@/components/input/CommonPassword";
+import CommonPassword from "@/app/components/input/CommonPassword";
 
 const LoginForm = () => {
   const {

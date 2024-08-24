@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import AddAddressModal from "./AddAddressModal";
-import CommonButton from "@/components/button/CommonButton";
+import CommonButton from "@/app/components/button/CommonButton";
 import AddressCard from "./AddressCard";
 import { address_type } from "@/util/const";
 

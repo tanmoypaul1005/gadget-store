@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import ProductCardAction from "./ProductCardAction";
 import { findUserId } from "@/app/action/product/action";
-import CommonRating from "@/components/CommonRating";
+import CommonRating from "@/app/components/CommonRating";
 
 export const ProductCard = async ({ product }) => {
   const session = await auth();

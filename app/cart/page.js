@@ -9,7 +9,7 @@ import QuantityButton from "./components/QuantityButton";
 import Summary from "./components/Summary";
 import ShoppingButton from "../checkout/components/ShoppingButton";
 import { iNoCart } from "@/util/imageImports";
-import CommonRating from "@/components/CommonRating";
+import CommonRating from "@/app/components/CommonRating";
 
 const Cart = async () => {
   

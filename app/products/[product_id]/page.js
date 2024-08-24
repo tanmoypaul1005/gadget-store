@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { fetchProduct, findUserId } from "@/app/action/product/action";
 import ProductComment from "./components/ProductComment";
 import { getComment } from "@/app/action/comment";
-import CommonRating from "@/components/CommonRating";
+import CommonRating from "@/app/components/CommonRating";
 
 const ProductDetails = async ({ params }) => {
   

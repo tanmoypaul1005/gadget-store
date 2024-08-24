@@ -1,6 +1,6 @@
 "use client"
-import CommonInput from '@/components/input/CommonInput';
-import CommonPassword from '@/components/input/CommonPassword';
+import CommonInput from '@/app/components/input/CommonInput';
+import CommonPassword from '@/app/components/input/CommonPassword';
 import { kuRegister } from '@/util/url';
 import { useRouter } from 'next/navigation';
 import { useForm } from "react-hook-form";

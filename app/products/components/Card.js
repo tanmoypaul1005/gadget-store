@@ -1,6 +1,6 @@
 "use client"
 import { serverAddCart } from "@/app/action/cart";
-import CommonRating from "@/components/CommonRating";
+import CommonRating from "@/app/components/CommonRating";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
