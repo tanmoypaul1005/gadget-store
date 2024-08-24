@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Field from '@/components/input/Field'
+import Field from '@/app/components/input/Field'
 import { useForm } from 'react-hook-form';
 import { Toastr } from '@/util/utilityFunction';
 import { addComment } from '@/app/action/comment';

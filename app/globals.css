@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-
 /* Styles for large screens (width 1920px and above) */
 @media (min-width: 1881px) {
   .largeScreenContainer {
@@ -28,7 +27,7 @@
 }
 
 .common-topGap {
-  margin-top: 85px; /* Default for mobile screens */
+  margin-top: 77px; /* Default for mobile screens */
 }
 
 @media (min-width: 1024px) {

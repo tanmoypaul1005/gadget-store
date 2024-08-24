@@ -1,6 +1,6 @@
 
 import { getUser } from '@/app/action/user';
-import Avatar from '@/components/avatar/Avatar';
+import Avatar from '@/app/components/avatar/Avatar';
 import { formatDate } from '@/util/utilityFunction';
 
 const CommentCard = async ({ comment, onCommentDelete }) => {

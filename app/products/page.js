@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./components/Card";
 import { useProductStore } from "../stores/productStore";
-import RangeSlider from "@/components/input/RangeSlider";
+import RangeSlider from "@/app/components/input/RangeSlider";
 import axios from "axios";
 import FilterCategory from "./components/FilterCategory";
 import { ColorRing } from "react-loader-spinner";

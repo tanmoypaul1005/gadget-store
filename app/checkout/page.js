@@ -3,7 +3,7 @@ import React from "react";
 import { findUserId } from "../action/product/action";
 import { getCartCount } from "../action/cart";
 import CheckOutProduct from "./components/CheckOutProduct";
-import CommonInput from "@/components/input/CommonInput";
+import CommonInput from "@/app/components/input/CommonInput";
 import Address from "../components/Address/Address";
 import { getAddress } from "../action/address";
 import PlaceOrder from "./components/PlaceOrder";

@@ -1,6 +1,6 @@
 "use client"
 import { addCart, deleteCart } from "@/app/action/cart";
-import LoginAlertModal from "@/components/modal/LoginAlertModal";
+import LoginAlertModal from "@/app/components/modal/LoginAlertModal";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -59,7 +59,7 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
 
 
   return (
-    <div className=" day">
+    <div className="day">
       <h1 className="pb-4 text-xl font-semibold">Deal Of The Day</h1>
       <div className="flex flex-col w-full border rounded-lg lg:flex-row">
         <div className="flex items-center justify-center px-5">

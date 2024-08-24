@@ -1,6 +1,6 @@
 "use client";
 import { useProductStore } from "@/app/stores/productStore";
-import CommonCheckbox from "@/components/input/CommonCheckbox";
+import CommonCheckbox from "@/app/components/input/CommonCheckbox";
 import React, { useEffect, useState } from "react";
 
 const FilterCategory = ({ textColor = "text-white", onChange=()=>{} }) => {

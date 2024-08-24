@@ -33,7 +33,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
     />
         ) : (
           <div className="w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
-            <div>{categoryDetails?.data?.title ?? "Category"}</div>
+            <div>{categoryDetails?.data?.title ?? "Category"}  🔥</div>
           </div>
         )}
       </div>

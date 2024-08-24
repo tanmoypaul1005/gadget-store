@@ -37,7 +37,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           <div className="flex items-center flex-grow gap-x-4">
             <Link
               href="/"
-              className="text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
+              className="flex items-center justify-center text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
             >
               Gadget Store
             </Link>

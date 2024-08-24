@@ -1,6 +1,6 @@
 "use client";
 import { useCheckoutStore } from "@/app/stores/checkoutStore";
-import CommonInput from "@/components/input/CommonInput";
+import CommonInput from "@/app/components/input/CommonInput";
 import React from "react";
 
 const Contact = () => {

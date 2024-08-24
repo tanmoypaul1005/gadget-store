@@ -14,7 +14,7 @@ const Category = async ({ params }) => {
   return (
     <div className="common-class common-topGap">
       <div className="flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
-        <div>{category ?.title ?? "Category"}</div>
+        <div>{category ?.title ?? "Category"} 🔥</div>
       </div>
       <div className="flex mt-10 space-x-10">
         {products?.data?.map((product, index) => (

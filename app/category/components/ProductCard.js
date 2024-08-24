@@ -4,7 +4,7 @@ import AddCartButton from "./AddCartButton";
 import { findUserId } from "@/app/action/product/action";
 import { auth } from "@/auth";
 import Link from "next/link";
-import CommonRating from "@/components/CommonRating";
+import CommonRating from "@/app/components/CommonRating";
 
 const ProductCard = async ({ product }) => {
   const session = await auth();
