@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from "react";
 
 const FeaturedCategoriesDetails = async ({ params }) => {
+  
   const response = await fetch(
     base_url + kuMainCategory + `/${params?.category_id}`
   );
