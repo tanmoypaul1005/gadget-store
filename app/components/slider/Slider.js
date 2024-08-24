@@ -48,7 +48,7 @@ const Slider = ({ products }) => {
         {products?.map((product, index) => {
           return (
             <div className="flex items-center justify-center slider" key={index}>
-              <SecondaryProductCard width="sm:w-60 md:w-full" product={product} />
+              <SecondaryProductCard width="w-64 md:w-full" product={product} />
             </div>
           );
         })}
