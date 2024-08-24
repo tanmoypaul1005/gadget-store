@@ -103,12 +103,12 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
         <LoginButton text="Login" onClick={onLogin} />
       )}
       
-      <div className="ml-2 mr-3">
+      <div className="pr-2 ml-2 mr-3">
         <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
       </div>
-      <div className="ml-5"></div>
+      
       <HiMenuAlt3
-        className="w-8 h-8 ml-5 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+        className="w-6 h-6 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
       />
     </div>
