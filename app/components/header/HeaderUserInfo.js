@@ -65,7 +65,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           </div>
         </nav>
 
-        <div className="block mt-[-18px] md:mt-0 w-full mb-5 md:hidden">
+        <div className="block mt-[-25px] md:mt-0 w-full mb-3 md:hidden">
           <Search />
         </div>
       </header>
@@ -108,7 +108,7 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       </div>
       <div className="ml-5"></div>
       <HiMenuAlt3
-        className="w-8 h-8 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+        className="w-8 h-8 ml-5 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
       />
     </div>
@@ -150,8 +150,6 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
     </>
   );
 };
-
-
 
 const OrderButton = ({ totalOrder = 0 }) => (
   <Link
