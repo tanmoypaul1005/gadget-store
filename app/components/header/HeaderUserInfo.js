@@ -15,6 +15,7 @@ const truncateName = (name, maxLength) =>
   name.length > maxLength ? `${name.substring(0, maxLength)}...` : name;
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
+  
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
   const { mobileNav, setMobileNav } = useGeneralStore();
 
