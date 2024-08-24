@@ -46,7 +46,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center pr-2">
+          <div className="flex items-center justify-center">
             <DesktopMenu
               session={session}
               totalCart={totalCart}
@@ -65,7 +65,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           </div>
         </nav>
 
-        <div className="block mt-[-18px] md:mt-0 w-full mb-5 md:hidden">
+        <div className="block mt-[-25px] md:mt-0 w-full mb-3 md:hidden">
           <Search />
         </div>
       </header>
@@ -103,12 +103,12 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
         <LoginButton text="Login" onClick={onLogin} />
       )}
       
-      <div className="ml-2 mr-3">
+      <div className="pr-2 ml-2 mr-3">
         <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
       </div>
-      <div className="ml-3"></div>
+      
       <HiMenuAlt3
-        className="w-8 h-8 p-2 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
+        className="w-6 h-6 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
       />
     </div>
@@ -150,8 +150,6 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
     </>
   );
 };
-
-
 
 const OrderButton = ({ totalOrder = 0 }) => (
   <Link

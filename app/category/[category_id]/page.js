@@ -13,14 +13,12 @@ const Category = async ({ params }) => {
 
   return (
     <div className="common-class common-topGap">
-      <div className="flex justify-between w-full p-3 text-xl font-bold rounded bg-cCommonBg ">
+      <div className="flex justify-between w-full p-3 mb-5 text-xl font-bold rounded bg-cCommonBg ">
         <div>{category ?.title ?? "Category"} 🔥</div>
       </div>
-      <div className="flex mt-10 space-x-10">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {products?.data?.map((product, index) => (
-          <div key={index}>
             <ProductCard key={index} product={product} />
-          </div>
         ))}
       </div>
     </div>

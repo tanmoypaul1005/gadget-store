@@ -13,16 +13,16 @@ export const ProductCard = async ({ product }) => {
 
   return (
     <Link href={`/products/${product?._id}`}>
-      <div className="w-full py-3 text-white duration-500 shadow-md bg-cCommonBg rounded-xl hover:scale-105 hover:shadow-xl sm:w-60 md:w-56 lg:w-64">
+      <div className="w-full py-5 text-white duration-500 shadow-md bg-cCommonBg rounded-xl hover:scale-105 hover:shadow-xl">
         <Image
-          style={{ minHeight: "200px" }}
-          alt=""
+          style={{ minHeight: "120px", maxHeight: "120px" }}
+          alt={product?.name ?? "Product Image"}
           width={400}
           height={500}
           src={product?.image}
-          className="object-contain object-center w-full h-48 rounded-t-xl sm:h-52 md:h-60"
+          className="object-contain object-center w-full h-32 rounded-t-xl"
         />
-        <div className="px-4 pt-2">
+        <div className="px-3 pt-2">
           <span className="mr-3 text-xs uppercase">
             {commonView(product?.brand)}
           </span>
@@ -30,7 +30,7 @@ export const ProductCard = async ({ product }) => {
             {product?.name ?? ""}
           </p>
           <div className="my-2">
-            <CommonRating value={parseInt(product?.ratting ?? 0)} />
+            <CommonRating value={parseInt(product?.rating ?? 0)} />
           </div>
           <div className="flex justify-between">
             <p className="text-base font-semibold text-red-400 cursor-auto">

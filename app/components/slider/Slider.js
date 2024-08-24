@@ -33,7 +33,7 @@ const Slider = ({ products }) => {
       <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white ">
         Top Rated Products 🔥
       </div>
-      <div className="py-5 bg-gray-600 rounded">
+      <div className="bg-gray-600 rounded py-7">
       <Carousel
         responsive={responsive}
         autoPlay={true}

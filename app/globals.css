@@ -27,7 +27,7 @@
 }
 
 .common-topGap {
-  margin-top: 77px; /* Default for mobile screens */
+  margin-top: 50px; /* Default for mobile screens */
 }
 
 @media (min-width: 1024px) {
