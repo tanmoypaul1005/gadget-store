@@ -11,14 +11,14 @@ const BestSellers = async () => {
   );
 
   const best_sellers = products?.data?.filter(
-    (product, index) => product.type === products_type_value.best_sellers
+    (product) => product.type === products_type_value.best_sellers
   );
 
   return (
     <aside className="top-0 flex-col hidden max-h-screen lg:flex lg:w-1/4">
       <div className="flex flex-col items-start justify-start h-auto gap-4 bestsellers 2-72">
         <h2 className="text-lg font-semibold">BEST SELLERS</h2>
-        <div className="space-y-5">
+        <div className="space-y-[19px]">
           {best_sellers?.map((product, index) => (
             <Link
               href={"/products/" + product?._id}

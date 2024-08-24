@@ -17,6 +17,7 @@ const truncateName = (name, maxLength) =>
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
   
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
+
   const { mobileNav, setMobileNav } = useGeneralStore();
 
   const toggleMobileNav = () => setMobileNav(!mobileNav);
@@ -179,13 +180,13 @@ const OrderButton = ({ totalOrder = 0 }) => (
 
 const UserMenu = ({ session, onLogout, compact = false }) => (
   <div className={`flex ${compact ? "space-x-1" : "ml-3 space-x-3"}`}>
-    <Link href="/profile">
+    <Link className="flex items-center justify-center" href="/profile">
       <Image
         className="rounded-full"
         src={session?.user?.image}
         alt="User Picture"
-        width={compact ? 18 : 40}
-        height={compact ? 18 : 40}
+        width={compact ? 14 : 30}
+        height={compact ? 14 : 30}
       />
     </Link>
     <Link
