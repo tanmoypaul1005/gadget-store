@@ -22,7 +22,7 @@ const FeaturedCategoriesDetails = async ({ params }) => {
 
   return (
     <div className="common-class common-topGap">
-      <div className="mb-10">
+      <div className="mb-5">
         {categoryDetails?.data?.banner ? (
       <Image
       width={1800}
@@ -39,14 +39,9 @@ const FeaturedCategoriesDetails = async ({ params }) => {
       </div>
 
       {products?.data?.length > 0 ? (
-        <div className="md:grid flex justify-center items-center md:grid-cols-3 gap-x-6 lg:grid-cols-4 xl:grid-cols-4 gap-y-10 pb-[40px] flex-wrap">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
           {products.data.map((product, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center w-60 sm:justify-start"
-            >
-              <ProductCard product={product} />
-            </div>
+              <ProductCard key={index} product={product} />
           ))}
         </div>
       ) : (

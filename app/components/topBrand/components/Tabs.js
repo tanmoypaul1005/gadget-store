@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 const Tabs = ({ categoryList }) => {
+
   const [selectedId, setSelectedId] = useState(
     categoryList?.length > 0 ? categoryList[0]?._id : null
   );
+  
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +16,6 @@ const Tabs = ({ categoryList }) => {
       fetch(`api/category/products?category_id=${selectedId}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log("Products:", data);
           setProducts(data);
         })
         .catch((error) => {
@@ -36,7 +37,7 @@ const Tabs = ({ categoryList }) => {
               selectedId === category?._id
                 ? "text-cDeepSaffron border-cDeepSaffron"
                 : "text-white border-slate-800"
-            }  text-sm font-normal leading-5 cursor-pointer hover:text-cDeepSaffron`}
+            } text-sm font-normal leading-5 cursor-pointer hover:text-cDeepSaffron`}
           >
             {category?.title}
           </div>
