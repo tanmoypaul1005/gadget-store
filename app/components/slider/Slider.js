@@ -33,6 +33,7 @@ const Slider = ({ products }) => {
       <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white ">
         Top Rated Products 🔥
       </div>
+      <div className="py-5 bg-gray-600 rounded">
       <Carousel
         responsive={responsive}
         autoPlay={true}
@@ -46,11 +47,12 @@ const Slider = ({ products }) => {
         {products?.map((product, index) => {
           return (
             <div className="flex items-center justify-center slider" key={index}>
-              <Card width="max-w-[270px] min-w-[270px]" product={product} />
+              <Card width="sm:w-60 md:w-56 lg:w-64" product={product} />
             </div>
           );
         })}
       </Carousel>
+      </div>
     </div>
   );
 };
