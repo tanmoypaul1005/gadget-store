@@ -18,11 +18,11 @@ export async function POST(request) {
 };
 
 
-export async function GET(request) {
+export async function GET() {
     try {
         await connectMongo();
 
-        const offer = await offer.find({}).sort({ createdAt: -1 });
+        const offer = await Offer.find({}).sort({ createdAt: -1 });
         return Response.json({ success: true, status: 200, data: offer, message: "Comments Found" });
     } catch (err) {
         console.error(err);
