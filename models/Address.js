@@ -1,6 +1,5 @@
 import { address_type } from '@/util/const';
 
-
 const mongoose=require('mongoose');
 
 const addressSchema=new mongoose.Schema({
