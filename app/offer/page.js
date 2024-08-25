@@ -22,12 +22,12 @@ const Offer = async() => {
                                 maxWidth: '300px',
                                 minWidth: '300px'
                             }} className='rounded-t-md' 
-                            src={iFile} alt={offer.title} height={352} width={352}  />
+                            src={offer?.thumbnail} alt={offer.title} height={352} width={352}  />
                             <div className='p-3 space-y-2 rounded-b-md bg-[#e1e1e1] text-black'>
 
                             <div className='text-base font-bold text-center line-clamp-2'>{offer.title}</div>
                             <p className='text-sm font-semibold text-center line-clamp-2'>{offer.description}</p>
-                            <div className='flex items-center justify-center'>
+                            <div className='flex items-center justify-center pt-3'>
                                 <button className='w-fit bg-[#f27f20] text-white  px-3 py-2  rounded-md'>View Offer</button>
                                 </div>
                             </div>
