@@ -30,7 +30,7 @@ const responsive = {
 
 const Slider = ({ products }) => {
   return (
-      <div className="bg-gray-600 rounded py-4">
+    <div className="py-4 bg-gray-600 rounded">
       <Carousel
         responsive={responsive}
         autoPlay={true}
@@ -48,8 +48,33 @@ const Slider = ({ products }) => {
             </div>
           );
         })}
+        {/* {
+          Array.from({ length: 5 }).map((_, index) => {
+            return (
+              <div className="flex items-center justify-center slider" key={index}>
+                <div className="w-full max-w-sm p-4 mx-auto border border-blue-300 rounded-md shadow" key={index}>
+                  <div className="animate-pulse">
+                   
+                    <div className="flex items-center justify-center w-full h-40 rounded bg-slate-700"></div>
+
+                    <div className="flex-1 pt-5 pb-1 space-y-6">
+                      <div className="h-2 rounded bg-slate-700"></div>
+                      <div className="space-y-3">
+                        <div className="grid grid-cols-3 gap-4">
+                          <div className="h-2 col-span-2 rounded bg-slate-700"></div>
+                          <div className="h-2 col-span-1 rounded bg-slate-700"></div>
+                        </div>
+                        <div className="h-2 rounded bg-slate-700"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        } */}
       </Carousel>
-      </div>
+    </div>
   );
 };
 export default Slider;

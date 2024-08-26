@@ -10,7 +10,7 @@ import { ColorRing } from "react-loader-spinner";
 const Products = () => {
 
   const { filterForm, setFilterForm } = useProductStore();
-  const [isOpenSidebar, setOpenSidebar] = useState(true);
+  const [isOpenSidebar, setOpenSidebar] = useState(false);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -156,11 +156,13 @@ const Products = () => {
                   />
                 </div>
               ) : (
-                <div className="flex sm:flex-row flex-col sm:justify-between items-center  gap-x-[50px] flex-wrap justify-items-center gap-y-8">
-                  {products?.map((product, index) => (
-                    <Card key={index} product={product} />
-                  ))}
-                </div>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 justify-items-center">
+                {products?.map((product, index) => (
+                  <div key={index} className="max-w-[250px] min-w-[250px]">
+                    <Card product={product} />
+                  </div>
+                ))}
+              </div>
               )}
             </div>
           </div>

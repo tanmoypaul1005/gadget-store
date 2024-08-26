@@ -15,9 +15,7 @@ const componentName = async () => {
       const trending = allProducts?.filter(
         (product) => product.type === products_type_value.trending
       );
-      const topRated = allProducts?.filter(
-        (product) => product.type === products_type_value.top_rated
-      );
+   
     return (
         <>
         
