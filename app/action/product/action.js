@@ -44,7 +44,7 @@ export const fetchProduct = async (product_id) => {
 export const getAllProducts = async () => {
   try {
     await connectMongo();
-    const products = await Products.find({});
+    const products = await Products.find({}).populate("offer");
     return products;
   } catch {
     return null;
