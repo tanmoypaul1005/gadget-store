@@ -8,7 +8,7 @@ const Offer = async () => {
   const offerList = await getOffer();
 
   return (
-    <div className="common-class common-topGap">
+    <div className="">
       <div className="flex flex-wrap items-center justify-between gap-y-5">
         {offerList.map((offer, index) => {
           return (
