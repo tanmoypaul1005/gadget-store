@@ -12,6 +12,12 @@ thumbnail: {
     required: true,
     trim: true
 },
+offerPercentage: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 100
+  },
 description: {
     type: String,
     required: true

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const Card = ({ product,width="max-w-[250px] min-w-[250px]" }) => {
+const Card = ({ product,width="max-w-[250px] min-w-[250px]",offerPercentage=null }) => {
   
   const router = useRouter();
 
@@ -72,6 +72,9 @@ const Card = ({ product,width="max-w-[250px] min-w-[250px]" }) => {
             Add to cart
           </button>
         </div>
+      </div>
+      <div className="absolute top-0 right-0">
+       {offerPercentage && <span className="px-2 py-1 text-sm font-semibold text-white bg-red-500 rounded-full">{offerPercentage}%</span>}
       </div>
     </div>
 

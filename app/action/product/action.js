@@ -33,6 +33,7 @@ export const fetchTopRateProducts = async () => {
     return null;
   }
 };
+
 export const fetchProduct = async (product_id) => {
   const response = await fetch(base_url + kuProductList + `/${product_id}`);
   const product = await response?.json();

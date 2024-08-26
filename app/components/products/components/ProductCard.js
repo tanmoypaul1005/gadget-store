@@ -13,7 +13,7 @@ export const ProductCard = async ({ product }) => {
 
   return (
     <Link href={`/products/${product?._id}`}>
-      <div className="py-5 text-white duration-500 shadow-md w-72 sm:w-full bg-cCommonBg rounded-xl hover:scale-105 hover:shadow-xl">
+      <div className="relative w-64 py-5 text-white duration-500 shadow-md sm:w-full bg-cCommonBg rounded-xl hover:scale-105 hover:shadow-xl">
         <Image
           style={{ minHeight: "120px", maxHeight: "120px" }}
           alt={product?.name ?? "Product Image"}
@@ -30,7 +30,7 @@ export const ProductCard = async ({ product }) => {
             {product?.name ?? ""}
           </p>
           <div className="my-2">
-            <CommonRating value={parseInt(product?.rating ?? 0)} />
+            <CommonRating value={parseInt(product?.ratting ?? 0)} />
           </div>
           <div className="flex justify-between">
             <p className="text-base font-semibold text-red-400 cursor-auto">
@@ -48,6 +48,9 @@ export const ProductCard = async ({ product }) => {
             )}
           </div>
         </div>
+        <div className="absolute top-0.5 right-0.5">
+       {product?.offer?.offerPercentage && <span className="px-2 py-1 text-xs font-semibold text-white bg-red-500 rounded-full">{product?.offer?.offerPercentage}% OFF</span>}
+      </div>
       </div>
     </Link>
   );
