@@ -39,3 +39,14 @@ export const fetchProduct = async (product_id) => {
   const product = await response?.json();
   return product?.data;
 };
+
+
+export const getAllProducts = async () => {
+  try {
+    await connectMongo();
+    const products = await Products.find({});
+    return products;
+  } catch {
+    return null;
+  }
+}
