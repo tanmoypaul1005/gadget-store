@@ -2,6 +2,7 @@
 import { getUser } from '@/app/action/user';
 import Avatar from '@/app/components/avatar/Avatar';
 import { formatDate } from '@/util/utilityFunction';
+import { SlCalender } from "react-icons/sl";
 
 const CommentCard = async ({ comment, onCommentDelete }) => {
 
@@ -15,9 +16,12 @@ const CommentCard = async ({ comment, onCommentDelete }) => {
 
                 <div className="w-full">
 
-                    <div className='relative flex-col justify-between gap-y-2 md:flex-row'>
+                    <div className='relative flex-col md:justify-between gap-y-2 md:flex-row'>
                         <h5 className="font-bold text-white"> {user?.data?.name}</h5>
-                        <h5 className="font-normal text-white">{formatDate(comment?.createdAt)}</h5>
+                        <div className='flex gap-x-1.5'>
+                            <div className='flex justify-center items-center'><SlCalender className='' /></div>
+                            <h5 className="font-normal text-sm text-white">{formatDate(comment?.createdAt)}</h5>
+                        </div>
 
                         {/* {auth?.id === comment?.author?.id && <div className="relative top-0 right-0">
                             <button onClick={(e) => {
