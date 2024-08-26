@@ -1,10 +1,12 @@
+import { iPaymentMethod } from '@/util/imageImports'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
     return (
         <footer className="footer bg-[#212121] mt-5">
-                <div className="px-6 py-8 md:px-8 md:py-10 lg:px-16 lg:py-12">
+                <div className="px-6 py-8 md:px-8 md:py-5 lg:px-16">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-5">
                         <div>
                             <h2 className="font-bold text-white text-md">POPULAR CATEGORIES</h2>
@@ -71,9 +73,8 @@ const Footer = () => {
                         </div>
 
                     </div>
+                    <Image className='mt-5' src={iPaymentMethod} alt=""/>
                 </div>
-                <hr />
-
         </footer>
     )
 }
