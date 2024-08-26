@@ -13,10 +13,10 @@ const RegularProducts = async () => {
   //   next: { revalidate: 1 },
   // }).then((res) => res.json());
 
-  const products = await getRegularProducts()
+  const products = await getAllProducts()
 
   const regularProducts = products?.filter(
-    (product) => product.type === products_type_value.regular
+    (product) => (product.type === products_type_value.regular) && (product.ratting > 0 && product.ratting < 5)
   );
 
   return (
