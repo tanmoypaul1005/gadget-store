@@ -13,7 +13,7 @@ const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) =
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
     }} 
-    className={`relative py-4 cursor-pointer overflow-hidden px-3 text-white duration-500 shadow-md bg-cCommonBg rounded-xl ${width}`}>
+    className={`relative py-4 cursor-pointer overflow-hidden px-2.5 text-white duration-500 shadow-md bg-cCommonBg rounded-xl ${width}`}>
       <div className="flex items-center justify-center">
       <Image
           style={{ minHeight: "120px", maxHeight: "120px" }}
@@ -28,14 +28,14 @@ const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) =
         Sale
       </span>
       <div className="mt-2.5">
-          <h5 className="text-base font-semibold tracking-tight text-white line-clamp-1">
+          <h5 className="text-sm font-semibold tracking-tight text-white line-clamp-1">
             {product?.name}
           </h5>
         <div className="my-2.5 flex items-center">
           <CommonRating value={parseInt(product?.ratting ?? 0)}/>
         </div>
-        <div className="flex gap-y-2.5 flex-col ">
-          <div className="text-base font-bold text-white">${product?.price}</div>
+        <div className="flex gap-y-2.5 flex-col">
+          <div className="text-sm font-bold text-white">${product?.price}</div>
           <button
             type='button'
             onClick={async(e) => { 
