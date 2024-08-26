@@ -8,7 +8,7 @@ const Offer = async () => {
   const offerList = await getOffer();
 
   return (
-    <div className="">
+    <div>
       <div className="flex flex-wrap items-center justify-between gap-y-5">
         {offerList.map((offer, index) => {
           return (
@@ -23,8 +23,8 @@ const Offer = async () => {
                 className="rounded-t-md"
                 src={offer?.thumbnail}
                 alt={offer.title}
-                height={352}
-                width={352}
+                height={300}
+                width={300}
               />
               <div className="px-3 pb-3 pt-5 space-y-2 rounded-b-md bg-[#e1e1e1] text-black">
                 <DateComponent />

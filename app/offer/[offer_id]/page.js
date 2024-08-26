@@ -1,18 +1,24 @@
-import { getOfferProduct } from '@/app/action/offer';
+import { getOfferDetails, getOfferProduct } from '@/app/action/offer';
 import Card from '@/app/products/components/Card';
 import React from 'react'
 
-const ProductDetails = async({ params }) => {
-    const product =await getOfferProduct(params?.offer_id);
+const ProductDetails = async ({ params }) => {
+
+    const products = await getOfferProduct(params?.offer_id);
+    const offerDetails = await getOfferDetails(params?.offer_id);
+
     return (
         <div className='common-class common-topGap'>
-           {
-                product && product.map((item, index) => {
+            <div className="w-full p-3 mb-5 text-base font-bold rounded bg-cCommonBg ">
+                <div>{ offerDetails?.title ?? "Category"} 🔥</div>
+            </div>
+            {
+                products && products?.map((item, index) => {
                     return (
-                        <Card product={item} key={index}/>
+                        <Card offerPercentage={offerDetails?.offerPercentage}  product={item} key={index} />
                     )
                 })
-           }
+            }
         </div>
     )
 }
