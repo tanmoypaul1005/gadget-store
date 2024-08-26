@@ -11,10 +11,9 @@ export async function GET(request) {
     const query = searchParams.get("type");
     let products = [];
     if (products_type.includes(query)) {
-      products = await Product.find({ type: query });
+      products = await Product.find({ type: query }).populate("offer");
     } else if (query === null) {
-      products = await Product.find({ ratting: { $gt: 0,$lt:5 } });
-
+      products = await Product.find({ ratting: { $gt: 0,$lt:5 } }).populate("offer");
     } else {
       return Response.json({
         success: false,

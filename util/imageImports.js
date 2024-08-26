@@ -7,3 +7,4 @@ export { default as iNoOrder } from "../public/images/order/no_order.svg";
 export { default as iNoCart } from "../public/images/order/no_cart.webp";
 export { default as iCancel } from "../public/images/icons/cancel.png";
 export { default as iFile } from "../public/images/banner/file.png";
+export { default as iLogo } from "../public/logo/logo.png";
