@@ -26,10 +26,10 @@ export default async function Home() {
       <OfferBanner category={categoryData?.data} />
       <FeaturedCategories />
 
-      <div className="flex h-full">
+      {/* <div className="flex h-full">
         <BestSellers />
         <Products />
-      </div>
+      </div> */}
       <TopRateProduct />
       <RegularProducts />
       <Offer/>

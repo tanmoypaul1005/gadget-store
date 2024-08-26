@@ -5,14 +5,17 @@ import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import { BsArrowRightCircle } from "react-icons/bs";
 import Link from "next/link";
+import { getAllProducts } from "@/app/action/product/action";
 
 const RegularProducts = async () => {
 
-  const products = await fetch(base_url + kuProductList, {
-    next: { revalidate: 1 },
-  }).then((res) => res.json());
+  // const products = await fetch(base_url + kuProductList, {
+  //   next: { revalidate: 1 },
+  // }).then((res) => res.json());
 
-  const regularProducts = products?.data?.filter(
+  const products = await getAllProducts()
+
+  const regularProducts = products?.filter(
     (product) => product.type === products_type_value.regular
   );
 
