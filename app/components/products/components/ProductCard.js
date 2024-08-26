@@ -49,7 +49,7 @@ export const ProductCard = async ({ product }) => {
           </div>
         </div>
         <div className="absolute top-0.5 right-0.5">
-       {product?.offer?.offerPercentage && <span className="px-2 py-1 text-xs font-semibold text-white bg-red-500 rounded-full">{product?.offer?.offerPercentage}%</span>}
+       {product?.offer?.offerPercentage && <span className="px-2 py-1 text-xs font-semibold text-white bg-red-500 rounded-full">{product?.offer?.offerPercentage}% OFF</span>}
       </div>
       </div>
     </Link>
