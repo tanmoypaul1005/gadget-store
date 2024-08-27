@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
-import { iCart, iOrder } from "@/util/imageImports";
+import { iCart, iLogo, iOrder } from "@/util/imageImports";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 // Separate utility function outside the component
@@ -36,12 +36,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
       <header className="flex flex-col w-full h-fit common-class">
         <nav className="flex justify-between w-full pt-3 md:pb-3 gap-x-2">
-          <div className="flex items-center flex-grow gap-x-4">
+          <div className="flex items-center flex-grow italic gap-x-4">
             <Link
               href="/"
-              className="flex items-center justify-center text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
+              className="flex items-center justify-center space-x-2 text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
             >
-              Gadget Store
+            <space className="text-cDeepSaffron">Gadget</space>  <space>Store</space>
+              {/* <Image style={{maxHeight:50,minWidth:80}} alt="" src={iLogo}/> */}
             </Link>
             <div className="common-responsive">
               <Search />
