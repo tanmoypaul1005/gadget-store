@@ -1,17 +1,12 @@
 export const revalidate = 2; // revalidate at most every hour
 import React from "react";
 import ProductCard from "./ProductCard";
-import { base_url, products_type_value } from "@/util/const";
-import { kuProductList } from "@/util/url";
+import { products_type_value } from "@/util/const";
 import { BsArrowRightCircle } from "react-icons/bs";
 import Link from "next/link";
-import { getAllProducts, getRegularProducts } from "@/app/action/product/action";
+import { getAllProducts } from "@/app/action/product/action";
 
 const RegularProducts = async () => {
-
-  // const products = await fetch(base_url + kuProductList, {
-  //   next: { revalidate: 1 },
-  // }).then((res) => res.json());
 
   const products = await getAllProducts()
 

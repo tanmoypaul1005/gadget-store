@@ -37,7 +37,6 @@ export const ProductCard = async ({ product }) => {
               ${product?.price ?? 0}
             </p>
 
-            {session?.user?.email && (
               <ProductCardAction
                 data={{
                   product_id: product?._id,
@@ -45,7 +44,6 @@ export const ProductCard = async ({ product }) => {
                   session: session,
                 }}
               />
-            )}
           </div>
         </div>
         <div className="absolute top-0.5 right-0.5">
