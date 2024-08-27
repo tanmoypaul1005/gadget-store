@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 const OfferBanner = ({ category = [] }) => {
+  
   const watch = category.find((i) => i.title === "Smart watch");
 
   const airports = category.find((i) => i.title === "Airpods");

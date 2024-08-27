@@ -123,22 +123,6 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
             id="reverseTimer"
             className="flex items-center justify-between gap-4 text-sm font-semibold text-black"
           >
-            {/* <h1
-            className="flex flex-col items-center justify-center w-12 h-12 p-2 border rounded-lg shadow-lg bg-gray-300/20"
-            id="days"
-          ></h1>
-          <h1
-            className="flex flex-col items-center justify-center w-12 h-12 p-2 border rounded-lg shadow-lg bg-gray-300/20"
-            id="hour"
-          ></h1>
-          <h1
-            className="flex flex-col items-center justify-center w-12 h-12 p-2 border rounded-lg shadow-lg bg-gray-300/20"
-            id="minute"
-          ></h1>
-          <h1
-            className="flex flex-col items-center justify-center w-12 h-12 p-2 border rounded-lg shadow-lg bg-gray-300/20"
-            id="second"
-          ></h1> */}
 
             <span
               id="days"
