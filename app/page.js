@@ -5,12 +5,11 @@ import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
 import RegularProducts from "./components/products/components/RegularProducts";
-import BestSellers from "./components/sidebar/BestSellers";
 import TopBrand from "./components/topBrand/TopBrand";
-import TopRateProduct from "./components/slider/TopRateProduct";
 import Offer from "./offer/page";
 
 export default async function Home() {
+  
   const categoryData = await getAllCategory();
 
   return (
@@ -25,12 +24,8 @@ export default async function Home() {
       </div>
       <OfferBanner category={categoryData?.data} />
       <FeaturedCategories />
-
-      {/* <div className="flex h-full">
-        <BestSellers />
-        <Products />
-      </div> */}
-      <TopRateProduct />
+      <Products />
+     
       <RegularProducts />
       <Offer/>
       <TopBrand/>

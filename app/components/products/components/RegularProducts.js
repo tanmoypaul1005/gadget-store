@@ -5,7 +5,7 @@ import { base_url, products_type_value } from "@/util/const";
 import { kuProductList } from "@/util/url";
 import { BsArrowRightCircle } from "react-icons/bs";
 import Link from "next/link";
-import { getAllProducts } from "@/app/action/product/action";
+import { getAllProducts, getRegularProducts } from "@/app/action/product/action";
 
 const RegularProducts = async () => {
 
@@ -16,7 +16,7 @@ const RegularProducts = async () => {
   const products = await getAllProducts()
 
   const regularProducts = products?.filter(
-    (product) => product.type === products_type_value.regular
+    (product) => (product.type === products_type_value.regular) && (product.ratting > 0 && product.ratting < 5)
   );
 
   return (

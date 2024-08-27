@@ -1,72 +1,80 @@
 export const revalidate = 10;
-import { base_url, products_type_value } from "@/util/const";
-import { kuProductList } from "@/util/url";
-import ProductBox from "./components/ProductBox";
+
+import { products_type_value } from "@/util/const";
 import DailyOffer from "../other/DailyOffer";
 import { auth } from "@/auth";
-import { findUserId } from "@/app/action/product/action";
+import {
+  fetchTopRateProducts,
+  findUserId,
+  getAllProducts,
+} from "@/app/action/product/action";
 import { findDayOffer } from "@/app/action/cart";
+import Slider from "../slider/Slider";
+
+const fetchProductsData = async () => {
+  try {
+    const products = await getAllProducts();
+    const topRateProducts = await fetchTopRateProducts();
+    const session = await auth();
+    const user = await findUserId(session?.user?.email);
+
+    const newArrivals = products?.filter(
+      (product) => product.type === products_type_value.new_arrivals
+    );
+    const trending = products?.filter(
+      (product) => product.type === products_type_value.trending
+    );
+    const dayOffer = products?.find(
+      (product) => product.type === products_type_value.day_offer
+    );
+    const isAddCartDayOffer = await findDayOffer(dayOffer?._id, user?._id);
+
+    return {
+      topRateProducts,
+      newArrivals,
+      trending,
+      dayOffer,
+      user,
+      isAddCartDayOffer,
+    };
+  } catch (error) {
+    console.error("Error fetching products data:", error);
+    return {};
+  }
+};
 
 const Products = async () => {
-  
-  const products = await fetch(base_url + kuProductList).then((res) =>
-    res.json()
-  );
-
-  const newArrivals = products?.data?.filter(
-    (product) => product.type === products_type_value.new_arrivals
-  );
-  const trending = products?.data?.filter(
-    (product) => product.type === products_type_value.trending
-  );
-  const topRated = products?.data?.filter(
-    (product) => product.type === products_type_value.top_rated
-  );
-
-  const day_offer = products?.data?.find(
-    (product) => product.type === products_type_value.day_offer
-  );
-
-  const session = await auth();
-
-  const user = await findUserId(session?.user?.email);
-
-  const isAddCartDayOffer = await findDayOffer(day_offer?._id, user?._id);
+  const {
+    topRateProducts,
+    newArrivals,
+    trending,
+    dayOffer,
+    user,
+    isAddCartDayOffer,
+  } = await fetchProductsData();
 
   return (
-    <div className="flex flex-col w-full h-full lg:w-3/4">
-      <div className="grid grid-cols-1 gap-4 mx-auto max-w-screen min-w-screen md:grid-cols-2 lg:grid-cols-3">
-        <div className="flex flex-col gap-4 NewArrivals">
-          <h1 className="pb-4 text-xl font-semibold border-b">New Arrivals</h1>
-
-          {newArrivals?.map((product, index) => (
-            <ProductBox key={index} product={product} />
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-4 Trending">
-          <h1 className="pb-4 text-xl font-semibold border-b">Trending</h1>
-          {trending?.map((product, index) => (
-            <ProductBox key={index} product={product} />
-          ))}
-        </div>
-
-        <div className="flex flex-col gap-4 TopRated">
-          <h1 className="pb-4 text-xl font-semibold border-b">Top Rated</h1>
-          {topRated?.map((product, index) => (
-            <ProductBox key={index} product={product} />
-          ))}
-        </div>
-      </div>
-      <div className="mt-5">
-        <DailyOffer
-          user={user}
-          isAddCartDayOffer={isAddCartDayOffer}
-          product={day_offer}
-        />
-      </div>
-    </div>
+    <>
+      <ProductSection title="Top Rated Products 🔥" products={topRateProducts} />
+      <ProductSection title="New Arrivals 🔥" products={newArrivals} />
+      <ProductSection title="Trending 🔥" products={trending} />
+      <DailyOffer
+        user={user}
+        isAddCartDayOffer={isAddCartDayOffer}
+        product={dayOffer}
+      />
+    </>
   );
 };
 
+const ProductSection = ({ title, products }) => (
+  <div>
+    <div className="flex items-center justify-center w-full mb-4 text-2xl font-semibold text-center text-white">
+      {title}
+    </div>
+    <Slider products={products} />
+  </div>
+);
+
 export default Products;
+

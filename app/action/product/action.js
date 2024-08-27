@@ -50,3 +50,15 @@ export const getAllProducts = async () => {
     return null;
   }
 }
+
+export const getRegularProducts = async () => {
+  try {
+    await connectMongo();
+   const products = await Product.find({ ratting: { $gt: 0,$lt:5 } }).populate("offer");
+   console.log("products",products)
+    return products;
+  } catch {
+    return null;
+  }
+}
+
