@@ -7,7 +7,7 @@ const LoginAlertModal = ({ open, setOpen }) => {
 
     const handleGoogleAuthClick = async () => {
         try {
-            await signIn("google", { callbackUrl: "/" });
+            await signIn("google", { callbackUrl: window.location.pathname });
         } catch (error) {
             console.error("Error signing in", error);
         }
