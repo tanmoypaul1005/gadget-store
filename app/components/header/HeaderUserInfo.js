@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Search from "./Search";
-import { iCart, iLogo, iOrder } from "@/util/imageImports";
+import { iCart, iOrder } from "@/util/imageImports";
 import { useGeneralStore } from "@/app/stores/generalStore";
 
 // Separate utility function outside the component
