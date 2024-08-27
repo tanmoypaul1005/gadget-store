@@ -28,10 +28,13 @@ const responsive = {
   }
 };
 
-const Slider = ({ products }) => {
+const Slider = ({ products=[] }) => {
   return (
-    <div className="py-4 bg-gray-600 rounded">
-      <Carousel
+    <div className="py-4 min-h-[300px] bg-gray-600 rounded">
+      
+      {
+        products?.length === 0 ? (<div className=""></div>) :
+        <Carousel
         responsive={responsive}
         autoPlay={true}
         swipeable={true}
@@ -41,13 +44,17 @@ const Slider = ({ products }) => {
         partialVisible={false}
         dotListClass=""
       >
-        {products?.map((product, index) => {
+        {
+        products?.map((product, index) => {
           return (
             <div className="flex items-center justify-center slider" key={index}>
               <SecondaryProductCard width="w-64 md:w-full" product={product} />
             </div>
           );
-        })}
+        })
+        }
+
+        
         {/* {
           Array.from({ length: 5 }).map((_, index) => {
             return (
@@ -74,6 +81,8 @@ const Slider = ({ products }) => {
           })
         } */}
       </Carousel>
+      }
+      
     </div>
   );
 };
