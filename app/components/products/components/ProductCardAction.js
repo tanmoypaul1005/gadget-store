@@ -16,6 +16,7 @@ const ProductCardAction = ({ data }) => {
     };
 
     const handleClick = async (e) => {
+        e.stopPropagation();
         e.preventDefault();
         if (!data?.session) {
             setOpen(true);
