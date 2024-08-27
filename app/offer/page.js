@@ -9,43 +9,37 @@ const Offer = async () => {
 
   return (
     <div>
-      <div className="flex flex-wrap items-center justify-center sm:justify-between gap-y-5">
-        {offerList.map((offer, index) => {
-          return (
-            <div key={index} className="flex items-center justify-center">
-              <div className="rounded-md max-w-[300px] min-w-[300px]">
-                <Image
-                  style={{
-                    maxHeight: "300px",
-                    minHeight: "300px",
-                    maxWidth: "300px",
-                    minWidth: "300px",
-                  }}
-                  className="rounded-t-md"
-                  src={offer?.thumbnail}
-                  alt={offer.title}
-                  height={300}
-                  width={300}
-                />
-                <div className="px-3 pb-3 pt-5 space-y-2 rounded-b-md bg-[#e1e1e1] text-black">
-                  <DateComponent />
-                  <div className="text-base font-bold text-center line-clamp-2">
-                    {offer.title}
-                  </div>
-                  <p className="text-sm font-medium text-center line-clamp-2">
-                    {offer.description}
-                  </p>
-                  <Link href={`/offer/${offer?._id}`} className="flex items-center justify-center pt-3">
-                    <button className="w-fit bg-[#f27f20] text-white  px-3 py-2  rounded-md">
-                      View Offer
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  {offerList.map((offer, index) => (
+    <div key={index} className="flex items-center justify-center">
+      <div className="rounded-md w-full max-w-[300px]">
+        <Image
+          className="object-cover w-full rounded-t-md"
+          src={offer?.thumbnail}
+          alt={offer.title}
+          height={300}
+          width={300}
+        />
+        <div className="px-3 pb-3 pt-5 space-y-2 rounded-b-md bg-[#e1e1e1] text-black">
+          <DateComponent />
+          <div className="text-base font-bold text-center line-clamp-2">
+            {offer.title}
+          </div>
+          <p className="text-sm font-medium text-center line-clamp-2">
+            {offer.description}
+          </p>
+          <Link href={`/offer/${offer?._id}`} className="flex items-center justify-center pt-3">
+            <button className="w-fit bg-[#f27f20] text-white px-3 py-2 rounded-md">
+              View Offer
+            </button>
+          </Link>
+        </div>
       </div>
+    </div>
+  ))}
+</div>
+
+
     </div>
   );
 };
