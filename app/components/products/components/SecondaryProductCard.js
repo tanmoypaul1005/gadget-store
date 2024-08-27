@@ -4,12 +4,18 @@ import { useRouter } from "next/navigation";
 import CommonRating from "../../CommonRating";
 import { serverAddCart } from "@/app/action/cart";
 import { Toastr } from "@/util/utilityFunction";
+import LoginAlertModal from "../../modal/LoginAlertModal";
+import { useState } from "react";
 
 const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) => {
   
   const router = useRouter();
 
+  const [open, setOpen] = useState(false);
+
   return (
+    <>
+    <LoginAlertModal open={open} setOpen={setOpen} />
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
     }} 
@@ -44,11 +50,12 @@ const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) =
               if (success.success) {
                 Toastr({ type: "success", message: success.message });
               } else {
+                setOpen(true);
                 Toastr({ type: "error", message: success.message });
               } 
-              }}
+            }}
             className="flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-md w-fit bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          >
+            >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-4 h-4 mr-2"
@@ -56,19 +63,19 @@ const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) =
               viewBox="0 0 24 24"
               stroke="currentColor"
               stroke-width="2"
-            >
+              >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
+                />
             </svg>
             Add to cart
           </button>
         </div>
       </div>
     </div>
-
+</>
   );
 };
 
