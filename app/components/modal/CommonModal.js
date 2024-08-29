@@ -12,7 +12,7 @@ const style = {
     width: '90%', // Default width for small screens
     maxWidth: '900px', // Maximum width for larger screens
     bgcolor: 'gray',
-    border: '2px solid #000',  
+    border: 'none',  
     // boxShadow: 24,
     p: 0,
     borderRadius: "10px",

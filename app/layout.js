@@ -17,13 +17,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
     <body className={`${inter.className} largeScreenContainer main`}>
-      <div className="relative text-white bg-slate-800">
+      <div 
+     
+      className="relative text-white ">
         <div className="absolute top-0 left-0">
           <DrawerDefault />
         </div>
-        <Header className="fixed top-0 left-0 z-10 w-full bg-slate-800" />
+        <Header className="fixed top-0 left-0 z-10 w-full" />
         <ToastContainer />
-        <div className="mt-[64px] bg-slate-800 overflow-y-auto h-[calc(100vh-64px)]">
+        <div 
+         style={{ backgroundImage: "url('header.png')" }}
+        className="mt-[64px] overflow-y-auto h-[calc(100vh-64px)] leading-normal tracking-normal bg-cover bg-fixed">
           {children}
           <Footer />
         </div>

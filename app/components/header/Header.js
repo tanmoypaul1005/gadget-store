@@ -17,8 +17,8 @@ const Header = async ({className}) => {
   const cart = await getCartCount(user?._id);
 
   return (
-    <div className={`${className}`}>
-      <div className="flex flex-col items-center justify-between border-b">
+    <div className={`${className} bg-black border-b`}>
+      <div className="flex flex-col items-center justify-between ">
         <HeaderUserInfo totalOrder={order?.data?.length} totalCart={cart?.length ?? 0} session={session} />
       </div>
     </div>
