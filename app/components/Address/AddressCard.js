@@ -2,14 +2,14 @@ import React from 'react'
 
 const AddressCard= ({address,title,onOpen=()=>{}}) => {
     return (
-        <div className="px-4 pt-6 pb-8 w-full duration-500 bg-cCommonBg text-white shadow-md  rounded-xl hover:scale-105 hover:shadow-xl border border-gray-200 ">
-        <div className="flex items-center justify-between mb-4">
+        <div className="w-full px-4 pt-6 pb-8 text-white duration-500 border border-gray-200 shadow-md bg-cCommonBg rounded-xl hover:scale-105 hover:shadow-xl ">
+        <div className="flex items-center justify-between mb-4 gap-x-5">
           <h3 className="text-2xl font-medium ">
             {title}
           </h3>
           <div  
           onClick={onOpen}
-          className="text-primary cursor-pointer">
+          className="cursor-pointer text-primary">
             Edit
           </div>
         </div>

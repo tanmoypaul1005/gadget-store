@@ -20,7 +20,6 @@ const Address = ({ address, email }) => {
 
   return (
     <div>
-      
       <div>
         <div className="flex items-start justify-start">
           {billing_address?.title ? (
