@@ -15,7 +15,7 @@ const truncateName = (name, maxLength) =>
   name.length > maxLength ? `${name.substring(0, maxLength)}...` : name;
 
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
-  
+
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
 
   const { mobileNav, setMobileNav } = useGeneralStore();
@@ -41,7 +41,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
               href="/"
               className="flex items-center justify-center space-x-2 text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
             >
-            <space className="text-cDeepSaffron">Gadget</space>  <space>Store</space>
+              <space className="text-cDeepSaffron">Gadget</space>  <space>Store</space>
               {/* <Image style={{maxHeight:50,minWidth:80}} alt="" src={iLogo}/> */}
             </Link>
             <div className="common-responsive">
@@ -105,11 +105,11 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       ) : (
         <LoginButton text="Login" onClick={onLogin} />
       )}
-      
+
       <div className="pr-2 ml-2 mr-3">
         <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
       </div>
-      
+
       <HiMenuAlt3
         className="w-6 h-6 text-gray-700 transition duration-200 transform border border-gray-400 rounded-lg cursor-pointer ring-blue-300 focus:ring-4 hover:scale-110"
         onClick={onToggleNav}
@@ -118,7 +118,7 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
   </div>
 );
 
-const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "px-4" }) => {
+const CartIcon = ({ isMobile = false, iconSize = "22px", totalCart = 0, padding = "px-4" }) => {
   return (
     <>
       <Link
@@ -128,10 +128,10 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
         <div className="relative">
           <Image
             style={{
-              maxWidth:iconSize ,
-              minHeight: iconSize ,
-              maxHeight:  iconSize ,
-              minWidth: iconSize ,
+              maxWidth: iconSize,
+              minHeight: iconSize,
+              maxHeight: iconSize,
+              minWidth: iconSize,
             }}
             src={iCart}
             alt=""
@@ -139,7 +139,7 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
             height={18}
           />
           {totalCart > 0 ? (
-            <span className={`absolute flex items-center justify-center ${isMobile? "text-[10px] w-[14px]":"text-xs w-4"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
+            <span className={`absolute flex items-center justify-center ${isMobile ? "text-[10px] w-[14px]" : "text-xs w-4"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
               {totalCart}
             </span>
           ) : (
