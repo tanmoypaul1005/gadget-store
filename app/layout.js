@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <ToastContainer />
         <div 
          style={{ backgroundImage: "url('header.png')" }}
-        className="mt-[64px] overflow-y-auto h-[calc(100vh-64px)] leading-normal tracking-normal bg-cover bg-fixed">
+          className="mt-[64px] overflow-y-auto h-[calc(100vh-64px)] leading-normal tracking-normal bg-cover bg-fixed">
           {children}
           <Footer />
         </div>

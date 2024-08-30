@@ -34,7 +34,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
     <>
       <LogoutModal open={isShowLogoutModal} setOpen={setShowLogoutModal} />
 
-      <header className="flex flex-col w-full h-fit common-class">
+      <div className="flex flex-col w-full bg-orange-200 h-fit common-class">
         <nav className="flex justify-between w-full pt-3 md:pb-3 gap-x-2">
           <div className="flex items-center flex-grow italic gap-x-4">
             <Link
@@ -42,7 +42,6 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
               className="flex items-center justify-center space-x-2 text-base font-semibold text-white select-none sm:text-3xl whitespace-nowrap"
             >
               <space className="text-cDeepSaffron">Gadget</space>  <space>Store</space>
-              {/* <Image style={{maxHeight:50,minWidth:80}} alt="" src={iLogo}/> */}
             </Link>
             <div className="common-responsive">
               <Search />
@@ -71,7 +70,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
         <div className="block mt-[-25px] md:mt-0 w-full mb-3 md:hidden">
           <Search />
         </div>
-      </header>
+      </div>
     </>
   );
 };
