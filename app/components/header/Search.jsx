@@ -66,7 +66,7 @@ const Search = () => {
             id="email"
             autoComplete="off"
             auto
-            className="w-full py-3 pl-4 text-xs text-white border border-gray-200 rounded-md shadow-sm outline-none pr-14 bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full py-3 pl-4 text-xs text-white rounded-md shadow-sm outline-none pr-14 bg-cCommonBg focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder={"Search for products, brands and categories"}
           />
           {searchValue && (
