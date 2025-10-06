@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import Image from 'next/image';
 import { getCategory } from '@/app/action';
 import { k_category_patch } from '@/util/patch';
+import { List } from 'lucide-react';
 
 const SideBarCategory = async () => {
 
@@ -12,7 +12,7 @@ const SideBarCategory = async () => {
     <div className="rounded-lg bg-cCommonBg">
       <nav className="flex-col hidden w-full lg:flex">
         <div className='flex items-center justify-center py-3 rounded-t-lg gap-x-2 bg-cDeepSaffron'>
-          <Image width={20} height={20} style={{ maxWidth: "20px", minHeight: "20px", minWidth: "20px", maxHeight: "20px" }} src='https://motionview.com.bd/images/category.svg' alt='' />
+        <List />
           <div className='text-lg font-semibold'>All Category</div>
         </div>
 

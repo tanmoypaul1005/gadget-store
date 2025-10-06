@@ -29,7 +29,6 @@ export default async function Home() {
       <RegularProducts />
       <Offer/>
       <TopBrand/>
-
     </div>
   );
 }
