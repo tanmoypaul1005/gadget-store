@@ -9,10 +9,10 @@ const Offer = async () => {
   const offerList = await getOffer();
 
   return (
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {offerList.map((offer, index) => (
           <div key={index} className="flex items-center justify-center">
-            <div className="rounded-md w-full max-w-[300px]">
+            <div className="w-full rounded-md ">
               <Image
                 className="object-cover w-full rounded-t-md"
                 src={offer?.thumbnail}
