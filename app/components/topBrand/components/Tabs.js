@@ -36,7 +36,7 @@ const Tabs = ({ categoryList }) => {
             className={`border-b-2 ${
               selectedId === category?._id
                 ? "text-cDeepSaffron border-cDeepSaffron"
-                : "text-white border-slate-800"
+                : "text-white border-transparent"
             } text-sm font-normal leading-5 cursor-pointer hover:text-cDeepSaffron`}
           >
             {category?.title}

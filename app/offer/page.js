@@ -5,6 +5,7 @@ import DateComponent from "./components/DateComponent";
 import Link from "next/link";
 
 const Offer = async () => {
+  
   const offerList = await getOffer();
 
   return (
