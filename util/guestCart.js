@@ -27,6 +27,10 @@ export function getGuestCartItems() {
 export function saveGuestCartItems(items) {
   try {
     writeCookie("guest_cart_items", JSON.stringify(items));
+    // Notify any listeners (e.g. header cart counter)
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("guestCartUpdated", { detail: { count: items.length } }));
+    }
     return true;
   } catch (err) {
     console.error("Error saving guest cart cookie", err);

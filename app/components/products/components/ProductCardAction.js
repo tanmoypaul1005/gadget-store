@@ -1,14 +1,11 @@
 "use client";
-import { addCart } from '@/app/action/cart';
 import { addToGuestCart } from '@/util/guestCart';
 import { Toastr } from '@/util/utilityFunction';
 import React, { useState } from 'react';
-import LoginAlertModal from '../../modal/LoginAlertModal';
 
 const ProductCardAction = ({ data }) => {
 
     const [isBouncing, setIsBouncing] = useState(false);
-    const [open, setOpen] = useState(false);
 
     const formData = {
         product_id: data?.product_id,
@@ -22,27 +19,17 @@ const ProductCardAction = ({ data }) => {
         setIsBouncing(true);
         setTimeout(() => setIsBouncing(false), 300);
 
-        if (data?.session) {
-            const success = await addCart(formData, window.location.pathname);
-            if (success?.success) {
-                Toastr({ type: "success", message: success.message });
-            } else {
-                Toastr({ type: "error", message: success?.message || "Could not add to cart" });
-            }
+        // Always save to cookie only
+        const guestRes = await addToGuestCart(data?.product_id, 1);
+        if (guestRes?.success) {
+            Toastr({ type: "success", message: guestRes.message });
         } else {
-            // Guest: save to cookie
-            const guestRes = await addToGuestCart(data?.product_id, 1);
-            if (guestRes?.success) {
-                Toastr({ type: "success", message: guestRes.message });
-            } else {
-                Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
-            }
+            Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
         }
     };
 
     return (
         <>
-        <LoginAlertModal open={open} setOpen={setOpen} />
         <div
             onClick={handleClick}
             className={`ml-auto ${isBouncing ? 'bounce-animation' : ''}`}

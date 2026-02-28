@@ -83,7 +83,7 @@ const DesktopMenu = ({ session, totalCart, totalOrder, onLogout, onLogin }) => (
     <div className="flex flex-col justify-end w-full sm:flex-row">
       <OrderButton totalOrder={totalOrder} />
 
-      <CartIcon totalCart={totalCart} />
+      <CartIcon totalCart={totalCart} session={session} />
 
       {session ? (
         <UserMenu session={session} onLogout={onLogout} />
@@ -107,7 +107,7 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
       )}
       
       <div className="pr-2 ml-2 mr-3">
-        <CartIcon isMobile={true} totalCart={totalCart} iconSize="18px" padding="px-0" />
+        <CartIcon isMobile={true} totalCart={totalCart} session={session} iconSize="18px" padding="px-0" />
       </div>
       
       <HiMenuAlt3
@@ -118,7 +118,28 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
   </div>
 );
 
-const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "px-4" }) => {
+const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "px-4", session = null }) => {
+  const [count, setCount] = React.useState(totalCart);
+
+  React.useEffect(() => {
+    if (!session) {
+      // initialise from cookie
+      try {
+        const raw = document.cookie.match('(^|;)\\s*guest_cart_items\\s*=\\s*([^;]+)');
+        if (raw) {
+          const items = JSON.parse(decodeURIComponent(raw.pop()));
+          setCount(Array.isArray(items) ? items.length : 0);
+        }
+      } catch (_) {}
+
+      const handler = (e) => setCount(e.detail?.count ?? 0);
+      window.addEventListener('guestCartUpdated', handler);
+      return () => window.removeEventListener('guestCartUpdated', handler);
+    } else {
+      setCount(totalCart);
+    }
+  }, [session, totalCart]);
+
   return (
     <>
       <Link
@@ -138,9 +159,9 @@ const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "
             width={18}
             height={18}
           />
-          {totalCart > 0 ? (
+          {count > 0 ? (
             <span className={`absolute flex items-center justify-center ${isMobile? "text-[10px] w-[14px]":"text-xs w-4"} text-white bg-red-500 rounded-full -top-2 -right-2`}>
-              {totalCart}
+              {count}
             </span>
           ) : (
             ""

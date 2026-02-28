@@ -2,23 +2,15 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import CommonRating from "../../CommonRating";
-import { serverAddCart } from "@/app/action/cart";
 import { addToGuestCart } from "@/util/guestCart";
 import { Toastr } from "@/util/utilityFunction";
-import LoginAlertModal from "../../modal/LoginAlertModal";
-import { useSession } from "next-auth/react";
-import { useState } from "react";
 
 const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) => {
   
   const router = useRouter();
 
-  const [open, setOpen] = useState(false);
-  const { data: session } = useSession();
-
   return (
     <>
-    <LoginAlertModal open={open} setOpen={setOpen} />
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
     }} 
@@ -49,22 +41,12 @@ const SecondaryProductCard = ({ product,width="max-w-[250px] min-w-[250px]" }) =
             type='button'
             onClick={async(e) => { 
               e.stopPropagation();
-              if (session) {
-                const success = await serverAddCart(product?._id, window.location.pathname);
-                if (success?.success) {
-                  Toastr({ type: "success", message: success.message });
-                } else {
-                  setOpen(true);
-                  Toastr({ type: "error", message: success?.message || "Could not add to cart" });
-                }
+              // Always save to cookie only
+              const guestRes = await addToGuestCart(product?._id, 1);
+              if (guestRes?.success) {
+                Toastr({ type: "success", message: guestRes.message });
               } else {
-                // Guest: save to cookie
-                const guestRes = await addToGuestCart(product?._id, 1);
-                if (guestRes?.success) {
-                  Toastr({ type: "success", message: guestRes.message });
-                } else {
-                  Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
-                }
+                Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
               }
             }}
             className="flex items-center px-3 py-2 text-xs font-medium text-center text-white rounded-md w-fit bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
