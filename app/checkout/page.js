@@ -1,16 +1,15 @@
 import { auth } from "@/auth";
 import GuestCheckout from "./components/GuestCheckout";
+import LoggedInCheckout from "./components/LoggedInCheckout";
 
 const Checkout = async () => {
   const session = await auth();
 
-  // Pass name/email from session so fields are pre-filled for logged-in users
-  return (
-    <GuestCheckout
-      initialName={session?.user?.name ?? ""}
-      initialEmail={session?.user?.email ?? ""}
-    />
-  );
+  if (!session) {
+    return <GuestCheckout />;
+  }
+
+  return <LoggedInCheckout email={session?.user?.email} />;
 };
 
 export default Checkout;

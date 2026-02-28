@@ -8,7 +8,7 @@ import CommonInput from "@/app/components/input/CommonInput";
 import CommonButton from "@/app/components/button/CommonButton";
 import { addAddress } from "@/app/action/address";
 
-const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
+const AddAddressModal = ({ open, setOpen, type, email, editData, onSaved }) => {
 
 
   const [title, setTitle] = useState("");
@@ -32,21 +32,24 @@ const AddAddressModal = ({ open, setOpen, type, email, editData }) => {
     };
 
     const data = await addAddress(body,window.location.pathname);
+    console.log("add address res", data); 
+
     if (data.success) {
       Toastr({ message: data?.message, type: "success" });
       setOpen(false);
+      if (onSaved) onSaved();
     } else {
       Toastr({ message: data?.message, type: "error" });
     }
   };
 
   useEffect(() => {
-    setTitle(editData?.title);
-    setAddress(editData?.address);
-    setContact(editData?.contact);
-    setPostalCode(editData?.postalCode);
-    setHouseName(editData?.house_name);
-  }, [editData]);
+    setTitle(editData?.title ?? "");
+    setAddress(editData?.address ?? "");
+    setContact(editData?.contact ?? "");
+    setPostalCode(editData?.postalCode ?? "");
+    setHouseName(editData?.house_name ?? "");
+  }, [editData, open]);
 
   return (
     <div>

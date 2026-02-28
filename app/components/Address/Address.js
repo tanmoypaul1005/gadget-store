@@ -5,7 +5,7 @@ import CommonButton from "@/app/components/button/CommonButton";
 import AddressCard from "./AddressCard";
 import { address_type } from "@/util/const";
 
-const Address = ({ address, email }) => {
+const Address = ({ address, email, onSaved }) => {
 
   const [showAddAddressModal, setAddressModal] = useState(false);
 
@@ -78,10 +78,9 @@ const Address = ({ address, email }) => {
         type={selectType}
         open={showAddAddressModal}
         setOpen={setAddressModal}
-        onClose={() => {
-          setAddressModal(false)
-        }}
+        onClose={() => { setAddressModal(false) }}
         editData={selectType === address_type.shipping_address ? shipping_address : billing_address}
+        onSaved={onSaved}
       />
     </div>
   );

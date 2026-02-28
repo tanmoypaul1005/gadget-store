@@ -53,6 +53,42 @@ export const addGuestOrder = async ({ name, email, phone, address, items }) => {
     }
 };
 
+export const addOrderFromCookie = async ({ email, shipping_address, billing_address, contact_number, items }) => {
+    try {
+        await connectMongo();
+        if (!email || !shipping_address || !billing_address || !contact_number || !items?.length) {
+            return { status: 400, success: false, message: "Please fill all required fields" };
+        }
+        const user = await User.findOne({ email }).lean();
+        if (!user) return { status: 400, success: false, message: "User not found" };
+
+        const productDocs = [];
+        for (const item of items) {
+            try {
+                const pid = item.product_id?.toString?.() ?? String(item.product_id);
+                const product = await Products.findById(pid).lean();
+                if (product) productDocs.push({ product: product._id, price: product.price, quantity: Number(item.quantity) || 1 });
+            } catch (e) { console.error("product lookup failed:", e?.message); }
+        }
+        if (!productDocs.length) return { status: 400, success: false, message: "No valid products found in cart" };
+
+        const total_amount = productDocs.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+        const order = new Order({
+            user: user._id,
+            shipping_address,
+            billing_address,
+            total_amount,
+            items: productDocs.map(({ product, quantity }) => ({ product, quantity })),
+        });
+        await order.save();
+        return { status: 200, success: true, message: "Order placed successfully" };
+    } catch (err) {
+        console.error("error addOrderFromCookie", err);
+        return { status: 500, success: false, message: err?.message || "Internal Server Error" };
+    }
+};
+
 export const addOrder = async (body) => {
 
     try {
