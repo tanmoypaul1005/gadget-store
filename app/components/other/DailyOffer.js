@@ -1,5 +1,6 @@
 "use client"
 import { addCart, deleteCart } from "@/app/action/cart";
+import { addToGuestCart } from "@/util/guestCart";
 import LoginAlertModal from "@/app/components/modal/LoginAlertModal";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
@@ -90,7 +91,7 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
           </div>
           <button
             onClick={async () => {
-              if(user?._id){
+              if (user?._id) {
                 if (isAddCartDayOffer) {
                   const success = await deleteCart(isAddCartDayOffer?._id, "/")
                   if (success) {
@@ -100,16 +101,21 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
                   }
                 } else {
                   const success = await addCart(formData, "/");
-                  if (success.success) {
+                  if (success?.success) {
                     Toastr({ type: "success", message: success.message });
                   } else {
-                    Toastr({ type: "error", message: success.message });
+                    Toastr({ type: "error", message: success?.message });
                   }
                 }
-              }else{
-                setOpen(true)
+              } else {
+                // Guest: save to cookie
+                const guestRes = await addToGuestCart(product?._id, 1);
+                if (guestRes?.success) {
+                  Toastr({ type: "success", message: guestRes.message });
+                } else {
+                  Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
+                }
               }
-           
             }}
             className="px-4 py-2 font-semibold text-white bg-red-500 rounded-xl text-md"
           >

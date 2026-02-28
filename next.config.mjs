@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["plus.unsplash.com" ,"motionview.com.bd",'m.media-amazon.com',"adminapi.applegadgetsbd.com",'www.applegadgetsbd.com', 'adminapi.applegadgetsbd.com', 'images.unsplash.com', 'lh3.googleusercontent.com', 'i.imgur.com'],
+    domains: ["plus.unsplash.com","i.ibb.co.com","motionview.com.bd",'m.media-amazon.com',"adminapi.applegadgetsbd.com",'www.applegadgetsbd.com', 'adminapi.applegadgetsbd.com', 'images.unsplash.com', 'lh3.googleusercontent.com', 'i.imgur.com'],
   },
   reactStrictMode: false,
   unoptimized: true,

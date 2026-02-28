@@ -6,6 +6,53 @@ import Products from "@/models/Products";
 import User from "@/models/User";
 import connectMongo from "@/util/db";
 
+export const addGuestOrder = async ({ name, email, phone, address, items }) => {
+    try {
+        await connectMongo();
+        if (!name || !email || !phone || !address || !items?.length) {
+            return { status: 400, success: false, message: "Please fill all required fields" };
+        }
+
+        // Fetch products from DB — convert product_id to plain string first
+        const productDocs = [];
+        for (const item of items) {
+            try {
+                const pid = item.product_id?.toString?.() ?? String(item.product_id);
+                const product = await Products.findById(pid).lean();
+                if (product) {
+                    productDocs.push({
+                        product: product._id,
+                        price: product.price,
+                        quantity: Number(item.quantity) || 1,
+                    });
+                }
+            } catch (lookupErr) {
+                console.error("Product lookup failed for id:", item.product_id, lookupErr?.message);
+            }
+        }
+
+        if (!productDocs.length) {
+            return { status: 400, success: false, message: "No valid products found in your cart" };
+        }
+
+        const total_amount = productDocs.reduce((sum, i) => sum + (i.price || 0) * i.quantity, 0);
+
+        const order = new Order({
+            guest_name: name,
+            guest_email: email,
+            guest_phone: phone,
+            guest_address: address,
+            total_amount,
+            items: productDocs.map(({ product, quantity }) => ({ product, quantity })),
+        });
+        await order.save();
+        return { status: 200, success: true, message: "Order placed successfully" };
+    } catch (err) {
+        console.error("error addGuestOrder", err);
+        return { status: 500, success: false, message: err?.message || "Internal Server Error" };
+    }
+};
+
 export const addOrder = async (body) => {
 
     try {

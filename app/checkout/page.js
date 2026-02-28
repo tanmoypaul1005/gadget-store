@@ -11,10 +11,16 @@ import Image from "next/image";
 import { iNoCart } from "@/util/imageImports";
 import Contact from "./components/Contact";
 import ShoppingButton from "./components/ShoppingButton";
+import GuestCheckout from "./components/GuestCheckout";
 
 const Checkout = async () => {
 
   const session = await auth();
+
+  // Guest users: show guest checkout form
+  if (!session) {
+    return <GuestCheckout />;
+  }
 
   const address = await getAddress(session?.user?.email);
 

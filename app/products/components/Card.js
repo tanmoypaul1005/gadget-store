@@ -1,14 +1,17 @@
 "use client"
 import { serverAddCart } from "@/app/action/cart";
+import { addToGuestCart } from "@/util/guestCart";
 import CommonRating from "@/app/components/CommonRating";
 import { Toastr } from "@/util/utilityFunction";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import React from "react";
 
 const Card = ({ product,width="max-w-[250px] min-w-[250px]",offerPercentage=null }) => {
   
   const router = useRouter();
+  const { data: session } = useSession();
 
   return (
     <div onClick={() => {
@@ -46,12 +49,22 @@ const Card = ({ product,width="max-w-[250px] min-w-[250px]",offerPercentage=null
             type='button'
             onClick={async(e) => { 
               e.stopPropagation();
-              const success=await serverAddCart(product?._id, window.location.pathname);
-              if (success.success) {
-                Toastr({ type: "success", message: success.message });
+              if (session) {
+                const success = await serverAddCart(product?._id, window.location.pathname);
+                if (success?.success) {
+                  Toastr({ type: "success", message: success.message });
+                } else {
+                  Toastr({ type: "error", message: success?.message || "Could not add to cart" });
+                }
               } else {
-                Toastr({ type: "error", message: success.message });
-              } 
+                // Guest: save to cookie
+                const guestRes = await addToGuestCart(product?._id, 1);
+                if (guestRes?.success) {
+                  Toastr({ type: "success", message: guestRes.message });
+                } else {
+                  Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
+                }
+              }
               }}
             className="flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-md bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
           >

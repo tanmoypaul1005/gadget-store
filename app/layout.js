@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DrawerDefault } from "./components/header/DrawerDefault";
+import Providers from "./Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
         <div 
          style={{ backgroundImage: "url('header.png')" }}
         className="mt-[64px] overflow-y-auto h-[calc(100vh-64px)] leading-normal tracking-normal bg-cover bg-fixed">
-          {children}
+          <Providers>{children}</Providers>
           <Footer />
         </div>
       </div>

@@ -10,10 +10,16 @@ import Summary from "./components/Summary";
 import ShoppingButton from "../checkout/components/ShoppingButton";
 import { iNoCart } from "@/util/imageImports";
 import CommonRating from "@/app/components/CommonRating";
+import GuestCartView from "./components/GuestCartView";
 
 const Cart = async () => {
   
   const session = await auth();
+
+  // Guest users: cookie-based cart
+  if (!session) {
+    return <GuestCartView />;
+  }
 
   const user = await findUserId(session?.user?.email);
 

@@ -2,18 +2,24 @@ const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
 
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: false },
+
+    // guest order fields
+    guest_name: { type: String },
+    guest_email: { type: String },
+    guest_phone: { type: String },
+    guest_address: { type: String },
 
     shipping_address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Address",
-        required: true,
+        required: false,
     },
 
     billing_address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Address",
-        required: true,
+        required: false,
     },
 
     total_amount: {

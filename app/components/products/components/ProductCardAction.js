@@ -1,5 +1,6 @@
 "use client";
 import { addCart } from '@/app/action/cart';
+import { addToGuestCart } from '@/util/guestCart';
 import { Toastr } from '@/util/utilityFunction';
 import React, { useState } from 'react';
 import LoginAlertModal from '../../modal/LoginAlertModal';
@@ -18,18 +19,24 @@ const ProductCardAction = ({ data }) => {
     const handleClick = async (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (!data?.session) {
-            setOpen(true);
-            return;
-        }
-        setIsBouncing(true); // Start the animation
-        setTimeout(() => setIsBouncing(false), 300); // End the animation after 300ms
+        setIsBouncing(true);
+        setTimeout(() => setIsBouncing(false), 300);
 
-        const success = await addCart(formData, window.location.pathname);
-        if (success.success) {
-            Toastr({ type: "success", message: success.message });
+        if (data?.session) {
+            const success = await addCart(formData, window.location.pathname);
+            if (success?.success) {
+                Toastr({ type: "success", message: success.message });
+            } else {
+                Toastr({ type: "error", message: success?.message || "Could not add to cart" });
+            }
         } else {
-            Toastr({ type: "error", message: success.message });
+            // Guest: save to cookie
+            const guestRes = await addToGuestCart(data?.product_id, 1);
+            if (guestRes?.success) {
+                Toastr({ type: "success", message: guestRes.message });
+            } else {
+                Toastr({ type: "error", message: guestRes?.message || "Could not add to cart" });
+            }
         }
     };
 
