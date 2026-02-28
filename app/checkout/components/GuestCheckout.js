@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const GuestCheckout = () => {
+const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
   const router = useRouter();
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
@@ -15,11 +15,20 @@ const GuestCheckout = () => {
   const [placing, setPlacing] = useState(false);
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
+    name: initialName,
+    email: initialEmail,
     phone: "",
     address: "",
   });
+
+  // Sync if props arrive after mount
+  useEffect(() => {
+    setForm((prev) => ({
+      ...prev,
+      name: prev.name || initialName,
+      email: prev.email || initialEmail,
+    }));
+  }, [initialName, initialEmail]);
 
   useEffect(() => {
     const loadProducts = async () => {
