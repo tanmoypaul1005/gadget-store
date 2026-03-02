@@ -28,8 +28,8 @@ const Orders = async () => {
   const order = await getOrders(session?.user?.email);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-4 py-8 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-[#0a0a0f] py-8">
+      <div className="common-class">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white tracking-tight">My Orders</h1>
@@ -127,24 +127,18 @@ const Orders = async () => {
             ))}
           </div>
         ) : (
-          /* Empty State */
-          <div className="flex flex-col items-center justify-center py-20 px-4 text-center">
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 mb-8 opacity-80">
-              <Image
-                alt="No orders found"
-                src={iNoOrder}
-                fill
-                className="object-contain"
-              />
+          <div className="flex flex-col items-center justify-center  px-4 text-center">
+            <div className="mb-8 drop-shadow-[0_0_30px_rgba(99,102,241,0.3)]">
+              <EmptyOrderIllustration />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">No orders yet</h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-sm">
               Looks like you haven't placed any orders. Start exploring our products!
             </p>
-            
+
             <a href="/shop"
               className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500
-                         text-white text-sm font-semibold rounded-xl transition-colors duration-200"
+            text-white text-sm font-semibold rounded-xl transition-colors duration-200"
             >
               Browse Products
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -154,8 +148,46 @@ const Orders = async () => {
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 
 export default Orders;
+
+
+
+const EmptyOrderIllustration = () => (
+  <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 h-48 sm:w-64 sm:h-64">
+    {/* Background Circle */}
+    <circle cx="100" cy="100" r="90" fill="#1a1a2e" stroke="#2d2d4e" strokeWidth="1.5" />
+
+    {/* Box Body */}
+    <rect x="55" y="80" width="90" height="75" rx="8" fill="#1e1e3a" stroke="#4f46e5" strokeWidth="1.5" />
+
+    {/* Box Lid */}
+    <path d="M50 85 Q100 65 150 85" stroke="#6366f1" strokeWidth="2" fill="none" strokeLinecap="round" />
+    <path d="M50 85 L55 80 L145 80 L150 85" fill="#16163a" stroke="#4f46e5" strokeWidth="1.5" />
+
+    {/* Lid Flaps */}
+    <path d="M55 80 L80 70 L120 70 L145 80" fill="#1e1e3a" stroke="#4f46e5" strokeWidth="1.5" />
+    <line x1="100" y1="70" x2="100" y2="80" stroke="#4f46e5" strokeWidth="1.5" />
+
+    {/* Question Mark inside box */}
+    <text x="100" y="133" textAnchor="middle" fontSize="32" fontWeight="bold" fill="#4f46e5" opacity="0.9">?</text>
+
+    {/* Stars / Sparkles */}
+    <circle cx="40" cy="50" r="3" fill="#6366f1" opacity="0.6" />
+    <circle cx="160" cy="45" r="2" fill="#818cf8" opacity="0.5" />
+    <circle cx="170" cy="130" r="2.5" fill="#6366f1" opacity="0.4" />
+    <circle cx="30" cy="140" r="2" fill="#818cf8" opacity="0.5" />
+
+    {/* Small sparkle lines */}
+    <line x1="40" y1="44" x2="40" y2="56" stroke="#6366f1" strokeWidth="1" opacity="0.4" />
+    <line x1="34" y1="50" x2="46" y2="50" stroke="#6366f1" strokeWidth="1" opacity="0.4" />
+    <line x1="160" y1="40" x2="160" y2="50" stroke="#818cf8" strokeWidth="1" opacity="0.4" />
+    <line x1="155" y1="45" x2="165" y2="45" stroke="#818cf8" strokeWidth="1" opacity="0.4" />
+
+    {/* Bottom shadow line */}
+    <ellipse cx="100" cy="160" rx="45" ry="6" fill="#4f46e5" opacity="0.15" />
+  </svg>
+);
