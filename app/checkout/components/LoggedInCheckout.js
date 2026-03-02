@@ -154,7 +154,7 @@ const LoggedInCheckout = ({ email }) => {
   const totalItems = cartItems.reduce((s, i) => s + (i.quantity || 1), 0);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#0a0a0f] ">
       <div className="common-class">
 
         {/* Page Header */}

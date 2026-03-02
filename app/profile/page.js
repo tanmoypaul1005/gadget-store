@@ -47,13 +47,13 @@ const ProfileInfo = async () => {
               </div>
 
               {/* Edit Profile button */}
-              <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-200 border rounded-xl bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:text-white">
+              {/* <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-200 border rounded-xl bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20 hover:text-white">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                 </svg>
                 Edit Profile
-              </button>
+              </button> */}
             </div>
 
             {/* Name & Email */}
