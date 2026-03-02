@@ -1,9 +1,7 @@
 "use server";
 import Products from "@/models/Products";
 import User from "@/models/User";
-import { base_url } from "@/util/const";
 import connectMongo from "@/util/db";
-import { kuProductList } from "@/util/url";
 
 export const findUserId = async (email) => {
   try {
@@ -35,9 +33,14 @@ export const fetchTopRateProducts = async () => {
 };
 
 export const fetchProduct = async (product_id) => {
-  const response = await fetch(base_url + kuProductList + `/${product_id}`);
-  const product = await response?.json();
-  return product?.data;
+  try {
+    await connectMongo();
+    const product = await Products.findOne({ _id: product_id });
+    return product;
+  } catch {
+    console.log("error fetching product");
+    return null;
+  }
 };
 
 
