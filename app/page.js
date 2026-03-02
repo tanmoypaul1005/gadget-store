@@ -5,7 +5,6 @@ import { getAllCategory } from "./action";
 import SideBarCategory from "./components/home/SideBarCategory";
 import OfferBanner from "./components/home/OfferBanner";
 import RegularProducts from "./components/products/components/RegularProducts";
-import TopBrand from "./components/topBrand/TopBrand";
 import Offer from "./offer/page";
 
 export default async function Home() {
@@ -28,7 +27,6 @@ export default async function Home() {
      
       <RegularProducts />
       <Offer/>
-      <TopBrand/>
     </div>
   );
 }
