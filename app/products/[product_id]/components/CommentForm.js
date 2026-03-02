@@ -1,6 +1,7 @@
 // CommentForm.jsx
 "use client";
 import React from "react";
+import Image from "next/image";
 import Field from "@/app/components/input/Field";
 import { useForm } from "react-hook-form";
 import { Toastr } from "@/util/utilityFunction";
@@ -64,9 +65,11 @@ const CommentForm = ({ data }) => {
         {/* User avatar */}
         {data?.user?.image && (
           <div className="flex items-center gap-2 ml-auto">
-            <img
+            <Image
               src={data.user.image}
               alt={data.user.name}
+              width={28}
+              height={28}
               className="rounded-full w-7 h-7 ring-2 ring-indigo-500/30"
             />
             <span className="hidden text-xs text-gray-400 sm:block">{data.user.name}</span>

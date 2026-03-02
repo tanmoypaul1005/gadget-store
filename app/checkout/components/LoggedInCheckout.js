@@ -115,6 +115,7 @@ const LoggedInCheckout = ({ email }) => {
       setLoading(false);
     };
     init();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const totalPrice = cartItems.reduce((sum, item) => {
@@ -282,7 +283,7 @@ const LoggedInCheckout = ({ email }) => {
                              focus:bg-white/[0.07] transition-all duration-200"
                 />
               </div>
-              <p className="mt-2 text-xs text-gray-500">We'll only use this to contact you about your order.</p>
+              <p className="mt-2 text-xs text-gray-500">We&apos;ll only use this to contact you about your order.</p>
             </SectionCard>
           </div>
 

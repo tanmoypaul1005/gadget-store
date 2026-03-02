@@ -20,7 +20,7 @@ const EmptyCart = () => (
     </div>
     <h2 className="mb-2 text-2xl font-bold text-white sm:text-3xl">Your cart is empty</h2>
     <p className="max-w-xs mb-8 text-sm text-gray-400">
-      Looks like you haven't added anything yet. Explore our store and find something you love!
+      Looks like you haven&apos;t added anything yet. Explore our store and find something you love!
     </p>
     <Link href="/"
       className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 bg-indigo-600 hover:bg-indigo-500 rounded-xl">
