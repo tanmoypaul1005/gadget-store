@@ -246,7 +246,7 @@ const Search = () => {
                     onClick={() => { setDropdownOpen(false); setSearchTerm(""); }}
                     className="flex items-center justify-center w-full gap-2 py-2 text-xs font-semibold text-indigo-400 transition-all duration-200 border border-transparent rounded-xl hover:text-white hover:bg-indigo-600/20 hover:border-indigo-500/30"
                   >
-                    View all results for "{searchValue}"
+                    View all results for &quot;{searchValue}&quot;
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
