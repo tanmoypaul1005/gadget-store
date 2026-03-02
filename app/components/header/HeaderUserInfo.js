@@ -119,26 +119,39 @@ const MobileMenu = ({ session, totalCart, onToggleNav, onLogin, onLogout }) => (
 );
 
 const CartIcon = ({isMobile=false, iconSize = "22px", totalCart = 0, padding = "px-4", session = null }) => {
+  // Helper: read the real cart count from the cookie
+  const getCountFromCookie = () => {
+    try {
+      const raw = document.cookie.match('(^|;)\\s*guest_cart_items\\s*=\\s*([^;]+)');
+      if (raw) {
+        const items = JSON.parse(decodeURIComponent(raw.pop()));
+        return Array.isArray(items) ? items.length : 0;
+      }
+    } catch (_) {}
+    return 0;
+  };
+
   const [count, setCount] = React.useState(totalCart);
 
+  // On mount & whenever totalCart changes, sync from cookie (source of truth)
   React.useEffect(() => {
-    if (!session) {
-      // initialise from cookie
-      try {
-        const raw = document.cookie.match('(^|;)\\s*guest_cart_items\\s*=\\s*([^;]+)');
-        if (raw) {
-          const items = JSON.parse(decodeURIComponent(raw.pop()));
-          setCount(Array.isArray(items) ? items.length : 0);
-        }
-      } catch (_) {}
+    const cookieCount = getCountFromCookie();
+    setCount(cookieCount > 0 ? cookieCount : totalCart);
+  }, [totalCart]);
 
-      const handler = (e) => setCount(e.detail?.count ?? 0);
-      window.addEventListener('guestCartUpdated', handler);
-      return () => window.removeEventListener('guestCartUpdated', handler);
-    } else {
-      setCount(totalCart);
-    }
-  }, [session, totalCart]);
+  // Listen to guestCartUpdated (fired on every cookie save) for ALL users
+  React.useEffect(() => {
+    const handler = (e) => setCount(e.detail?.count ?? 0);
+    window.addEventListener('guestCartUpdated', handler);
+    return () => window.removeEventListener('guestCartUpdated', handler);
+  }, []);
+
+  // Also listen to cartItemAdded — re-read cookie for the exact count
+  React.useEffect(() => {
+    const handler = () => setCount(getCountFromCookie());
+    window.addEventListener('cartItemAdded', handler);
+    return () => window.removeEventListener('cartItemAdded', handler);
+  }, []);
 
   return (
     <>

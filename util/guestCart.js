@@ -38,10 +38,18 @@ export function saveGuestCartItems(items) {
   }
 }
 
+// Dispatch a generic cart-item-added event (works for both guest and logged-in users)
+export function dispatchCartItemAdded() {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("cartItemAdded"));
+  }
+}
+
 export async function addToGuestCart(product_id, quantity = 1) {
   try {
     const items = getGuestCartItems();
     const idx = items.findIndex((i) => i.product_id === product_id);
+    const isNew = idx === -1;
     if (idx > -1) {
       items[idx].quantity = (items[idx].quantity || 0) + quantity;
       items[idx].updatedAt = Date.now();
@@ -49,6 +57,8 @@ export async function addToGuestCart(product_id, quantity = 1) {
       items.push({ product_id, quantity, addedAt: Date.now() });
     }
     saveGuestCartItems(items);
+    // Fire cartItemAdded only when a brand-new product is added
+    if (isNew) dispatchCartItemAdded();
     return { success: true, message: "Added to cart", data: items };
   } catch (err) {
     console.error(err);

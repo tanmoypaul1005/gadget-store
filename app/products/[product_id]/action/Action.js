@@ -3,6 +3,7 @@ import CommonButton from "@/app/components/button/CommonButton";
 import React from "react";
 import { Toastr } from "@/util/utilityFunction";
 import { addCart } from "@/app/action/cart";
+import { addToGuestCart } from "@/util/guestCart";
 import { useState } from "react";
 import LoginAlertModal from "@/app/components/modal/LoginAlertModal";
 
@@ -38,6 +39,8 @@ const Action = ({ product_id, user }) => {
       return;
     }
     setIsAnimating(true);
+    // Save to cookie (source of truth for counter) + update server
+    const guestRes = await addToGuestCart(product_id, 1);
     const success = await addCart({ product_id, user_id: user._id, quantity: 1 }, "/products/" + product_id);
     setIsAnimating(false);
 
@@ -77,6 +80,8 @@ const Action = ({ product_id, user }) => {
               setOpen(true)
               return
             }
+            // Save to cookie (source of truth for counter) + update server
+            await addToGuestCart(product_id, formData.quantity);
             const success = await addCart(formData, "/products/" + product_id);
             if (success.success) {
               Toastr({ type: "success", message: success.message });
