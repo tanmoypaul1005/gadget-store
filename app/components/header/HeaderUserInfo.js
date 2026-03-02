@@ -6,7 +6,6 @@ import LogoutModal from "./LogoutModal";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import Search from "./Search";
-import { useGeneralStore } from "@/app/stores/generalStore";
 
 const truncateName = (name, maxLength) =>
   name?.length > maxLength ? `${name.substring(0, maxLength)}...` : name;
@@ -50,7 +49,6 @@ const useCartCount = (totalCart) => {
 const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
   const [isShowLogoutModal, setShowLogoutModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { mobileNav, setMobileNav } = useGeneralStore();
   const cartCount = useCartCount(totalCart);
 
   const handleGoogleAuthClick = async () => {
@@ -73,14 +71,13 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 shrink-0 group">
-              <div className="w-8 h-8 rounded-xl bg-indigo-600 flex items-center justify-center
-                              group-hover:bg-indigo-500 transition-colors duration-200 shadow-lg shadow-indigo-600/30">
+              <div className="flex items-center justify-center w-8 h-8 transition-colors duration-200 bg-indigo-600 shadow-lg rounded-xl group-hover:bg-indigo-500 shadow-indigo-600/30">
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
                 </svg>
               </div>
-              <span className="text-lg font-bold tracking-tight hidden sm:block">
+              <span className="hidden text-lg font-bold tracking-tight sm:block">
                 <span className="text-indigo-400">Gadget</span>
                 <span className="text-white">Store</span>
               </span>
@@ -89,14 +86,14 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             {/* ── Search Bar — takes all remaining space ── */}
             <div className="flex-1 hidden md:block">
               <div className="relative w-full">
-                <div className="pl-10 w-full">
+                <div className="w-full pl-10">
                   <Search />
                 </div>
               </div>
             </div>
 
             {/* ── Desktop Actions ── */}
-            <div className="hidden md:flex items-center gap-1 shrink-0">
+            <div className="items-center hidden gap-1 md:flex shrink-0">
               <NavLink href="/orders" badge={totalOrder}>
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -118,9 +115,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
               ) : (
                 <button
                   onClick={handleGoogleAuthClick}
-                  className="flex items-center gap-2 ml-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-500
-                             text-white text-sm font-semibold rounded-xl transition-all duration-200
-                             shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40"
+                  className="flex items-center gap-2 px-4 py-2 ml-1 text-sm font-semibold text-white transition-all duration-200 bg-indigo-600 shadow-lg hover:bg-indigo-500 rounded-xl shadow-indigo-600/20 hover:shadow-indigo-600/40"
                 >
                   <svg className="w-4 h-4" viewBox="0 0 24 24">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -134,8 +129,8 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             </div>
 
             {/* ── Mobile Right ── */}
-            <div className="flex items-center gap-2 md:hidden ml-auto">
-              <Link href="/cart" className="relative p-2 rounded-xl hover:bg-white/5 transition-colors">
+            <div className="flex items-center gap-2 ml-auto md:hidden">
+              <Link href="/cart" className="relative p-2 transition-colors rounded-xl hover:bg-white/5">
                 <svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -150,8 +145,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10
-                           transition-colors duration-200"
+                className="p-2 transition-colors duration-200 border rounded-xl bg-white/5 hover:bg-white/10 border-white/10"
               >
                 {mobileMenuOpen ? (
                   <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +161,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
           </div>
 
           {/* ── Mobile Search Row ── */}
-          <div className="md:hidden pb-3 -mt-1">
+          <div className="pb-3 -mt-1 md:hidden">
             <Search />
           </div>
         </div>
@@ -179,8 +173,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
             {session ? (
               <>
                 {/* User Card */}
-                <div className="flex items-center gap-3 px-3 py-3 rounded-xl bg-indigo-600/10
-                                border border-indigo-500/15 mb-3">
+                <div className="flex items-center gap-3 px-3 py-3 mb-3 border rounded-xl bg-indigo-600/10 border-indigo-500/15">
                   <Image
                     src={session?.user?.image}
                     alt="User"
@@ -218,9 +211,7 @@ const HeaderUserInfo = ({ session, totalCart, totalOrder }) => {
                 <div className="pt-1 mt-1 border-t border-white/5">
                   <button
                     onClick={() => { setShowLogoutModal(true); setMobileMenuOpen(false); }}
-                    className="w-full flex items-center gap-3 px-3 py-3 rounded-xl text-red-400
-                               hover:bg-red-500/10 border border-transparent hover:border-red-500/20
-                               transition-all duration-200 text-sm font-medium"
+                    className="flex items-center w-full gap-3 px-3 py-3 text-sm font-medium text-red-400 transition-all duration-200 border border-transparent rounded-xl hover:bg-red-500/10 hover:border-red-500/20"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -303,7 +294,7 @@ const UserMenuDesktop = ({ session, onLogout }) => {
             alt="User"
             width={30}
             height={30}
-            className="rounded-full ring-2 ring-indigo-500/40 group-hover:ring-indigo-500/70 transition-all"
+            className="transition-all rounded-full ring-2 ring-indigo-500/40 group-hover:ring-indigo-500/70"
           />
           <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full
                            ring-2 ring-[#0a0a0f]" />
