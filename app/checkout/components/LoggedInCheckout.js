@@ -9,9 +9,75 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+/* ── Loading Skeleton ── */
+const LoadingSkeleton = () => (
+  <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8 animate-pulse">
+    <div className="common-class">
+      <div className="w-48 h-8 mb-10 bg-white/5 rounded-xl" />
+      <div className="grid gap-6 lg:grid-cols-5">
+        <div className="space-y-4 lg:col-span-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
+              <div className="w-16 h-16 rounded-xl bg-white/10 shrink-0" />
+              <div className="flex-1 space-y-2">
+                <div className="w-3/4 h-4 rounded bg-white/10" />
+                <div className="w-1/4 h-3 rounded bg-white/10" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="lg:col-span-2 h-80 rounded-2xl bg-white/5" />
+      </div>
+    </div>
+  </div>
+);
+
+/* ── Empty Cart ── */
+const EmptyCart = () => (
+  <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center py-24 px-4 text-center">
+    <svg viewBox="0 0 120 120" fill="none" className="w-32 h-32 mx-auto mb-6">
+      <circle cx="60" cy="60" r="56" fill="#111118" stroke="#1e1e3a" strokeWidth="1.5" />
+      <path d="M30 38h8l10 34h26l8-24H46" stroke="#4f46e5" strokeWidth="2"
+        strokeLinecap="round" strokeLinejoin="round" fill="none" />
+      <circle cx="52" cy="80" r="4" fill="#6366f1" />
+      <circle cx="72" cy="80" r="4" fill="#6366f1" />
+      <circle cx="85" cy="38" r="10" fill="#1e1e3a" stroke="#ef4444" strokeWidth="1.5" />
+      <path d="M82 38h6M85 35v6" stroke="#ef4444" strokeWidth="1.5"
+        strokeLinecap="round" transform="rotate(45 85 38)" />
+    </svg>
+    <h2 className="mb-2 text-2xl font-bold text-white">Your cart is empty</h2>
+    <p className="max-w-xs mb-8 text-sm text-gray-400">Add some products before checking out.</p>
+    <Link href="/"
+      className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-colors bg-indigo-600 hover:bg-indigo-500 rounded-xl">
+      Browse Products
+      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+      </svg>
+    </Link>
+  </div>
+);
+
+/* ── Section Card ── */
+const SectionCard = ({ title, icon, children, badge }) => (
+  <div className="bg-[#111118] border border-white/5 rounded-2xl overflow-hidden">
+    <div className="bg-[#16161f] px-5 py-4 border-b border-white/5 flex items-center gap-3">
+      <div className="flex items-center justify-center w-8 h-8 border rounded-lg bg-indigo-600/20 border-indigo-500/20 shrink-0">
+        {icon}
+      </div>
+      <h2 className="text-sm font-bold text-white">{title}</h2>
+      {badge && (
+        <span className="ml-auto text-xs text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">
+          {badge}
+        </span>
+      )}
+    </div>
+    <div className="px-5 py-5">{children}</div>
+  </div>
+);
+
+/* ── Main Component ── */
 const LoggedInCheckout = ({ email }) => {
   const router = useRouter();
-
   const [address, setAddress] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
@@ -19,12 +85,8 @@ const LoggedInCheckout = ({ email }) => {
   const [placing, setPlacing] = useState(false);
   const [contactNumber, setContactNumber] = useState("");
 
-  const shipping_address = address?.find(
-    (a) => a?.address_type === address_type.shipping_address
-  );
-  const billing_address = address?.find(
-    (a) => a?.address_type === address_type.billing_address
-  );
+  const shipping_address = address?.find((a) => a?.address_type === address_type.shipping_address);
+  const billing_address = address?.find((a) => a?.address_type === address_type.billing_address);
 
   const fetchAddresses = async () => {
     try {
@@ -40,17 +102,15 @@ const LoggedInCheckout = ({ email }) => {
       const items = getGuestCartItems();
       setCartItems(items);
       const map = {};
-      await Promise.all(
-        items.map(async (item) => {
-          try {
-            const res = await fetch(`/api/products/${item.product_id}`);
-            if (res.ok) {
-              const data = await res.json();
-              if (data?.success) map[item.product_id] = data.data;
-            }
-          } catch (_) {}
-        })
-      );
+      await Promise.all(items.map(async (item) => {
+        try {
+          const res = await fetch(`/api/products/${item.product_id}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data?.success) map[item.product_id] = data.data;
+          }
+        } catch (_) {}
+      }));
       setProducts(map);
       setLoading(false);
     };
@@ -63,21 +123,11 @@ const LoggedInCheckout = ({ email }) => {
   }, 0);
 
   const handlePlaceOrder = async () => {
-    if (!shipping_address) {
-      return Toastr({ type: "error", message: "Please add a shipping address" });
-    }
-    if (!billing_address) {
-      return Toastr({ type: "error", message: "Please add a billing address" });
-    }
-    if (!contactNumber.trim()) {
-      return Toastr({ type: "error", message: "Please enter contact number" });
-    }
-    if (contactNumber.trim().length < 10) {
-      return Toastr({ type: "error", message: "Contact number must be at least 10 digits" });
-    }
-    if (!cartItems.length) {
-      return Toastr({ type: "error", message: "Your cart is empty" });
-    }
+    if (!shipping_address) return Toastr({ type: "error", message: "Please add a shipping address" });
+    if (!billing_address) return Toastr({ type: "error", message: "Please add a billing address" });
+    if (!contactNumber.trim()) return Toastr({ type: "error", message: "Please enter contact number" });
+    if (contactNumber.trim().length < 10) return Toastr({ type: "error", message: "Contact number must be at least 10 digits" });
+    if (!cartItems.length) return Toastr({ type: "error", message: "Your cart is empty" });
 
     setPlacing(true);
     const res = await addOrderFromCookie({
@@ -98,121 +148,304 @@ const LoggedInCheckout = ({ email }) => {
     }
   };
 
-  if (loading)
-    return (
-      <div className="flex items-center justify-center h-40 text-white">
-        Loading...
-      </div>
-    );
+  if (loading) return <LoadingSkeleton />;
+  if (!cartItems.length) return <EmptyCart />;
 
-  if (!cartItems.length)
-    return (
-      <div className="flex flex-col items-center justify-center mt-10 gap-4">
-        <p className="text-2xl font-semibold text-white">Your Cart is Empty!</p>
-        <Link href="/" className="px-6 py-2 font-medium text-white bg-gray-800 rounded-md">
-          Continue Shopping
-        </Link>
-      </div>
-    );
+  const totalItems = cartItems.reduce((s, i) => s + (i.quantity || 1), 0);
 
   return (
-    <div className="common-topGap common-class font-sans">
-      <div className="grid md:grid-cols-3 gap-8 mt-5">
+    <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8">
+      <div className="common-class">
 
-        {/* Left: address + contact + summary */}
-        <div className="md:col-span-2 space-y-6">
+        {/* Page Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-1">
+            <Link href="/cart" className="text-gray-500 transition-colors hover:text-gray-300">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </Link>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">Checkout</h1>
+          </div>
+          <p className="text-sm text-gray-400 ml-7">Review your order and complete your purchase</p>
+        </div>
 
-          {/* Order items */}
-          <div>
-            <h3 className="text-lg font-bold text-white border-b border-gray-600 pb-2 mb-4">
-              Order Summary
-            </h3>
-            <div className="space-y-4">
-              {cartItems.map((item) => {
-                const product = products[item.product_id];
-                if (!product) return null;
-                return (
-                  <div key={item.product_id} className="flex gap-4 items-start">
-                    <div className="p-2 bg-gray-100 rounded-md w-20 h-20 shrink-0">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        width={70}
-                        height={70}
-                        className="object-contain w-full h-full"
-                      />
+        {/* Progress Steps */}
+        <div className="flex items-center gap-2 mb-10 ml-7">
+          {["Cart", "Details", "Confirm"].map((step, i) => (
+            <div key={step} className="flex items-center gap-2">
+              <div className={`flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold
+                ${i === 1 ? "bg-indigo-600 text-white"
+                  : i < 1 ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                  : "bg-white/5 text-gray-500 border border-white/10"}`}>
+                {i < 1 ? (
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : i + 1}
+              </div>
+              <span className={`text-xs font-medium ${i === 1 ? "text-white" : "text-gray-500"}`}>{step}</span>
+              {i < 2 && <div className={`w-8 h-px ${i < 1 ? "bg-emerald-500/30" : "bg-white/10"}`} />}
+            </div>
+          ))}
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-5">
+
+          {/* ── Left Column ── */}
+          <div className="space-y-5 lg:col-span-3">
+
+            {/* Order Items */}
+            <SectionCard
+              title="Order Items"
+              badge={`${totalItems} item${totalItems !== 1 ? "s" : ""}`}
+              icon={
+                <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              }
+            >
+              <div className="space-y-4">
+                {cartItems.map((item) => {
+                  const product = products[item.product_id];
+                  if (!product) return null;
+                  return (
+                    <div key={item.product_id}
+                      className="flex items-center gap-4 p-3 transition-colors border rounded-xl bg-white/5 border-white/5 hover:border-white/10">
+                      <div className="relative overflow-hidden w-14 h-14 rounded-xl bg-white/5 ring-1 ring-white/10 shrink-0">
+                        <Image src={product.image} alt={product.name} fill className="object-contain p-1.5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-sm font-semibold text-white truncate">{product.name}</h4>
+                        {product.brand && (
+                          <p className="text-xs text-gray-500 mt-0.5">{product.brand}</p>
+                        )}
+                        <p className="mt-1 text-xs text-gray-400">
+                          ${product.price} <span className="text-gray-600">×</span>{" "}
+                          <span className="text-gray-300">{item.quantity || 1}</span>
+                        </p>
+                      </div>
+                      <span className="text-sm font-bold text-indigo-400 shrink-0">
+                        ${(product.price * (item.quantity || 1)).toFixed(2)}
+                      </span>
                     </div>
-                    <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-semibold text-white line-clamp-1">{product.name}</h4>
-                      <p className="text-xs text-gray-400">Brand: {product.brand ?? ""}</p>
-                      <p className="text-sm font-bold text-white">
-                        ${product.price} × {item.quantity || 1}
-                      </p>
+                  );
+                })}
+              </div>
+            </SectionCard>
+
+            {/* Delivery Address */}
+            <SectionCard
+              title="Delivery Address"
+              icon={
+                <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              }
+            >
+              {/* Address status pills */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <AddressPill label="Shipping" filled={!!shipping_address} />
+                <AddressPill label="Billing" filled={!!billing_address} />
+              </div>
+              <Address address={address} email={email} onSaved={fetchAddresses} />
+            </SectionCard>
+
+            {/* Contact Number */}
+            <SectionCard
+              title="Contact Number"
+              icon={
+                <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              }
+            >
+              <div className="relative max-w-sm">
+                <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <input
+                  type="tel"
+                  value={contactNumber}
+                  onChange={(e) => setContactNumber(e.target.value)}
+                  placeholder="01XXXXXXXXX"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white
+                             text-sm placeholder:text-gray-600 focus:outline-none focus:border-indigo-500
+                             focus:bg-white/[0.07] transition-all duration-200"
+                />
+              </div>
+              <p className="mt-2 text-xs text-gray-500">We'll only use this to contact you about your order.</p>
+            </SectionCard>
+          </div>
+
+          {/* ── Right: Order Summary ── */}
+          <div className="lg:col-span-2">
+            <div className="bg-[#111118] border border-white/5 rounded-2xl overflow-hidden sticky top-6">
+
+              {/* Header */}
+              <div className="bg-[#16161f] px-5 py-4 border-b border-white/5 flex items-center gap-3">
+                <div className="flex items-center justify-center w-8 h-8 border rounded-lg bg-white/5 border-white/5">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="text-sm font-bold text-white">Order Summary</h2>
+                  <p className="text-xs text-gray-500">{cartItems.length} product{cartItems.length !== 1 ? "s" : ""}</p>
+                </div>
+              </div>
+
+              {/* Items */}
+              <div className="px-5 py-4 space-y-2.5 border-b border-white/5 max-h-48 overflow-y-auto">
+                {cartItems.map((item) => {
+                  const p = products[item.product_id];
+                  if (!p) return null;
+                  return (
+                    <div key={item.product_id} className="flex items-center gap-2">
+                      <span className="text-xs text-gray-500 bg-white/5 rounded px-1.5 py-0.5 shrink-0">
+                        ×{item.quantity || 1}
+                      </span>
+                      <span className="flex-1 text-sm text-gray-300 truncate">{p.name}</span>
+                      <span className="text-sm font-semibold text-white shrink-0">
+                        ${(p.price * (item.quantity || 1)).toFixed(2)}
+                      </span>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+
+              {/* Address Preview */}
+              {(shipping_address || billing_address) && (
+                <div className="px-5 py-4 space-y-3 border-b border-white/5">
+                  {shipping_address && (
+                    <AddressPreview label="Ship to" address={shipping_address} />
+                  )}
+                  {billing_address && (
+                    <AddressPreview label="Bill to" address={billing_address} />
+                  )}
+                </div>
+              )}
+
+              {/* Price Breakdown */}
+              <div className="px-5 py-4 space-y-2 border-b border-white/5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Subtotal</span>
+                  <span className="text-white">${totalPrice.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Shipping</span>
+                  <span className="font-medium text-emerald-400">Free</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-400">Tax</span>
+                  <span className="text-white">Included</span>
+                </div>
+              </div>
+
+              {/* Total */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
+                <span className="text-base font-bold text-white">Total</span>
+                <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>
+              </div>
+
+              {/* CTA */}
+              <div className="px-5 py-5 space-y-3">
+                <button
+                  onClick={handlePlaceOrder}
+                  disabled={placing}
+                  className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50
+                             disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl
+                             transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  {placing ? (
+                    <>
+                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Placing Order...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Place Order · ${totalPrice.toFixed(2)}
+                    </>
+                  )}
+                </button>
+
+                <Link href="/cart" className="block">
+                  <button className="flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 border bg-white/5 hover:bg-white/10 hover:text-white rounded-xl border-white/5 hover:border-white/10">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to Cart
+                  </button>
+                </Link>
+
+                {/* Trust Badges */}
+                <div className="grid grid-cols-3 gap-2 pt-1">
+                  {[
+                    { icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z", label: "SSL Secure" },
+                    { icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15", label: "Easy Returns" },
+                    { icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4", label: "Free Ship" },
+                  ].map(({ icon, label }) => (
+                    <div key={label} className="flex flex-col items-center gap-1.5 p-2 rounded-xl
+                                                bg-white/5 border border-white/5">
+                      <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={icon} />
+                      </svg>
+                      <span className="text-[10px] text-gray-500 text-center">{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-
-          {/* Address */}
-          <div>
-            <h3 className="text-base font-bold text-white mb-3">Delivery Address</h3>
-            <Address address={address} email={email} onSaved={fetchAddresses} />
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-base font-bold text-white mb-2">Contact Number</h3>
-            <input
-              type="tel"
-              value={contactNumber}
-              onChange={(e) => setContactNumber(e.target.value)}
-              placeholder="01XXXXXXXXX"
-              className="w-full max-w-xs px-4 py-2.5 rounded-md bg-gray-800 text-white border border-gray-600 focus:outline-none focus:border-blue-500 text-sm"
-            />
-          </div>
         </div>
-
-        {/* Right: total panel */}
-        <div className="p-4 bg-gray-100 rounded-md h-max">
-          <h3 className="pb-2 text-lg font-bold text-gray-800 border-b border-gray-300">
-            Order Total
-          </h3>
-          <ul className="mt-4 space-y-3 text-gray-800">
-            {cartItems.map((item) => {
-              const p = products[item.product_id];
-              return p ? (
-                <li key={item.product_id} className="flex justify-between text-sm font-medium">
-                  <span className="line-clamp-1 max-w-[65%]">{p.name}</span>
-                  <span>${(p.price * (item.quantity || 1)).toFixed(2)}</span>
-                </li>
-              ) : null;
-            })}
-          </ul>
-          <div className="flex justify-between mt-4 pt-3 border-t border-gray-300 font-bold text-gray-800">
-            <span>Total</span>
-            <span>${totalPrice.toFixed(2)}</span>
-          </div>
-          <button
-            onClick={handlePlaceOrder}
-            disabled={placing}
-            className="w-full px-6 py-3 mt-4 font-medium text-white bg-gray-900 rounded-md disabled:opacity-60 hover:bg-gray-800 transition"
-          >
-            {placing ? "Placing..." : "Place Order"}
-          </button>
-          <div className="mt-3">
-            <Link href="/cart">
-              <button className="w-full px-6 py-2.5 text-sm font-medium text-gray-800 border border-gray-300 rounded-md">
-                Back to Cart
-              </button>
-            </Link>
-          </div>
-        </div>
-
       </div>
     </div>
   );
 };
 
 export default LoggedInCheckout;
+
+/* ── Address Status Pill ── */
+const AddressPill = ({ label, filled }) => (
+  <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border
+    ${filled
+      ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+      : "bg-red-500/10 text-red-400 border-red-500/20"}`}>
+    {filled ? (
+      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+      </svg>
+    ) : (
+      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    )}
+    {label} {filled ? "Added" : "Missing"}
+  </div>
+);
+
+/* ── Address Preview in Sidebar ── */
+const AddressPreview = ({ label, address }) => (
+  <div className="flex gap-2">
+    <span className="text-xs text-gray-500 shrink-0 mt-0.5 w-12">{label}</span>
+    <p className="text-xs text-gray-300 line-clamp-2">
+      {[address.street, address.city, address.country].filter(Boolean).join(", ")}
+    </p>
+  </div>
+);

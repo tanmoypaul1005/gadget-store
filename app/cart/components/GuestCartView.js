@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 
 /* ── Empty State ── */
 const EmptyCart = () => (
-  <div className="flex flex-col items-center justify-center py-24 px-4 text-center">
+  <div className="flex flex-col items-center justify-center px-4 py-24 text-center">
     <div className="mb-8">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-36 h-36 mx-auto">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto w-36 h-36">
         <circle cx="60" cy="60" r="56" fill="#111118" stroke="#1e1e3a" strokeWidth="1.5"/>
         <path d="M30 38h8l10 34h26l8-24H46" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
         <circle cx="52" cy="80" r="4" fill="#6366f1"/>
@@ -18,13 +18,12 @@ const EmptyCart = () => (
         <path d="M82 38h6M85 35v6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" transform="rotate(45 85 38)"/>
       </svg>
     </div>
-    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Your cart is empty</h2>
-    <p className="text-gray-400 text-sm max-w-xs mb-8">
+    <h2 className="mb-2 text-2xl font-bold text-white sm:text-3xl">Your cart is empty</h2>
+    <p className="max-w-xs mb-8 text-sm text-gray-400">
       Looks like you haven't added anything yet. Explore our store and find something you love!
     </p>
     <Link href="/"
-      className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500
-                 text-white text-sm font-semibold rounded-xl transition-colors duration-200">
+      className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 bg-indigo-600 hover:bg-indigo-500 rounded-xl">
       Continue Shopping
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -35,17 +34,17 @@ const EmptyCart = () => (
 
 /* ── Loading Skeleton ── */
 const LoadingSkeleton = () => (
-  <div className="max-w-5xl mx-auto px-4 py-10 animate-pulse">
-    <div className="h-8 w-40 bg-white/5 rounded-xl mb-8"/>
+  <div className="py-10 common-class animate-pulse">
+    <div className="w-40 h-8 mb-8 bg-white/5 rounded-xl"/>
     <div className="grid gap-6 md:grid-cols-3">
-      <div className="md:col-span-2 space-y-4">
+      <div className="space-y-4 md:col-span-2">
         {[1,2,3].map(i => (
           <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
             <div className="w-20 h-20 rounded-xl bg-white/10 shrink-0"/>
             <div className="flex-1 space-y-2">
-              <div className="h-4 bg-white/10 rounded w-3/4"/>
-              <div className="h-3 bg-white/10 rounded w-1/4"/>
-              <div className="h-4 bg-white/10 rounded w-1/3"/>
+              <div className="w-3/4 h-4 rounded bg-white/10"/>
+              <div className="w-1/4 h-3 rounded bg-white/10"/>
+              <div className="w-1/3 h-4 rounded bg-white/10"/>
             </div>
           </div>
         ))}
@@ -113,10 +112,10 @@ const GuestCartView = () => {
       <div className="common-class">
 
         {/* Page Header */}
-        <div className="mb-8 flex items-center justify-between">
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">Shopping Cart</h1>
-            <p className="text-sm text-gray-400 mt-1">{totalItems} item{totalItems !== 1 ? "s" : ""} in your cart</p>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">Shopping Cart</h1>
+            <p className="mt-1 text-sm text-gray-400">{totalItems} item{totalItems !== 1 ? "s" : ""} in your cart</p>
           </div>
           <Link href="/" className="text-sm text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1.5">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,7 +128,7 @@ const GuestCartView = () => {
         <div className="grid gap-6 md:grid-cols-3">
 
           {/* ── Cart Items ── */}
-          <div className="md:col-span-2 space-y-3">
+          <div className="space-y-3 md:col-span-2">
             {cartItems.map((item) => {
               const product = products[item.product_id];
               if (!product) return null;
@@ -139,11 +138,10 @@ const GuestCartView = () => {
                 <div key={item.product_id}
                   className="group bg-[#111118] border border-white/5 rounded-2xl p-4 sm:p-5
                              hover:border-white/10 transition-all duration-200">
-                  <div className="flex gap-4 items-start">
+                  <div className="flex items-start gap-4">
 
                     {/* Product Image */}
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden
-                                    bg-white/5 ring-1 ring-white/10 shrink-0">
+                    <div className="relative w-20 h-20 overflow-hidden sm:w-24 sm:h-24 rounded-xl bg-white/5 ring-1 ring-white/10 shrink-0">
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -156,7 +154,7 @@ const GuestCartView = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
-                          <h3 className="text-sm sm:text-base font-semibold text-white truncate leading-snug">
+                          <h3 className="text-sm font-semibold leading-snug text-white truncate sm:text-base">
                             {product.name}
                           </h3>
                           {product.brand && (
@@ -166,9 +164,7 @@ const GuestCartView = () => {
                         {/* Remove button */}
                         <button
                           onClick={() => removeItem(item.product_id)}
-                          className="flex-shrink-0 w-7 h-7 rounded-lg bg-white/5 hover:bg-red-500/20
-                                     border border-white/5 hover:border-red-500/30 flex items-center justify-center
-                                     transition-all duration-200 group/btn"
+                          className="flex items-center justify-center flex-shrink-0 transition-all duration-200 border rounded-lg w-7 h-7 bg-white/5 hover:bg-red-500/20 border-white/5 hover:border-red-500/30 group/btn"
                           title="Remove item"
                         >
                           <svg className="w-3.5 h-3.5 text-gray-400 group-hover/btn:text-red-400 transition-colors"
@@ -179,28 +175,26 @@ const GuestCartView = () => {
                       </div>
 
                       {/* Price + Quantity Row */}
-                      <div className="flex items-center justify-between mt-3 flex-wrap gap-2">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
                         <div className="flex items-center gap-1">
                           <span className="text-base font-bold text-indigo-400">${product.price}</span>
                           {item.quantity > 1 && (
-                            <span className="text-xs text-gray-500 ml-1">× {item.quantity} = <span className="text-white font-medium">${subtotal}</span></span>
+                            <span className="ml-1 text-xs text-gray-500">× {item.quantity} = <span className="font-medium text-white">${subtotal}</span></span>
                           )}
                         </div>
 
                         {/* Quantity Controls */}
-                        <div className="flex items-center gap-1 bg-white/5 rounded-xl p-1 border border-white/5">
+                        <div className="flex items-center gap-1 p-1 border bg-white/5 rounded-xl border-white/5">
                           <button
                             onClick={() => updateQuantity(item.product_id, -1)}
-                            className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-300
-                                       hover:bg-white/10 hover:text-white transition-all text-lg font-bold"
+                            className="flex items-center justify-center text-lg font-bold text-gray-300 transition-all rounded-lg w-7 h-7 hover:bg-white/10 hover:text-white"
                           >−</button>
-                          <span className="text-white font-semibold text-sm w-6 text-center tabular-nums">
+                          <span className="w-6 text-sm font-semibold text-center text-white tabular-nums">
                             {item.quantity || 1}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.product_id, 1)}
-                            className="w-7 h-7 rounded-lg flex items-center justify-center text-gray-300
-                                       hover:bg-indigo-600 hover:text-white transition-all text-lg font-bold"
+                            className="flex items-center justify-center text-lg font-bold text-gray-300 transition-all rounded-lg w-7 h-7 hover:bg-indigo-600 hover:text-white"
                           >+</button>
                         </div>
                       </div>
@@ -212,7 +206,7 @@ const GuestCartView = () => {
           </div>
 
           {/* ── Order Summary ── */}
-          <div className="h-max sticky top-6">
+          <div className="sticky h-max top-6">
             <div className="bg-[#111118] border border-white/5 rounded-2xl overflow-hidden">
 
               {/* Summary Header */}
@@ -227,7 +221,7 @@ const GuestCartView = () => {
                   if (!p) return null;
                   return (
                     <div key={item.product_id} className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2 min-w-0">
+                      <div className="flex items-center min-w-0 gap-2">
                         <span className="text-xs text-gray-500 bg-white/5 rounded px-1.5 py-0.5 shrink-0">
                           ×{item.quantity || 1}
                         </span>
@@ -249,12 +243,12 @@ const GuestCartView = () => {
                 </div>
                 <div className="flex justify-between text-sm text-gray-400">
                   <span>Shipping</span>
-                  <span className="text-emerald-400 font-medium">Free</span>
+                  <span className="font-medium text-emerald-400">Free</span>
                 </div>
               </div>
 
               {/* Grand Total */}
-              <div className="px-5 py-4 flex items-center justify-between border-b border-white/5">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
                 <span className="text-base font-bold text-white">Total</span>
                 <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>
               </div>
@@ -262,8 +256,7 @@ const GuestCartView = () => {
               {/* CTA Buttons */}
               <div className="px-5 py-5 space-y-3">
                 <Link href="/checkout" className="block">
-                  <button className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white text-sm
-                                     font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center gap-2">
+                  <button className="flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 bg-indigo-600 hover:bg-indigo-500 rounded-xl">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -272,9 +265,7 @@ const GuestCartView = () => {
                   </button>
                 </Link>
                 <Link href="/" className="block">
-                  <button className="w-full py-3 px-4 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white
-                                     text-sm font-semibold rounded-xl border border-white/5 hover:border-white/10
-                                     transition-all duration-200">
+                  <button className="w-full px-4 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 border bg-white/5 hover:bg-white/10 hover:text-white rounded-xl border-white/5 hover:border-white/10">
                     Continue Shopping
                   </button>
                 </Link>
