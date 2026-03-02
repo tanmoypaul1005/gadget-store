@@ -133,7 +133,7 @@ const Orders = async () => {
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">No orders yet</h2>
             <p className="text-gray-400 text-sm sm:text-base max-w-sm">
-              Looks like you haven't placed any orders. Start exploring our products!
+              Looks like you haven&apos;t placed any orders. Start exploring our products!
             </p>
 
             <a href="/shop"

@@ -204,7 +204,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-white">Guest Information</h2>
-                  <p className="text-xs text-gray-500">We'll use this to process your order</p>
+                  <p className="text-xs text-gray-500">We&apos;ll use this to process your order</p>
                 </div>
               </div>
 
