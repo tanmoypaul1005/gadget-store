@@ -18,20 +18,19 @@ const responsive = {
   },
   mobile: {
     breakpoint: { max: 767, min: 464 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
   },
   smallMobile: {
     breakpoint: { max: 463, min: 0 },
-    items: 1,
-    slidesToSlide: 1 // optional, default to 1.
+    items: 2,
+    slidesToSlide: 2 // optional, default to 1.
   }
 };
 
 const Slider = ({ products=[] }) => {
   return (
     <div className="py-4 min-h-[300px] bg-gray-600 rounded">
-      
       {
         products?.length === 0 ? (<div className=""></div>) :
         <Carousel

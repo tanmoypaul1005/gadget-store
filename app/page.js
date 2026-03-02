@@ -24,7 +24,6 @@ export default async function Home() {
       <OfferBanner category={categoryData?.data} />
       <FeaturedCategories />
       <Products />
-     
       <RegularProducts />
       <Offer/>
     </div>
