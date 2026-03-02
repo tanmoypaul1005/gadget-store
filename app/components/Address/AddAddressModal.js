@@ -10,7 +10,6 @@ import { addAddress } from "@/app/action/address";
 
 const AddAddressModal = ({ open, setOpen, type, email, editData, onSaved }) => {
 
-
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [contact, setContact] = useState("");
