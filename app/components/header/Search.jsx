@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { public_base_url } from "@/util/const";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -39,7 +38,7 @@ const Search = () => {
   const fetchData = async () => {
     setIsLoading(true);
     if (searchValue) {
-      fetch(public_base_url + `/search?query=${searchValue}`)
+      fetch(`/api/search?query=${searchValue}`)
         .then((response) => response.json())
         .then((data) => setSearchResults(data));
       setTimeout(() => {
