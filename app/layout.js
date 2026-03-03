@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} largeScreenContainer main`}>
+      <body className={`${inter.className} largeScreenContainer bg-[#0a0a0f] main`}>
         <div className="relative text-white ">
           <div className="absolute top-0 left-0">
             <DrawerDefault />
