@@ -15,7 +15,7 @@ const RegularProducts = async () => {
   );
 
   return (
-    <div className="flex flex-col p-4 bg-gray-600 rounded">
+    <div className="flex flex-col">
       <div className="flex justify-between mb-4">
         <div className="text-xl font-semibold text-white text-start w-fit">
           Regular Products 🔥

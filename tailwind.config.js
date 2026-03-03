@@ -8,8 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cCommonBg: "#374151",
-        cDeepSaffron:"#f17e23"
+        // cCommonBg: "#0b1120",
+        cCommonBg: "#111118",
+        cDeepSaffron:"#f17e23",
+        cBorderColor:"#ffffff0d"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
