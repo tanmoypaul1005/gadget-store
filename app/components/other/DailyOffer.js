@@ -62,7 +62,7 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
   return (
     <div className="day">
       <h1 className="pb-4 text-xl font-semibold">Deal Of The Day</h1>
-      <div className="flex flex-col w-full border rounded-lg lg:flex-row">
+      <div className="flex flex-col w-full border rounded-lg border-cBorderColor bg-cCommonBg lg:flex-row">
         <div className="flex items-center justify-center px-5">
           <Image
             style={{ maxHeight: "350px", minHeight: "350px" }}

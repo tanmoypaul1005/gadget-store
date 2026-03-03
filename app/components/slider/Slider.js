@@ -30,7 +30,7 @@ const responsive = {
 
 const Slider = ({ products=[] }) => {
   return (
-    <div className="py-4 min-h-[300px] bg-gray-600 rounded">
+    <div className="min-h-[300px]">
       {
         products?.length === 0 ? (<div className=""></div>) :
         <Carousel
