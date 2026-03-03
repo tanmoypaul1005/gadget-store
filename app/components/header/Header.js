@@ -33,7 +33,7 @@ const Header = async ({className}) => {
   const totalCart = session ? (cart?.length ?? 0) : guestCartCount;
 
   return (
-    <div className={`${className} bg-black border-b`}>
+    <div className={`${className} bg-black border-b border-gray-600`}>
       <div className="flex flex-col items-center justify-between ">
         <HeaderUserInfo totalOrder={order?.data?.length} totalCart={totalCart} session={session} />
       </div>
