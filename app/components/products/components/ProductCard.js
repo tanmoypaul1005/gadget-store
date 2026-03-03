@@ -13,7 +13,7 @@ export const ProductCard = async ({ product }) => {
 
   return (
     <Link href={`/products/${product?._id}`}>
-      <div className="relative w-64 py-5 text-white duration-500 border shadow-md sm:w-full bg-cCommonBg border-cBorderColor rounded-xl hover:scale-105 hover:shadow-xl">
+      <div className="relative py-5 text-white duration-500 border shadow-md w-46 md:w-full sm:w-full bg-cCommonBg border-cBorderColor rounded-xl hover:scale-105 hover:shadow-xl">
         <Image
           style={{ minHeight: "120px", maxHeight: "120px" }}
           alt={product?.name ?? "Product Image"}
