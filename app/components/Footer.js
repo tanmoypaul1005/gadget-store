@@ -3,21 +3,21 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0a0a0f] border-t border-white/5">
+        <footer className="mt-10 border-t border-white/5">
 
             {/* Main Footer Grid */}
-            <div className="max-w-6xl mx-auto py-12 ">
+            <div className="max-w-6xl py-12 mx-auto ">
                 <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 
                     {/* Popular Categories */}
                     <div className="col-span-1">
-                        <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Popular Categories</h2>
+                        <h2 className="mb-4 text-xs font-bold tracking-widest text-white uppercase">Popular Categories</h2>
                         <ul className="space-y-2.5">
                             {["Fashion", "Electronic", "Cosmetic", "Health", "Watches"].map((item) => (
                                 <li key={item}>
                                     <Link href="/"
                                         className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group">
-                                        <span className="w-1 h-1 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        <span className="w-1 h-1 transition-opacity bg-indigo-600 rounded-full opacity-0 group-hover:opacity-100"></span>
                                         {item}
                                     </Link>
                                 </li>
@@ -27,13 +27,13 @@ const Footer = () => {
 
                     {/* Products */}
                     <div className="col-span-1">
-                        <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Products</h2>
+                        <h2 className="mb-4 text-xs font-bold tracking-widest text-white uppercase">Products</h2>
                         <ul className="space-y-2.5">
                             {["Prices Drop", "New Products", "Best Sales", "Contact Us", "Sitemap"].map((item) => (
                                 <li key={item}>
                                     <Link href="/"
                                         className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group">
-                                        <span className="w-1 h-1 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        <span className="w-1 h-1 transition-opacity bg-indigo-600 rounded-full opacity-0 group-hover:opacity-100"></span>
                                         {item}
                                     </Link>
                                 </li>
@@ -43,13 +43,13 @@ const Footer = () => {
 
                     {/* Our Company */}
                     <div className="col-span-1">
-                        <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Our Company</h2>
+                        <h2 className="mb-4 text-xs font-bold tracking-widest text-white uppercase">Our Company</h2>
                         <ul className="space-y-2.5">
                             {["Delivery", "Legal Notice", "Terms & Conditions", "About Us", "Secure Payment"].map((item) => (
                                 <li key={item}>
                                     <Link href="/"
                                         className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group">
-                                        <span className="w-1 h-1 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        <span className="w-1 h-1 transition-opacity bg-indigo-600 rounded-full opacity-0 group-hover:opacity-100"></span>
                                         {item}
                                     </Link>
                                 </li>
@@ -59,13 +59,13 @@ const Footer = () => {
 
                     {/* Services */}
                     <div className="col-span-1">
-                        <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Services</h2>
+                        <h2 className="mb-4 text-xs font-bold tracking-widest text-white uppercase">Services</h2>
                         <ul className="space-y-2.5">
                             {["Prices Drop", "New Products", "Best Sales", "Contact Us", "Sitemap"].map((item) => (
                                 <li key={item}>
                                     <Link href="/"
                                         className="text-gray-400 hover:text-indigo-400 text-sm transition-colors duration-200 flex items-center gap-1.5 group">
-                                        <span className="w-1 h-1 rounded-full bg-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                        <span className="w-1 h-1 transition-opacity bg-indigo-600 rounded-full opacity-0 group-hover:opacity-100"></span>
                                         {item}
                                     </Link>
                                 </li>
@@ -75,10 +75,10 @@ const Footer = () => {
 
                     {/* Contact */}
                     <div className="col-span-2 sm:col-span-2 md:col-span-1">
-                        <h2 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Contact</h2>
+                        <h2 className="mb-4 text-xs font-bold tracking-widest text-white uppercase">Contact</h2>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="/" className="flex items-start gap-3 text-gray-400 hover:text-indigo-400 text-sm transition-colors group">
+                                <Link href="/" className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-indigo-400 group">
                                     <span className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg bg-white/5 group-hover:bg-indigo-600/20
                                    border border-white/5 flex items-center justify-center transition-colors">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,9 +91,8 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="tel:01736932489" className="flex items-center gap-3 text-gray-400 hover:text-indigo-400 text-sm transition-colors group">
-                                    <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-white/5 group-hover:bg-indigo-600/20
-                                   border border-white/5 flex items-center justify-center transition-colors">
+                                <Link href="tel:01736932489" className="flex items-center gap-3 text-sm text-gray-400 transition-colors hover:text-indigo-400 group">
+                                    <span className="flex items-center justify-center flex-shrink-0 transition-colors border rounded-lg w-7 h-7 bg-white/5 group-hover:bg-indigo-600/20 border-white/5">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                                 d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -103,9 +102,8 @@ const Footer = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="mailto:tanmoypaul1005@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-indigo-400 text-sm transition-colors group">
-                                    <span className="flex-shrink-0 w-7 h-7 rounded-lg bg-white/5 group-hover:bg-indigo-600/20
-                                   border border-white/5 flex items-center justify-center transition-colors">
+                                <Link href="mailto:tanmoypaul1005@gmail.com" className="flex items-center gap-3 text-sm text-gray-400 transition-colors hover:text-indigo-400 group">
+                                    <span className="flex items-center justify-center flex-shrink-0 transition-colors border rounded-lg w-7 h-7 bg-white/5 group-hover:bg-indigo-600/20 border-white/5">
                                         <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -124,8 +122,7 @@ const Footer = () => {
                                 { label: "Instagram", path: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 6a2 2 0 100-4 2 2 0 000 4z" },
                             ].map(({ label, path }) => (
                                 <Link key={label} href="/" aria-label={label}
-                                    className="w-8 h-8 rounded-lg bg-white/5 hover:bg-indigo-600 border border-white/5
-                             hover:border-indigo-500 flex items-center justify-center transition-all duration-200 group">
+                                    className="flex items-center justify-center w-8 h-8 transition-all duration-200 border rounded-lg bg-white/5 hover:bg-indigo-600 border-white/5 hover:border-indigo-500 group">
                                     <svg className="w-3.5 h-3.5 text-gray-400 group-hover:text-white transition-colors" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                         <path strokeLinecap="round" strokeLinejoin="round" d={path} />
@@ -137,9 +134,9 @@ const Footer = () => {
                 </div>
 
                 {/* Payment Methods — SVG Icons */}
-                <div className="mt-10 pt-8 border-t border-white/5">
-                    <p className="text-xs text-gray-500 uppercase tracking-widest mb-4 text-center sm:text-left">Secure Payment Methods</p>
-                    <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                <div className="pt-8 mt-10 border-t border-white/5">
+                    <p className="mb-4 text-xs tracking-widest text-center text-gray-500 uppercase sm:text-left">Secure Payment Methods</p>
+                    <div className="flex flex-wrap justify-center gap-2 sm:justify-start">
                         {["VISA", "MC", "AMEX", "PayPal", "Apple Pay", "Google Pay"].map((method) => (
                             <span key={method}
                                 className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-400 text-xs font-semibold
@@ -159,14 +156,14 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="flex flex-col items-center justify-between gap-3 pt-6 mt-8 border-t border-white/5 sm:flex-row">
                     <p className="text-xs text-gray-500">
-                        © {new Date().getFullYear()} <span className="text-gray-400 font-medium">YourStore</span>. All rights reserved.
+                        © {new Date().getFullYear()} <span className="font-medium text-gray-400">YourStore</span>. All rights reserved.
                     </p>
                     <div className="flex gap-4">
                         {["Privacy Policy", "Terms of Use", "Cookie Settings"].map((item) => (
                             <Link key={item} href="/"
-                                className="text-xs text-gray-500 hover:text-indigo-400 transition-colors duration-200">
+                                className="text-xs text-gray-500 transition-colors duration-200 hover:text-indigo-400">
                                 {item}
                             </Link>
                         ))}
