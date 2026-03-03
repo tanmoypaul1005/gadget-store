@@ -1,7 +1,6 @@
 import React from "react";
 import HeaderUserInfo from "./HeaderUserInfo";
 import { auth } from "@/auth";
-import Categories from "../Categories";
 import { findUserId } from "@/app/action/product/action";
 import { getCartCount } from "@/app/action/cart";
 import { getOrders } from "@/app/action/order";
@@ -19,6 +18,7 @@ const Header = async ({className}) => {
 
   // For guests, count items from the cookie
   let guestCartCount = 0;
+  
   if (!session) {
     try {
       const cookieStore = cookies();
@@ -33,7 +33,7 @@ const Header = async ({className}) => {
   const totalCart = session ? (cart?.length ?? 0) : guestCartCount;
 
   return (
-    <div className={`${className} bg-black border-b`}>
+    <div className={`${className} bg-black border-b border-gray-600`}>
       <div className="flex flex-col items-center justify-between ">
         <HeaderUserInfo totalOrder={order?.data?.length} totalCart={totalCart} session={session} />
       </div>

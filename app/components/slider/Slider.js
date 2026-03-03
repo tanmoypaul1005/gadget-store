@@ -28,33 +28,34 @@ const responsive = {
   }
 };
 
-const Slider = ({ products=[] }) => {
+const Slider = ({ products = [] }) => {
   return (
     <div className="min-h-[300px]">
       {
         products?.length === 0 ? (<div className=""></div>) :
-        <Carousel
-        responsive={responsive}
-        autoPlay={true}
-        swipeable={true}
-        draggable={true}
-        showDots={false}
-        infinite={true}
-        partialVisible={false}
-        dotListClass=""
-      >
-        {
-        products?.map((product, index) => {
-          return (
-            <div className="flex items-center justify-center slider" key={index}>
-              <SecondaryProductCard width="w-64 md:w-full" product={product} />
-            </div>
-          );
-        })
-        }
-      </Carousel>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            swipeable={true}
+            draggable={true}
+            showDots={false}
+            infinite={true}
+            partialVisible={false}
+            dotListClass=""
+            className="gap-x-3"
+          >
+            {
+              products?.map((product, index) => {
+                return (
+                  <div className="flex items-center justify-center slider" key={index}>
+                    <SecondaryProductCard width="w-64 md:w-full" product={product} />
+                  </div>
+                );
+              })
+            }
+          </Carousel>
       }
-      
+
     </div>
   );
 };

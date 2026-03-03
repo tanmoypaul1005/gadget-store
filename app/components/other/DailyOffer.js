@@ -132,25 +132,25 @@ const DailyOffer = ({ user, product, isAddCartDayOffer }) => {
 
             <span
               id="days"
-              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg bg-gray-300/20"
+              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg border-cBorderColor bg-gray-300/20"
             >
               {timeLeft.days}
             </span>
             <span
               id="hours"
-              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg bg-gray-300/20"
+              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg border-cBorderColor bg-gray-300/20"
             >
               {timeLeft.hours}
             </span>
             <span
               id="minutes"
-              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg bg-gray-300/20"
+              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg border-cBorderColor bg-gray-300/20"
             >
               {timeLeft.minutes}
             </span>
             <span
               id="seconds"
-              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg bg-gray-300/20"
+              className="flex flex-col items-center justify-center w-12 h-12 p-2 text-white border rounded-lg shadow-lg border-cBorderColor bg-gray-300/20"
             >
               {timeLeft.seconds}
             </span>
