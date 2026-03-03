@@ -18,6 +18,7 @@ const Header = async ({className}) => {
 
   // For guests, count items from the cookie
   let guestCartCount = 0;
+  
   if (!session) {
     try {
       const cookieStore = cookies();
