@@ -1,7 +1,6 @@
 import React from "react";
 import HeaderUserInfo from "./HeaderUserInfo";
 import { auth } from "@/auth";
-import Categories from "../Categories";
 import { findUserId } from "@/app/action/product/action";
 import { getCartCount } from "@/app/action/cart";
 import { getOrders } from "@/app/action/order";
