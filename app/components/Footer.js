@@ -158,7 +158,7 @@ const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="flex flex-col items-center justify-between gap-3 pt-6 mt-8 border-t border-white/5 sm:flex-row">
                     <p className="text-xs text-gray-500">
-                        © {new Date().getFullYear()} <span className="font-medium text-gray-400">YourStore</span>. All rights reserved.
+                        © {new Date().getFullYear()} <span className="font-medium text-gray-400">gadget store</span>. All rights reserved.
                     </p>
                     <div className="flex gap-4">
                         {["Privacy Policy", "Terms of Use", "Cookie Settings"].map((item) => (

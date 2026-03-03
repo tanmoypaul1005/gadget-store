@@ -8,9 +8,8 @@
   }
   
   .slider {
-    margin:0 15px;
-    overflow:"hidden";
-    /* padding:2rem 0; */
+    padding: 0 8px;
+    overflow: hidden;
   }
   
   .slider img {

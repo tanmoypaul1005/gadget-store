@@ -42,6 +42,7 @@ const Slider = ({ products = [] }) => {
             infinite={true}
             partialVisible={false}
             dotListClass=""
+            className="gap-x-3"
           >
             {
               products?.map((product, index) => {
