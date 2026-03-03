@@ -12,7 +12,7 @@ export default async function Home() {
   const categoryData = await getAllCategory();
 
   return (
-    <div className="space-y-5 common-class">
+    <div className="space-y-5 common-class bg-[#0a0a0f]">
       <div className="flex common-topGap lg:gap-x-2 gap-x-0">
         <div className="h-full mt-[-15px]">
           <SideBarCategory />
