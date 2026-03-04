@@ -21,8 +21,6 @@ const PlaceOrder = ({ data }) => {
 
     const handleOrder = async () => {
 
-        
-
         if (!shipping_address || !billing_address) {
             Toastr({ message: "Please add shipping and billing address", type: "error" });
             return;
