@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "./components/Card";
 import { useProductStore } from "../stores/productStore";
 import RangeSlider from "@/app/components/input/RangeSlider";
 import axios from "axios";
 import FilterCategory from "./components/FilterCategory";
 import { ColorRing } from "react-loader-spinner";
+import SecondaryProductCard from "../components/products/components/SecondaryProductCard";
 
 const Products = () => {
 
@@ -159,7 +159,7 @@ const Products = () => {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 justify-items-center">
                 {products?.map((product, index) => (
                   <div key={index} className="max-w-[250px] min-w-[250px]">
-                    <Card product={product} />
+                    <SecondaryProductCard product={product} />
                   </div>
                 ))}
               </div>
