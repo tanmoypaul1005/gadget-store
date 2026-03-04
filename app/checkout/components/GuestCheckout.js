@@ -2,6 +2,7 @@
 import { addGuestOrder } from "@/app/action/order";
 import { clearGuestCart, getGuestCartItems } from "@/util/guestCart";
 import { Toastr } from "@/util/utilityFunction";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -11,15 +12,15 @@ import { useEffect, useState } from "react";
 const LoadingSkeleton = () => (
   <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8 animate-pulse">
     <div className="max-w-5xl mx-auto">
-      <div className="h-8 w-48 bg-white/5 rounded-xl mb-10" />
+      <div className="w-48 h-8 mb-10 bg-white/5 rounded-xl" />
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
             <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
               <div className="w-16 h-16 rounded-xl bg-white/10 shrink-0" />
               <div className="flex-1 space-y-2">
-                <div className="h-4 bg-white/10 rounded w-3/4" />
-                <div className="h-3 bg-white/10 rounded w-1/4" />
+                <div className="w-3/4 h-4 rounded bg-white/10" />
+                <div className="w-1/4 h-3 rounded bg-white/10" />
               </div>
             </div>
           ))}
@@ -33,7 +34,7 @@ const LoadingSkeleton = () => (
 /* ── Empty Cart ── */
 const EmptyCart = () => (
   <div className="min-h-screen bg-[#0a0a0f] flex flex-col items-center justify-center py-24 px-4 text-center">
-    <svg viewBox="0 0 120 120" fill="none" className="w-32 h-32 mb-6 mx-auto">
+    <svg viewBox="0 0 120 120" fill="none" className="w-32 h-32 mx-auto mb-6">
       <circle cx="60" cy="60" r="56" fill="#111118" stroke="#1e1e3a" strokeWidth="1.5" />
       <path d="M30 38h8l10 34h26l8-24H46" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
       <circle cx="52" cy="80" r="4" fill="#6366f1" />
@@ -41,10 +42,10 @@ const EmptyCart = () => (
       <circle cx="85" cy="38" r="10" fill="#1e1e3a" stroke="#ef4444" strokeWidth="1.5" />
       <path d="M82 38h6M85 35v6" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" transform="rotate(45 85 38)" />
     </svg>
-    <h2 className="text-2xl font-bold text-white mb-2">Your cart is empty</h2>
-    <p className="text-gray-400 text-sm max-w-xs mb-8">Add some products before checking out.</p>
+    <h2 className="mb-2 text-2xl font-bold text-white">Your cart is empty</h2>
+    <p className="max-w-xs mb-8 text-sm text-gray-400">Add some products before checking out.</p>
     <Link href="/"
-      className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-colors">
+      className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-colors bg-indigo-600 hover:bg-indigo-500 rounded-xl">
       Browse Products
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -56,12 +57,12 @@ const EmptyCart = () => (
 /* ── Input Field ── */
 const InputField = ({ label, required, icon, error, ...props }) => (
   <div>
-    <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+    <label className="block mb-2 text-xs font-semibold tracking-wider text-gray-400 uppercase">
       {label} {required && <span className="text-indigo-400">*</span>}
     </label>
     <div className="relative">
       {icon && (
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+        <div className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-3 top-1/2">
           {icon}
         </div>
       )}
@@ -114,7 +115,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
             const data = await res.json();
             if (data?.success) map[item.product_id] = data.data;
           }
-        } catch (_) {}
+        } catch (_) { }
       }));
       setProducts(map);
       setLoading(false);
@@ -150,6 +151,14 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
     }
   };
 
+  const handleGoogleAuthClick = async () => {
+    try {
+      await signIn("google", { callbackUrl: "/" });
+    } catch (error) {
+      console.error("Error signing in", error);
+    }
+  };
+
   if (loading) return <LoadingSkeleton />;
   if (cartItems.length === 0) return <EmptyCart />;
 
@@ -160,14 +169,14 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-1">
-            <Link href="/cart" className="text-gray-500 hover:text-gray-300 transition-colors">
+            <Link href="/cart" className="text-gray-500 transition-colors hover:text-gray-300">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-2xl sm:text-3xl font-bold text-white">Checkout</h1>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">Checkout</h1>
           </div>
-          <p className="text-gray-400 text-sm ml-7">Complete your order as a guest</p>
+          <p className="text-sm text-gray-400 ml-7">Complete your order as a guest</p>
         </div>
 
         {/* Progress Steps */}
@@ -196,7 +205,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
 
               {/* Form Header */}
               <div className="bg-[#16161f] px-6 py-4 border-b border-white/5 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-indigo-600/20 border border-indigo-500/20 flex items-center justify-center">
+                <div className="flex items-center justify-center w-8 h-8 border rounded-lg bg-indigo-600/20 border-indigo-500/20">
                   <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -241,16 +250,16 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               </div>
 
               {/* Login Hint */}
-              <div className="mx-6 mb-6 px-4 py-3 rounded-xl bg-indigo-600/5 border border-indigo-500/15 flex items-center gap-3">
+              <div className="flex items-center gap-3 px-4 py-3 mx-6 mb-6 border rounded-xl bg-indigo-600/5 border-indigo-500/15">
                 <svg className="w-4 h-4 text-indigo-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className="text-xs text-gray-400">
                   Already have an account?{" "}
-                  <Link href="/login" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">
+                  <div onClick={handleGoogleAuthClick} className="font-semibold text-indigo-400 transition-colors cursor-pointer hover:text-indigo-300">
                     Login for faster checkout
-                  </Link>
+                  </div>
                 </p>
               </div>
             </div>
@@ -262,7 +271,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
 
               {/* Summary Header */}
               <div className="bg-[#16161f] px-5 py-4 border-b border-white/5 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center">
+                <div className="flex items-center justify-center w-8 h-8 border rounded-lg bg-white/5 border-white/5">
                   <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -275,13 +284,13 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               </div>
 
               {/* Items List */}
-              <div className="px-5 py-4 space-y-3 border-b border-white/5 max-h-56 overflow-y-auto">
+              <div className="px-5 py-4 space-y-3 overflow-y-auto border-b border-white/5 max-h-56">
                 {cartItems.map((item) => {
                   const product = products[item.product_id];
                   if (!product) return null;
                   return (
                     <div key={item.product_id} className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white/5 ring-1 ring-white/10 shrink-0">
+                      <div className="relative w-12 h-12 overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10 shrink-0">
                         <Image src={product.image} alt={product.name} fill className="object-contain p-1.5" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -306,7 +315,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Shipping</span>
-                  <span className="text-emerald-400 font-medium">Free</span>
+                  <span className="font-medium text-emerald-400">Free</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Tax</span>
@@ -315,7 +324,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               </div>
 
               {/* Grand Total */}
-              <div className="px-5 py-4 flex items-center justify-between border-b border-white/5">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
                 <span className="text-base font-bold text-white">Total</span>
                 <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>
               </div>

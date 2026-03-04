@@ -126,8 +126,6 @@ const LoggedInCheckout = ({ email }) => {
   const handlePlaceOrder = async () => {
     if (!shipping_address) return Toastr({ type: "error", message: "Please add a shipping address" });
     if (!billing_address) return Toastr({ type: "error", message: "Please add a billing address" });
-    if (!contactNumber.trim()) return Toastr({ type: "error", message: "Please enter contact number" });
-    if (contactNumber.trim().length < 10) return Toastr({ type: "error", message: "Contact number must be at least 10 digits" });
     if (!cartItems.length) return Toastr({ type: "error", message: "Your cart is empty" });
 
     setPlacing(true);
@@ -135,7 +133,6 @@ const LoggedInCheckout = ({ email }) => {
       email,
       shipping_address: shipping_address._id,
       billing_address: billing_address._id,
-      contact_number: contactNumber.trim(),
       items: cartItems,
     });
     setPlacing(false);
@@ -254,36 +251,6 @@ const LoggedInCheckout = ({ email }) => {
                 <AddressPill label="Billing" filled={!!billing_address} />
               </div>
               <Address address={address} email={email} onSaved={fetchAddresses} />
-            </SectionCard>
-
-            {/* Contact Number */}
-            <SectionCard
-              title="Contact Number"
-              icon={
-                <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              }
-            >
-              <div className="relative max-w-sm">
-                <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none">
-                  <svg className="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <input
-                  type="tel"
-                  value={contactNumber}
-                  onChange={(e) => setContactNumber(e.target.value)}
-                  placeholder="01XXXXXXXXX"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white
-                             text-sm placeholder:text-gray-600 focus:outline-none focus:border-indigo-500
-                             focus:bg-white/[0.07] transition-all duration-200"
-                />
-              </div>
-              <p className="mt-2 text-xs text-gray-500">We&apos;ll only use this to contact you about your order.</p>
             </SectionCard>
           </div>
 

@@ -56,7 +56,7 @@ export const addGuestOrder = async ({ name, email, phone, address, items }) => {
 export const addOrderFromCookie = async ({ email, shipping_address, billing_address, contact_number, items }) => {
     try {
         await connectMongo();
-        if (!email || !shipping_address || !billing_address || !contact_number || !items?.length) {
+        if (!email || !shipping_address || !billing_address || !items?.length) {
             return { status: 400, success: false, message: "Please fill all required fields" };
         }
         const user = await User.findOne({ email }).lean();
