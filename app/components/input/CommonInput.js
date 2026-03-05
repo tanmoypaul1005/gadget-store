@@ -1,52 +1,58 @@
-"use client"
+"use client";
 
-// const CommonInput = ({ register, name, rules, type, error, placeholder = "",error_message=null }) => {
-//     return (
-//         <div className="">
-//             <input
-//                 {...register(name, rules)}
-//                 type={type}
-//                 id={name}
-//                 name={name}
-//                 className={`
-//                 w-full px-3 py-4 border-[2px] rounded-md focus:bg-[#030317] bg-[#030317] font-medium text-sm text-white outline-none
-//                 ${!!error ? "border-red-500" : "border-[#030317]"}
-//             `}
-//                 // className={`
-//                 //  w-full px-3 py-4 rounded-lg outline-none font-medium border text-sm text-black 
-//                 //  ${!!error ? "border-red-500 focus:border-red-500" : "border-gray-200  border-white/20 focus:border-indigo-500"}`}
-//                 placeholder={placeholder}
-//                 autocomplete="off"
-//             />
+const CommonInput = ({
+  label = "",
+  required = false,
+  icon,
+  disabled = false,
+  error_message,
+  as,
+  ...rest
+}) => {
+  return (
+    <div>
+      {label && (
+        <label className="block mb-2 text-xs font-semibold tracking-wider text-gray-400 uppercase">
+          {label}{" "}
+          {required && <span className="text-indigo-400">*</span>}
+        </label>
+      )}
+      <div className="relative">
+        {icon && (
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+            {icon}
+          </div>
+        )}
+        {as === "textarea" ? (
+          <textarea
+            {...rest}
+            disabled={disabled}
+            rows={rest.rows || 3}
+            className={`w-full ${
+              icon ? "pl-10" : "pl-4"
+            } pr-4 py-3 rounded-xl bg-white/5 border border-white/10
+            text-white text-sm placeholder:text-gray-600 resize-none
+            focus:outline-none focus:border-indigo-500 focus:bg-white/[0.07] transition-all duration-200
+            ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
+          />
+        ) : (
+          <input
+            {...rest}
+            disabled={disabled}
+            className={`w-full ${
+              icon ? "pl-10" : "pl-4"
+            } pr-4 py-3 rounded-xl bg-white/5 border border-white/10
+            text-white text-sm placeholder:text-gray-600
+            focus:outline-none focus:border-indigo-500 focus:bg-white/[0.07] transition-all duration-200
+            ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
+          />
+        )}
+      </div>
+      {error_message && (
+        <p className="text-red-500 text-sm mt-1">{error_message}</p>
+      )}
+    </div>
+  );
+};
 
-//             {error_message && <p className="text-red-500 text-sm  mt-1">{error_message}</p>}
-//         </div>
-//     );
-// };
-
-// export default CommonInput;
-
-
-const CommonInput = ({disabled=false, type="text" ,label = "", placeholder = "",value="",onChange=()=>{} }) => {
-    return (
-        <>
-            <label for="email" className="mt-4 mb-2 block text-sm font-medium">
-                {label}
-            </label>
-            <div className="relative">
-                <input
-                    disabled={disabled}
-                    value={value}
-                    onChange={onChange}
-                    type={type}
-                    id="email"
-                    name="email"
-                    className={`w-full ${disabled && "cursor-not-allowed"} text-white bg-cCommonBg  rounded-md border border-gray-200 px-4 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500`}
-                    placeholder={placeholder}
-                />
-            </div>
-        </>
-    )
-}
-
-export default CommonInput
+export default CommonInput;
