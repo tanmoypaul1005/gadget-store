@@ -10,13 +10,13 @@ const LogoutModal = ({ open, setOpen }) => {
         open={open}
         setOpen={setOpen}
         content={
-          <>
+          <div>
             <div className="flex items-center justify-center w-full ">
               <h1 className="mt-5 text-2xl font-bold">
                 Are you sure you want to logout?
               </h1>
             </div>
-            <div className="flex justify-between w-full mt-5">
+            <div className="flex justify-between w-full px-5 py-5 mt-5">
               <button
                 onClick={() => setOpen(false)}
                 className="px-4 py-2 font-semibold text-white bg-red-400 rounded-lg"
@@ -35,7 +35,7 @@ const LogoutModal = ({ open, setOpen }) => {
                 Logout
               </button>
             </div>
-          </>
+          </div>
         }
       />
     </div>

@@ -1,36 +1,12 @@
-// ─────────────────────────────────────────
+﻿// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // AddAddressModal.jsx (Client Component)
-// ─────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 "use client";
 import React, { useEffect, useState } from "react";
 import { Toastr } from "@/util/utilityFunction";
 import { addAddress } from "@/app/action/address";
-
-const InputField = ({ label, required, type = "text", value, onChange, placeholder, icon }) => (
-  <div>
-    <label className="block mb-2 text-xs font-semibold tracking-wider text-gray-400 uppercase">
-      {label} {required && <span className="text-indigo-400">*</span>}
-    </label>
-    <div className="relative">
-      {icon && (
-        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
-          {icon}
-        </div>
-      )}
-      <input
-        type={type}
-        required={required}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={`w-full ${icon ? "pl-10" : "pl-4"} pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                    text-white text-sm placeholder:text-gray-600
-                    focus:outline-none focus:border-indigo-500 focus:bg-white/[0.07]
-                    transition-all duration-200`}
-      />
-    </div>
-  </div>
-);
+import CommonModal from "@/app/components/modal/CommonModal";
+import CommonInput from "@/app/components/input/CommonInput";
 
 const AddAddressModal = ({ open, setOpen, type, email, editData, onSaved }) => {
   const [title, setTitle] = useState("");
@@ -66,143 +42,124 @@ const AddAddressModal = ({ open, setOpen, type, email, editData, onSaved }) => {
     }
   };
 
-  if (!open) return null;
-
   const isShipping = type === "shipping_address";
 
-  return (
-    /* Backdrop */
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-        onClick={() => setOpen(false)}
+  const modalIcon = (
+    <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      {isShipping ? (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      ) : (
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      )}
+    </svg>
+  );
+
+  const formContent = (
+    <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
+      <CommonInput
+        label="Title" required
+        type="text" value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="e.g. Home, Office"
+        icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+        </svg>}
       />
 
-      {/* Modal */}
-      <div className="relative w-full max-w-md bg-[#111118] border border-white/10
-                      rounded-2xl shadow-2xl shadow-black/60 overflow-hidden
-                      animate-in fade-in zoom-in-95 duration-200">
+      <CommonInput
+        label="Full Address" required
+        type="text" value={address}
+        onChange={(e) => setAddress(e.target.value)}
+        placeholder="Street, Area, City"
+        icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>}
+      />
 
-        {/* Header */}
-        <div className="bg-[#16161f] px-6 py-5 border-b border-white/5 flex items-center gap-3">
-          <div className="flex items-center justify-center border w-9 h-9 rounded-xl bg-indigo-600/20 border-indigo-500/20 shrink-0">
-            <svg className="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isShipping ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-              )}
-            </svg>
-          </div>
-          <div>
-            <h2 className="text-base font-bold text-white">
-              {editData?.title ? "Edit" : "Add"} {isShipping ? "Shipping" : "Billing"} Address
-            </h2>
-            <p className="text-xs text-gray-500 mt-0.5">
-              {isShipping ? "Where your orders will be delivered" : "Used for payment & invoices"}
-            </p>
-          </div>
-          <button
-            onClick={() => setOpen(false)}
-            className="flex items-center justify-center w-8 h-8 ml-auto transition-colors border rounded-lg bg-white/5 hover:bg-white/10 border-white/5"
-          >
-            <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="px-6 py-6 space-y-4">
-          <InputField
-            label="Title" required value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Home, Office"
-            icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-            </svg>}
-          />
-
-          <InputField
-            label="Full Address" required value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="Street, Area, City"
-            icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>}
-          />
-
-          <div className="grid grid-cols-2 gap-4">
-            <InputField
-              label="Contact" type="number" required value={contact}
-              onChange={(e) => setContact(e.target.value)}
-              placeholder="01XXXXXXXXX"
-              icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>}
-            />
-            <InputField
-              label="Postal Code" type="number" required value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-              placeholder="1200"
-              icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>}
-            />
-          </div>
-
-          <InputField
-            label="House / Building Name" required value={houseName}
-            onChange={(e) => setHouseName(e.target.value)}
-            placeholder="e.g. Green Villa, Block C"
-            icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>}
-          />
-
-          {/* Actions */}
-          <div className="flex gap-3 pt-2">
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="flex-1 px-4 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 border bg-white/5 hover:bg-white/10 hover:text-white rounded-xl border-white/5 hover:border-white/10"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={saving}
-              className="flex items-center justify-center flex-1 gap-2 px-4 py-3 text-sm font-bold text-white transition-all duration-200 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 rounded-xl"
-            >
-              {saving ? (
-                <>
-                  <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Saving...
-                </>
-              ) : (
-                <>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  {editData?.title ? "Update" : "Save"} Address
-                </>
-              )}
-            </button>
-          </div>
-        </form>
+      <div className="grid grid-cols-2 gap-4">
+        <CommonInput
+          label="Contact" type="number" required
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          placeholder="01XXXXXXXXX"
+          icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>}
+        />
+        <CommonInput
+          label="Postal Code" type="number" required
+          value={postalCode}
+          onChange={(e) => setPostalCode(e.target.value)}
+          placeholder="1200"
+          icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>}
+        />
       </div>
-    </div>
+
+      <CommonInput
+        label="House / Building Name" required
+        type="text" value={houseName}
+        onChange={(e) => setHouseName(e.target.value)}
+        placeholder="e.g. Green Villa, Block C"
+        icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>}
+      />
+
+      {/* Actions */}
+      <div className="flex gap-3 pt-2">
+        <button
+          type="button"
+          onClick={() => setOpen(false)}
+          className="flex-1 px-4 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 border bg-white/5 hover:bg-white/10 hover:text-white rounded-xl border-white/5 hover:border-white/10"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={saving}
+          className="flex items-center justify-center flex-1 gap-2 px-4 py-3 text-sm font-bold text-white transition-all duration-200 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 rounded-xl"
+        >
+          {saving ? (
+            <>
+              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Saving...
+            </>
+          ) : (
+            <>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              {editData?.title ? "Update" : "Save"} Address
+            </>
+          )}
+        </button>
+      </div>
+    </form>
+  );
+
+  return (
+    <CommonModal
+      open={open}
+      setOpen={setOpen}
+      title={`${editData?.title ? "Edit" : "Add"} ${isShipping ? "Shipping" : "Billing"} Address`}
+      subtitle={isShipping ? "Where your orders will be delivered" : "Used for payment & invoices"}
+      icon={modalIcon}
+      content={formContent}
+      size="md"
+    />
   );
 };
 

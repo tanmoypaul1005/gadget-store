@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "./components/Card";
 import { useProductStore } from "../stores/productStore";
 import RangeSlider from "@/app/components/input/RangeSlider";
 import axios from "axios";
 import FilterCategory from "./components/FilterCategory";
 import { ColorRing } from "react-loader-spinner";
+import SecondaryProductCard from "../components/products/components/SecondaryProductCard";
 
 const Products = () => {
 
@@ -51,7 +51,6 @@ const Products = () => {
                 type="button"
                 className="flex items-center justify-center w-10 h-10 p-2 -mr-2 text-gray-400 bg-white rounded-md"
               >
-
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -68,7 +67,7 @@ const Products = () => {
                 </svg>
               </button>
             </div>
-            <div className="p-3 mt-4 border-t border-gray-200">
+            <div className="p-3 mt-4 border-t border-gray-700">
               <FilterCategory onChange={()=>{setOpenSidebar(false)}} textColor="text-black" />
             </div>
           </div>
@@ -76,7 +75,7 @@ const Products = () => {
       </div>
 
       <main className="common-class">
-        <div className="flex items-baseline justify-between border-b border-gray-200">
+        <div className="flex items-baseline justify-between border-b border-gray-800">
           <h1 className="pb-4 text-2xl font-bold tracking-tight text-white">
             Product list
           </h1>
@@ -159,7 +158,7 @@ const Products = () => {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 justify-items-center">
                 {products?.map((product, index) => (
                   <div key={index} className="max-w-[250px] min-w-[250px]">
-                    <Card product={product} />
+                    <SecondaryProductCard product={product} />
                   </div>
                 ))}
               </div>

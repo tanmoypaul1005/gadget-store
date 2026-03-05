@@ -43,33 +43,33 @@ const RegisterForm = () => {
             <form onSubmit={handleSubmit(submitForm)}>
                 <div className='max-w-xs mx-auto space-y-5'>
                     <CommonInput
-                        register={register}
-                        rules={{
-                            required: "Name is required",
-                        }}
-                        error={errors.name}
-                        type={"text"}
-                        id={"name"}
-                        name={"name"}
-                        placeholder={"Name"}
+                        {...register("name", { required: "Name is required" })}
+                        type="text"
+                        label="Full Name"
+                        required
+                        placeholder="Full Name"
                         error_message={errors.name?.message}
+                        icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>}
                     />
 
                     <CommonInput
-                        register={register}
-                        rules={{
-                            required: "Email is required",
-                        }}
-                        error={errors.email}
-                        type={"email"}
-                        id={"email"}
-                        name={"email"}
-                        placeholder={"Email"}
+                        {...register("email", { required: "Email is required" })}
+                        type="email"
+                        label="Email Address"
+                        required
+                        placeholder="your@email.com"
                         error_message={errors.email?.message}
+                        icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>}
                     />
 
                     <CommonPassword
-                        rules={{
+                        {...register("password", {
                             required: "Password is required",
                             minLength: {
                                 value: 6,
@@ -81,15 +81,11 @@ const RegisterForm = () => {
                                 hasUppercase: value => /[A-Z]/.test(value) || "Password must contain at least 1 uppercase letter",
                                 hasSpecial: value => /[^a-zA-Z0-9]/.test(value) || "Password must contain at least 1 special character",
                             }
-                        }}
-                        register={register}
-                        error={errors.password}
-                        type={"password"}
-                        id={"password"}
-                        name={"password"}
-                        placeholder={"Password"}
+                        })}
+                        label="Password"
+                        required
+                        placeholder="Create a password"
                         error_message={errors.password?.message}
-
                     />
 
                     <button

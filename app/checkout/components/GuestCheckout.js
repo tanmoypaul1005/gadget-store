@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import CommonInput from "@/app/components/input/CommonInput";
 
 /* ── Loading Skeleton ── */
 const LoadingSkeleton = () => (
@@ -51,38 +52,6 @@ const EmptyCart = () => (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
       </svg>
     </Link>
-  </div>
-);
-
-/* ── Input Field ── */
-const InputField = ({ label, required, icon, error, ...props }) => (
-  <div>
-    <label className="block mb-2 text-xs font-semibold tracking-wider text-gray-400 uppercase">
-      {label} {required && <span className="text-indigo-400">*</span>}
-    </label>
-    <div className="relative">
-      {icon && (
-        <div className="absolute text-gray-500 -translate-y-1/2 pointer-events-none left-3 top-1/2">
-          {icon}
-        </div>
-      )}
-      {props.as === "textarea" ? (
-        <textarea
-          {...props}
-          rows={3}
-          className={`w-full ${icon ? "pl-10" : "pl-4"} pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                      text-white text-sm placeholder:text-gray-600 resize-none
-                      focus:outline-none focus:border-indigo-500 focus:bg-white/[0.07] transition-all duration-200`}
-        />
-      ) : (
-        <input
-          {...props}
-          className={`w-full ${icon ? "pl-10" : "pl-4"} pr-4 py-3 rounded-xl bg-white/5 border border-white/10
-                      text-white text-sm placeholder:text-gray-600
-                      focus:outline-none focus:border-indigo-500 focus:bg-white/[0.07] transition-all duration-200`}
-        />
-      )}
-    </div>
   </div>
 );
 
@@ -220,13 +189,13 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               {/* Form Fields */}
               <div className="px-6 py-6 space-y-5">
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <InputField
+                  <CommonInput
                     label="Full Name" required
                     type="text" name="name" value={form.name}
                     onChange={handleChange} placeholder="John Doe"
                     icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>}
                   />
-                  <InputField
+                  <CommonInput
                     label="Phone Number" required
                     type="tel" name="phone" value={form.phone}
                     onChange={handleChange} placeholder="01XXXXXXXXX"
@@ -234,14 +203,14 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
                   />
                 </div>
 
-                <InputField
+                <CommonInput
                   label="Email Address" required
                   type="email" name="email" value={form.email}
                   onChange={handleChange} placeholder="your@email.com"
                   icon={<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
                 />
 
-                <InputField
+                <CommonInput
                   label="Delivery Address" required
                   as="textarea" name="address" value={form.address}
                   onChange={handleChange} placeholder="House no, Road, Area, City"

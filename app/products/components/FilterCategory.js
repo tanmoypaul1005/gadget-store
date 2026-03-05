@@ -31,7 +31,7 @@ const FilterCategory = ({ textColor = "text-white", onChange=()=>{} }) => {
   return (
     <ul
       role="list"
-      className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-200"
+      className="pb-6 mb-6 space-y-2 text-sm font-medium border-b border-gray-800"
     >
       {categories?.length > 0 ? (
         categories?.map((item, index) => (

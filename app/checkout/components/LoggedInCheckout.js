@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 /* ── Loading Skeleton ── */
 const LoadingSkeleton = () => (
-  <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8 animate-pulse">
+  <div className="min-h-screen bg-[#0a0a0f] py-10 animate-pulse">
     <div className="common-class">
       <div className="w-48 h-8 mb-10 bg-white/5 rounded-xl" />
       <div className="grid gap-6 lg:grid-cols-5">
@@ -156,7 +156,7 @@ const LoggedInCheckout = ({ email }) => {
       <div className="common-class">
 
         {/* Page Header */}
-        <div className="mb-8">
+        <div className="mt-8 mb-8">
           <div className="flex items-center gap-3 mb-1">
             <Link href="/cart" className="text-gray-500 transition-colors hover:text-gray-300">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

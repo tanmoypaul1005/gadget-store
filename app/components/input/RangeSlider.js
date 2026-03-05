@@ -26,9 +26,9 @@ export default function RangeSlider({
   }
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <div className="text-white">{label}</div>
-      <Box sx={{ width: 300 }}>
+      <Box sx={{ width: '100%' }}>
         <div className="px-[9.5px]">
           <Slider
             getAriaLabel={() => label}
