@@ -1,6 +1,7 @@
 "use client";
 import { addOrderFromCookie } from "@/app/action/order";
 import Address from "@/app/components/Address/Address";
+import CommonButton from "@/app/components/button/CommonButton";
 import { address_type } from "@/util/const";
 import { clearGuestCart, getGuestCartItems } from "@/util/guestCart";
 import { Toastr } from "@/util/utilityFunction";
@@ -9,25 +10,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-/* ── Loading Skeleton ── */
-const LoadingSkeleton = () => (
-  <div className="min-h-screen bg-[#0a0a0f] py-10 animate-pulse">
-    <div className="common-class">
-      <div className="w-48 h-8 mb-10 bg-white/5 rounded-xl" />
-      <div className="grid gap-6 lg:grid-cols-5">
-        <div className="space-y-4 lg:col-span-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
-              <div className="w-16 h-16 rounded-xl bg-white/10 shrink-0" />
-              <div className="flex-1 space-y-2">
-                <div className="w-3/4 h-4 rounded bg-white/10" />
-                <div className="w-1/4 h-3 rounded bg-white/10" />
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="lg:col-span-2 h-80 rounded-2xl bg-white/5" />
-      </div>
+/* ── Per-item skeleton ── */
+const ProductSkeleton = () => (
+  <div className="animate-pulse flex items-center gap-4 p-3 border rounded-xl bg-white/5 border-white/5">
+    <div className="w-14 h-14 rounded-xl bg-white/10 shrink-0" />
+    <div className="flex-1 space-y-2">
+      <div className="w-3/4 h-3 rounded bg-white/10" />
+      <div className="w-1/4 h-2 rounded bg-white/10" />
+      <div className="w-1/3 h-3 mt-1 rounded bg-white/10" />
     </div>
   </div>
 );
@@ -81,7 +71,7 @@ const LoggedInCheckout = ({ email }) => {
   const [address, setAddress] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [productsLoading, setProductsLoading] = useState(true);
   const [placing, setPlacing] = useState(false);
   const [contactNumber, setContactNumber] = useState("");
 
@@ -97,10 +87,13 @@ const LoggedInCheckout = ({ email }) => {
   };
 
   useEffect(() => {
+    // Show cart items instantly from cookie — no blocking
+    const cookieItems = getGuestCartItems();
+    setCartItems(cookieItems);
+
     const init = async () => {
-      await fetchAddresses();
-      const items = getGuestCartItems();
-      setCartItems(items);
+      const items = cookieItems;
+      fetchAddresses(); // fire-and-forget — address section loads independently
       const map = {};
       await Promise.all(items.map(async (item) => {
         try {
@@ -112,7 +105,7 @@ const LoggedInCheckout = ({ email }) => {
         } catch (_) {}
       }));
       setProducts(map);
-      setLoading(false);
+      setProductsLoading(false);
     };
     init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -146,8 +139,7 @@ const LoggedInCheckout = ({ email }) => {
     }
   };
 
-  if (loading) return <LoadingSkeleton />;
-  if (!cartItems.length) return <EmptyCart />;
+  if (!cartItems.length && !productsLoading) return <EmptyCart />;
 
   const totalItems = cartItems.reduce((s, i) => s + (i.quantity || 1), 0);
 
@@ -207,7 +199,7 @@ const LoggedInCheckout = ({ email }) => {
               <div className="space-y-4">
                 {cartItems.map((item) => {
                   const product = products[item.product_id];
-                  if (!product) return null;
+                  if (!product) return <ProductSkeleton key={item.product_id} />;
                   return (
                     <div key={item.product_id}
                       className="flex items-center gap-4 p-3 transition-colors border rounded-xl bg-white/5 border-white/5 hover:border-white/10">
@@ -274,21 +266,28 @@ const LoggedInCheckout = ({ email }) => {
 
               {/* Items */}
               <div className="px-5 py-4 space-y-2.5 border-b border-white/5 max-h-48 overflow-y-auto">
-                {cartItems.map((item) => {
-                  const p = products[item.product_id];
-                  if (!p) return null;
-                  return (
-                    <div key={item.product_id} className="flex items-center gap-2">
-                      <span className="text-xs text-gray-500 bg-white/5 rounded px-1.5 py-0.5 shrink-0">
-                        ×{item.quantity || 1}
-                      </span>
-                      <span className="flex-1 text-sm text-gray-300 truncate">{p.name}</span>
-                      <span className="text-sm font-semibold text-white shrink-0">
-                        ${(p.price * (item.quantity || 1)).toFixed(2)}
-                      </span>
-                    </div>
-                  );
-                })}
+                {productsLoading
+                  ? [1, 2].map((i) => (
+                      <div key={i} className="animate-pulse flex justify-between gap-3">
+                        <div className="flex-1 h-3 rounded bg-white/10" />
+                        <div className="w-12 h-3 rounded bg-white/10" />
+                      </div>
+                    ))
+                  : cartItems.map((item) => {
+                      const p = products[item.product_id];
+                      if (!p) return null;
+                      return (
+                        <div key={item.product_id} className="flex items-center gap-2">
+                          <span className="text-xs text-gray-500 bg-white/5 rounded px-1.5 py-0.5 shrink-0">
+                            ×{item.quantity || 1}
+                          </span>
+                          <span className="flex-1 text-sm text-gray-300 truncate">{p.name}</span>
+                          <span className="text-sm font-semibold text-white shrink-0">
+                            ${(p.price * (item.quantity || 1)).toFixed(2)}
+                          </span>
+                        </div>
+                      );
+                    })}
               </div>
 
               {/* Address Preview */}
@@ -307,7 +306,9 @@ const LoggedInCheckout = ({ email }) => {
               <div className="px-5 py-4 space-y-2 border-b border-white/5">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Subtotal</span>
-                  <span className="text-white">${totalPrice.toFixed(2)}</span>
+                  {productsLoading
+                    ? <div className="w-16 h-3 rounded bg-white/10 animate-pulse" />
+                    : <span className="text-white">${totalPrice.toFixed(2)}</span>}
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Shipping</span>
@@ -322,44 +323,40 @@ const LoggedInCheckout = ({ email }) => {
               {/* Total */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
                 <span className="text-base font-bold text-white">Total</span>
-                <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>
+                {productsLoading
+                  ? <div className="w-20 h-5 rounded bg-white/10 animate-pulse" />
+                  : <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>}
               </div>
 
               {/* CTA */}
               <div className="px-5 py-5 space-y-3">
-                <button
+                <CommonButton
+                  variant="primary"
+                  fullWidth
+                  loading={placing}
                   onClick={handlePlaceOrder}
-                  disabled={placing}
-                  className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50
-                             disabled:cursor-not-allowed text-white text-sm font-bold rounded-xl
-                             transition-all duration-200 flex items-center justify-center gap-2"
+                  icon={
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  }
                 >
-                  {placing ? (
-                    <>
-                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      Placing Order...
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Place Order · ${totalPrice.toFixed(2)}
-                    </>
-                  )}
-                </button>
+                  {placing ? "Placing Order..." : `Place Order · $${totalPrice.toFixed(2)}`}
+                </CommonButton>
 
                 <Link href="/cart" className="block">
-                  <button className="flex items-center justify-center w-full gap-2 px-4 py-3 text-sm font-semibold text-gray-300 transition-all duration-200 border bg-white/5 hover:bg-white/10 hover:text-white rounded-xl border-white/5 hover:border-white/10">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
+                  <CommonButton
+                    variant="secondary"
+                    fullWidth
+                    icon={
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    }
+                  >
                     Back to Cart
-                  </button>
+                  </CommonButton>
                 </Link>
 
                 {/* Trust Badges */}

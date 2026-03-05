@@ -8,27 +8,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import CommonInput from "@/app/components/input/CommonInput";
+import CommonButton from "@/app/components/button/CommonButton";
 
-/* ── Loading Skeleton ── */
-const LoadingSkeleton = () => (
-  <div className="min-h-screen bg-[#0a0a0f] px-4 py-10 sm:px-6 lg:px-8 animate-pulse">
-    <div className="max-w-5xl mx-auto">
-      <div className="w-48 h-8 mb-10 bg-white/5 rounded-xl" />
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="space-y-4">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/5">
-              <div className="w-16 h-16 rounded-xl bg-white/10 shrink-0" />
-              <div className="flex-1 space-y-2">
-                <div className="w-3/4 h-4 rounded bg-white/10" />
-                <div className="w-1/4 h-3 rounded bg-white/10" />
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="h-80 rounded-2xl bg-white/5" />
-      </div>
+/* ── Per-item Loading Skeleton ── */
+const ProductSkeleton = () => (
+  <div className="flex items-center gap-3 animate-pulse">
+    <div className="w-12 h-12 rounded-xl bg-white/10 shrink-0" />
+    <div className="flex-1 space-y-2">
+      <div className="w-3/4 h-3 rounded bg-white/10" />
+      <div className="w-1/4 h-2.5 rounded bg-white/10" />
     </div>
+    <div className="w-12 h-4 rounded bg-white/10 shrink-0" />
   </div>
 );
 
@@ -60,7 +50,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
   const router = useRouter();
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loadingProducts, setLoadingProducts] = useState(true);
   const [placing, setPlacing] = useState(false);
   const [form, setForm] = useState({ name: initialName, email: initialEmail, phone: "", address: "" });
 
@@ -76,6 +66,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
     const loadProducts = async () => {
       const items = getGuestCartItems();
       setCartItems(items);
+      setLoadingProducts(true);
       const map = {};
       await Promise.all(items.map(async (item) => {
         try {
@@ -87,7 +78,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
         } catch (_) { }
       }));
       setProducts(map);
-      setLoading(false);
+      setLoadingProducts(false);
     };
     loadProducts();
   }, []);
@@ -128,8 +119,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
     }
   };
 
-  if (loading) return <LoadingSkeleton />;
-  if (cartItems.length === 0) return <EmptyCart />;
+  if (cartItems.length === 0 && !loadingProducts) return <EmptyCart />;
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] py-10">
@@ -256,7 +246,7 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               <div className="px-5 py-4 space-y-3 overflow-y-auto border-b border-white/5 max-h-56">
                 {cartItems.map((item) => {
                   const product = products[item.product_id];
-                  if (!product) return null;
+                  if (!product) return <ProductSkeleton key={item.product_id} />;
                   return (
                     <div key={item.product_id} className="flex items-center gap-3">
                       <div className="relative w-12 h-12 overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10 shrink-0">
@@ -280,7 +270,9 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               <div className="px-5 py-4 space-y-2 border-b border-white/5">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Subtotal</span>
-                  <span className="text-white">${totalPrice.toFixed(2)}</span>
+                  {loadingProducts
+                    ? <div className="w-14 h-4 rounded bg-white/10 animate-pulse" />
+                    : <span className="text-white">${totalPrice.toFixed(2)}</span>}
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-400">Shipping</span>
@@ -295,36 +287,27 @@ const GuestCheckout = ({ initialName = "", initialEmail = "" }) => {
               {/* Grand Total */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/5">
                 <span className="text-base font-bold text-white">Total</span>
-                <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>
+                {loadingProducts
+                  ? <div className="w-20 h-6 rounded bg-white/10 animate-pulse" />
+                  : <span className="text-xl font-bold text-indigo-400">${totalPrice.toFixed(2)}</span>}
               </div>
 
               {/* Place Order CTA */}
               <div className="px-5 py-5">
-                <button
+                <CommonButton
+                  variant="primary"
+                  fullWidth
+                  loading={placing}
                   onClick={handlePlaceOrder}
-                  disabled={placing}
-                  className="w-full py-3.5 px-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed
-                             text-white text-sm font-bold rounded-xl transition-all duration-200
-                             flex items-center justify-center gap-2 group"
+                  icon={
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  }
                 >
-                  {placing ? (
-                    <>
-                      <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      Placing Order...
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      Place Order · ${totalPrice.toFixed(2)}
-                    </>
-                  )}
-                </button>
+                  {placing ? "Placing Order..." : `Place Order · $${totalPrice.toFixed(2)}`}
+                </CommonButton>
 
                 {/* Trust Badges */}
                 <div className="grid grid-cols-3 gap-2 mt-4">
