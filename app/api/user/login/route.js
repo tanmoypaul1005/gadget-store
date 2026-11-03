@@ -1,6 +1,6 @@
 import User from "@/models/User";
 import connectMongo from "@/util/db";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export async function POST(request) {
