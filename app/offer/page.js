@@ -5,7 +5,13 @@ import DateComponent from "./components/DateComponent";
 import Link from "next/link";
 
 const Offer = async () => {
-  const offerList = await getOffer();
+  const offerList = (await getOffer()) ?? [];
+
+  if (!offerList.length) {
+    return (
+      <div className="py-20 text-center text-gray-400">No offers available right now.</div>
+    );
+  }
 
   return (
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

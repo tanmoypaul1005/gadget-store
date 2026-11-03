@@ -66,6 +66,25 @@ export async function addToGuestCart(product_id, quantity = 1) {
   }
 }
 
+export function getGuestCartQuantity(product_id) {
+  const item = getGuestCartItems().find((i) => i.product_id === product_id);
+  return item?.quantity || 0;
+}
+
+// Set exact quantity; removes the item when quantity <= 0
+export function setGuestCartQuantity(product_id, quantity) {
+  const items = getGuestCartItems();
+  const idx = items.findIndex((i) => i.product_id === product_id);
+  if (idx === -1) return addToGuestCart(product_id, quantity);
+  if (quantity <= 0) items.splice(idx, 1);
+  else {
+    items[idx].quantity = quantity;
+    items[idx].updatedAt = Date.now();
+  }
+  saveGuestCartItems(items);
+  return { success: true, data: items };
+}
+
 export function clearGuestCart() {
   saveGuestCartItems([]);
 }

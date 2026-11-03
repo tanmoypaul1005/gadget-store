@@ -32,7 +32,7 @@ const Slider = ({ products = [] }) => {
   return (
     <div className="min-h-[300px]">
       {
-        products?.length === 0 ? (<div className=""></div>) :
+        !Array.isArray(products) || products.length === 0 ? (<div className=""></div>) :
           <Carousel
             responsive={responsive}
             autoPlay={true}
