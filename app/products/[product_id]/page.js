@@ -9,10 +9,11 @@ import { getComment } from "@/app/action/comment";
 import CommonRating from "@/app/components/CommonRating";
 
 const ProductDetails = async ({ params }) => {
-  const productDetails = await fetchProduct(params?.product_id);
-  const comments = await getComment(params?.product_id);
-  const session = await auth();
-  const user = await findUserId(session?.user?.email);
+  const [productDetails, comments, user] = await Promise.all([
+    fetchProduct(params?.product_id),
+    getComment(params?.product_id),
+    auth().then((session) => findUserId(session?.user?.email)),
+  ]);
 
   return (
     <div className="min-h-screen bg-[#0a0a0f]">

@@ -12,7 +12,8 @@ const Card = ({ product,width="max-w-[250px] min-w-[250px]",offerPercentage=null
   return (
     <div onClick={() => {
       router.push(`/products/${product?._id}`)
-    }} 
+    }}
+    onMouseEnter={() => router.prefetch(`/products/${product?._id}`)}
     className={`relative w-full  px-2 py-3 cursor-pointer overflow-hidden bg-gray-700 rounded-lg shadow-md ${width}`}>
       <div className="flex items-center justify-center">
         <Image

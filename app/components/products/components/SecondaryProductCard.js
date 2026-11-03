@@ -13,6 +13,7 @@ const SecondaryProductCard = ({ product, width = "max-w-[250px] min-w-[250px]" }
       <div onClick={() => {
         router.push(`/products/${product?._id}`)
       }}
+        onMouseEnter={() => router.prefetch(`/products/${product?._id}`)}
         className={`relative py-4 cursor-pointer overflow-hidden px-2.5 border border-cBorderColor text-white duration-500 shadow-md bg-cCommonBg rounded-xl ${width}`}>
         <div className="flex items-center justify-center">
           <Image
