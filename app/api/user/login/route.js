@@ -1,7 +1,7 @@
 import User from "@/models/User";
 import connectMongo from "@/util/db";
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { signToken } from '@/util/jwt';
 
 export async function POST(request) {
     try {
@@ -19,7 +19,7 @@ export async function POST(request) {
         const validPass = await bcrypt.compare(req_body?.password, user.password);
         if (!validPass) return Response.json({success:false, status: 500, message: "Invalid password" });
 
-        const token = jwt.sign({ id: user?.id }, 'your_secret_key', { expiresIn: '1h' });
+        const token = await signToken({ id: String(user?.id) });
 
         const userResponse = { user, password: undefined,token };
 

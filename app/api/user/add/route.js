@@ -1,7 +1,7 @@
 import User from "@/models/User";
 import connectMongo from "@/util/db";
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { signToken } from '@/util/jwt';
 
 export async function POST(request, response) {
     try {
@@ -22,7 +22,7 @@ export async function POST(request, response) {
         const _user = new User({ ...user,password: hashedPassword });
         await _user.save();
 
-        const token = jwt.sign({ id: _user._id }, 'your_secret_key', { expiresIn: '1h' });
+        const token = await signToken({ id: String(_user._id) });
 
         const userResponse = { ..._user._doc, password: undefined,token };
 
