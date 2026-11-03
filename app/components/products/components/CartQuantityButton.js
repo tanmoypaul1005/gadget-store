@@ -30,20 +30,23 @@ const CartQuantityButton = ({ productId, size = "sm" }) => {
     setGuestCartQuantity(productId, qty + delta);
   };
 
-  const text = size === "sm" ? "text-xs" : "text-sm";
-  const icon = size === "sm" ? "w-4 h-4" : "w-5 h-5";
+  const text = size === "sm" ? "text-sm" : "text-base";
+  const icon = size === "sm" ? "w-5 h-5" : "w-6 h-6";
+
+  const circleBtn =
+    "flex items-center justify-center w-8 h-8 font-bold rounded-full bg-slate-700 hover:bg-slate-600 select-none focus:outline-none";
 
   if (qty > 0) {
     return (
       <div
         onClick={stop}
-        className={`flex items-center overflow-hidden text-white rounded-md w-fit bg-slate-900 ${text}`}
+        className={`flex items-center justify-between w-full p-1 text-white rounded-full bg-slate-900 ${text}`}
       >
         <button
           type="button"
           aria-label="Decrease quantity"
           onClick={(e) => change(e, -1)}
-          className="px-3 py-2 font-bold hover:bg-slate-700"
+          className={circleBtn}
         >
           −
         </button>
@@ -54,7 +57,7 @@ const CartQuantityButton = ({ productId, size = "sm" }) => {
           type="button"
           aria-label="Increase quantity"
           onClick={(e) => change(e, 1)}
-          className="px-3 py-2 font-bold hover:bg-slate-700"
+          className={circleBtn}
         >
           +
         </button>
@@ -66,7 +69,7 @@ const CartQuantityButton = ({ productId, size = "sm" }) => {
     <button
       type="button"
       onClick={handleAdd}
-      className={`flex items-center px-3 py-2 font-medium text-center text-white rounded-md w-fit bg-slate-900 focus:outline-none focus:ring-4 focus:ring-blue-300 ${text}`}
+      className={`flex items-center justify-center w-full px-3 py-2 font-medium text-center text-white rounded-md bg-slate-900 focus:outline-none ${text}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
