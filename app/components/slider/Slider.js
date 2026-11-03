@@ -1,61 +1,16 @@
 "use client"
 import React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import "./styles.css";
 import SecondaryProductCard from "../products/components/SecondaryProductCard";
 
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
-    slidesToSlide: 4 // optional, default to 1.
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 768 },
-    items: 4,
-    slidesToSlide: 3 // optional, default to 1.
-  },
-  mobile: {
-    breakpoint: { max: 767, min: 464 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
-  },
-  smallMobile: {
-    breakpoint: { max: 463, min: 0 },
-    items: 2,
-    slidesToSlide: 2 // optional, default to 1.
-  }
-};
-
 const Slider = ({ products = [] }) => {
-  return (
-    <div className="min-h-[300px]">
-      {
-        !Array.isArray(products) || products.length === 0 ? (<div className=""></div>) :
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            swipeable={true}
-            draggable={true}
-            showDots={false}
-            infinite={true}
-            partialVisible={false}
-            dotListClass=""
-            className="gap-x-3"
-          >
-            {
-              products?.map((product, index) => {
-                return (
-                  <div className="flex items-center justify-center slider" key={index}>
-                    <SecondaryProductCard width="w-64 md:w-full" product={product} />
-                  </div>
-                );
-              })
-            }
-          </Carousel>
-      }
+  if (!Array.isArray(products) || products.length === 0) return null;
 
+  return (
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      {products.map((product, index) => (
+        <SecondaryProductCard key={product?._id ?? index} width="w-full" product={product} />
+      ))}
     </div>
   );
 };
